@@ -791,11 +791,6 @@
         min-height: 280px;
       }
 
-      .project-card--large.project-card--sites {
-        grid-template-columns: 1fr;
-        min-height: 0;
-      }
-
       .project-card--pair .project-card__body {
         min-height: 200px;
       }
@@ -1583,97 +1578,128 @@
       padding: 0.7rem 1.2rem;
     }
 
-    /* Карточка «Сайты / лендинги» — премиум-портфолио (studio / Awwwards) */
-    .project-card--sites {
+    /* Блок «Сайты / лендинги» — три кейса уровня карточки проекта */
+    .projects-sites-cluster {
+      grid-column: 1 / -1;
       display: flex;
       flex-direction: column;
+      gap: var(--space-lg);
     }
 
-    .project-card--sites .project-card__body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    .projects-sites-cluster__head {
+      max-width: 40rem;
     }
 
-    .sites-works-list {
+    .projects-sites-cluster__title {
+      font-size: clamp(1.35rem, 3vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-xs);
+      color: var(--text);
+    }
+
+    .projects-sites-cluster__lead {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .sites-cases-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
-      margin-top: var(--space-md);
-      margin-bottom: var(--space-md);
+      align-items: stretch;
     }
 
     @media (min-width: 900px) {
-      .sites-works-list {
+      .sites-cases-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
-    .sites-works-card {
-      position: relative;
+    .project-card--site-case {
+      border-radius: 24px;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      border-radius: 20px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.35) inset,
-        0 12px 40px rgba(0, 0, 0, 0.35);
+      padding: var(--space-lg);
       transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
+        border-color 0.45s var(--ease-out),
+        box-shadow 0.45s var(--ease-out),
+        transform 0.45s var(--ease-out);
     }
 
-    .sites-works-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(167, 139, 250, 0.22);
+    .project-card--site-case:hover {
+      transform: translateY(-7px);
+      border-color: rgba(167, 139, 250, 0.36);
       box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-        0 28px 64px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba(167, 139, 250, 0.12),
-        0 0 80px rgba(139, 92, 246, 0.22),
-        0 0 120px rgba(167, 139, 250, 0.08);
+        0 0 0 1px rgba(139, 92, 246, 0.14),
+        0 32px 64px rgba(0, 0, 0, 0.42),
+        0 0 64px rgba(139, 92, 246, 0.14),
+        0 0 100px rgba(167, 139, 250, 0.07);
     }
 
-    .sites-works-card__hit {
-      position: absolute;
-      inset: 0;
-      z-index: 5;
-      text-indent: -9999px;
+    .project-card--site-case .project-card__body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .project-card--site-case .project-card__actions {
+      margin-top: auto;
+    }
+
+    .project-card--site-case p {
+      max-width: 52ch;
+    }
+
+    .project-card--site-case .project-card__preview--site::before {
+      display: none;
+    }
+
+    .project-card--site-case .project-card__preview--site {
+      border-radius: 18px;
+      min-height: 200px;
+      height: 200px;
+      margin-bottom: var(--space-md);
+      padding: 0;
       overflow: hidden;
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      background: #07050c;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.4) inset,
+        0 10px 40px rgba(0, 0, 0, 0.35),
+        0 0 48px rgba(139, 92, 246, 0.12);
+      transition: box-shadow 0.45s var(--ease-out), border-color 0.45s;
     }
 
-    .sites-works-card__hit:focus-visible {
-      outline: none;
+    .project-card--site-case:hover .project-card__preview--site {
+      border-color: rgba(167, 139, 250, 0.38);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 16px 48px rgba(0, 0, 0, 0.4),
+        0 0 64px rgba(139, 92, 246, 0.2),
+        0 0 90px rgba(167, 139, 250, 0.09);
     }
 
-    .sites-works-card:has(.sites-works-card__hit:focus-visible) {
-      outline: 2px solid rgba(167, 139, 250, 0.55);
-      outline-offset: 3px;
-    }
-
-    .sites-works-card__preview {
+    .site-case__preview {
       position: relative;
-      height: clamp(200px, 22vw, 240px);
+      width: 100%;
+      height: 100%;
       overflow: hidden;
-      background: #0a0810;
-      flex-shrink: 0;
       isolation: isolate;
       container-type: inline-size;
-      container-name: sites-preview;
     }
 
-    .sites-works-card__iframe-stage {
+    .site-case__iframe-stage {
       position: absolute;
       inset: 0;
       overflow: hidden;
     }
 
-    .sites-works-card__iframe-parallax {
+    .site-case__iframe-parallax {
       position: absolute;
       left: 0;
       right: 0;
@@ -1683,14 +1709,12 @@
       will-change: transform;
     }
 
-    /* % от высоты полотна (≈ высота iframe): при наведении уезжает вверх заметный кусок страницы */
-    .sites-works-card:hover .sites-works-card__iframe-parallax {
+    .project-card--site-case:hover .site-case__iframe-parallax {
       transform: translateY(-36%);
       transition: transform 7s ease-out;
     }
 
-    /* Высота viewport iframe больше 900px — в превью попадает не только первый экран сайта */
-    .sites-works-card__iframe-parallax iframe {
+    .site-case__iframe-parallax iframe {
       display: block;
       position: relative;
       left: 0;
@@ -1705,135 +1729,60 @@
       opacity: 1;
     }
 
-    .sites-works-card__preview-overlay {
+    .site-case__preview-overlay {
       position: absolute;
       inset: 0;
       z-index: 2;
+      pointer-events: none;
       background: linear-gradient(
         180deg,
-        rgba(8, 6, 14, 0.15) 0%,
-        rgba(8, 6, 14, 0.25) 35%,
-        rgba(8, 6, 14, 0.75) 100%
+        rgba(6, 4, 12, 0.45) 0%,
+        rgba(6, 4, 12, 0.35) 40%,
+        rgba(6, 4, 12, 0.82) 100%
       );
-      pointer-events: none;
+      mix-blend-mode: multiply;
     }
 
-    .sites-works-card__preview-vignette {
+    .site-case__preview-vignette {
       position: absolute;
-      inset: -2px;
+      inset: 0;
       z-index: 3;
       pointer-events: none;
       box-shadow:
-        inset 0 0 50px rgba(0, 0, 0, 0.45),
-        inset 0 0 24px rgba(0, 0, 0, 0.35);
+        inset 0 0 60px rgba(0, 0, 0, 0.55),
+        inset 0 0 28px rgba(0, 0, 0, 0.4);
       -webkit-mask-image: linear-gradient(
         to right,
         transparent 0%,
-        black 10%,
-        black 90%,
+        black 8%,
+        black 92%,
         transparent 100%
       );
       mask-image: linear-gradient(
         to right,
         transparent 0%,
-        black 10%,
-        black 90%,
+        black 8%,
+        black 92%,
         transparent 100%
       );
     }
 
-    .sites-works-card__body {
-      position: relative;
-      z-index: 2;
-      padding: 1.25rem 1.35rem 1.4rem;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1rem 1.25rem;
-      flex: 1;
-    }
-
-    .sites-works-card__text {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .sites-works-card__title {
-      display: block;
-      font-size: 1.0625rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin: 0 0 0.35rem;
-      line-height: 1.2;
-    }
-
-    .sites-works-card__desc {
-      margin: 0;
+    .projects-sites-cluster .sites-mini-cta {
+      align-self: flex-start;
+      margin-top: 0;
       font-size: 0.8125rem;
-      line-height: 1.45;
-      color: rgba(184, 184, 199, 0.82);
-    }
-
-    .sites-works-card__btn {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      color: rgba(192, 180, 255, 0.95);
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(167, 139, 250, 0.25);
-      cursor: default;
-    }
-
-    .sites-works-card__arrow {
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .sites-works-card:hover .sites-works-card__arrow {
-      transform: translateX(7px);
-    }
-
-    @media (max-width: 540px) {
-      .sites-works-card__body {
-        flex-wrap: wrap;
-      }
-
-      .sites-works-card__btn {
-        margin-left: auto;
-      }
+      padding: 0.7rem 1.25rem;
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .sites-works-card,
-      .sites-works-card:hover {
+      .project-card--site-case:hover {
         transform: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .sites-works-card__iframe-parallax,
-      .sites-works-card:hover .sites-works-card__iframe-parallax {
+      .project-card--site-case:hover .site-case__iframe-parallax {
         transform: none;
         transition: none;
       }
-
-      .sites-works-card:hover .sites-works-card__arrow {
-        transform: none;
-      }
-    }
-
-    .sites-mini-cta {
-      margin-top: auto;
-      align-self: flex-start;
-      font-size: 0.8125rem;
-      padding: 0.7rem 1.25rem;
     }
 
     /* ========== Подход — timeline + ритм ========== */
@@ -2951,22 +2900,19 @@
         <p>Продуктовая подача — не просто скриншоты, а ощущение сервиса</p>
       </div>
       <div class="projects-grid">
-        <article class="project-card project-card--large project-card--sites reveal">
-          <div class="project-card__body">
-            <h3>Сайты / лендинги</h3>
-            <p>Создаю сайты под задачи: от образовательных до бизнеса. Каждый — с фокусом на понятность и заявки</p>
-            <div class="sites-works-list">
-              <article class="sites-works-card">
-                <a
-                  class="sites-works-card__hit"
-                  href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Учитель и нейросети — открыть сайт"
-                >Открыть сайт</a>
-                <div class="sites-works-card__preview">
-                  <div class="sites-works-card__iframe-stage">
-                    <div class="sites-works-card__iframe-parallax">
+        <div class="projects-sites-cluster reveal">
+          <header class="projects-sites-cluster__head">
+            <h3 class="projects-sites-cluster__title">Сайты / лендинги</h3>
+            <p class="projects-sites-cluster__lead">
+              Создаю сайты под задачи: от образовательных до бизнеса. Каждый кейс — с фокусом на понятность, доверие и заявки
+            </p>
+          </header>
+          <div class="sites-cases-grid">
+            <article class="project-card project-card--site-case reveal reveal-delay-1">
+              <div class="project-card__preview project-card__preview--site" aria-hidden="true">
+                <div class="site-case__preview">
+                  <div class="site-case__iframe-stage">
+                    <div class="site-case__iframe-parallax">
                       <iframe
                         title="Превью: Учитель и нейросети"
                         src="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
@@ -2975,30 +2921,40 @@
                       ></iframe>
                     </div>
                   </div>
-                  <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
-                  <div class="sites-works-card__preview-vignette" aria-hidden="true"></div>
+                  <div class="site-case__preview-overlay" aria-hidden="true"></div>
+                  <div class="site-case__preview-vignette" aria-hidden="true"></div>
                 </div>
-                <div class="sites-works-card__body">
-                  <div class="sites-works-card__text">
-                    <h4 class="sites-works-card__title">Учитель и нейросети</h4>
-                    <p class="sites-works-card__desc">Сайт для педагогов</p>
-                  </div>
-                  <span class="sites-works-card__btn">
-                    Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
-                  </span>
+              </div>
+              <div class="project-card__body">
+                <h3>Учитель и нейросети</h3>
+                <p>Сайт для педагогов, который показывает, как нейросети помогают экономить время и готовить материалы быстрее</p>
+                <div class="tags">
+                  <span class="tag">AI</span>
+                  <span class="tag">EDUCATION</span>
+                  <span class="tag">LANDING</span>
                 </div>
-              </article>
-              <article class="sites-works-card">
-                <a
-                  class="sites-works-card__hit"
-                  href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Грузоперевозки — открыть сайт"
-                >Открыть сайт</a>
-                <div class="sites-works-card__preview">
-                  <div class="sites-works-card__iframe-stage">
-                    <div class="sites-works-card__iframe-parallax">
+                <div class="project-card__actions">
+                  <button
+                    type="button"
+                    class="btn btn--ghost"
+                    id="site-uchitel-detail-open"
+                    aria-haspopup="dialog"
+                    aria-controls="modal-site-uchitel"
+                  >Подробнее</button>
+                  <a
+                    class="btn btn--primary"
+                    href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >Открыть демо</a>
+                </div>
+              </div>
+            </article>
+            <article class="project-card project-card--site-case reveal reveal-delay-2">
+              <div class="project-card__preview project-card__preview--site" aria-hidden="true">
+                <div class="site-case__preview">
+                  <div class="site-case__iframe-stage">
+                    <div class="site-case__iframe-parallax">
                       <iframe
                         title="Превью: Грузоперевозки"
                         src="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
@@ -3007,30 +2963,40 @@
                       ></iframe>
                     </div>
                   </div>
-                  <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
-                  <div class="sites-works-card__preview-vignette" aria-hidden="true"></div>
+                  <div class="site-case__preview-overlay" aria-hidden="true"></div>
+                  <div class="site-case__preview-vignette" aria-hidden="true"></div>
                 </div>
-                <div class="sites-works-card__body">
-                  <div class="sites-works-card__text">
-                    <h4 class="sites-works-card__title">Грузоперевозки</h4>
-                    <p class="sites-works-card__desc">Лендинг для водителя</p>
-                  </div>
-                  <span class="sites-works-card__btn">
-                    Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
-                  </span>
+              </div>
+              <div class="project-card__body">
+                <h3>Грузоперевозки</h3>
+                <p>Лендинг для частного водителя: показывает услуги, преимущества и ведёт клиента к заявке</p>
+                <div class="tags">
+                  <span class="tag">BUSINESS</span>
+                  <span class="tag">LANDING</span>
+                  <span class="tag">SERVICE</span>
                 </div>
-              </article>
-              <article class="sites-works-card">
-                <a
-                  class="sites-works-card__hit"
-                  href="https://aldoshinamaria.github.io/irina-sweet-creations/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Домашний кондитер — открыть сайт"
-                >Открыть сайт</a>
-                <div class="sites-works-card__preview">
-                  <div class="sites-works-card__iframe-stage">
-                    <div class="sites-works-card__iframe-parallax">
+                <div class="project-card__actions">
+                  <button
+                    type="button"
+                    class="btn btn--ghost"
+                    id="site-gruz-detail-open"
+                    aria-haspopup="dialog"
+                    aria-controls="modal-site-gruz"
+                  >Подробнее</button>
+                  <a
+                    class="btn btn--primary"
+                    href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >Открыть демо</a>
+                </div>
+              </div>
+            </article>
+            <article class="project-card project-card--site-case reveal reveal-delay-3">
+              <div class="project-card__preview project-card__preview--site" aria-hidden="true">
+                <div class="site-case__preview">
+                  <div class="site-case__iframe-stage">
+                    <div class="site-case__iframe-parallax">
                       <iframe
                         title="Превью: Домашний кондитер"
                         src="https://aldoshinamaria.github.io/irina-sweet-creations/"
@@ -3039,23 +3005,38 @@
                       ></iframe>
                     </div>
                   </div>
-                  <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
-                  <div class="sites-works-card__preview-vignette" aria-hidden="true"></div>
+                  <div class="site-case__preview-overlay" aria-hidden="true"></div>
+                  <div class="site-case__preview-vignette" aria-hidden="true"></div>
                 </div>
-                <div class="sites-works-card__body">
-                  <div class="sites-works-card__text">
-                    <h4 class="sites-works-card__title">Домашний кондитер</h4>
-                    <p class="sites-works-card__desc">Сайт для заказов тортов</p>
-                  </div>
-                  <span class="sites-works-card__btn">
-                    Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
-                  </span>
+              </div>
+              <div class="project-card__body">
+                <h3>Домашний кондитер</h3>
+                <p>Сайт для заказов десертов: помогает показать работы, вызвать доверие и привести клиента к заказу</p>
+                <div class="tags">
+                  <span class="tag">FOOD</span>
+                  <span class="tag">PORTFOLIO</span>
+                  <span class="tag">ORDERS</span>
                 </div>
-              </article>
-            </div>
-            <a href="#contact" class="btn btn--primary sites-mini-cta">Обсудить проект</a>
+                <div class="project-card__actions">
+                  <button
+                    type="button"
+                    class="btn btn--ghost"
+                    id="site-konditer-detail-open"
+                    aria-haspopup="dialog"
+                    aria-controls="modal-site-konditer"
+                  >Подробнее</button>
+                  <a
+                    class="btn btn--primary"
+                    href="https://aldoshinamaria.github.io/irina-sweet-creations/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >Открыть демо</a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
+          <a href="#contact" class="btn btn--primary sites-mini-cta">Обсудить проект</a>
+        </div>
 
         <article class="project-card project-card--pair reveal reveal-delay-1">
           <div class="project-card__preview" aria-hidden="true">
@@ -3430,6 +3411,177 @@
     </div>
   </div>
 
+  <!-- Modal: Учитель и нейросети — кейс -->
+  <div
+    class="modal"
+    id="modal-site-uchitel"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-site-uchitel-title"
+  >
+    <div class="modal__backdrop" data-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content">
+        <p class="label">Проект</p>
+        <h2 class="modal__title" id="modal-site-uchitel-title">Учитель и нейросети</h2>
+        <p class="modal__lead">Образовательный лендинг о пользе нейросетей в работе педагога</p>
+        <section class="modal__section" aria-labelledby="modal-site-uchitel-task">
+          <h3 class="modal__section-label" id="modal-site-uchitel-task">Задача</h3>
+          <p>Показать педагогам, как нейросети помогают экономить время на материалах и рутине — простым языком, без перегруза терминами</p>
+        </section>
+        <section class="modal__section" aria-labelledby="modal-site-uchitel-solution">
+          <h3 class="modal__section-label" id="modal-site-uchitel-solution">Решение</h3>
+          <p>Лендинг с ясной структурой: суть сервиса, выгоды для учителя, примеры сценариев и аккуратный призыв к действию</p>
+        </section>
+        <section class="modal__benefits" aria-labelledby="modal-site-uchitel-benefits">
+          <h3 class="modal__section-label" id="modal-site-uchitel-benefits">Как это помогает клиенту</h3>
+          <ul class="modal__benefits-list">
+            <li>быстрее понять, зачем нейросети в ежедневной работе</li>
+            <li>снизить порог входа — не нужно разбираться в технологиях часами</li>
+            <li>сэкономить время на поиске идей и черновиков материалов</li>
+            <li>получить единую точку входа: от знакомства до следующего шага</li>
+          </ul>
+        </section>
+        <section class="modal__role" aria-labelledby="modal-site-uchitel-role">
+          <h3 class="modal__section-label" id="modal-site-uchitel-role">Моя роль в проекте</h3>
+          <ul class="modal__role-list">
+            <li>сформулировала позиционирование под аудиторию педагогов</li>
+            <li>спроектировала структуру и сценарий страницы</li>
+            <li>оформила визуал и типографику в едином стиле</li>
+            <li>собрала и опубликовала рабочую версию сайта</li>
+          </ul>
+        </section>
+        <section class="modal__section" aria-labelledby="modal-site-uchitel-status">
+          <h3 class="modal__section-label" id="modal-site-uchitel-status">Статус</h3>
+          <p>Готовый сайт, демо на GitHub Pages</p>
+        </section>
+        <div class="modal__cta">
+          <h3 class="modal__cta-title">Нужен похожий сайт?</h3>
+          <p class="modal__cta-text">Соберу лендинг или многостраничный сайт под ваш продукт, аудиторию и цели</p>
+          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Грузоперевозки — кейс -->
+  <div
+    class="modal"
+    id="modal-site-gruz"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-site-gruz-title"
+  >
+    <div class="modal__backdrop" data-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content">
+        <p class="label">Проект</p>
+        <h2 class="modal__title" id="modal-site-gruz-title">Грузоперевозки</h2>
+        <p class="modal__lead">Лендинг частного водителя под заявки и доверие</p>
+        <section class="modal__section" aria-labelledby="modal-site-gruz-task">
+          <h3 class="modal__section-label" id="modal-site-gruz-task">Задача</h3>
+          <p>Усилить доверие к частному перевозчику и довести клиента до заявки: услуги, преимущества и понятный контакт</p>
+        </section>
+        <section class="modal__section" aria-labelledby="modal-site-gruz-solution">
+          <h3 class="modal__section-label" id="modal-site-gruz-solution">Решение</h3>
+          <p>Посадочная страница с чёткими блоками: кто вы, что возите, почему вам можно доверять, как связаться — с упором на мобильный просмотр</p>
+        </section>
+        <section class="modal__benefits" aria-labelledby="modal-site-gruz-benefits">
+          <h3 class="modal__section-label" id="modal-site-gruz-benefits">Как это помогает клиенту</h3>
+          <ul class="modal__benefits-list">
+            <li>клиент за секунды понимает формат работы и географию</li>
+            <li>меньше «левых» звонков — отсеиваются нецелевые обращения</li>
+            <li>выше конверсия в заявку за счёт ясного следующего шага</li>
+            <li>профессиональное первое впечатление вместо голого мессенджера</li>
+          </ul>
+        </section>
+        <section class="modal__role" aria-labelledby="modal-site-gruz-role">
+          <h3 class="modal__section-label" id="modal-site-gruz-role">Моя роль в проекте</h3>
+          <ul class="modal__role-list">
+            <li>предложила структуру и сценарий лендинга</li>
+            <li>спроектировала визуал и иерархию блоков</li>
+            <li>сверстала и оформила страницу в едином стиле</li>
+            <li>подготовила демо к публикации</li>
+          </ul>
+        </section>
+        <section class="modal__section" aria-labelledby="modal-site-gruz-status">
+          <h3 class="modal__section-label" id="modal-site-gruz-status">Статус</h3>
+          <p>Готовый сайт, демо на GitHub Pages</p>
+        </section>
+        <div class="modal__cta">
+          <h3 class="modal__cta-title">Нужен похожий сайт?</h3>
+          <p class="modal__cta-text">Соберу лендинг или многостраничный сайт под ваш продукт, аудиторию и цели</p>
+          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Домашний кондитер — кейс -->
+  <div
+    class="modal"
+    id="modal-site-konditer"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-site-konditer-title"
+  >
+    <div class="modal__backdrop" data-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content">
+        <p class="label">Проект</p>
+        <h2 class="modal__title" id="modal-site-konditer-title">Домашний кондитер</h2>
+        <p class="modal__lead">Сайт для заказов десертов с акцентом на доверие и визуал</p>
+        <section class="modal__section" aria-labelledby="modal-site-konditer-task">
+          <h3 class="modal__section-label" id="modal-site-konditer-task">Задача</h3>
+          <p>Показать качество работ, снять страх заказа у домашнего мастера и привести клиента к оформлению заявки</p>
+        </section>
+        <section class="modal__section" aria-labelledby="modal-site-konditer-solution">
+          <h3 class="modal__section-label" id="modal-site-konditer-solution">Решение</h3>
+          <p>Сайт с визуальной подачей работ, описанием форматов заказов и удобными способами связи — в спокойной премиальной подаче</p>
+        </section>
+        <section class="modal__benefits" aria-labelledby="modal-site-konditer-benefits">
+          <h3 class="modal__section-label" id="modal-site-konditer-benefits">Как это помогает клиенту</h3>
+          <ul class="modal__benefits-list">
+            <li>рост доверия за счёт витрины работ и аккуратного оформления</li>
+            <li>понятный путь: посмотреть → выбрать формат → написать</li>
+            <li>меньше однотипных вопросов в переписке — ответы уже на сайте</li>
+            <li>ощущение «живого» бренда, а не случайного объявления</li>
+          </ul>
+        </section>
+        <section class="modal__role" aria-labelledby="modal-site-konditer-role">
+          <h3 class="modal__section-label" id="modal-site-konditer-role">Моя роль в проекте</h3>
+          <ul class="modal__role-list">
+            <li>разработала структуру и подачу контента</li>
+            <li>спроектировала интерфейс и визуальный стиль</li>
+            <li>собрала страницы и логику навигации</li>
+            <li>оформила демо-версию к публикации</li>
+          </ul>
+        </section>
+        <section class="modal__section" aria-labelledby="modal-site-konditer-status">
+          <h3 class="modal__section-label" id="modal-site-konditer-status">Статус</h3>
+          <p>Готовый сайт, демо на GitHub Pages</p>
+        </section>
+        <div class="modal__cta">
+          <h3 class="modal__cta-title">Нужен похожий сайт?</h3>
+          <p class="modal__cta-text">Соберу лендинг или многостраничный сайт под ваш продукт, аудиторию и цели</p>
+          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Лисичка рядом — интерактивное демо-чат -->
   <div
     class="modal modal--demo-chat"
@@ -3638,6 +3790,114 @@
         }
       });
 
+      /* ----- Modal: кейсы сайтов ----- */
+      var siteCaseModalIds = [
+        'modal-site-uchitel',
+        'modal-site-gruz',
+        'modal-site-konditer'
+      ];
+      var siteCaseLastFocus = null;
+
+      function getOpenSiteCaseModal() {
+        for (var si = 0; si < siteCaseModalIds.length; si++) {
+          var sm = document.getElementById(siteCaseModalIds[si]);
+          if (sm && sm.classList.contains('modal--open')) return sm;
+        }
+        return null;
+      }
+
+      function closeSiteCaseModals() {
+        var openSiteM = getOpenSiteCaseModal();
+        if (!openSiteM) return;
+        openSiteM.classList.remove('modal--open');
+        openSiteM.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (
+          siteCaseLastFocus &&
+          typeof siteCaseLastFocus.focus === 'function'
+        ) {
+          siteCaseLastFocus.focus();
+        }
+      }
+
+      function openSiteCaseModal(modalId) {
+        var siteModal = document.getElementById(modalId);
+        if (!siteModal) return;
+        var demoM = document.getElementById('modal-lisichka-demo');
+        if (demoM && demoM.classList.contains('modal--open')) {
+          closeLisichkaDemoModal();
+        }
+        var lisichkaM = document.getElementById('modal-lisichka');
+        if (lisichkaM && lisichkaM.classList.contains('modal--open')) {
+          lisichkaM.classList.remove('modal--open');
+          lisichkaM.setAttribute('aria-hidden', 'true');
+        }
+        var fcalcM = document.getElementById('modal-fcalc');
+        if (fcalcM && fcalcM.classList.contains('modal--open')) {
+          fcalcM.classList.remove('modal--open');
+          fcalcM.setAttribute('aria-hidden', 'true');
+        }
+        siteCaseModalIds.forEach(function (mid) {
+          var om = document.getElementById(mid);
+          if (om && om !== siteModal && om.classList.contains('modal--open')) {
+            om.classList.remove('modal--open');
+            om.setAttribute('aria-hidden', 'true');
+          }
+        });
+        siteCaseLastFocus = document.activeElement;
+        siteModal.classList.add('modal--open');
+        siteModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var siteCloseBtn = siteModal.querySelector('.modal__close');
+        if (siteCloseBtn) siteCloseBtn.focus();
+      }
+
+      siteCaseModalIds.forEach(function (mid) {
+        var smEl = document.getElementById(mid);
+        if (!smEl) return;
+        smEl.querySelectorAll('[data-modal-close]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeSiteCaseModals();
+          });
+        });
+        var siteCta = smEl.querySelector('.modal__cta-btn');
+        if (siteCta) {
+          siteCta.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeSiteCaseModals();
+            var cEl = document.getElementById('contact');
+            var goC = function () {
+              if (cEl) cEl.scrollIntoView({ behavior: 'smooth' });
+            };
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              goC();
+            } else {
+              window.setTimeout(goC, 320);
+            }
+          });
+        }
+      });
+
+      var siteUchitelOpen = document.getElementById('site-uchitel-detail-open');
+      if (siteUchitelOpen) {
+        siteUchitelOpen.addEventListener('click', function () {
+          openSiteCaseModal('modal-site-uchitel');
+        });
+      }
+      var siteGruzOpen = document.getElementById('site-gruz-detail-open');
+      if (siteGruzOpen) {
+        siteGruzOpen.addEventListener('click', function () {
+          openSiteCaseModal('modal-site-gruz');
+        });
+      }
+      var siteKonditerOpen = document.getElementById('site-konditer-detail-open');
+      if (siteKonditerOpen) {
+        siteKonditerOpen.addEventListener('click', function () {
+          openSiteCaseModal('modal-site-konditer');
+        });
+      }
+
       /* ----- Modal: Лисичка рядом — подробнее ----- */
       var modalLisichka = document.getElementById('modal-lisichka');
       var lisichkaOpenBtn = document.getElementById('lisichka-detail-open');
@@ -3645,6 +3905,7 @@
 
       function openLisichkaModal() {
         if (!modalLisichka) return;
+        closeSiteCaseModals();
         var fcalcEl = document.getElementById('modal-fcalc');
         if (fcalcEl && fcalcEl.classList.contains('modal--open')) {
           fcalcEl.classList.remove('modal--open');
@@ -3852,6 +4113,7 @@
 
       function openLisichkaDemoModal() {
         if (!modalLisichkaDemo) return;
+        closeSiteCaseModals();
         lisichkaDemoLastFocus = document.activeElement;
         var fcalcElOpen = document.getElementById('modal-fcalc');
         if (fcalcElOpen && fcalcElOpen.classList.contains('modal--open')) {
@@ -3981,6 +4243,7 @@
 
       function openFcalcModal() {
         if (!modalFcalc) return;
+        closeSiteCaseModals();
         if (modalLisichkaDemo && modalLisichkaDemo.classList.contains('modal--open')) {
           closeLisichkaDemoModal();
         }
@@ -4036,6 +4299,11 @@
         if (modalLisichkaDemo && modalLisichkaDemo.classList.contains('modal--open')) {
           e.preventDefault();
           closeLisichkaDemoModal();
+          return;
+        }
+        if (getOpenSiteCaseModal()) {
+          e.preventDefault();
+          closeSiteCaseModals();
           return;
         }
         if (modalFcalc && modalFcalc.classList.contains('modal--open')) {
