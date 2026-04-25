@@ -101,11 +101,6 @@
     }
 
     /* Лёгкие фоновые слои секций — глубина без смены палитры */
-    .section--demo {
-      background: linear-gradient(180deg, transparent 0%, rgba(18, 18, 26, 0.45) 20%, rgba(18, 18, 26, 0.35) 80%, transparent 100%);
-      border-radius: 0;
-    }
-
     .section--projects {
       background: linear-gradient(180deg, rgba(11, 11, 15, 0.35) 0%, transparent 15%, transparent 85%, rgba(11, 11, 15, 0.4) 100%);
     }
@@ -118,10 +113,6 @@
         transparent 65%,
         rgba(11, 11, 15, 0.32) 100%
       );
-    }
-
-    .section--services {
-      background: radial-gradient(ellipse 80% 50% at 20% 0%, rgba(139, 92, 246, 0.04), transparent 55%);
     }
 
     .section--process {
@@ -773,272 +764,6 @@
       font-size: 1rem;
     }
 
-    /* ========== LIVE DEMO — богатая demo-area ========== */
-    .demo-panel {
-      background:
-        linear-gradient(165deg, rgba(28, 28, 38, 0.82) 0%, rgba(14, 14, 20, 0.92) 100%);
-      border: 1px solid rgba(167, 139, 250, 0.14);
-      border-radius: calc(var(--radius-lg) + 4px);
-      padding: var(--space-lg);
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
-        0 32px 72px rgba(0, 0, 0, 0.48),
-        0 0 80px rgba(139, 92, 246, 0.06);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .demo-panel::before {
-      content: "";
-      position: absolute;
-      top: -35%;
-      right: -25%;
-      width: 55%;
-      height: 85%;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 62%);
-      pointer-events: none;
-    }
-
-    .demo-panel::after {
-      content: "";
-      position: absolute;
-      bottom: -20%;
-      left: -10%;
-      width: 45%;
-      height: 55%;
-      background: radial-gradient(circle, rgba(192, 132, 252, 0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .demo-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .demo-label-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-      padding-bottom: var(--space-md);
-      border-bottom: 1px solid rgba(167, 139, 250, 0.12);
-    }
-
-    /* Двухзонная композиция: ввод | вывод */
-    .demo-split {
-      display: grid;
-      gap: var(--space-lg);
-    }
-
-    @media (min-width: 900px) {
-      .demo-split {
-        grid-template-columns: 1fr 1.05fr;
-        gap: var(--space-xl);
-        align-items: start;
-      }
-    }
-
-    .demo-input-zone {
-      position: relative;
-    }
-
-    .demo-input-zone::after {
-      content: "";
-      position: absolute;
-      right: -12px;
-      top: 10%;
-      bottom: 10%;
-      width: 1px;
-      background: linear-gradient(180deg, transparent, rgba(167, 139, 250, 0.15), transparent);
-      display: none;
-    }
-
-    @media (min-width: 900px) {
-      .demo-input-zone::after {
-        display: block;
-      }
-    }
-
-    .demo-output-zone {
-      position: relative;
-      padding: var(--space-md);
-      border-radius: var(--radius-md);
-      background: rgba(11, 11, 15, 0.45);
-      border: 1px solid rgba(167, 139, 250, 0.08);
-      min-height: 220px;
-      box-shadow: 0 0 40px rgba(139, 92, 246, 0.04) inset;
-    }
-
-    .demo-output-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: var(--space-md);
-      padding-bottom: var(--space-sm);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .demo-output-head span {
-      font-size: 0.5625rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(184, 184, 199, 0.55);
-    }
-
-    .demo-output-head .demo-live-pill {
-      font-size: 0.625rem;
-      letter-spacing: 0.08em;
-      color: var(--accent-2);
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(167, 139, 250, 0.2);
-      background: rgba(139, 92, 246, 0.08);
-    }
-
-    .demo-preview-strip {
-      display: flex;
-      gap: 0.35rem;
-      margin-bottom: var(--space-md);
-    }
-
-    .demo-preview-strip i {
-      flex: 1;
-      height: 3px;
-      border-radius: 2px;
-      background: rgba(167, 139, 250, 0.12);
-    }
-
-    .demo-preview-strip i:nth-child(2) {
-      background: rgba(139, 92, 246, 0.22);
-      flex: 1.4;
-    }
-
-    .demo-tabs {
-      display: flex;
-      gap: 0.35rem;
-      flex-wrap: wrap;
-    }
-
-    .demo-tab {
-      padding: 0.5rem 1rem;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.2s;
-    }
-
-    .demo-tab:hover {
-      color: var(--text);
-      transform: scale(1.02);
-    }
-
-    .demo-tab.active {
-      color: var(--text);
-      background: rgba(139, 92, 246, 0.2);
-      border-color: rgba(167, 139, 250, 0.35);
-    }
-
-    .demo-field {
-      width: 100%;
-      min-height: 100px;
-      padding: var(--space-md);
-      font-size: 0.9375rem;
-      color: var(--text);
-      background: rgba(11, 11, 15, 0.5);
-      border: 1px solid rgba(167, 139, 250, 0.12);
-      border-radius: var(--radius-md);
-      resize: vertical;
-      margin-bottom: var(--space-md);
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
-
-    .demo-field:focus {
-      outline: none;
-      border-color: rgba(167, 139, 250, 0.4);
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
-    }
-
-    .demo-field::placeholder {
-      color: var(--text-muted);
-      opacity: 0.7;
-    }
-
-    .demo-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      align-items: center;
-      margin-top: var(--space-sm);
-    }
-
-    .chat-area {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-      min-height: 160px;
-    }
-
-    .chat-bubble {
-      align-self: flex-end;
-      max-width: 94%;
-      padding: var(--space-sm) var(--space-md);
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.32), rgba(22, 22, 32, 0.96));
-      border: 1px solid rgba(167, 139, 250, 0.28);
-      border-radius: var(--radius-md) var(--radius-md) 4px var(--radius-md);
-      font-size: 0.8125rem;
-      line-height: 1.5;
-      opacity: 0;
-      transform: translateY(12px) scale(0.98);
-      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-    }
-
-    .chat-bubble--ghost {
-      opacity: 1;
-      transform: none;
-      align-self: flex-start;
-      max-width: 88%;
-      background: rgba(26, 26, 36, 0.35);
-      border-color: rgba(167, 139, 250, 0.1);
-      color: rgba(184, 184, 199, 0.55);
-      font-size: 0.75rem;
-      border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 4px;
-      box-shadow: none;
-    }
-
-    .chat-bubble--ghost small {
-      color: rgba(167, 139, 250, 0.45);
-    }
-
-    .chat-bubble.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .chat-bubble small {
-      display: block;
-      font-size: 0.5625rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-3);
-      margin-bottom: 0.35rem;
-    }
-
-    .demo-hint {
-      font-size: 0.75rem;
-      color: rgba(184, 184, 199, 0.55);
-      margin-top: var(--space-lg);
-      padding-top: var(--space-md);
-      border-top: 1px solid rgba(167, 139, 250, 0.08);
-    }
-
     /* ========== Проекты — композиция ========== */
     .projects-grid {
       display: grid;
@@ -1052,10 +777,6 @@
       }
 
       .project-card--large {
-        grid-column: 1 / -1;
-      }
-
-      .project-card--accent {
         grid-column: 1 / -1;
       }
     }
@@ -1533,40 +1254,6 @@
       }
     }
 
-    /* Mini UI: чат генератора */
-    .preview-chat {
-      width: 100%;
-      max-width: 220px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .preview-chat__row {
-      font-size: 0.5625rem;
-      padding: 6px 10px;
-      border-radius: 10px;
-      max-width: 92%;
-    }
-
-    .preview-chat__row--in {
-      align-self: flex-start;
-      background: rgba(26, 26, 36, 0.8);
-      border: 1px solid rgba(167, 139, 250, 0.1);
-      color: rgba(184, 184, 199, 0.75);
-      border-radius: 10px 10px 10px 3px;
-    }
-
-    .preview-chat__row--out {
-      align-self: flex-end;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.35), rgba(26, 26, 36, 0.95));
-      border: 1px solid rgba(167, 139, 250, 0.22);
-      color: var(--text);
-      border-radius: 10px 10px 3px 10px;
-    }
-
     .project-card__body {
       position: relative;
       z-index: 2;
@@ -1847,198 +1534,6 @@
       align-self: flex-start;
       font-size: 0.8125rem;
       padding: 0.7rem 1.25rem;
-    }
-
-    /* ========== Что я создаю — editorial + строки ========== */
-    .services-editorial {
-      display: grid;
-      gap: var(--space-xl);
-      align-items: start;
-    }
-
-    @media (min-width: 900px) {
-      .services-editorial {
-        grid-template-columns: minmax(200px, 32%) 1fr;
-        gap: var(--space-2xl);
-      }
-    }
-
-    .services-editorial__sticky {
-      position: relative;
-    }
-
-    @media (min-width: 900px) {
-      .services-editorial__sticky {
-        position: sticky;
-        top: calc(var(--header-h) + var(--space-md));
-      }
-    }
-
-    .services-editorial__sticky .section-head {
-      margin-bottom: 0;
-    }
-
-    .service-rows {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid rgba(167, 139, 250, 0.1);
-    }
-
-    .service-row {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--space-md);
-      align-items: center;
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid rgba(167, 139, 250, 0.08);
-      cursor: default;
-      transition: background 0.35s var(--ease-out);
-    }
-
-    @media (min-width: 900px) {
-      .service-row {
-        grid-template-columns: 1fr 48px minmax(140px, 0.35fr);
-        padding-right: var(--space-sm);
-      }
-    }
-
-    .service-row:hover {
-      background: linear-gradient(90deg, rgba(139, 92, 246, 0.04), transparent 55%);
-    }
-
-    .service-row__title {
-      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-    }
-
-    .service-row__desc {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.35rem;
-      max-width: 36ch;
-    }
-
-    .service-row__arrow {
-      font-size: 1.125rem;
-      color: rgba(167, 139, 250, 0.35);
-      transition: color 0.3s, transform 0.35s var(--ease-out);
-    }
-
-    .service-row:hover .service-row__arrow {
-      color: var(--accent-2);
-      transform: translateX(4px);
-    }
-
-    .service-row__preview {
-      display: none;
-      height: 72px;
-      border-radius: var(--radius-sm);
-      background: rgba(11, 11, 15, 0.65);
-      border: 1px solid rgba(167, 139, 250, 0.12);
-      overflow: hidden;
-      opacity: 0.45;
-      transition: opacity 0.4s, border-color 0.4s, box-shadow 0.4s;
-    }
-
-    @media (min-width: 900px) {
-      .service-row__preview {
-        display: block;
-      }
-    }
-
-    .service-row:hover .service-row__preview {
-      opacity: 1;
-      border-color: rgba(167, 139, 250, 0.28);
-      box-shadow: 0 0 24px rgba(139, 92, 246, 0.08);
-    }
-
-    .service-preview-inner {
-      height: 100%;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      justify-content: center;
-    }
-
-    .service-preview-inner--a .pv-line {
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(167, 139, 250, 0.25);
-    }
-
-    .service-preview-inner--a .pv-line:nth-child(1) { width: 100%; }
-    .service-preview-inner--a .pv-line:nth-child(2) { width: 72%; }
-    .service-preview-inner--a .pv-line:nth-child(3) { width: 55%; }
-
-    .service-preview-inner--b {
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .service-preview-inner--b .pv-sq {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: rgba(139, 92, 246, 0.3);
-      border: 1px solid rgba(167, 139, 250, 0.2);
-    }
-
-    .service-preview-inner--b .pv-lines {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .service-preview-inner--b .pv-lines span {
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(184, 184, 199, 0.15);
-    }
-
-    .service-preview-inner--b .pv-lines span:nth-child(1) { width: 100%; }
-    .service-preview-inner--b .pv-lines span:nth-child(2) { width: 65%; }
-
-    .service-preview-inner--c .pv-tool {
-      display: flex;
-      gap: 4px;
-      align-items: flex-end;
-      height: 36px;
-    }
-
-    .service-preview-inner--c .pv-tool i {
-      flex: 1;
-      background: linear-gradient(180deg, var(--accent-2), var(--accent-1));
-      border-radius: 2px 2px 0 0;
-      opacity: 0.45;
-    }
-
-    .service-preview-inner--c .pv-tool i:nth-child(1) { height: 45%; }
-    .service-preview-inner--c .pv-tool i:nth-child(2) { height: 75%; }
-    .service-preview-inner--c .pv-tool i:nth-child(3) { height: 55%; }
-
-    .service-preview-inner--d .pv-hero {
-      height: 100%;
-      border-radius: 6px;
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), transparent);
-      border: 1px solid rgba(167, 139, 250, 0.15);
-      position: relative;
-    }
-
-    .service-preview-inner--d .pv-hero::after {
-      content: "";
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      right: 8px;
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(245, 245, 247, 0.12);
     }
 
     /* ========== Подход — timeline + ритм ========== */
@@ -3033,7 +2528,6 @@
     <a href="#" class="logo">МА<span>.</span> digital</a>
     <nav class="nav-links" aria-label="Навигация">
       <a href="#projects" class="nav-hide-mobile">Проекты</a>
-      <a href="#demo">Демо</a>
       <a href="#contact">Связь</a>
     </nav>
   </header>
@@ -3047,11 +2541,11 @@
           <span id="typed-text" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
-          Сайты, интерактивы, генераторы и мини-сервисы — от идеи до визуально сильного продукта
+          Сайты, интерактивы и мини-сервисы — от идеи до визуально сильного продукта
         </p>
         <div class="btn-row">
           <a href="#projects" class="btn btn--primary">Смотреть проекты</a>
-          <a href="#demo" class="btn btn--ghost">Попробовать интерактив</a>
+          <a href="#contact" class="btn btn--ghost">Связаться</a>
         </div>
       </div>
       <div class="hero-visual" id="hero-visual" aria-hidden="true">
@@ -3148,63 +2642,6 @@
         </div>
       </div>
     </div>
-
-    <!-- ========== LIVE DEMO ========== -->
-    <section class="section section--demo reveal" id="demo" aria-labelledby="demo-title">
-      <div class="section-head">
-        <p class="label">Интерактив</p>
-        <h2 id="demo-title">Попробовать в действии</h2>
-        <p>Небольшой интерактив прямо внутри сайта</p>
-      </div>
-      <div class="demo-panel reveal reveal-delay-1">
-        <div class="demo-inner">
-          <div class="demo-label-row">
-            <span class="label" style="margin-bottom:0;">Как ответить в переписке</span>
-            <div class="demo-tabs" role="tablist" aria-label="Тон ответа">
-              <button type="button" class="demo-tab active" role="tab" aria-selected="true" data-mode="soft">мягко</button>
-              <button type="button" class="demo-tab" role="tab" aria-selected="false" data-mode="firm">уверенно</button>
-              <button type="button" class="demo-tab" role="tab" aria-selected="false" data-mode="bold">дерзко</button>
-            </div>
-          </div>
-          <div class="demo-split">
-            <div class="demo-input-zone">
-              <div class="demo-preview-strip" aria-hidden="true"><i></i><i></i><i></i></div>
-              <label for="situation" class="visually-hidden">Опишите ситуацию</label>
-              <textarea
-                id="situation"
-                class="demo-field"
-                placeholder="Кратко опишите ситуацию: кто написал, о чём речь…"
-                rows="4"
-              ></textarea>
-              <div class="demo-actions">
-                <button type="button" class="btn btn--primary" id="btn-generate">Получить варианты</button>
-              </div>
-            </div>
-            <div class="demo-output-zone">
-              <div class="demo-output-head">
-                <span>Зона ответов</span>
-                <span class="demo-live-pill">Live preview</span>
-              </div>
-              <div class="chat-area" id="chat-area" aria-live="polite">
-                <div class="chat-bubble chat-bubble--ghost">
-                  <small>Ожидание</small>
-                  Опишите ситуацию слева — здесь появятся три варианта ответа.
-                </div>
-                <div class="chat-bubble chat-bubble--ghost">
-                  <small>Подсказка</small>
-                  Переключите тон: мягко, уверенно или дерзко — от этого зависит характер текста.
-                </div>
-                <div class="chat-bubble chat-bubble--ghost">
-                  <small>Формат</small>
-                  Каждый вариант — отдельное сообщение, как в мессенджере.
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="demo-hint">Ответы генерируются локально по выбранному тону — для демонстрации UX.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- ========== ПРОЕКТЫ ========== -->
     <section class="section section--projects reveal" id="projects" aria-labelledby="projects-title">
@@ -3372,26 +2809,6 @@
             <button type="button" class="btn-open">Открыть</button>
           </div>
         </article>
-
-        <article class="project-card project-card--accent reveal">
-          <div class="project-card__preview" aria-hidden="true">
-            <div class="preview-chat">
-              <div class="preview-chat__row preview-chat__row--in">Нужно ответить клиенту до вечера…</div>
-              <div class="preview-chat__row preview-chat__row--out">Готово: 3 тона — выбери и вставь в чат.</div>
-              <div class="preview-chat__row preview-chat__row--in" style="opacity:0.65;">👍</div>
-            </div>
-          </div>
-          <div class="project-card__body">
-            <h3>Генератор ответов</h3>
-            <p>Интерактивный инструмент для быстрых и стильных ответов в переписке</p>
-            <div class="tags">
-              <span class="tag">tool</span>
-              <span class="tag">interactive</span>
-              <span class="tag">social</span>
-            </div>
-            <button type="button" class="btn-open" data-scroll-demo>Попробовать демо</button>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -3418,72 +2835,6 @@
           <h3>Сопровождение</h3>
           <p>Помогаю на всех этапах — от идеи до запуска</p>
         </article>
-      </div>
-    </section>
-
-    <!-- ========== ЧТО Я СОЗДАЮ ========== -->
-    <section class="section section--services reveal" id="services" aria-labelledby="services-title">
-      <div class="services-editorial">
-        <div class="services-editorial__sticky">
-          <div class="section-head">
-            <p class="label">Направления</p>
-            <h2 id="services-title">Что я создаю</h2>
-            <p>Фокус на опыте, а не на списке технологий</p>
-          </div>
-        </div>
-        <div class="service-rows">
-          <div class="service-row reveal">
-            <div>
-              <div class="service-row__title">Интерактивные сайты</div>
-              <p class="service-row__desc">Страницы, которые откликаются на действия и удерживают внимание.</p>
-            </div>
-            <span class="service-row__arrow" aria-hidden="true">→</span>
-            <div class="service-row__preview" aria-hidden="true">
-              <div class="service-preview-inner service-preview-inner--a">
-                <div class="pv-line"></div>
-                <div class="pv-line"></div>
-                <div class="pv-line"></div>
-              </div>
-            </div>
-          </div>
-          <div class="service-row reveal reveal-delay-1">
-            <div>
-              <div class="service-row__title">Мини-приложения</div>
-              <p class="service-row__desc">Лёгкие сервисы под конкретную задачу — быстро и со вкусом.</p>
-            </div>
-            <span class="service-row__arrow" aria-hidden="true">→</span>
-            <div class="service-row__preview" aria-hidden="true">
-              <div class="service-preview-inner service-preview-inner--b">
-                <div class="pv-sq"></div>
-                <div class="pv-lines"><span></span><span></span></div>
-              </div>
-            </div>
-          </div>
-          <div class="service-row reveal reveal-delay-2">
-            <div>
-              <div class="service-row__title">Генераторы и digital-инструменты</div>
-              <p class="service-row__desc">Инструменты, которыми хочется пользоваться каждый день.</p>
-            </div>
-            <span class="service-row__arrow" aria-hidden="true">→</span>
-            <div class="service-row__preview" aria-hidden="true">
-              <div class="service-preview-inner service-preview-inner--c">
-                <div class="pv-tool"><i></i><i></i><i></i></div>
-              </div>
-            </div>
-          </div>
-          <div class="service-row reveal reveal-delay-3">
-            <div>
-              <div class="service-row__title">Лендинги с характером</div>
-              <p class="service-row__desc">Посадочные страницы с характером бренда и ясным сценарием.</p>
-            </div>
-            <span class="service-row__arrow" aria-hidden="true">→</span>
-            <div class="service-row__preview" aria-hidden="true">
-              <div class="service-preview-inner service-preview-inner--d">
-                <div class="pv-hero"></div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -3827,98 +3178,13 @@
         });
       }
 
-      /* ----- LIVE DEMO: табы и генерация ----- */
-      var currentMode = 'soft';
-      var tabs = document.querySelectorAll('.demo-tab');
-      var situationInput = document.getElementById('situation');
-      var chatArea = document.getElementById('chat-area');
-      var btnGen = document.getElementById('btn-generate');
-
-      var templates = {
-        soft: [
-          'Спасибо, что написали. Давайте спокойно разберёмся — мне важно понять детали, чтобы предложить удобное решение.',
-          'Я услышала вас. Могу ответить чуть позже с конкретикой, если ок подождать до вечера?',
-          'Хочу помочь без давления. Напишите, пожалуйста, что для вас сейчас в приоритете — подстроюсь под ритм.'
-        ],
-        firm: [
-          'По сути вопроса: готов обсудить в четверг, 15:00–17:00. Если нужно раньше — предложите два слота.',
-          'Фиксирую: задача — [кратко повтор контекста]. Срок ориентир — до пятницы. Подтвердите, что ок.',
-          'Предлагаю так: вы присылаете вводные сегодня, я отдаю структуру решения завтра до 12:00.'
-        ],
-        bold: [
-          'Коротко: да, интересно. Но без ТЗ мы будем гадать — скиньте 5 строк контекста, и я скажу «да/нет» за час.',
-          'Если это снова про «сделать вчера» — давайте честно: либо объём режем, либо срок сдвигаем. Выбирайте.',
-          'Ок, но без «потом уточним». Сначала цель и метрика — иначе красивый сайт будет просто картинкой.'
-        ]
-      };
-
-      function personalize(line, text) {
-        var t = (text || '').trim();
-        var snippet = t.length > 42 ? t.slice(0, 42) + '…' : t;
-        if (snippet && line.indexOf('[кратко повтор контекста]') !== -1) {
-          return line.replace('[кратко повтор контекста]', snippet || 'ваш запрос');
-        }
-        if (snippet && Math.random() > 0.5 && line.length < 100) {
-          return line + ' (про: «' + snippet + '»)';
-        }
-        return line;
-      }
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          tabs.forEach(function (t) {
-            t.classList.remove('active');
-            t.setAttribute('aria-selected', 'false');
-          });
-          tab.classList.add('active');
-          tab.setAttribute('aria-selected', 'true');
-          currentMode = tab.getAttribute('data-mode');
-        });
-      });
-
-      function showBubbles(lines) {
-        chatArea.innerHTML = '';
-        lines.forEach(function (text, idx) {
-          var bubble = document.createElement('div');
-          bubble.className = 'chat-bubble';
-          bubble.innerHTML =
-            '<small>Вариант ' + (idx + 1) + '</small>' + escapeHtml(text);
-          chatArea.appendChild(bubble);
-          setTimeout(function () {
-            bubble.classList.add('show');
-          }, 120 + idx * 220);
-        });
-      }
-
-      function escapeHtml(s) {
-        var d = document.createElement('div');
-        d.textContent = s;
-        return d.innerHTML;
-      }
-
-      btnGen.addEventListener('click', function () {
-        var raw = situationInput.value;
-        var base = templates[currentMode];
-        var out = base.map(function (line) {
-          return personalize(line, raw);
-        });
-        showBubbles(out);
-      });
-
       /* ----- Кнопки «Открыть» (мягкий фидбек) ----- */
       document.querySelectorAll('.btn-open').forEach(function (btn) {
-        if (btn.hasAttribute('data-scroll-demo')) return;
         btn.addEventListener('click', function () {
           btn.textContent = 'Скоро';
           setTimeout(function () {
             btn.textContent = 'Открыть';
           }, 1600);
-        });
-      });
-
-      document.querySelectorAll('[data-scroll-demo]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
         });
       });
 
