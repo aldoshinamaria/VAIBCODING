@@ -1165,76 +1165,79 @@
       font-size: 0.6875rem;
     }
 
-    /* Mini UI: Лисичка — персонаж слева + bubble (референс premium/dark) */
+    /* Mini UI: Лисичка — единый диалоговый блок (premium) */
     .preview-fox {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 0.75rem;
       width: 100%;
       max-width: 100%;
       position: relative;
       z-index: 1;
     }
 
+    .preview-fox__dialog {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 14px;
+      width: 100%;
+      position: relative;
+    }
+
     .preview-fox__character {
       position: relative;
       flex-shrink: 0;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      height: 136px;
-      width: 118px;
-      min-width: 90px;
+      height: 120px;
+      width: 104px;
+      min-width: 88px;
       animation: preview-fox-character-in 0.85s var(--ease-out) both;
     }
 
-    /* Мягкое фиолетово-тёплое свечение за персонажем */
+    /* Свечение за лисичкой: крупный мягкий ореол */
     .preview-fox__character::before {
       content: "";
       position: absolute;
       left: 50%;
-      top: 62%;
+      top: 52%;
       z-index: 0;
-      width: 155%;
-      height: 58%;
+      width: 200%;
+      height: 95%;
       transform: translate(-50%, -50%);
       pointer-events: none;
       background: radial-gradient(
-        ellipse 62% 55% at 50% 48%,
-        rgba(167, 139, 250, 0.34) 0%,
-        rgba(192, 132, 252, 0.16) 38%,
-        rgba(255, 195, 175, 0.11) 52%,
-        transparent 70%
+        ellipse 52% 48% at 48% 50%,
+        rgba(255, 165, 110, 0.38) 0%,
+        rgba(167, 139, 250, 0.32) 38%,
+        rgba(139, 92, 246, 0.14) 55%,
+        transparent 72%
       );
-      filter: blur(20px);
-      opacity: 0.82;
+      filter: blur(52px);
+      opacity: 0.42;
       animation: preview-fox-character-glow 3.8s ease-in-out infinite;
     }
 
-    /* Лёгкий «отблеск» у основания персонажа */
     .preview-fox__character::after {
       content: "";
       position: absolute;
       left: 50%;
-      bottom: 5%;
+      bottom: 8%;
       z-index: 0;
-      width: 72%;
-      height: 11px;
+      width: 78%;
+      height: 12px;
       transform: translateX(-50%);
       pointer-events: none;
       background: radial-gradient(
         ellipse 100% 100% at 50% 50%,
-        rgba(167, 139, 250, 0.42) 0%,
-        rgba(139, 92, 246, 0.12) 55%,
-        transparent 72%
+        rgba(167, 139, 250, 0.35) 0%,
+        transparent 70%
       );
-      filter: blur(8px);
-      opacity: 0.52;
+      filter: blur(10px);
+      opacity: 0.45;
     }
 
-    .preview-fox:hover .preview-fox__character::before {
-      opacity: 0.93;
+    .preview-fox__dialog:hover .preview-fox__character::before {
+      opacity: 0.5;
     }
 
     .preview-fox__img {
@@ -1243,11 +1246,12 @@
       display: block;
       background: none;
       background-color: transparent;
-      height: 136px;
+      height: 120px;
       width: auto;
-      max-width: 132px;
+      max-width: 118px;
       object-fit: contain;
       object-position: center bottom;
+      transform-origin: center bottom;
       filter:
         brightness(1.04)
         contrast(1.03)
@@ -1255,23 +1259,19 @@
         drop-shadow(0 4px 18px rgba(167, 139, 250, 0.22))
         drop-shadow(0 8px 28px rgba(255, 185, 160, 0.12));
       animation: preview-fox-img-in 0.75s var(--ease-out) 0.12s both;
-      transition: filter 0.26s var(--ease-out);
+      transition:
+        transform 0.38s var(--ease-out),
+        filter 0.38s var(--ease-out);
     }
 
-    .preview-fox:hover .preview-fox__img {
+    .preview-fox__dialog:hover .preview-fox__img {
+      transform: scale(1.03);
       filter:
-        brightness(1.06)
+        brightness(1.07)
         contrast(1.04)
         saturate(1)
-        drop-shadow(0 5px 22px rgba(167, 139, 250, 0.28))
-        drop-shadow(0 10px 34px rgba(255, 190, 170, 0.16));
-    }
-
-    .preview-fox__side {
-      flex: 1;
-      min-width: 0;
-      position: relative;
-      z-index: 2;
+        drop-shadow(0 5px 22px rgba(167, 139, 250, 0.3))
+        drop-shadow(0 10px 34px rgba(255, 190, 170, 0.18));
     }
 
     @keyframes preview-fox-img-in {
@@ -1296,35 +1296,106 @@
 
     @keyframes preview-fox-character-glow {
       0%, 100% {
-        opacity: 0.68;
+        opacity: 0.34;
         transform: translate(-50%, -50%) scale(1);
       }
       50% {
-        opacity: 0.9;
-        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.48;
+        transform: translate(-50%, -50%) scale(1.04);
       }
     }
 
+    .preview-fox__bubble {
+      --fox-bubble-bg: rgba(42, 32, 28, 0.52);
+      --fox-bubble-border: rgba(251, 191, 36, 0.16);
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+      padding: 0.5rem 0.7rem;
+      border-radius: 12px 14px 14px 12px;
+      background: var(--fox-bubble-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--fox-bubble-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      font-size: 0.625rem;
+      color: rgba(245, 245, 247, 0.9);
+      line-height: 1.45;
+      overflow: visible;
+      transition:
+        background 0.38s var(--ease-out),
+        border-color 0.38s var(--ease-out),
+        box-shadow 0.38s var(--ease-out);
+    }
+
+    /* Хвостик bubble — указывает на лисичку (десктоп) */
+    .preview-fox__bubble::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -6px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7px 7px 7px 0;
+      border-color: transparent var(--fox-bubble-bg) transparent transparent;
+      filter: drop-shadow(-1px 0 0 rgba(251, 191, 36, 0.08));
+      pointer-events: none;
+    }
+
+    .preview-fox__dialog:hover .preview-fox__bubble {
+      --fox-bubble-bg: rgba(48, 38, 34, 0.68);
+      --fox-bubble-border: rgba(251, 191, 36, 0.24);
+      box-shadow:
+        0 12px 34px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(167, 139, 250, 0.1),
+        0 0 28px rgba(167, 139, 250, 0.12);
+    }
+
     @media (max-width: 639px) {
-      .preview-fox {
-        gap: 0.5rem;
+      .preview-fox__dialog {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
       }
 
       .preview-fox__character {
-        height: 92px;
-        width: 82px;
-        min-width: 76px;
+        height: 88px;
+        width: 92px;
+        min-width: 80px;
       }
 
       .preview-fox__character::before {
-        width: 150%;
-        height: 52%;
-        top: 64%;
+        width: 190%;
+        height: 88%;
+        top: 54%;
+        filter: blur(48px);
       }
 
       .preview-fox__img {
-        height: 92px;
-        max-width: 96px;
+        height: 88px;
+        max-width: 92px;
+      }
+
+      .preview-fox__bubble {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
+        border-radius: 14px;
+      }
+
+      /* Хвостик сверху — к персонажу над bubble */
+      .preview-fox__bubble::before {
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 0 7px 7px 7px;
+        border-color: transparent transparent var(--fox-bubble-bg) transparent;
+        filter: drop-shadow(0 -1px 0 rgba(251, 191, 36, 0.08));
       }
     }
 
@@ -1337,7 +1408,7 @@
 
       .preview-fox__character::before {
         animation: none;
-        opacity: 0.78;
+        opacity: 0.38;
         transform: translate(-50%, -50%);
       }
 
@@ -1347,11 +1418,16 @@
         transition: none;
       }
 
-      .preview-fox:hover .preview-fox__character::before {
-        opacity: 0.78;
+      .preview-fox__bubble {
+        transition: none;
       }
 
-      .preview-fox:hover .preview-fox__img {
+      .preview-fox__dialog:hover .preview-fox__character::before {
+        opacity: 0.38;
+      }
+
+      .preview-fox__dialog:hover .preview-fox__img {
+        transform: none;
         filter:
           brightness(1.04)
           contrast(1.03)
@@ -1359,16 +1435,12 @@
           drop-shadow(0 4px 18px rgba(167, 139, 250, 0.22))
           drop-shadow(0 8px 28px rgba(255, 185, 160, 0.12));
       }
-    }
 
-    .preview-fox__bubble {
-      padding: 0.5rem 0.65rem;
-      border-radius: 12px 12px 12px 4px;
-      background: rgba(42, 32, 28, 0.85);
-      border: 1px solid rgba(251, 191, 36, 0.15);
-      font-size: 0.625rem;
-      color: rgba(245, 245, 247, 0.85);
-      line-height: 1.45;
+      .preview-fox__dialog:hover .preview-fox__bubble {
+        --fox-bubble-bg: rgba(42, 32, 28, 0.52);
+        --fox-bubble-border: rgba(251, 191, 36, 0.16);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
     }
 
     /* Mini UI: учитель + AI dashboard */
@@ -2087,6 +2159,10 @@
       visibility: visible;
     }
 
+    .modal--lisichka-help {
+      z-index: 260;
+    }
+
     .modal__backdrop {
       position: absolute;
       inset: 0;
@@ -2370,6 +2446,311 @@
       margin-right: auto;
     }
 
+    /* Modal: мини-чат демо «Лисичка рядом» */
+    .modal--demo-chat .modal__dialog {
+      max-width: 420px;
+      width: min(420px, calc(100vw - 2rem));
+      min-width: min(360px, calc(100vw - 2rem));
+      max-height: min(92vh, 560px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 1.1rem 1.25rem 1.2rem;
+      padding-top: calc(1.1rem + 4px);
+      border-radius: 16px;
+    }
+
+    .modal--demo-chat .modal__close {
+      top: 12px;
+      right: 12px;
+    }
+
+    .lisichka-demo {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lisichka-demo__head {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding-right: 2.5rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(167, 139, 250, 0.12);
+    }
+
+    .lisichka-demo__avatar {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      object-position: center bottom;
+      flex-shrink: 0;
+    }
+
+    .lisichka-demo__title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .lisichka-demo__chat {
+      height: 300px;
+      flex-shrink: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding: 0.35rem 0.15rem 0.5rem 0;
+      margin-bottom: 0.75rem;
+      scroll-behavior: smooth;
+    }
+
+    .lisichka-demo__msg {
+      max-width: 92%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: lisichka-demo-msg-in 0.42s var(--ease-out) forwards;
+    }
+
+    .lisichka-demo__msg--fox {
+      align-self: flex-start;
+      background: rgba(42, 32, 28, 0.78);
+      border: 1px solid rgba(251, 191, 36, 0.14);
+      color: rgba(245, 245, 247, 0.92);
+      border-bottom-left-radius: 4px;
+    }
+
+    .lisichka-demo__msg--user {
+      align-self: flex-end;
+      background: rgba(139, 92, 246, 0.22);
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      color: var(--text);
+      border-bottom-right-radius: 4px;
+    }
+
+    @keyframes lisichka-demo-msg-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .lisichka-demo__form {
+      display: flex;
+      gap: 0.5rem;
+      align-items: stretch;
+      margin-top: auto;
+    }
+
+    .lisichka-demo__input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.55rem 0.75rem;
+      border-radius: 12px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      background: rgba(11, 11, 15, 0.55);
+      color: var(--text);
+      font-size: 0.8125rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .lisichka-demo__input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.75;
+    }
+
+    .lisichka-demo__input:focus {
+      border-color: rgba(167, 139, 250, 0.45);
+      background: rgba(11, 11, 15, 0.72);
+    }
+
+    .lisichka-demo__send {
+      flex-shrink: 0;
+      padding: 0.55rem 1rem;
+      font-size: 0.8125rem;
+      border-radius: 12px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .lisichka-demo__help-wrap {
+      align-self: flex-start;
+      margin-top: 0.35rem;
+      padding-left: 0.1rem;
+      opacity: 0;
+      animation: lisichka-demo-help-in 0.55s var(--ease-out) 0.12s forwards;
+    }
+
+    .lisichka-demo__help-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+      color: #f5f5f7;
+      background: linear-gradient(145deg, rgba(139, 92, 246, 0.95), rgba(124, 58, 237, 0.88));
+      border: 1px solid rgba(196, 181, 253, 0.35);
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow:
+        0 0 0 1px rgba(167, 139, 250, 0.12),
+        0 6px 22px rgba(139, 92, 246, 0.35),
+        0 0 32px rgba(167, 139, 250, 0.15);
+      transition:
+        transform 0.25s var(--ease-out),
+        box-shadow 0.25s,
+        filter 0.25s;
+    }
+
+    .lisichka-demo__help-btn:hover {
+      filter: brightness(1.06);
+      box-shadow:
+        0 0 0 1px rgba(196, 181, 253, 0.22),
+        0 8px 28px rgba(139, 92, 246, 0.42),
+        0 0 40px rgba(167, 139, 250, 0.22);
+    }
+
+    .lisichka-demo__help-btn:active {
+      transform: scale(0.98);
+    }
+
+    @keyframes lisichka-demo-help-in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal--lisichka-help .modal__dialog {
+      max-width: 400px;
+      width: min(400px, calc(100vw - 2rem));
+      padding: 1.35rem 1.35rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .lisichka-help__text {
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: rgba(245, 245, 247, 0.92);
+      margin-bottom: 1.25rem;
+    }
+
+    .lisichka-help__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .lisichka-help__btn {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      font-size: 0.875rem;
+      font-family: inherit;
+      font-weight: 500;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .lisichka-help__btn--primary {
+      color: #f5f5f7;
+      background: linear-gradient(145deg, rgba(139, 92, 246, 0.95), rgba(124, 58, 237, 0.88));
+      border-color: rgba(196, 181, 253, 0.35);
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.28);
+    }
+
+    .lisichka-help__btn--primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .lisichka-help__btn--ghost {
+      color: var(--text-muted);
+      background: rgba(11, 11, 15, 0.45);
+      border-color: rgba(167, 139, 250, 0.18);
+    }
+
+    .lisichka-help__btn--ghost:hover {
+      color: var(--text);
+      border-color: rgba(167, 139, 250, 0.35);
+    }
+
+    .lisichka-help__step[hidden] {
+      display: none !important;
+    }
+
+    .lisichka-help__form {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .lisichka-help__label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .lisichka-help__field {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 12px;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      background: rgba(11, 11, 15, 0.55);
+      color: var(--text);
+      font-size: 0.8125rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .lisichka-help__field:focus {
+      border-color: rgba(167, 139, 250, 0.45);
+    }
+
+    textarea.lisichka-help__field {
+      min-height: 72px;
+      resize: vertical;
+    }
+
+    @media (max-width: 400px) {
+      .modal--demo-chat .modal__dialog {
+        min-width: 0;
+        width: calc(100vw - 1.5rem);
+      }
+
+      .lisichka-demo__form {
+        flex-wrap: wrap;
+      }
+
+      .lisichka-demo__send {
+        flex: 1;
+        min-width: 6rem;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .modal,
       .modal__dialog {
@@ -2379,6 +2760,22 @@
       .modal.modal--open .modal__dialog {
         transform: none;
         opacity: 1;
+      }
+
+      .lisichka-demo__chat {
+        scroll-behavior: auto;
+      }
+
+      .lisichka-demo__msg {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .lisichka-demo__help-wrap {
+        animation: none;
+        opacity: 1;
+        transform: none;
       }
     }
 
@@ -2622,19 +3019,19 @@
         <article class="project-card project-card--pair reveal reveal-delay-1">
           <div class="project-card__preview" aria-hidden="true">
             <div class="preview-fox">
-              <div class="preview-fox__character" aria-hidden="true">
-                <img
-                  class="preview-fox__img"
-                  src="assets/lisichka.png?v=3"
-                  alt=""
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="preview-fox__side">
-                <div class="preview-fox__bubble">Привет! Я рядом — расскажи, как прошёл день ✨</div>
+              <div class="preview-fox__dialog">
+                <div class="preview-fox__character" aria-hidden="true">
+                  <img
+                    class="preview-fox__img"
+                    src="assets/lisichka.png?v=3"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p class="preview-fox__bubble">Привет! Я рядом — расскажи, как прошёл день ✨</p>
               </div>
             </div>
           </div>
@@ -2654,12 +3051,13 @@
                 aria-haspopup="dialog"
                 aria-controls="modal-lisichka"
               >Подробнее</button>
-              <a
-                href="https://aldoshinamaria.github.io/Lisichka_ryadom1/"
+              <button
+                type="button"
                 class="btn btn--primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >Открыть демо</a>
+                id="lisichka-demo-open"
+                aria-haspopup="dialog"
+                aria-controls="modal-lisichka-demo"
+              >Открыть демо</button>
             </div>
           </div>
         </article>
@@ -2935,6 +3333,103 @@
     </div>
   </div>
 
+  <!-- Modal: Лисичка рядом — интерактивное демо-чат -->
+  <div
+    class="modal modal--demo-chat"
+    id="modal-lisichka-demo"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="lisichka-demo-title"
+  >
+    <div class="modal__backdrop" data-demo-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-demo-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="lisichka-demo">
+        <header class="lisichka-demo__head">
+          <img
+            class="lisichka-demo__avatar"
+            src="assets/lisichka.png?v=3"
+            alt=""
+            width="80"
+            height="80"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="lisichka-demo__title" id="lisichka-demo-title">Лисичка рядом</span>
+        </header>
+        <div class="lisichka-demo__chat" id="lisichka-demo-messages" aria-live="polite" aria-relevant="additions"></div>
+        <form class="lisichka-demo__form" id="lisichka-demo-form" autocomplete="off">
+          <label class="visually-hidden" for="lisichka-demo-input">Ваше сообщение</label>
+          <input
+            type="text"
+            class="lisichka-demo__input"
+            id="lisichka-demo-input"
+            placeholder="Напиши сообщение…"
+            maxlength="500"
+          />
+          <button type="submit" class="btn btn--primary lisichka-demo__send">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: сценарий «нужна помощь» (демо, поверх чата) -->
+  <div
+    class="modal modal--lisichka-help"
+    id="modal-lisichka-help"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-label="Помощь и поддержка"
+  >
+    <div class="modal__backdrop" data-lisichka-help-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-lisichka-help-close aria-label="Закрыть">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content lisichka-help__content">
+        <div class="lisichka-help__step" id="lisichka-help-step-ask">
+          <p class="lisichka-help__text">
+            Ты не один. Хочешь, чтобы взрослый помог тебе?
+          </p>
+          <div class="lisichka-help__actions">
+            <button type="button" class="lisichka-help__btn lisichka-help__btn--primary" id="lisichka-help-yes">
+              Да, сообщить взрослому
+            </button>
+            <button type="button" class="lisichka-help__btn lisichka-help__btn--ghost" data-lisichka-help-close>
+              Пока не нужно
+            </button>
+          </div>
+        </div>
+        <div class="lisichka-help__step" id="lisichka-help-step-form" hidden>
+          <p class="lisichka-help__text" style="margin-bottom: 1rem">Напиши, как тебе спокойнее. Имя можно не указывать.</p>
+          <form class="lisichka-help__form" id="lisichka-help-form">
+            <div>
+              <label class="lisichka-help__label" for="lisichka-help-name">Как тебя зовут (можно не заполнять)</label>
+              <input type="text" class="lisichka-help__field" id="lisichka-help-name" maxlength="80" autocomplete="name" />
+            </div>
+            <div>
+              <label class="lisichka-help__label" for="lisichka-help-what">Что случилось (кратко)</label>
+              <textarea class="lisichka-help__field" id="lisichka-help-what" required maxlength="600" rows="3" placeholder="Напиши пару слов…"></textarea>
+            </div>
+            <button type="submit" class="lisichka-help__btn lisichka-help__btn--primary">Отправить</button>
+          </form>
+        </div>
+        <div class="lisichka-help__step" id="lisichka-help-step-thanks" hidden>
+          <p class="lisichka-help__text" style="margin-bottom: 1.25rem">
+            Спасибо. Мы передали сигнал взрослому. Ты сделал важный шаг.
+          </p>
+          <button type="button" class="lisichka-help__btn lisichka-help__btn--ghost" data-lisichka-help-close>
+            Закрыть
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <style>
     .visually-hidden {
       position: absolute;
@@ -3133,27 +3628,37 @@
       /* ----- Modal: Лисичка рядом — подробнее ----- */
       var modalLisichka = document.getElementById('modal-lisichka');
       var lisichkaOpenBtn = document.getElementById('lisichka-detail-open');
+      var lisichkaDetailLastFocus = null;
+
+      function openLisichkaModal() {
+        if (!modalLisichka) return;
+        var demoEl = document.getElementById('modal-lisichka-demo');
+        if (demoEl && demoEl.classList.contains('modal--open')) {
+          demoEl.classList.remove('modal--open');
+          demoEl.setAttribute('aria-hidden', 'true');
+        }
+        lisichkaDetailLastFocus = document.activeElement;
+        modalLisichka.classList.add('modal--open');
+        modalLisichka.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = modalLisichka.querySelector('.modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeLisichkaModal() {
+        if (!modalLisichka) return;
+        modalLisichka.classList.remove('modal--open');
+        modalLisichka.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (
+          lisichkaDetailLastFocus &&
+          typeof lisichkaDetailLastFocus.focus === 'function'
+        ) {
+          lisichkaDetailLastFocus.focus();
+        }
+      }
+
       if (modalLisichka && lisichkaOpenBtn) {
-        var lastFocus = null;
-
-        function openLisichkaModal() {
-          lastFocus = document.activeElement;
-          modalLisichka.classList.add('modal--open');
-          modalLisichka.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
-          var closeBtn = modalLisichka.querySelector('.modal__close');
-          if (closeBtn) closeBtn.focus();
-        }
-
-        function closeLisichkaModal() {
-          modalLisichka.classList.remove('modal--open');
-          modalLisichka.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
-          if (lastFocus && typeof lastFocus.focus === 'function') {
-            lastFocus.focus();
-          }
-        }
-
         lisichkaOpenBtn.addEventListener('click', function () {
           openLisichkaModal();
         });
@@ -3163,12 +3668,6 @@
             e.preventDefault();
             closeLisichkaModal();
           });
-        });
-
-        document.addEventListener('keydown', function (e) {
-          if (e.key !== 'Escape') return;
-          if (!modalLisichka.classList.contains('modal--open')) return;
-          closeLisichkaModal();
         });
 
         var modalCtaBtn = modalLisichka.querySelector('.modal__cta-btn');
@@ -3188,6 +3687,273 @@
           });
         }
       }
+
+      /* ----- Modal: Лисичка рядом — демо-чат ----- */
+      var modalLisichkaDemo = document.getElementById('modal-lisichka-demo');
+      var lisichkaDemoOpenBtn = document.getElementById('lisichka-demo-open');
+      var lisichkaDemoMessages = document.getElementById('lisichka-demo-messages');
+      var lisichkaDemoForm = document.getElementById('lisichka-demo-form');
+      var lisichkaDemoInput = document.getElementById('lisichka-demo-input');
+      var lisichkaDemoFirst =
+        'Привет, я рядом. Хочешь рассказать, что тебя тревожит?';
+      var lisichkaDemoLastFocus = null;
+      var lisichkaDemoLastBotMessage = '';
+      var lisichkaDemoUserSendCount = 0;
+      var lisichkaDemoHelpCtaShown = false;
+      var modalLisichkaHelp = document.getElementById('modal-lisichka-help');
+      var lisichkaHelpStepAsk = document.getElementById('lisichka-help-step-ask');
+      var lisichkaHelpStepForm = document.getElementById('lisichka-help-step-form');
+      var lisichkaHelpStepThanks = document.getElementById('lisichka-help-step-thanks');
+      var lisichkaHelpForm = document.getElementById('lisichka-help-form');
+      var lisichkaHelpName = document.getElementById('lisichka-help-name');
+      var lisichkaHelpWhat = document.getElementById('lisichka-help-what');
+      var lisichkaHelpYes = document.getElementById('lisichka-help-yes');
+
+      var lisichkaDemoReplies = {
+        fear: [
+          'Понимаю, это может быть очень тревожно. Ты не один. Хочешь рассказать, что именно тебя пугает?',
+          'Слышу тебя — такое бывает очень волнительно. Ты не один. Что именно кажется самым страшным?'
+        ],
+        sad: [
+          'Мне жаль, что тебе сейчас тяжело. Я рядом. Хочешь поделиться, что случилось?',
+          'Мне важно, как ты себя чувствуешь. Расскажи, что тебя расстроило?'
+        ],
+        school: [
+          'Понимаю тебя. Иногда школа может вызывать стресс. Это из-за уроков, людей или чего-то ещё?',
+          'Школа иногда давит на всех по-разному. Хочешь сказать, что именно тяжелее всего — уроки, отношения или другое?'
+        ],
+        alone: [
+          'Это очень тяжёлое чувство. Я тебя слышу. Хочешь рассказать подробнее?',
+          'Когда кажется, что тебя не слышат — это больно. Я здесь. Что хочется выговорить в первую очередь?'
+        ],
+        default: [
+          'Я рядом. Можешь рассказать чуть подробнее?',
+          'Я тебя слушаю. Расскажи, что происходит'
+        ]
+      };
+
+      function lisichkaDemoPickVariant(variants, lastBot) {
+        var a = variants[0];
+        var b = variants[1];
+        if (lastBot !== a && lastBot !== b) {
+          return Math.random() < 0.5 ? a : b;
+        }
+        return lastBot === a ? b : a;
+      }
+
+      function lisichkaDemoResolveReply(userText) {
+        var t = (userText || '').toLowerCase();
+        var variants;
+        if (t.indexOf('страш') !== -1 || t.indexOf('боюсь') !== -1) {
+          variants = lisichkaDemoReplies.fear;
+        } else if (t.indexOf('груст') !== -1 || t.indexOf('плохо') !== -1) {
+          variants = lisichkaDemoReplies.sad;
+        } else if (t.indexOf('не хочу в школу') !== -1) {
+          variants = lisichkaDemoReplies.school;
+        } else if (t.indexOf('никто не понимает') !== -1) {
+          variants = lisichkaDemoReplies.alone;
+        } else {
+          variants = lisichkaDemoReplies.default;
+        }
+        return lisichkaDemoPickVariant(variants, lisichkaDemoLastBotMessage);
+      }
+
+      function lisichkaDemoAppendMessage(text, role) {
+        if (!lisichkaDemoMessages) return;
+        var div = document.createElement('div');
+        div.className =
+          'lisichka-demo__msg lisichka-demo__msg--' + (role === 'user' ? 'user' : 'fox');
+        div.textContent = text;
+        lisichkaDemoMessages.appendChild(div);
+        lisichkaDemoScrollToBottom();
+      }
+
+      function lisichkaDemoScrollToBottom() {
+        if (!lisichkaDemoMessages) return;
+        window.requestAnimationFrame(function () {
+          lisichkaDemoMessages.scrollTop = lisichkaDemoMessages.scrollHeight;
+        });
+      }
+
+      function lisichkaHelpSetStep(step) {
+        if (!lisichkaHelpStepAsk || !lisichkaHelpStepForm || !lisichkaHelpStepThanks) return;
+        lisichkaHelpStepAsk.hidden = step !== 'ask';
+        lisichkaHelpStepForm.hidden = step !== 'form';
+        lisichkaHelpStepThanks.hidden = step !== 'thanks';
+      }
+
+      function lisichkaHelpResetUi() {
+        lisichkaHelpSetStep('ask');
+        if (lisichkaHelpForm) lisichkaHelpForm.reset();
+      }
+
+      function openLisichkaHelpModal() {
+        if (!modalLisichkaHelp) return;
+        lisichkaHelpResetUi();
+        modalLisichkaHelp.classList.add('modal--open');
+        modalLisichkaHelp.setAttribute('aria-hidden', 'false');
+        window.setTimeout(function () {
+          if (lisichkaHelpYes) lisichkaHelpYes.focus();
+        }, 80);
+      }
+
+      function closeLisichkaHelpModal() {
+        if (!modalLisichkaHelp) return;
+        modalLisichkaHelp.classList.remove('modal--open');
+        modalLisichkaHelp.setAttribute('aria-hidden', 'true');
+        lisichkaHelpResetUi();
+      }
+
+      function lisichkaDemoAppendHelpCta() {
+        if (!lisichkaDemoMessages || lisichkaDemoHelpCtaShown) return;
+        lisichkaDemoHelpCtaShown = true;
+        var wrap = document.createElement('div');
+        wrap.className = 'lisichka-demo__help-wrap';
+        wrap.setAttribute('role', 'region');
+        wrap.setAttribute('aria-label', 'Если тяжело — попросить помощь');
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lisichka-demo__help-btn';
+        btn.textContent = 'Мне нужна помощь';
+        btn.addEventListener('click', function () {
+          openLisichkaHelpModal();
+        });
+        wrap.appendChild(btn);
+        lisichkaDemoMessages.appendChild(wrap);
+        lisichkaDemoScrollToBottom();
+      }
+
+      function lisichkaDemoResetChat() {
+        if (!lisichkaDemoMessages) return;
+        lisichkaDemoUserSendCount = 0;
+        lisichkaDemoHelpCtaShown = false;
+        lisichkaDemoMessages.innerHTML = '';
+        lisichkaDemoLastBotMessage = lisichkaDemoFirst;
+        lisichkaDemoAppendMessage(lisichkaDemoFirst, 'fox');
+      }
+
+      function openLisichkaDemoModal() {
+        if (!modalLisichkaDemo) return;
+        lisichkaDemoLastFocus = document.activeElement;
+        if (modalLisichka && modalLisichka.classList.contains('modal--open')) {
+          modalLisichka.classList.remove('modal--open');
+          modalLisichka.setAttribute('aria-hidden', 'true');
+        }
+        lisichkaDemoResetChat();
+        modalLisichkaDemo.classList.add('modal--open');
+        modalLisichkaDemo.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = modalLisichkaDemo.querySelector('.modal__close');
+        if (lisichkaDemoInput) lisichkaDemoInput.value = '';
+        window.setTimeout(function () {
+          if (lisichkaDemoInput) lisichkaDemoInput.focus();
+          else if (closeBtn) closeBtn.focus();
+        }, 50);
+      }
+
+      function closeLisichkaDemoModal() {
+        if (!modalLisichkaDemo) return;
+        closeLisichkaHelpModal();
+        modalLisichkaDemo.classList.remove('modal--open');
+        modalLisichkaDemo.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (
+          lisichkaDemoLastFocus &&
+          typeof lisichkaDemoLastFocus.focus === 'function'
+        ) {
+          lisichkaDemoLastFocus.focus();
+        }
+      }
+
+      if (modalLisichkaDemo && lisichkaDemoOpenBtn) {
+        lisichkaDemoOpenBtn.addEventListener('click', function () {
+          openLisichkaDemoModal();
+        });
+
+        modalLisichkaDemo.querySelectorAll('[data-demo-modal-close]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeLisichkaDemoModal();
+          });
+        });
+
+        if (lisichkaDemoForm) {
+          lisichkaDemoForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!lisichkaDemoInput) return;
+            var raw = lisichkaDemoInput.value.trim();
+            if (!raw) return;
+            lisichkaDemoUserSendCount += 1;
+            lisichkaDemoAppendMessage(raw, 'user');
+            lisichkaDemoInput.value = '';
+            var reply = lisichkaDemoResolveReply(raw);
+            var delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+              ? 0
+              : 380;
+            window.setTimeout(function () {
+              lisichkaDemoLastBotMessage = reply;
+              lisichkaDemoAppendMessage(reply, 'fox');
+              /* после 2-го сообщения в чате — мягко предложить помощь */
+              if (
+                lisichkaDemoUserSendCount >= 2 &&
+                !lisichkaDemoHelpCtaShown
+              ) {
+                lisichkaDemoAppendHelpCta();
+              }
+            }, delay);
+          });
+        }
+
+        if (modalLisichkaHelp) {
+          modalLisichkaHelp.querySelectorAll('[data-lisichka-help-close]').forEach(function (el) {
+            el.addEventListener('click', function (evt) {
+              evt.preventDefault();
+              closeLisichkaHelpModal();
+            });
+          });
+        }
+
+        if (lisichkaHelpYes) {
+          lisichkaHelpYes.addEventListener('click', function () {
+            lisichkaHelpSetStep('form');
+            window.setTimeout(function () {
+              if (lisichkaHelpWhat) lisichkaHelpWhat.focus();
+            }, 60);
+          });
+        }
+
+        if (lisichkaHelpForm) {
+          lisichkaHelpForm.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+            var nameVal = lisichkaHelpName ? lisichkaHelpName.value.trim() : '';
+            var whatVal = lisichkaHelpWhat ? lisichkaHelpWhat.value.trim() : '';
+            if (!whatVal) return;
+            console.log('[Лисичка демо — сигнал помощи]', {
+              name: nameVal || null,
+              what: whatVal,
+              at: new Date().toISOString()
+            });
+            lisichkaHelpSetStep('thanks');
+          });
+        }
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (modalLisichkaHelp && modalLisichkaHelp.classList.contains('modal--open')) {
+          e.preventDefault();
+          closeLisichkaHelpModal();
+          return;
+        }
+        if (modalLisichkaDemo && modalLisichkaDemo.classList.contains('modal--open')) {
+          e.preventDefault();
+          closeLisichkaDemoModal();
+          return;
+        }
+        if (modalLisichka && modalLisichka.classList.contains('modal--open')) {
+          closeLisichkaModal();
+        }
+      });
     })();
   </script>
 </body>
