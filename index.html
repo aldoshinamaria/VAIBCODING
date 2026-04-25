@@ -1337,7 +1337,7 @@
       padding: 0.7rem 1.2rem;
     }
 
-    /* Карточка «Сайты / лендинги» — портфолио: превью + glass (Behance / Dribbble) */
+    /* Карточка «Сайты / лендинги» — премиум-портфолио (studio / Awwwards) */
     .project-card--sites {
       display: flex;
       flex-direction: column;
@@ -1352,18 +1352,12 @@
     .sites-works-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 24px;
       margin-top: var(--space-md);
       margin-bottom: var(--space-md);
     }
 
-    @media (min-width: 680px) and (max-width: 959px) {
-      .sites-works-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 960px) {
+    @media (min-width: 900px) {
       .sites-works-list {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -1375,32 +1369,34 @@
       flex-direction: column;
       border-radius: 20px;
       overflow: hidden;
-      background: rgba(28, 22, 32, 0.6);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.25) inset,
-        0 10px 36px rgba(0, 0, 0, 0.38);
+        0 0 0 1px rgba(0, 0, 0, 0.35) inset,
+        0 12px 40px rgba(0, 0, 0, 0.35);
       transition:
-        transform 0.4s var(--ease-out),
-        box-shadow 0.4s var(--ease-out),
-        border-color 0.4s var(--ease-out);
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
     }
 
     .sites-works-card:hover {
-      transform: scale(1.02);
-      border-color: rgba(255, 255, 255, 0.14);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(167, 139, 250, 0.22);
       box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.06) inset,
-        0 24px 56px rgba(0, 0, 0, 0.5),
-        0 0 72px rgba(167, 139, 250, 0.28);
+        0 28px 64px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(167, 139, 250, 0.12),
+        0 0 80px rgba(139, 92, 246, 0.22),
+        0 0 120px rgba(167, 139, 250, 0.08);
     }
 
     .sites-works-card__hit {
       position: absolute;
       inset: 0;
-      z-index: 4;
+      z-index: 5;
       text-indent: -9999px;
       overflow: hidden;
     }
@@ -1416,105 +1412,153 @@
 
     .sites-works-card__preview {
       position: relative;
-      height: 200px;
-      --sites-preview-h: 200px;
+      height: clamp(200px, 22vw, 240px);
       overflow: hidden;
-      background: #120e18;
+      background: #0a0810;
       flex-shrink: 0;
+      isolation: isolate;
     }
 
-    @media (max-width: 480px) {
-      .sites-works-card__preview {
-        height: 180px;
-        --sites-preview-h: 180px;
-      }
+    .sites-works-card__iframe-stage {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
     }
 
-    @media (min-width: 1200px) {
-      .sites-works-card__preview {
-        height: 220px;
-        --sites-preview-h: 220px;
-      }
-    }
-
-    .sites-works-card__iframe-scale {
+    .sites-works-card__iframe-parallax {
       position: absolute;
       left: 0;
+      right: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 220%;
+      transform: translateY(0);
+      transition: transform 0.65s ease-out;
+      will-change: transform;
     }
 
-    /* Масштаб = высота превью / 800 — показываем верх страницы */
-    .sites-works-card__iframe-scale iframe {
-      width: 1280px;
-      height: 800px;
+    .sites-works-card:hover .sites-works-card__iframe-parallax {
+      transform: translateY(calc(-1 * clamp(72px, 22%, 140px)));
+      transition: transform 5.5s ease-out;
+    }
+
+    .sites-works-card__iframe-parallax iframe {
+      display: block;
+      position: relative;
+      left: 50%;
+      width: 1440px;
+      height: 900px;
+      margin-left: -720px;
       border: 0;
       pointer-events: none;
-      transform: scale(calc(var(--sites-preview-h) / 800px));
-      transform-origin: 0 0;
+      transform: scale(0.8);
+      transform-origin: top center;
       opacity: 1;
     }
 
     .sites-works-card__preview-overlay {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
       background: linear-gradient(
         180deg,
-        rgba(6, 4, 10, 0.2) 0%,
-        rgba(6, 4, 10, 0.62) 100%
+        rgba(8, 6, 14, 0.15) 0%,
+        rgba(8, 6, 14, 0.25) 35%,
+        rgba(8, 6, 14, 0.75) 100%
       );
       pointer-events: none;
+    }
+
+    .sites-works-card__preview-vignette {
+      position: absolute;
+      inset: -2px;
+      z-index: 3;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.45),
+        inset 0 0 24px rgba(0, 0, 0, 0.35);
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 14%,
+        black 86%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 14%,
+        black 86%,
+        transparent 100%
+      );
     }
 
     .sites-works-card__body {
       position: relative;
       z-index: 2;
-      padding: 1.15rem 1.25rem 1.35rem;
+      padding: 1.25rem 1.35rem 1.4rem;
       display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
+      flex-direction: row;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem 1.25rem;
       flex: 1;
+    }
+
+    .sites-works-card__text {
+      flex: 1;
+      min-width: 0;
     }
 
     .sites-works-card__title {
       display: block;
       font-size: 1.0625rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       color: var(--text);
-      margin: 0;
-      line-height: 1.25;
+      margin: 0 0 0.35rem;
+      line-height: 1.2;
     }
 
     .sites-works-card__desc {
       margin: 0;
-      font-size: 0.875rem;
-      line-height: 1.5;
-      color: rgba(184, 184, 199, 0.92);
-      flex: 1;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      color: rgba(184, 184, 199, 0.82);
     }
 
     .sites-works-card__btn {
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.5rem;
+      gap: 0.4rem;
+      padding: 0.45rem 0;
       font-size: 0.8125rem;
       font-weight: 600;
-      color: var(--accent-2);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
+      color: rgba(192, 180, 255, 0.95);
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(167, 139, 250, 0.25);
+      cursor: default;
     }
 
     .sites-works-card__arrow {
       display: inline-block;
-      transition: transform 0.35s var(--ease-out);
+      transition: transform 0.3s ease;
     }
 
     .sites-works-card:hover .sites-works-card__arrow {
-      transform: translateX(6px);
+      transform: translateX(7px);
+    }
+
+    @media (max-width: 540px) {
+      .sites-works-card__body {
+        flex-wrap: wrap;
+      }
+
+      .sites-works-card__btn {
+        margin-left: auto;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1522,6 +1566,12 @@
       .sites-works-card:hover {
         transform: none;
         transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .sites-works-card__iframe-parallax,
+      .sites-works-card:hover .sites-works-card__iframe-parallax {
+        transform: none;
+        transition: none;
       }
 
       .sites-works-card:hover .sites-works-card__arrow {
@@ -2665,19 +2715,24 @@
                   aria-label="Учитель и нейросети — открыть сайт"
                 >Открыть сайт</a>
                 <div class="sites-works-card__preview">
-                  <div class="sites-works-card__iframe-scale">
-                    <iframe
-                      title="Превью: Учитель и нейросети"
-                      src="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
-                      loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                  <div class="sites-works-card__iframe-stage">
+                    <div class="sites-works-card__iframe-parallax">
+                      <iframe
+                        title="Превью: Учитель и нейросети"
+                        src="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
                   </div>
                   <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
+                  <div class="sites-works-card__preview-vignette" aria-hidden="true"></div>
                 </div>
                 <div class="sites-works-card__body">
-                  <h4 class="sites-works-card__title">Учитель и нейросети</h4>
-                  <p class="sites-works-card__desc">Сайт для педагогов</p>
+                  <div class="sites-works-card__text">
+                    <h4 class="sites-works-card__title">Учитель и нейросети</h4>
+                    <p class="sites-works-card__desc">Сайт для педагогов</p>
+                  </div>
                   <span class="sites-works-card__btn">
                     Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
                   </span>
@@ -2692,19 +2747,24 @@
                   aria-label="Грузоперевозки — открыть сайт"
                 >Открыть сайт</a>
                 <div class="sites-works-card__preview">
-                  <div class="sites-works-card__iframe-scale">
-                    <iframe
-                      title="Превью: Грузоперевозки"
-                      src="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
-                      loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                  <div class="sites-works-card__iframe-stage">
+                    <div class="sites-works-card__iframe-parallax">
+                      <iframe
+                        title="Превью: Грузоперевозки"
+                        src="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
                   </div>
                   <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
+                  <div class="sites-works-card__preview-vignette" aria-hidden="true"></div>
                 </div>
                 <div class="sites-works-card__body">
-                  <h4 class="sites-works-card__title">Грузоперевозки</h4>
-                  <p class="sites-works-card__desc">Лендинг для водителя</p>
+                  <div class="sites-works-card__text">
+                    <h4 class="sites-works-card__title">Грузоперевозки</h4>
+                    <p class="sites-works-card__desc">Лендинг для водителя</p>
+                  </div>
                   <span class="sites-works-card__btn">
                     Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
                   </span>
@@ -2719,19 +2779,24 @@
                   aria-label="Домашний кондитер — открыть сайт"
                 >Открыть сайт</a>
                 <div class="sites-works-card__preview">
-                  <div class="sites-works-card__iframe-scale">
-                    <iframe
-                      title="Превью: Домашний кондитер"
-                      src="https://aldoshinamaria.github.io/irina-sweet-creations/"
-                      loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                  <div class="sites-works-card__iframe-stage">
+                    <div class="sites-works-card__iframe-parallax">
+                      <iframe
+                        title="Превью: Домашний кондитер"
+                        src="https://aldoshinamaria.github.io/irina-sweet-creations/"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                      ></iframe>
+                    </div>
                   </div>
                   <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
+                  <div class="sites-works-card__preview-vignette" aria-hidden="true"></div>
                 </div>
                 <div class="sites-works-card__body">
-                  <h4 class="sites-works-card__title">Домашний кондитер</h4>
-                  <p class="sites-works-card__desc">Сайт для заказов тортов</p>
+                  <div class="sites-works-card__text">
+                    <h4 class="sites-works-card__title">Домашний кондитер</h4>
+                    <p class="sites-works-card__desc">Сайт для заказов тортов</p>
+                  </div>
                   <span class="sites-works-card__btn">
                     Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
                   </span>
