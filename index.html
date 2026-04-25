@@ -1650,7 +1650,7 @@
       padding: 0.7rem 1.2rem;
     }
 
-    /* Карточка «Сайты / лендинги» — типографика + glass, без превью-заглушек */
+    /* Карточка «Сайты / лендинги» — портфолио: превью + glass (Behance / Dribbble) */
     .project-card--sites {
       display: flex;
       flex-direction: column;
@@ -1663,102 +1663,182 @@
     }
 
     .sites-works-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
       margin-top: var(--space-md);
       margin-bottom: var(--space-md);
     }
 
+    @media (min-width: 680px) and (max-width: 959px) {
+      .sites-works-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 960px) {
+      .sites-works-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     .sites-works-card {
+      position: relative;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
-      padding: 20px;
-      border-radius: 16px;
-      text-decoration: none;
-      color: inherit;
-      background: rgba(42, 32, 28, 0.45);
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(28, 22, 32, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.15) inset,
-        0 4px 20px rgba(0, 0, 0, 0.2);
+        0 0 0 1px rgba(0, 0, 0, 0.25) inset,
+        0 10px 36px rgba(0, 0, 0, 0.38);
       transition:
-        transform 0.32s var(--ease-out),
-        border-color 0.32s var(--ease-out),
-        box-shadow 0.32s var(--ease-out),
-        background 0.32s var(--ease-out);
+        transform 0.4s var(--ease-out),
+        box-shadow 0.4s var(--ease-out),
+        border-color 0.4s var(--ease-out);
     }
 
     .sites-works-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.12);
-      background: rgba(48, 40, 38, 0.55);
+      transform: scale(1.02);
+      border-color: rgba(255, 255, 255, 0.14);
       box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-        0 14px 36px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(167, 139, 250, 0.14);
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 24px 56px rgba(0, 0, 0, 0.5),
+        0 0 72px rgba(167, 139, 250, 0.28);
     }
 
-    .sites-works-card:focus-visible {
-      outline: 2px solid rgba(167, 139, 250, 0.45);
-      outline-offset: 2px;
+    .sites-works-card__hit {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      text-indent: -9999px;
+      overflow: hidden;
     }
 
-    .sites-works-card__copy {
+    .sites-works-card__hit:focus-visible {
+      outline: none;
+    }
+
+    .sites-works-card:has(.sites-works-card__hit:focus-visible) {
+      outline: 2px solid rgba(167, 139, 250, 0.55);
+      outline-offset: 3px;
+    }
+
+    .sites-works-card__preview {
+      position: relative;
+      height: 200px;
+      --sites-preview-h: 200px;
+      overflow: hidden;
+      background: #120e18;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 480px) {
+      .sites-works-card__preview {
+        height: 180px;
+        --sites-preview-h: 180px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .sites-works-card__preview {
+        height: 220px;
+        --sites-preview-h: 220px;
+      }
+    }
+
+    .sites-works-card__iframe-scale {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Масштаб = высота превью / 800 — показываем верх страницы */
+    .sites-works-card__iframe-scale iframe {
+      width: 1280px;
+      height: 800px;
+      border: 0;
+      pointer-events: none;
+      transform: scale(calc(var(--sites-preview-h) / 800px));
+      transform-origin: 0 0;
+      opacity: 1;
+    }
+
+    .sites-works-card__preview-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(6, 4, 10, 0.2) 0%,
+        rgba(6, 4, 10, 0.62) 100%
+      );
+      pointer-events: none;
+    }
+
+    .sites-works-card__body {
+      position: relative;
+      z-index: 2;
+      padding: 1.15rem 1.25rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
       flex: 1;
-      min-width: 0;
-      text-align: left;
     }
 
     .sites-works-card__title {
       display: block;
-      font-size: 1rem;
+      font-size: 1.0625rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--text);
-      margin: 0 0 0.4rem;
+      margin: 0;
+      line-height: 1.25;
     }
 
     .sites-works-card__desc {
       margin: 0;
       font-size: 0.875rem;
       line-height: 1.5;
-      color: rgba(184, 184, 199, 0.9);
+      color: rgba(184, 184, 199, 0.92);
+      flex: 1;
     }
 
     .sites-works-card__btn {
-      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
       font-size: 0.8125rem;
       font-weight: 600;
       color: var(--accent-2);
       letter-spacing: 0.02em;
-      white-space: nowrap;
     }
 
     .sites-works-card__arrow {
       display: inline-block;
-      transition: transform 0.32s var(--ease-out);
+      transition: transform 0.35s var(--ease-out);
     }
 
     .sites-works-card:hover .sites-works-card__arrow {
-      transform: translateX(5px);
+      transform: translateX(6px);
     }
 
-    @media (max-width: 540px) {
-      .sites-works-card {
-        flex-direction: column;
-        align-items: stretch;
+    @media (prefers-reduced-motion: reduce) {
+      .sites-works-card,
+      .sites-works-card:hover {
+        transform: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .sites-works-card__btn {
-        align-self: flex-end;
+      .sites-works-card:hover .sites-works-card__arrow {
+        transform: none;
       }
     }
 
@@ -3139,48 +3219,87 @@
             <h3>Сайты / лендинги</h3>
             <p>Создаю сайты под задачи: от образовательных до бизнеса. Каждый — с фокусом на понятность и заявки</p>
             <div class="sites-works-list">
-              <a
-                class="sites-works-card"
-                href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="sites-works-card__copy">
-                  <span class="sites-works-card__title">Учитель и нейросети</span>
-                  <p class="sites-works-card__desc">Сайт для педагогов, помогает экономить время</p>
+              <article class="sites-works-card">
+                <a
+                  class="sites-works-card__hit"
+                  href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Учитель и нейросети — открыть сайт"
+                >Открыть сайт</a>
+                <div class="sites-works-card__preview">
+                  <div class="sites-works-card__iframe-scale">
+                    <iframe
+                      title="Превью: Учитель и нейросети"
+                      src="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                  <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
                 </div>
-                <span class="sites-works-card__btn">
-                  Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
-                </span>
-              </a>
-              <a
-                class="sites-works-card"
-                href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="sites-works-card__copy">
-                  <span class="sites-works-card__title">Грузоперевозки</span>
-                  <p class="sites-works-card__desc">Лендинг для частного водителя</p>
+                <div class="sites-works-card__body">
+                  <h4 class="sites-works-card__title">Учитель и нейросети</h4>
+                  <p class="sites-works-card__desc">Сайт для педагогов</p>
+                  <span class="sites-works-card__btn">
+                    Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
+                  </span>
                 </div>
-                <span class="sites-works-card__btn">
-                  Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
-                </span>
-              </a>
-              <a
-                class="sites-works-card"
-                href="https://aldoshinamaria.github.io/irina-sweet-creations/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div class="sites-works-card__copy">
-                  <span class="sites-works-card__title">Домашний кондитер</span>
+              </article>
+              <article class="sites-works-card">
+                <a
+                  class="sites-works-card__hit"
+                  href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Грузоперевозки — открыть сайт"
+                >Открыть сайт</a>
+                <div class="sites-works-card__preview">
+                  <div class="sites-works-card__iframe-scale">
+                    <iframe
+                      title="Превью: Грузоперевозки"
+                      src="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                  <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sites-works-card__body">
+                  <h4 class="sites-works-card__title">Грузоперевозки</h4>
+                  <p class="sites-works-card__desc">Лендинг для водителя</p>
+                  <span class="sites-works-card__btn">
+                    Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </article>
+              <article class="sites-works-card">
+                <a
+                  class="sites-works-card__hit"
+                  href="https://aldoshinamaria.github.io/irina-sweet-creations/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Домашний кондитер — открыть сайт"
+                >Открыть сайт</a>
+                <div class="sites-works-card__preview">
+                  <div class="sites-works-card__iframe-scale">
+                    <iframe
+                      title="Превью: Домашний кондитер"
+                      src="https://aldoshinamaria.github.io/irina-sweet-creations/"
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
+                  <div class="sites-works-card__preview-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="sites-works-card__body">
+                  <h4 class="sites-works-card__title">Домашний кондитер</h4>
                   <p class="sites-works-card__desc">Сайт для заказов тортов</p>
+                  <span class="sites-works-card__btn">
+                    Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
+                  </span>
                 </div>
-                <span class="sites-works-card__btn">
-                  Открыть <span class="sites-works-card__arrow" aria-hidden="true">→</span>
-                </span>
-              </a>
+              </article>
             </div>
             <a href="#contact" class="btn btn--primary sites-mini-cta">Обсудить проект</a>
           </div>
