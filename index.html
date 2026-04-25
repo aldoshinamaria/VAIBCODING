@@ -122,6 +122,164 @@
       background: radial-gradient(ellipse 60% 40% at 100% 50%, rgba(167, 139, 250, 0.05), transparent 60%);
     }
 
+    .section--offers {
+      background:
+        radial-gradient(ellipse 90% 45% at 50% 0%, rgba(139, 92, 246, 0.07), transparent 55%),
+        linear-gradient(180deg, rgba(18, 18, 26, 0.35) 0%, transparent 85%);
+      padding-top: var(--space-lg);
+      padding-bottom: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .section--offers {
+        padding-top: var(--space-xl);
+        padding-bottom: var(--space-2xl);
+      }
+    }
+
+    .offers-grid {
+      display: grid;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    @media (min-width: 640px) {
+      .offers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .offers-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-md);
+      }
+    }
+
+    .offer-card {
+      position: relative;
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(155deg, rgba(28, 28, 38, 0.78), rgba(14, 14, 20, 0.92));
+      border: 1px solid rgba(167, 139, 250, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 20px 48px rgba(0, 0, 0, 0.38);
+      overflow: hidden;
+      transition:
+        transform 0.45s var(--ease-out),
+        border-color 0.45s var(--ease-out),
+        box-shadow 0.45s var(--ease-out);
+    }
+
+    .offer-card::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -30%;
+      width: 70%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 65%);
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.45s;
+    }
+
+    .offer-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.25);
+      transition: opacity 0.45s;
+    }
+
+    .offer-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(167, 139, 250, 0.28);
+      box-shadow:
+        0 0 0 1px rgba(139, 92, 246, 0.1),
+        0 28px 56px rgba(0, 0, 0, 0.42),
+        0 0 40px rgba(139, 92, 246, 0.08);
+    }
+
+    .offer-card:hover::before {
+      opacity: 1;
+    }
+
+    .offer-card:hover::after {
+      opacity: 1;
+    }
+
+    .offer-card__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .offer-card__index {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(167, 139, 250, 0.55);
+      margin-bottom: var(--space-sm);
+    }
+
+    .offer-card__title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: var(--space-sm);
+      color: var(--text);
+    }
+
+    .offer-card__text {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .offers-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: var(--space-xl);
+      padding: 0 var(--space-sm);
+    }
+
+    @media (min-width: 768px) {
+      .offers-cta {
+        margin-top: var(--space-2xl);
+      }
+    }
+
+    .offers-cta .btn--primary {
+      width: 100%;
+      max-width: 280px;
+    }
+
+    @media (min-width: 480px) {
+      .offers-cta .btn--primary {
+        width: auto;
+        min-width: 220px;
+      }
+    }
+
+    .offers-cta__hint {
+      margin-top: var(--space-sm);
+      font-size: 0.75rem;
+      color: rgba(184, 184, 199, 0.65);
+      letter-spacing: 0.02em;
+      line-height: 1.45;
+      max-width: 28ch;
+    }
+
     /* Появление при скролле */
     .reveal {
       opacity: 0;
@@ -137,6 +295,8 @@
     .reveal-delay-1 { transition-delay: 0.08s; }
     .reveal-delay-2 { transition-delay: 0.16s; }
     .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.4s; }
 
     /* ========== Фон: мягкое свечение ========== */
     .glow-orb {
@@ -1227,6 +1387,18 @@
       transform: translateX(4px);
     }
 
+    .project-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .project-card__actions .btn {
+      font-size: 0.8125rem;
+      padding: 0.7rem 1.2rem;
+    }
+
     /* ========== Что я создаю — editorial + строки ========== */
     .services-editorial {
       display: grid;
@@ -1823,6 +1995,49 @@
       </div>
     </section>
 
+    <!-- ========== Что я могу сделать для вас ========== -->
+    <section class="section section--offers" id="offers" aria-labelledby="offers-title">
+      <div class="section-head reveal">
+        <p class="label">Услуги</p>
+        <h2 id="offers-title">Что я могу сделать для вас</h2>
+        <p>Форматы работы — от посадочной страницы до бота и упаковки идеи</p>
+      </div>
+      <div class="offers-grid">
+        <article class="offer-card reveal reveal-delay-1">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">01</div>
+            <h3 class="offer-card__title">Сайт / лендинг</h3>
+            <p class="offer-card__text">Создаю сайты, которые объясняют вашу ценность и приводят клиента к заявке</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-2">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">02</div>
+            <h3 class="offer-card__title">Мини-приложение / интерактив</h3>
+            <p class="offer-card__text">Делаю интерактивы, которые удерживают внимание и вовлекают в ваш продукт</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-3">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">03</div>
+            <h3 class="offer-card__title">VK-бот</h3>
+            <p class="offer-card__text">Создаю VK-ботов, которые отвечают за вас, помогают выбрать и собирают заявки</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-4">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">04</div>
+            <h3 class="offer-card__title">Упаковка проекта</h3>
+            <p class="offer-card__text">Помогаю превратить идею в понятный digital-продукт, который можно показать и продать</p>
+          </div>
+        </article>
+      </div>
+      <div class="offers-cta reveal reveal-delay-5">
+        <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+        <p class="offers-cta__hint">Отвечаю в течение дня</p>
+      </div>
+    </section>
+
     <!-- ========== Marquee ========== -->
     <div class="marquee-wrap" aria-hidden="true">
       <div class="marquee">
@@ -1950,7 +2165,15 @@
               <span class="tag">interface</span>
               <span class="tag">experience</span>
             </div>
-            <button type="button" class="btn-open">Открыть</button>
+            <div class="project-card__actions">
+              <button type="button" class="btn btn--ghost">Подробнее</button>
+              <a
+                href="https://aldoshinamaria.github.io/Lisichka_ryadom1/"
+                class="btn btn--primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Открыть демо</a>
+            </div>
           </div>
         </article>
 
