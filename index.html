@@ -1417,6 +1417,8 @@
       background: #0a0810;
       flex-shrink: 0;
       isolation: isolate;
+      container-type: inline-size;
+      container-name: sites-preview;
     }
 
     .sites-works-card__iframe-stage {
@@ -1430,28 +1432,30 @@
       left: 0;
       right: 0;
       top: 0;
-      min-height: 220%;
       transform: translateY(0);
-      transition: transform 0.65s ease-out;
+      transition: transform 0.85s ease-out;
       will-change: transform;
     }
 
+    /* % от высоты полотна (≈ высота iframe): при наведении уезжает вверх заметный кусок страницы */
     .sites-works-card:hover .sites-works-card__iframe-parallax {
-      transform: translateY(calc(-1 * clamp(72px, 22%, 140px)));
-      transition: transform 5.5s ease-out;
+      transform: translateY(-36%);
+      transition: transform 7s ease-out;
     }
 
+    /* Высота viewport iframe больше 900px — в превью попадает не только первый экран сайта */
     .sites-works-card__iframe-parallax iframe {
       display: block;
       position: relative;
-      left: 50%;
+      left: 0;
       width: 1440px;
-      height: 900px;
-      margin-left: -720px;
+      height: 2200px;
+      margin-left: 0;
       border: 0;
       pointer-events: none;
-      transform: scale(0.8);
-      transform-origin: top center;
+      transform-origin: top left;
+      transform: scale(0.46);
+      transform: scale(calc(0.96 * 100cqw / 1440px));
       opacity: 1;
     }
 
@@ -1479,15 +1483,15 @@
       -webkit-mask-image: linear-gradient(
         to right,
         transparent 0%,
-        black 14%,
-        black 86%,
+        black 10%,
+        black 90%,
         transparent 100%
       );
       mask-image: linear-gradient(
         to right,
         transparent 0%,
-        black 14%,
-        black 86%,
+        black 10%,
+        black 90%,
         transparent 100%
       );
     }
