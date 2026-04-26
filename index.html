@@ -58,6 +58,21 @@
       line-height: 1.55;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      /* Перенос по ширине контейнера: не «рвём» фразу раньше, чем закончится место; длинные URL/строки не ломают вёрстку */
+      text-wrap: pretty;
+      word-break: normal;
+      hyphens: none;
+      overflow-wrap: break-word;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      text-align: center;
+      text-wrap: wrap;
+      /* Пока фраза влезает в ширину родителя — в одну строку; иначе перенос по границе */
+      width: min(100%, max-content);
+      margin-left: auto;
+      margin-right: auto;
+      box-sizing: border-box;
     }
 
     a {
@@ -118,20 +133,6 @@
       padding-bottom: var(--space-lg);
     }
 
-    .playable-demo {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    @media (max-width: 767px) {
-      .playable-demo {
-        padding-left: var(--space-xs);
-        padding-right: var(--space-xs);
-      }
-    }
-
     .playable-demo__badge {
       display: inline-flex;
       align-items: center;
@@ -148,123 +149,180 @@
       box-shadow: 0 0 24px rgba(139, 92, 246, 0.15);
     }
 
-    .playable-demo__frame {
-      position: relative;
-      width: 100%;
-      height: min(78vh, 880px);
-      height: min(78dvh, 880px);
-      min-height: 520px;
-      max-width: 100%;
-      border-radius: 24px;
-      overflow: hidden;
-      overscroll-behavior: contain;
-      touch-action: manipulation;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(12, 10, 18, 0.65);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.35) inset,
-        0 16px 48px rgba(0, 0, 0, 0.4),
-        0 0 56px rgba(139, 92, 246, 0.14),
-        0 0 96px rgba(167, 139, 250, 0.06);
+    .section--playable .section-head {
+      max-width: min(100%, 48rem);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: var(--space-md);
+      text-align: center;
     }
 
-    .playable-demo__frame iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 24px;
-      display: block;
-      opacity: 0;
-      transition: opacity 0.28s var(--ease-out);
-    }
-
-    .playable-demo__frame iframe.playable-demo__iframe--ready {
-      opacity: 1;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .playable-demo__frame iframe {
-        opacity: 1;
-        transition: none;
-      }
-    }
-
-    .playable-demo__frame iframe:focus-visible {
-      outline: 2px solid rgba(167, 139, 250, 0.65);
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 767px) {
-      .playable-demo__frame {
-        height: min(72vh, 760px);
-        height: min(72dvh, 760px);
-        min-height: 460px;
-      }
-    }
-
-    .playable-demo__cta {
-      margin-top: var(--space-md);
+    .playable-launch-list {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: var(--space-lg);
     }
 
-    .playable-demo__cta .btn {
+    .playable-launch {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: var(--space-lg);
+      align-items: center;
+      padding: var(--space-md);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(155deg, rgba(28, 28, 38, 0.55), rgba(14, 14, 20, 0.88));
+      border: 1px solid rgba(167, 139, 250, 0.1);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .playable-launch__content {
+      text-align: left;
+      min-width: 0;
+    }
+
+    .playable-launch h3,
+    .playable-launch h4 {
+      text-align: left;
+      width: 100%;
+      max-width: none;
+      margin-left: 0;
+    }
+
+    .playable-launch h3 {
+      font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .playable-launch__lead {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0 0 var(--space-sm);
+    }
+
+    .playable-launch__text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      margin: 0 0 var(--space-sm);
+    }
+
+    .playable-launch__rules-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(200, 200, 220, 0.85);
+      margin: var(--space-sm) 0 0.4rem;
+    }
+
+    .playable-launch__rules {
+      margin: 0 0 var(--space-md);
+      padding-left: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .playable-launch__rules li + li {
+      margin-top: 0.35rem;
+    }
+
+    .playable-launch__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .playable-launch__actions .btn {
       text-decoration: none;
     }
 
-    .section--playable .section-head {
-      max-width: 40rem;
-      margin-bottom: var(--space-md);
+    .playable-launch__figure {
+      margin: 0;
+      min-width: 0;
     }
 
-    .section--playable + .section--playable {
-      padding-top: var(--space-sm);
+    .playable-launch__shot--drobi {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(201, 169, 110, 0.28);
+      background: #0b0d12;
+      line-height: 0;
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
     }
 
-    .section--playable .playable-demo__cta {
-      margin-top: var(--space-sm);
+    .playable-launch__shot--drobi .playable-launch__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 22rem;
+      object-fit: contain;
+      object-position: center top;
     }
 
-    /* Игра «Дроби» — больше высоты фрейма, чтобы стартовый экран влезал без внутренней прокрутки */
+    .playable-launch__shot--snake {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      background: #0b0b0f;
+      line-height: 0;
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    .playable-launch__shot--snake .playable-launch__img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 22rem;
+      object-fit: contain;
+      object-position: center;
+    }
+
     #playable-demo.section--playable {
       padding-top: var(--space-md);
       padding-bottom: var(--space-md);
     }
 
-    #playable-demo .playable-demo__frame--drobi {
-      height: min(94dvh, 1100px);
-      min-height: 680px;
-      max-height: 1100px;
-    }
-
-    @media (max-width: 767px) {
-      #playable-demo .playable-demo__frame--drobi {
-        min-height: 560px;
-        height: min(88dvh, 920px);
-        max-height: 920px;
+    @media (max-width: 799px) {
+      .playable-launch {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: var(--space-sm);
       }
-    }
 
-    /* Игра «Змейка» — та же логика: высокий фрейм, стартовый экран без внутренней прокрутки */
-    #playable-demo-snake.section--playable {
-      padding-top: var(--space-md);
-      padding-bottom: var(--space-md);
-    }
+      .playable-launch__content {
+        text-align: center;
+        order: 1;
+      }
 
-    #playable-demo-snake .playable-demo__frame--snake {
-      height: min(94dvh, 1100px);
-      min-height: 680px;
-      max-height: 1100px;
-    }
+      .playable-launch__figure {
+        order: 2;
+      }
 
-    @media (max-width: 767px) {
-      #playable-demo-snake .playable-demo__frame--snake {
-        min-height: 560px;
-        height: min(88dvh, 920px);
-        max-height: 920px;
+      .playable-launch h3,
+      .playable-launch h4 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .playable-launch__rules {
+        text-align: left;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .playable-launch__actions {
+        justify-content: center;
       }
     }
 
@@ -276,6 +334,17 @@
         transparent 65%,
         rgba(11, 11, 15, 0.32) 100%
       );
+    }
+
+    .section--trust .trust-section__lead {
+      max-width: none;
+      width: 100%;
+    }
+
+    @media (min-width: 900px) {
+      .section--trust .trust-section__lead {
+        white-space: nowrap;
+      }
     }
 
     .section--process {
@@ -298,6 +367,17 @@
       .section--offers {
         padding-top: var(--space-xl);
         padding-bottom: var(--space-2xl);
+      }
+    }
+
+    .section--offers .offers-section__lead {
+      max-width: none;
+      width: 100%;
+    }
+
+    @media (min-width: 1100px) {
+      .section--offers .offers-section__lead {
+        white-space: nowrap;
       }
     }
 
@@ -441,7 +521,7 @@
       color: rgba(184, 184, 199, 0.65);
       letter-spacing: 0.02em;
       line-height: 1.45;
-      max-width: 28ch;
+      max-width: 100%;
     }
 
     /* Появление при скролле */
@@ -498,58 +578,156 @@
 
     /* ========== Шапка ========== */
     .header {
+      --header-border: rgba(255, 255, 255, 0.06);
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      height: var(--header-h);
+      min-height: var(--header-h);
+      padding: 0;
+      display: block;
+      background: linear-gradient(180deg, rgba(11, 11, 15, 0.95) 0%, rgba(11, 11, 15, 0.75) 55%, rgba(11, 11, 15, 0.35) 100%);
+      backdrop-filter: blur(16px) saturate(1.1);
+      -webkit-backdrop-filter: blur(16px) saturate(1.1);
+      border-bottom: 1px solid var(--header-border);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+      transition: background 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+    }
+
+    .header.is-scrolled {
+      background: linear-gradient(180deg, rgba(11, 11, 15, 0.99) 0%, rgba(11, 11, 15, 0.94) 100%);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+      border-bottom-color: rgba(167, 139, 250, 0.12);
+    }
+
+    .header__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      min-height: var(--header-h);
+      padding: 0 var(--space-md);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 var(--space-md);
-      background: linear-gradient(180deg, rgba(11, 11, 15, 0.92) 0%, rgba(11, 11, 15, 0.65) 70%, transparent 100%);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      gap: var(--space-md);
     }
 
     @media (min-width: 768px) {
-      .header {
+      .header__inner {
         padding: 0 var(--space-lg);
       }
     }
 
     .logo {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--text);
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0;
+      line-height: 0;
+      text-decoration: none;
+      border-radius: 0.5rem;
     }
 
-    .logo span {
-      color: var(--accent-2);
+    .logo__img {
+      display: block;
+      height: clamp(32px, 3.8vw, 40px);
+      width: auto;
+      max-width: min(168px, 44vw);
+      object-fit: contain;
+      object-position: left center;
+      transition: filter 0.28s var(--ease-out), transform 0.28s var(--ease-out);
+      filter: url(#logoLumaToAlpha) drop-shadow(0 0 10px rgba(139, 92, 246, 0.28)) drop-shadow(0 0 22px rgba(139, 92, 246, 0.12));
+    }
+
+    .logo:hover .logo__img,
+    .logo:focus-visible .logo__img {
+      filter: url(#logoLumaToAlpha) drop-shadow(0 0 16px rgba(167, 139, 250, 0.45)) drop-shadow(0 0 32px rgba(139, 92, 246, 0.2));
+      transform: scale(1.03);
+    }
+
+    .logo:focus-visible {
+      outline: 2px solid rgba(167, 139, 250, 0.55);
+      outline-offset: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo:hover .logo__img,
+      .logo:focus-visible .logo__img {
+        transform: none;
+      }
     }
 
     .nav-links {
       display: flex;
-      gap: var(--space-md);
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: flex-end;
+      gap: 0.2rem 0.5rem;
+    }
+
+    @media (min-width: 480px) {
+      .nav-links {
+        gap: 0.3rem 0.75rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        gap: var(--space-sm) var(--space-md);
+      }
     }
 
     .nav-links a {
-      font-size: 0.8125rem;
+      font-size: 0.8rem;
+      font-weight: 500;
       color: var(--text-muted);
-      transition: color 0.25s var(--ease-out);
+      padding: 0.45rem 0.6rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+    }
+
+    @media (min-width: 768px) {
+      .nav-links a {
+        font-size: 0.8125rem;
+        padding: 0.5rem 0.7rem;
+      }
     }
 
     .nav-links a:hover {
       color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    @media (max-width: 640px) {
-      .nav-links .nav-hide-mobile {
-        display: none;
-      }
+    .nav-links a:focus-visible {
+      outline: 2px solid rgba(167, 139, 250, 0.6);
+      outline-offset: 2px;
+    }
+
+    .nav-links__cta {
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-1), #7c3aed 55%, #a78bfa);
+      box-shadow: 0 0.35rem 1.25rem rgba(124, 58, 237, 0.35);
+    }
+
+    .nav-links__cta:hover {
+      color: #fff;
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9 50%, #c4b5fd);
+      box-shadow: 0 0.45rem 1.35rem rgba(124, 58, 237, 0.45);
+    }
+
+    .nav-links__cta:focus-visible {
+      outline: 2px solid rgba(196, 181, 253, 0.85);
+      outline-offset: 2px;
+    }
+
+    /* Якоря: заголовок не уезжает под фиксированную шапку */
+    #main,
+    section[id],
+    .section[id] {
+      scroll-margin-top: calc(var(--header-h) + 12px);
     }
 
     /* ========== Кнопки ========== */
@@ -612,6 +790,10 @@
       margin-top: var(--space-lg);
     }
 
+    .hero .btn-row {
+      justify-content: center;
+    }
+
     /* Вторичная CTA в hero — без яркого градиента */
     .hero .btn-row .btn--muted-hero {
       color: rgba(245, 245, 247, 0.7);
@@ -653,6 +835,10 @@
       }
     }
 
+    .hero__copy {
+      text-align: center;
+    }
+
     .hero__title {
       font-size: clamp(1.85rem, 5vw, 3.25rem);
       font-weight: 700;
@@ -688,7 +874,7 @@
     .hero__subtitle {
       font-size: clamp(0.95rem, 2vw, 1.125rem);
       color: var(--text-muted);
-      max-width: 32ch;
+      max-width: 100%;
     }
 
     .hero__micro {
@@ -736,9 +922,11 @@
     }
 
     .proof-strip__lead {
-      margin: 0 0 var(--space-md);
+      margin: 0 auto var(--space-md);
       font-size: 0.875rem;
       color: rgba(184, 184, 199, 0.75);
+      text-align: center;
+      max-width: min(100%, 40rem);
     }
 
     .proof-strip__grid {
@@ -1116,7 +1304,8 @@
     /* ========== Секции: заголовки ========== */
     .section-head {
       margin-bottom: var(--space-xl);
-      max-width: 36rem;
+      /* На широком экране заголовок использует ширину секции, без «ложного» переноса на ~36rem */
+      max-width: 100%;
     }
 
     .section-head h2 {
@@ -1129,6 +1318,11 @@
     .section-head p {
       color: var(--text-muted);
       font-size: 1rem;
+      text-align: center;
+      /* Подзаголовок — комфортная длина строки */
+      max-width: min(100%, 40rem);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ========== Проекты — композиция ========== */
@@ -1180,6 +1374,7 @@
       position: relative;
       padding: var(--space-lg);
       border-radius: var(--radius-lg);
+      text-align: center;
       background: linear-gradient(155deg, rgba(28, 28, 38, 0.72), rgba(14, 14, 20, 0.9));
       border: 1px solid rgba(167, 139, 250, 0.12);
       backdrop-filter: blur(20px);
@@ -1874,7 +2069,7 @@
       font-size: 0.9375rem;
       color: var(--text-muted);
       margin-bottom: var(--space-md);
-      max-width: 42ch;
+      max-width: 100%;
     }
 
     .tags {
@@ -1972,10 +2167,47 @@
     .projects-pair-clusters .projects-sites-cluster {
       grid-column: auto;
       min-width: 0;
+      height: 100%;
+    }
+
+    @media (max-width: 899px) {
+      .projects-pair-clusters .projects-sites-cluster {
+        height: auto;
+      }
+    }
+
+    .projects-pair-clusters .project-card--pair {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .projects-pair-clusters .project-card--pair .project-card__body {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .projects-pair-clusters .project-card--pair .project-card__actions {
+      margin-top: auto;
+    }
+
+    .projects-pair-clusters .project-card--pair .project-card__preview {
+      min-height: 230px;
+      flex-shrink: 0;
+    }
+
+    .projects-pair-clusters .project-card--fcalc .project-card__preview--fcalc {
+      min-height: 230px;
     }
 
     .projects-sites-cluster__head {
-      max-width: 40rem;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
     .projects-sites-cluster__title {
@@ -1987,7 +2219,8 @@
     }
 
     .projects-sites-cluster__lead {
-      margin: 0;
+      margin: 0 auto;
+      max-width: min(100%, 40rem);
       font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.55;
@@ -2051,7 +2284,7 @@
     }
 
     .project-card--site-case p {
-      max-width: 52ch;
+      max-width: 100%;
     }
 
     .project-card--site-case .project-card__preview--site::before {
@@ -2184,74 +2417,44 @@
       }
     }
 
-    /* ========== Подход — timeline + ритм ========== */
+    /* ========== Подход — сетка карточек ========== */
     .process-wrap {
       position: relative;
-      padding-left: 0;
-    }
-
-    @media (min-width: 768px) {
-      .process-wrap {
-        padding-left: 2rem;
-      }
-
-      .process-wrap::before {
-        content: "";
-        position: absolute;
-        left: 0.85rem;
-        top: 0.5rem;
-        bottom: 0.5rem;
-        width: 1px;
-        background: linear-gradient(180deg, rgba(167, 139, 250, 0.35), rgba(167, 139, 250, 0.06), rgba(167, 139, 250, 0.2));
-      }
+      max-width: 100%;
     }
 
     .process {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr;
       gap: var(--space-md);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       .process {
-        gap: var(--space-lg);
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .process {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-md);
+        align-items: stretch;
       }
     }
 
     .process-step {
       position: relative;
-      padding: var(--space-lg) var(--space-lg) var(--space-lg) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      padding: var(--space-md) var(--space-lg);
       background: rgba(22, 22, 32, 0.65);
       border-radius: var(--radius-lg);
       border: 1px solid rgba(167, 139, 250, 0.1);
       transition: border-color 0.35s, transform 0.35s var(--ease-out), box-shadow 0.35s;
-    }
-
-    @media (min-width: 768px) {
-      .process-step:nth-child(2) {
-        margin-left: 1.5rem;
-      }
-
-      .process-step:nth-child(3) {
-        margin-left: 0.25rem;
-      }
-
-      .process-step:nth-child(4) {
-        margin-left: 1.5rem;
-      }
-
-      .process-step::before {
-        content: "";
-        position: absolute;
-        left: -1.35rem;
-        top: 1.85rem;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--bg);
-        border: 2px solid rgba(167, 139, 250, 0.45);
-        box-shadow: 0 0 12px rgba(139, 92, 246, 0.2);
-      }
     }
 
     .process-step:hover {
@@ -2291,6 +2494,8 @@
     }
 
     .process-step p {
+      flex: 1 1 auto;
+      margin: 0;
       font-size: 0.9375rem;
       color: var(--text-muted);
       line-height: 1.6;
@@ -2308,21 +2513,46 @@
       max-width: 100%;
     }
 
+    .about-photo__wrap {
+      position: relative;
+      display: block;
+      max-width: 280px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      line-height: 0;
+      aspect-ratio: 4 / 5;
+      max-height: min(72vw, 520px);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.06) inset,
+        0 12px 40px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(167, 139, 250, 0.14),
+        0 0 36px rgba(139, 92, 246, 0.2),
+        0 0 64px rgba(124, 58, 237, 0.08);
+    }
+
+    .about-photo__wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(185deg, transparent 0%, rgba(6, 5, 12, 0.18) 45%, rgba(3, 3, 8, 0.42) 100%);
+      opacity: 0.85;
+    }
+
     .about-photo img {
       position: relative;
       z-index: 1;
       display: block;
       width: 100%;
-      max-width: 280px;
-      height: auto;
-      margin: 0 auto;
-      background: none;
-      background-color: transparent;
+      height: 100%;
+      min-height: 0;
+      margin: 0;
+      background: #0b0b10;
       border: none;
-      border-radius: 0;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center center;
-      filter: brightness(1.04) contrast(1.03) saturate(0.99) drop-shadow(0 4px 18px rgba(167, 139, 250, 0.22)) drop-shadow(0 8px 28px rgba(255, 185, 160, 0.12));
     }
 
     @media (min-width: 768px) {
@@ -2332,18 +2562,54 @@
         gap: var(--space-lg);
       }
 
-      .about-photo img {
+      .about-photo__wrap {
         margin: 0;
         max-width: none;
         width: 100%;
       }
     }
 
+    .about-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      max-width: min(100%, 52ch);
+    }
+
     .about-text {
       font-size: 1.0625rem;
       color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 52ch;
+      line-height: 1.7;
+      max-width: none;
+      margin: 0;
+    }
+
+    .about-micro {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      opacity: 0.6;
+      margin: 0;
+    }
+
+    .section--about .about-copy .btn--primary {
+      min-height: 48px;
+      margin-top: 0.25rem;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.12) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+        0 6px 28px rgba(139, 92, 246, 0.4),
+        0 0 32px rgba(139, 92, 246, 0.22),
+        0 16px 48px rgba(11, 11, 15, 0.55);
+    }
+
+    .section--about .about-copy .btn--primary:hover {
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.16) inset,
+        0 8px 36px rgba(139, 92, 246, 0.5),
+        0 0 40px rgba(139, 92, 246, 0.28),
+        0 22px 56px rgba(139, 92, 246, 0.2);
     }
 
     .about-status {
@@ -2396,6 +2662,11 @@
       border-color: rgba(139, 92, 246, 0.35);
       color: var(--accent-2);
       background: rgba(139, 92, 246, 0.1);
+    }
+
+    .about-badge-pill--ux {
+      text-transform: none;
+      letter-spacing: 0.1em;
     }
 
     .about-availability {
@@ -2481,7 +2752,7 @@
     .cta-final__inner {
       position: relative;
       z-index: 1;
-      max-width: 38rem;
+      max-width: 100%;
       margin: 0 auto;
     }
 
@@ -2527,13 +2798,73 @@
       line-height: 1.55;
     }
 
-    .cta-final .btn--primary {
-      padding: 1rem 1.85rem;
-      font-size: 0.9375rem;
+    .cta-final__messengers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 0.75rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: var(--space-md);
     }
 
-    .cta-final .btn-row {
+    .cta-messenger-btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.2rem;
+      min-height: 48px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(11, 11, 15, 0.55);
+      color: var(--text);
+      transition: transform 0.2s var(--ease-out), border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-messenger-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .cta-messenger-btn--tg:hover {
+      border-color: rgba(42, 171, 238, 0.45);
+      background: rgba(42, 171, 238, 0.1);
+    }
+
+    .cta-messenger-btn--max:hover {
+      border-color: rgba(151, 102, 255, 0.45);
+      background: rgba(151, 102, 255, 0.1);
+    }
+
+    .cta-messenger-btn--vk:hover {
+      border-color: rgba(0, 119, 255, 0.45);
+      background: rgba(0, 119, 255, 0.1);
+    }
+
+    .cta-messenger-btn__icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .cta-messenger-btn--tg .cta-messenger-btn__icon {
+      color: #2aabee;
+    }
+
+    .cta-messenger-btn--max .cta-messenger-btn__icon {
+      color: #a78bfa;
+    }
+
+    .cta-messenger-btn--vk .cta-messenger-btn__icon {
+      color: #4c8bf5;
+    }
+
+    .cta-messenger-btn:focus-visible {
+      outline: 2px solid rgba(167, 139, 250, 0.6);
+      outline-offset: 2px;
     }
 
     /* ========== Modal (Лисичка рядом) ========== */
@@ -2673,6 +3004,7 @@
       letter-spacing: -0.02em;
       line-height: 1.2;
       margin-bottom: var(--space-sm);
+      text-align: center;
     }
 
     .modal__lead {
@@ -2699,6 +3031,7 @@
       text-transform: uppercase;
       color: var(--accent-2);
       margin-bottom: var(--space-xs);
+      text-align: center;
     }
 
     .modal__section p {
@@ -2845,6 +3178,7 @@
       line-height: 1.3;
       margin-bottom: var(--space-sm);
       color: var(--text);
+      text-align: center;
     }
 
     .modal__cta-text {
@@ -2852,7 +3186,7 @@
       color: rgba(245, 245, 247, 0.78);
       line-height: 1.55;
       margin-bottom: var(--space-md);
-      max-width: 36ch;
+      max-width: 100%;
       margin-left: auto;
       margin-right: auto;
     }
@@ -3220,17 +3554,51 @@
   </style>
 </head>
 <body>
+  <svg class="u-filters" aria-hidden="true" width="0" height="0" style="position: absolute; overflow: hidden; clip: rect(0, 0, 0, 0)">
+    <filter id="logoLumaToAlpha" color-interpolation-filters="sRGB" x="-5%" y="-5%" width="110%" height="110%">
+      <!--
+        A = (R+G+B)/3: тёмно-фиолетовое кольцо не «съедается» по сравнению с классической luma.
+        Затем лёгкая гамма по A: слабые неон-линии читаются, #000 остаётся 0.
+      -->
+      <feColorMatrix
+        in="SourceGraphic"
+        type="matrix"
+        result="aAvg"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0.33 0.33 0.34 0 0"
+      />
+      <feComponentTransfer in="aAvg" result="out">
+        <feFuncA type="gamma" amplitude="1" exponent="0.5" offset="0" />
+      </feComponentTransfer>
+    </filter>
+  </svg>
   <a class="skip-link" href="#main">К основному содержимому</a>
 
   <div class="glow-orb glow-orb--1" aria-hidden="true"></div>
   <div class="glow-orb glow-orb--2" aria-hidden="true"></div>
 
-  <header class="header">
-    <a href="#" class="logo">МА<span>.</span> digital</a>
-    <nav class="nav-links" aria-label="Навигация">
-      <a href="#projects" class="nav-hide-mobile">Проекты</a>
-      <a href="#contact">Связь</a>
-    </nav>
+  <header class="header" id="top">
+    <div class="header__inner">
+      <a href="#main" class="logo" aria-label="MA. digital — Мария Алдошина, в начало страницы">
+        <img
+          class="logo__img"
+          src="логотип.png"
+          alt=""
+          width="120"
+          height="120"
+          decoding="async"
+        />
+      </a>
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#projects">Проекты</a>
+        <a href="#offers">Услуги</a>
+        <a href="#process">Как работаю</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contact" class="nav-links__cta">Заказать</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
@@ -3283,99 +3651,10 @@
       </div>
     </section>
 
-    <!-- ========== Социальное доказательство ========== -->
-    <section class="section section--proof reveal" id="proof" aria-labelledby="proof-title">
-      <div class="proof-strip">
-        <h2 id="proof-title" class="proof-strip__title">Что уже сделано</h2>
-        <p class="proof-strip__lead">Живые кейсы — от образования до бизнеса, всё можно открыть и «потрогать»</p>
-        <ul class="proof-strip__grid">
-          <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">17+</span>
-            <p class="proof-strip__text">проектов в портфолио — и список растёт</p>
-          </li>
-          <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">•</span>
-            <p class="proof-strip__text">сайты, игры, боты и мини-сервисы</p>
-          </li>
-          <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">•</span>
-            <p class="proof-strip__text">проекты для образования и бизнеса</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ========== Что я могу сделать для вас ========== -->
-    <section class="section section--offers" id="offers" aria-labelledby="offers-title">
-      <div class="section-head reveal">
-        <p class="label">Услуги</p>
-        <h2 id="offers-title">Что я могу сделать для вас</h2>
-        <p>От лендинга до бота и упаковки идеи — в форматах, которые хочется потыкать и показать кому-нибудь ещё</p>
-      </div>
-      <div class="offers-grid">
-        <article class="offer-card reveal reveal-delay-1">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">01</div>
-            <h3 class="offer-card__title">Сайт / лендинг</h3>
-            <p class="offer-card__text">Сайт, который понятно показывает идею и помогает клиенту сделать следующий шаг</p>
-          </div>
-        </article>
-        <article class="offer-card reveal reveal-delay-2">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">02</div>
-            <h3 class="offer-card__title">Мини-приложение / интерактив</h3>
-            <p class="offer-card__text">Интерактивы и мини-сервисы, которые вовлекают и удерживают внимание</p>
-          </div>
-        </article>
-        <article class="offer-card reveal reveal-delay-3">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">03</div>
-            <h3 class="offer-card__title">VK-бот</h3>
-            <p class="offer-card__text">Боты, которые помогают отвечать, консультировать и не терять клиентов</p>
-          </div>
-        </article>
-        <article class="offer-card reveal reveal-delay-4">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">04</div>
-            <h3 class="offer-card__title">Упаковка проекта</h3>
-            <p class="offer-card__text">Помогаю превратить идею в понятный и визуально сильный продукт</p>
-          </div>
-        </article>
-      </div>
-      <div class="offers-cta reveal reveal-delay-5">
-        <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
-        <p class="offers-cta__reassurance">Можно просто написать идею — помогу разобраться</p>
-        <p class="offers-cta__hint">Отвечаю в течение дня</p>
-      </div>
-    </section>
-
-    <!-- ========== Marquee ========== -->
-    <div class="marquee-wrap" aria-hidden="true">
-      <div class="marquee">
-        <div class="marquee__content">
-          <span>interactive</span><span class="dot">•</span>
-          <span>portfolio</span><span class="dot">•</span>
-          <span>mini apps</span><span class="dot">•</span>
-          <span>AI tools</span><span class="dot">•</span>
-          <span>landing pages</span><span class="dot">•</span>
-          <span>удержание и сценарий</span><span class="dot">•</span>
-        </div>
-        <div class="marquee__content" aria-hidden="true">
-          <span>interactive</span><span class="dot">•</span>
-          <span>portfolio</span><span class="dot">•</span>
-          <span>mini apps</span><span class="dot">•</span>
-          <span>AI tools</span><span class="dot">•</span>
-          <span>landing pages</span><span class="dot">•</span>
-          <span>удержание и сценарий</span><span class="dot">•</span>
-        </div>
-      </div>
-    </div>
-
     <!-- ========== ПРОЕКТЫ ========== -->
-    <section class="section section--projects reveal" id="projects" aria-labelledby="projects-title">
+    <section class="section section--projects reveal" id="projects" aria-labelledby="projects-label">
       <div class="section-head">
-        <p class="label">Работы</p>
-        <h2 id="projects-title">Избранные проекты</h2>
+        <p class="label" id="projects-label">Работы</p>
       </div>
       <div class="projects-grid">
         <div class="projects-sites-cluster reveal">
@@ -3668,70 +3947,52 @@
       </div>
     </section>
 
-    <!-- ========== ИНТЕРАКТИВНАЯ ИГРА (ДРОБИ) ========== -->
-    <section class="section section--playable reveal" id="playable-demo" aria-labelledby="playable-demo-title">
-      <div class="section-head">
-        <h2 id="playable-demo-title">Интерактивные проекты</h2>
-        <p>
-          Игры и мини-сервисы, которые вовлекают и удерживают внимание. Ниже — <strong>игра по дробям</strong>: обучение, в процесс которого хочется вернуться.
-        </p>
+    <!-- ========== Что я могу сделать для вас ========== -->
+    <section class="section section--offers" id="offers" aria-labelledby="offers-title">
+      <div class="section-head reveal">
+        <h2 id="offers-title">Что я могу сделать для вас</h2>
+        <p class="offers-section__lead">От лендинга до бота и упаковки идеи — в форматах, которые хочется потыкать и показать кому-нибудь ещё</p>
       </div>
-      <div class="playable-demo">
-        <span class="playable-demo__badge">ДЕМО</span>
-        <div class="playable-demo__frame playable-demo__frame--drobi">
-          <iframe
-            title="Игра: дроби"
-            src="https://aldoshinamaria.github.io/IGRA_DROBI/"
-            loading="eager"
-            tabindex="0"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="playable-demo__cta">
-          <a
-            class="btn btn--ghost"
-            href="https://aldoshinamaria.github.io/IGRA_DROBI/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Открыть игру в новой вкладке</a>
-        </div>
+      <div class="offers-grid">
+        <article class="offer-card reveal reveal-delay-1">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">01</div>
+            <h3 class="offer-card__title">Сайт / лендинг</h3>
+            <p class="offer-card__text">Сайт, который понятно показывает идею и помогает клиенту сделать следующий шаг</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-2">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">02</div>
+            <h3 class="offer-card__title">Мини-приложение / интерактив</h3>
+            <p class="offer-card__text">Интерактивы и мини-сервисы, которые вовлекают и удерживают внимание</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-3">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">03</div>
+            <h3 class="offer-card__title">VK-бот</h3>
+            <p class="offer-card__text">Боты, которые помогают отвечать, консультировать и не терять клиентов</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-4">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">04</div>
+            <h3 class="offer-card__title">Упаковка проекта</h3>
+            <p class="offer-card__text">Помогаю превратить идею в понятный и визуально сильный продукт</p>
+          </div>
+        </article>
       </div>
-    </section>
-
-    <!-- ========== ИНТЕРАКТИВНАЯ ИГРА (ЗМЕЙКА) ========== -->
-    <section class="section section--playable reveal" id="playable-demo-snake" aria-labelledby="playable-demo-snake-title">
-      <div class="section-head">
-        <h2 id="playable-demo-snake-title">Игра «Змейка»</h2>
-        <p>Быстрый ритм, понятные правила и хочется сыграть ещё раунд — прямо здесь, без установки</p>
-      </div>
-      <div class="playable-demo">
-        <span class="playable-demo__badge">ДЕМО</span>
-        <div class="playable-demo__frame playable-demo__frame--snake">
-          <iframe
-            title="Игра «Змейка»"
-            src="https://aldoshinamaria.github.io/IGRA_ZMEIKA/?embed=1&amp;v=3"
-            loading="eager"
-            tabindex="0"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="playable-demo__cta">
-          <a
-            class="btn btn--ghost"
-            href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/?embed=1&amp;v=3"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Открыть игру в новой вкладке</a>
-        </div>
+      <div class="offers-cta reveal reveal-delay-5">
+        <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
+        <p class="offers-cta__reassurance">Можно просто написать идею — помогу разобраться</p>
+        <p class="offers-cta__hint">Отвечаю в течение дня</p>
       </div>
     </section>
 
     <!-- ========== ПОДХОД ========== -->
     <section class="section section--process reveal" id="process" aria-labelledby="process-title">
       <div class="section-head">
-        <p class="label">Процесс</p>
         <h2 id="process-title">Как я работаю</h2>
         <p>Четыре опоры — от эмоции до рабочего продукта, без канцелярского сценария</p>
       </div>
@@ -3769,66 +4030,51 @@
       </div>
     </section>
 
-    <!-- ========== ПОЧЕМУ УДОБНО РАБОТАТЬ ========== -->
-    <section class="section section--trust reveal" id="why-collaborate" aria-labelledby="trust-title">
-      <div class="section-head">
-        <h2 id="trust-title">Почему проекты со мной доходят до результата</h2>
-        <p>Не про «правильный UX», а про ощущение, что всё движется и хочется дойти до конца</p>
-      </div>
-      <div class="trust-grid">
-        <article class="trust-card reveal reveal-delay-1">
-          <h3>Без перегруза</h3>
-          <p>Объясняю просто, без сложных терминов</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-2">
-          <h3>Быстро в реальность</h3>
-          <p>Показываю рабочую версию уже на ранних этапах</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-3">
-          <h3>Фокус на ощущении</h3>
-          <p>Важно не только как выглядит, но и как воспринимается</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-4">
-          <h3>От идеи до продукта</h3>
-          <p>Помогаю собрать всё: от смысла до готового решения</p>
-        </article>
-      </div>
-    </section>
-
     <!-- ========== ОБО МНЕ ========== -->
     <section class="section section--about reveal" id="about" aria-labelledby="about-title">
       <div class="section-head">
-        <p class="label">Автор</p>
         <h2 id="about-title">Обо мне</h2>
       </div>
       <div class="about-block reveal reveal-delay-1">
         <figure class="about-photo">
-          <img
-            src="Мария.png"
-            alt="Мария Алдошина — портрет в техно-окружении с неоновой вывеской и кодом на фоне"
-            width="480"
-            height="600"
-            loading="lazy"
-            decoding="async"
-          />
+          <div class="about-photo__wrap">
+            <img
+              src="images/about-photo.jpg"
+              alt="Мария Алдошина в рабочем пространстве за ноутбуком"
+              width="480"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </figure>
-        <p class="about-text">
-          Я Мария Алдошина — создаю digital-проекты, в которых соединяются идея, визуал и интерактив.
-          Мне важно, чтобы продукт не просто выглядел красиво, а удерживал внимание и работал.
-        </p>
+        <div class="about-copy">
+          <p class="about-text">
+            Я Мария Алдошина — создаю сайты, мини-сервисы и интерактивы, которые не просто выглядят красиво, а помогают
+            пользователю понять идею и сделать следующий шаг.
+          </p>
+          <p class="about-text">
+            Мне важно, чтобы продукт был живым: удерживал внимание, вовлекал и работал на задачу — будь то обучение, продажи или
+            взаимодействие с аудиторией.
+          </p>
+          <p class="about-micro">Работаю с образовательными и коммерческими проектами</p>
+          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
+        </div>
         <div class="about-status">
           <div class="about-status__hero">
             <strong>Digital creator / vibe coder</strong>
-            <p>Собираю сайты, интерактивы и мини-сервисы с продуманной логикой и ощущением продукта</p>
+            <p>
+              Собираю сайты и интерактивы с понятной логикой, аккуратным визуалом и продуманным пользовательским сценарием
+            </p>
           </div>
           <div class="about-badges">
             <span class="about-badge-pill">Vibe coder</span>
-            <span class="about-badge-pill">Product thinking</span>
+            <span class="about-badge-pill about-badge-pill--ux">UX-ЛОГИКА</span>
             <span class="about-badge-pill about-badge-pill--accent">UI &amp; flow</span>
           </div>
           <div class="about-availability">
             <span class="pulse" aria-hidden="true"></span>
-            <span>Open for projects</span>
+            <span>Открыта к новым проектам</span>
           </div>
         </div>
       </div>
@@ -3861,20 +4107,218 @@
       </p>
     </section>
 
+    <!-- ========== Marquee ========== -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee__content">
+          <span>interactive</span><span class="dot">•</span>
+          <span>portfolio</span><span class="dot">•</span>
+          <span>mini apps</span><span class="dot">•</span>
+          <span>AI tools</span><span class="dot">•</span>
+          <span>landing pages</span><span class="dot">•</span>
+          <span>удержание и сценарий</span><span class="dot">•</span>
+        </div>
+        <div class="marquee__content" aria-hidden="true">
+          <span>interactive</span><span class="dot">•</span>
+          <span>portfolio</span><span class="dot">•</span>
+          <span>mini apps</span><span class="dot">•</span>
+          <span>AI tools</span><span class="dot">•</span>
+          <span>landing pages</span><span class="dot">•</span>
+          <span>удержание и сценарий</span><span class="dot">•</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== Социальное доказательство ========== -->
+    <section class="section section--proof reveal" id="proof" aria-labelledby="proof-title">
+      <div class="proof-strip">
+        <h2 id="proof-title" class="proof-strip__title">Что уже сделано</h2>
+        <p class="proof-strip__lead">Живые кейсы — от образования до бизнеса, всё можно открыть и «потрогать»</p>
+        <ul class="proof-strip__grid">
+          <li class="proof-strip__item">
+            <span class="proof-strip__num" aria-hidden="true">17+</span>
+            <p class="proof-strip__text">проектов в портфолио — и список растёт</p>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__num" aria-hidden="true">•</span>
+            <p class="proof-strip__text">сайты, игры, боты и мини-сервисы</p>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__num" aria-hidden="true">•</span>
+            <p class="proof-strip__text">проекты для образования и бизнеса</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== ИНТЕРАКТИВНЫЕ ПРОЕКТЫ (две игры в ряд) ========== -->
+    <section class="section section--playable reveal" id="playable-demo" aria-labelledby="playable-demo-title">
+      <div class="section-head">
+        <h2 id="playable-demo-title">Интерактивные проекты</h2>
+        <p>
+          Игры и мини-сервисы, которые вовлекают и удерживают внимание: <strong>дроби</strong> — обучение, в которое хочется
+          вернуться, и <strong>змейка</strong> — быстрый ритм и ещё раунд, без установки.
+        </p>
+      </div>
+      <div class="playable-launch-list">
+        <article class="playable-launch" id="playable-drobi-block">
+          <div class="playable-launch__content">
+            <span class="playable-demo__badge">ДЕМО</span>
+            <h3>Игра по дробям</h3>
+            <p class="playable-launch__lead">Понятные шаги и мотив вернуться</p>
+            <p class="playable-launch__text">
+              Найдите пары с одинаковыми значениями дроби — в разной записи или «один в один». Удобно для тренировки внимания и
+              закрепления темы.
+            </p>
+            <h4 class="playable-launch__rules-title">Правила</h4>
+            <ul class="playable-launch__rules">
+              <li>За уровень нужно убрать все пары, открывая по две карточки.</li>
+              <li>Счёт, ходы и таймер — на экране, прогресс идёт по уровням.</li>
+              <li>Работает в браузере, без установки — всё в одной вкладке.</li>
+            </ul>
+            <div class="playable-launch__actions">
+              <a
+                class="btn btn--primary"
+                href="https://aldoshinamaria.github.io/IGRA_DROBI/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Открыть игру</a>
+              <a href="#" class="btn btn--ghost" data-open-contact-messengers>Заказать игру для себя</a>
+            </div>
+          </div>
+          <figure class="playable-launch__figure">
+            <div class="playable-launch__shot--drobi">
+              <img
+                class="playable-launch__img"
+                src="images/game-drobi-preview.png"
+                width="800"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+                alt="Скриншот игры: уровень с карточками дробей, панель статистики и зелёные совпадения"
+              />
+            </div>
+          </figure>
+        </article>
+
+        <article class="playable-launch" id="playable-demo-snake">
+          <div class="playable-launch__content">
+            <span class="playable-demo__badge">ДЕМО</span>
+            <h3 id="playable-demo-snake-title">Игра «Змейка»</h3>
+            <p class="playable-launch__lead">Быстрый ритм, ясные правила — ещё раунд, без установки</p>
+            <p class="playable-launch__text">
+              Светящиеся «точки» — еда: змейка растёт, счёт вверх, темп плавно ускоряется. Можно играть с клавиатуры, мышью или
+              жестами.
+            </p>
+            <h4 class="playable-launch__rules-title">Правила</h4>
+            <ul class="playable-launch__rules">
+              <li>Стрелки или <strong>W A S D</strong> — выбор направления; в игре — пауза и рестарт.</li>
+              <li>Нельзя врезаться в <strong>стену</strong> и в <strong>собственный хвост</strong>.</li>
+              <li>Рекорд сохраняется в этом браузере на устройстве.</li>
+            </ul>
+            <div class="playable-launch__actions">
+              <a
+                class="btn btn--primary"
+                href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Открыть игру</a>
+              <a href="#" class="btn btn--ghost" data-open-contact-messengers>Заказать игру для себя</a>
+            </div>
+          </div>
+          <figure class="playable-launch__figure">
+            <div class="playable-launch__shot--snake">
+              <img
+                class="playable-launch__img"
+                src="images/game-snake-preview.png"
+                width="800"
+                height="800"
+                loading="lazy"
+                decoding="async"
+                alt="Скриншот змейки: поле, счёт, пауза, золотая змейка и еда"
+              />
+            </div>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== ПОЧЕМУ УДОБНО РАБОТАТЬ ========== -->
+    <section class="section section--trust reveal" id="why-collaborate" aria-labelledby="trust-title">
+      <div class="section-head">
+        <h2 id="trust-title">Почему проекты со мной доходят до результата</h2>
+        <p class="trust-section__lead">Не про «правильный UX», а про ощущение, что всё движется и хочется дойти до конца</p>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card reveal reveal-delay-1">
+          <h3>Без перегруза</h3>
+          <p>Объясняю просто, без сложных терминов</p>
+        </article>
+        <article class="trust-card reveal reveal-delay-2">
+          <h3>Быстро в реальность</h3>
+          <p>Показываю рабочую версию уже на ранних этапах</p>
+        </article>
+        <article class="trust-card reveal reveal-delay-3">
+          <h3>Фокус на ощущении</h3>
+          <p>Важно не только как выглядит, но и как воспринимается</p>
+        </article>
+        <article class="trust-card reveal reveal-delay-4">
+          <h3>От идеи до продукта</h3>
+          <p>Помогаю собрать всё: от смысла до готового решения</p>
+        </article>
+      </div>
+    </section>
+
     <!-- ========== CTA ========== -->
     <section class="cta-final reveal" id="contact" aria-labelledby="cta-title">
       <div class="cta-final__inner">
         <h2 id="cta-title">Хотите такой проект для себя?</h2>
         <p>Сайт, интерактив или мини-сервис — соберём под вашу задачу и сделаем понятным для пользователя</p>
-        <div class="btn-row">
-          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
-          <a href="https://t.me/AldoshinaMaria" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        <div class="cta-final__messengers" role="group" aria-label="Связь в мессенджерах">
+          <a
+            class="cta-messenger-btn cta-messenger-btn--tg"
+            href="https://t.me/AldoshinaMaria"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="cta-messenger-btn__icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+            /></svg>
+            Telegram
+          </a>
+          <a
+            class="cta-messenger-btn cta-messenger-btn--max"
+            href="https://max.ru/u/f9LHodD0cOKpddYxojSuBUNzUpbBKh6ZGo0KobQ563KsNhLQScdoM0odQ4Y"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Я пользуюсь мессенджером MAX. Присоединяйся!"
+          >
+            <svg class="cta-messenger-btn__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.09-8.64A2 2 0 0 1 4.11 2h2.94a2 2 0 0 1 2 1.72c.10.6.2 1.2.3 1.7a2 2 0 0 1-.4 1.5l-1.2 1.2a16 16 0 0 0 6.2 6.2l1.1-1.1a2 2 0 0 1 1.5-.3c.5.1 1.1.2 1.7.3a2 2 0 0 1 1.7 1.8z"
+            /></svg>
+            Макс
+          </a>
+          <a
+            class="cta-messenger-btn cta-messenger-btn--vk"
+            href="https://vk.com/ma_digital_ai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="cta-messenger-btn__icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.029.346.025.36.02.373.025.588.012.41.013.644.009.915.004.98-.001 3.313-.003.73-.01.914-.007.433-.011.418-.014.403-.016.388-.021.374-.025.36-.03.345-.033.333c-.196 1.74-.616 2.933-1.516 3.833-.9.9-2.092 1.32-3.833 1.516l-.333.034-.346.029-.36.025-.373.02-.588.025-.41.012-.644.013-.915.009-.98.004-3.313-.001-.73-.003-.914-.01-.433-.007-.418-.011-.403-.014-.388-.016-.374-.021-.36-.025-.345-.03-.333-.033c-1.74-.196-2.933-.616-3.833-1.516-.9-.9-1.32-2.092-1.516-3.833l-.034-.333-.029-.346-.025-.36-.02-.373-.025-.588-.012-.41-.013-.644-.009-.915-.004-.98.001-3.313.003-.73.01-.914.007-.433.011-.418.014-.403.016-.388.021-.374.025-.36.03-.345.033-.333c.196-1.74.616-2.933 1.516-3.833.9-.9 2.092-1.32 3.833-1.516l.333-.034.346-.029.36-.025.373-.02.588-.025.41-.012.644-.013.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"
+            /></svg>
+            ВКонтакте
+          </a>
         </div>
         <p class="cta-final__hint">Отвечаю в течение дня</p>
         <p class="cta-final__hint cta-final__hint--soft">Можно просто написать идею — помогу разобраться</p>
       </div>
     </section>
-  </main>
+
+</main>
 
   <footer class="footer">
     <p>© Мария Алдошина · Портфолио digital-проектов · <span id="year"></span></p>
@@ -3900,9 +4344,11 @@
         <p class="modal__lead">Откроется мессенджер: Макс, Telegram или ВКонтакте</p>
         <div class="contact-messengers">
           <a
-            href="tel:+79533135350"
+            href="https://max.ru/u/f9LHodD0cOKpddYxojSuBUNzUpbBKh6ZGo0KobQ563KsNhLQScdoM0odQ4Y"
             class="btn btn--primary"
-            title="Связь в Макс по номеру +7 953 313-53-50"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Я пользуюсь мессенджером MAX. Присоединяйся!"
             >Написать в Макс</a>
           <a
             href="https://t.me/AldoshinaMaria"
@@ -4345,6 +4791,20 @@
       /* ----- Год в подвале ----- */
       document.getElementById('year').textContent = new Date().getFullYear();
 
+      /* ----- Шапка: плотнее фон и тень при прокрутке ----- */
+      var headerBar = document.querySelector('.header');
+      if (headerBar) {
+        function updateHeaderScrolled() {
+          if (window.scrollY > 20) {
+            headerBar.classList.add('is-scrolled');
+          } else {
+            headerBar.classList.remove('is-scrolled');
+          }
+        }
+        updateHeaderScrolled();
+        window.addEventListener('scroll', updateHeaderScrolled, { passive: true });
+      }
+
       /* ----- Печатающийся заголовок HERO: градиент на всём тексте с первой буквы (см. .hero__typed) ----- */
       var fullTitle = 'Создаю digital-проекты, которые хочется нажимать';
       var typedEl = document.getElementById('typed-text');
@@ -4431,52 +4891,6 @@
             document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
           });
         }
-      });
-
-      /* ----- Встраиваемые игры: фокус в iframe, стрелки не крутят страницу ----- */
-      var finePointerMq = window.matchMedia('(pointer: fine)');
-      document.querySelectorAll('.playable-demo__frame').forEach(function (wrap) {
-        var iframe = wrap.querySelector('iframe');
-        if (!iframe) return;
-        function focusGame() {
-          if (document.activeElement === iframe) return;
-          try {
-            iframe.focus({ preventScroll: true });
-          } catch (err) {
-            iframe.focus();
-          }
-        }
-        wrap.addEventListener(
-          'pointerdown',
-          function () {
-            focusGame();
-          },
-          true
-        );
-        wrap.addEventListener('pointerenter', function () {
-          if (!finePointerMq.matches) return;
-          focusGame();
-        });
-      });
-
-      /* ----- Игры: нет вспышки полосы прокрутки при первой отрисовке iframe ----- */
-      document.querySelectorAll('.playable-demo__frame iframe').forEach(function (ifr) {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          ifr.classList.add('playable-demo__iframe--ready');
-          return;
-        }
-        var done = false;
-        function reveal() {
-          if (done) return;
-          done = true;
-          ifr.classList.add('playable-demo__iframe--ready');
-        }
-        var backupMs = 4000;
-        var backupId = window.setTimeout(reveal, backupMs);
-        ifr.addEventListener('load', function () {
-          window.clearTimeout(backupId);
-          reveal();
-        });
       });
 
       /* ----- Modal: кейсы сайтов ----- */
