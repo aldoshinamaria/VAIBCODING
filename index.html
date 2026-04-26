@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Портфолио digital-креатора — сайты, интерактивы и мини-сервисы" />
-  <title>Мария Алдошина — Digital &amp; Vibe</title>
+  <meta name="description" content="Мария Алдошина — digital-проекты, которые хочется нажимать: сайты, интерактивы и мини-сервисы" />
+  <title>Мария Алдошина — сайты, мини-сервисы и интерактивы</title>
   <style>
     /* ========== CSS Variables — палитра ========== */
     :root {
@@ -572,6 +572,23 @@
       margin-top: var(--space-lg);
     }
 
+    /* Вторичная CTA в hero — без яркого градиента */
+    .hero .btn-row .btn--muted-hero {
+      color: rgba(245, 245, 247, 0.7);
+      font-weight: 500;
+      background: rgba(18, 18, 26, 0.5);
+      border: 1px solid rgba(167, 139, 250, 0.14);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: none;
+    }
+
+    .hero .btn-row .btn--muted-hero:hover {
+      color: var(--text);
+      border-color: rgba(167, 139, 250, 0.3);
+      background: rgba(26, 26, 36, 0.62);
+    }
+
     /* ========== HERO ========== */
     .hero {
       position: relative;
@@ -631,6 +648,192 @@
       font-size: clamp(0.95rem, 2vw, 1.125rem);
       color: var(--text-muted);
       max-width: 32ch;
+    }
+
+    .hero__micro {
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: rgba(184, 184, 199, 0.55);
+      max-width: 36rem;
+      margin-top: var(--space-sm);
+      margin-bottom: 0;
+    }
+
+    .hero__cta-hint {
+      font-size: 0.8125rem;
+      color: rgba(184, 184, 199, 0.72);
+      margin-top: var(--space-sm);
+      max-width: 28rem;
+      line-height: 1.45;
+    }
+
+    /* Соцдоказательство после hero */
+    .section--proof {
+      padding: var(--space-lg) var(--space-md);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .proof-strip {
+      display: grid;
+      gap: var(--space-md);
+      padding: var(--space-lg) var(--space-lg);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(167, 139, 250, 0.14);
+      background: linear-gradient(155deg, rgba(28, 28, 38, 0.55), rgba(14, 14, 20, 0.75));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset, 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .proof-strip__title {
+      font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-xs);
+      color: var(--text);
+    }
+
+    .proof-strip__lead {
+      margin: 0 0 var(--space-md);
+      font-size: 0.875rem;
+      color: rgba(184, 184, 199, 0.75);
+    }
+
+    .proof-strip__grid {
+      display: grid;
+      gap: var(--space-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (min-width: 640px) {
+      .proof-strip__grid {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: start;
+      }
+    }
+
+    .proof-strip__item {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+
+    .proof-strip__num {
+      flex-shrink: 0;
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1;
+      color: rgba(167, 139, 250, 0.9);
+      min-width: 2.25rem;
+    }
+
+    .proof-strip__text {
+      margin: 0;
+      font-size: 0.875rem;
+      color: rgba(245, 245, 247, 0.82);
+      line-height: 1.45;
+    }
+
+    .projects-after {
+      grid-column: 1 / -1;
+      margin: var(--space-md) 0 0;
+      padding: var(--space-md) var(--space-md);
+      text-align: center;
+      font-size: 0.9375rem;
+      color: rgba(184, 184, 199, 0.88);
+      line-height: 1.55;
+      max-width: 44rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section--how-start .section-head {
+      margin-bottom: var(--space-md);
+    }
+
+    .how-start__steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-md);
+      max-width: 32rem;
+    }
+
+    @media (min-width: 768px) {
+      .how-start__steps {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: none;
+        gap: var(--space-lg);
+      }
+    }
+
+    .how-start__step {
+      position: relative;
+      padding: var(--space-md);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(167, 139, 250, 0.12);
+      background: rgba(22, 22, 32, 0.45);
+    }
+
+    .how-start__step-num {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 0.35rem;
+    }
+
+    .how-start__step strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .how-start__step p {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .how-start__insight {
+      margin: var(--space-lg) auto 0;
+      max-width: 36rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: rgba(184, 184, 199, 0.78);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .offers-cta__reassurance {
+      width: 100%;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: rgba(184, 184, 199, 0.72);
+      margin: var(--space-xs) 0 0;
+      line-height: 1.4;
+    }
+
+    .cta-final__hint {
+      text-align: center;
+      font-size: 0.8125rem;
+      color: rgba(184, 184, 199, 0.75);
+      margin-top: var(--space-sm);
+      margin-bottom: 0;
+    }
+
+    .cta-final__hint--soft {
+      margin-top: 0.35rem;
+      color: rgba(184, 184, 199, 0.72);
     }
 
     /* Floating: многослойная product-композиция */
@@ -1728,6 +1931,17 @@
       line-height: 1.55;
     }
 
+    .projects-sites-cluster__lead a {
+      color: var(--accent-2);
+      text-decoration: underline;
+      text-decoration-color: rgba(167, 139, 250, 0.45);
+      text-underline-offset: 0.18em;
+    }
+
+    .projects-sites-cluster__lead a:hover {
+      color: var(--accent-3);
+    }
+
     .sites-cases-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -1958,6 +2172,10 @@
 
       .process-step:nth-child(3) {
         margin-left: 0.25rem;
+      }
+
+      .process-step:nth-child(4) {
+        margin-left: 1.5rem;
       }
 
       .process-step::before {
@@ -2908,17 +3126,21 @@
     <!-- ========== HERO ========== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__copy">
-        <p class="label">Digital portfolio</p>
+        <p class="label">Портфолио digital-проектов</p>
         <h1 id="hero-title" class="hero__title">
           <span id="typed-text" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
-          Сайты, интерактивы и мини-сервисы — от идеи до визуально сильного продукта
+          Сайты, интерактивы и мини-сервисы, которые удерживают внимание и превращают идею в рабочий продукт
+        </p>
+        <p class="hero__micro">
+          Подходит для: экспертов, педагогов, малого бизнеса и проектов, которым важно внимание и вовлечение
         </p>
         <div class="btn-row">
-          <a href="#projects" class="btn btn--primary">Смотреть проекты</a>
-          <a href="#contact" class="btn btn--ghost">Связаться</a>
+          <a href="#projects" class="btn btn--muted-hero">Смотреть проекты</a>
+          <a href="#contact" class="btn btn--primary">Обсудить проект</a>
         </div>
+        <p class="hero__cta-hint">Можно просто написать идею — помогу разобраться</p>
       </div>
       <div class="hero-visual" id="hero-visual" aria-hidden="true">
         <div class="float-card float-card--layer-back">
@@ -2950,45 +3172,68 @@
       </div>
     </section>
 
+    <!-- ========== Социальное доказательство ========== -->
+    <section class="section section--proof reveal" id="proof" aria-labelledby="proof-title">
+      <div class="proof-strip">
+        <h2 id="proof-title" class="proof-strip__title">Что уже сделано</h2>
+        <p class="proof-strip__lead">Живые кейсы — от образования до бизнеса, всё можно открыть и «потрогать»</p>
+        <ul class="proof-strip__grid">
+          <li class="proof-strip__item">
+            <span class="proof-strip__num" aria-hidden="true">5+</span>
+            <p class="proof-strip__text">проектов в портфолио — и список растёт</p>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__num" aria-hidden="true">•</span>
+            <p class="proof-strip__text">сайты, игры, боты и мини-сервисы</p>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__num" aria-hidden="true">•</span>
+            <p class="proof-strip__text">проекты для образования и бизнеса</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ========== Что я могу сделать для вас ========== -->
     <section class="section section--offers" id="offers" aria-labelledby="offers-title">
       <div class="section-head reveal">
         <p class="label">Услуги</p>
         <h2 id="offers-title">Что я могу сделать для вас</h2>
-        <p>Форматы работы — от посадочной страницы до бота и упаковки идеи</p>
+        <p>От лендинга до бота и упаковки идеи — в форматах, которые хочется потыкать и показать кому-нибудь ещё</p>
       </div>
       <div class="offers-grid">
         <article class="offer-card reveal reveal-delay-1">
           <div class="offer-card__inner">
             <div class="offer-card__index">01</div>
             <h3 class="offer-card__title">Сайт / лендинг</h3>
-            <p class="offer-card__text">Создаю сайты, которые объясняют вашу ценность и приводят клиента к заявке</p>
+            <p class="offer-card__text">Сайт, который понятно показывает идею и помогает клиенту сделать следующий шаг</p>
           </div>
         </article>
         <article class="offer-card reveal reveal-delay-2">
           <div class="offer-card__inner">
             <div class="offer-card__index">02</div>
             <h3 class="offer-card__title">Мини-приложение / интерактив</h3>
-            <p class="offer-card__text">Делаю интерактивы, которые удерживают внимание и вовлекают в ваш продукт</p>
+            <p class="offer-card__text">Интерактивы и мини-сервисы, которые вовлекают и удерживают внимание</p>
           </div>
         </article>
         <article class="offer-card reveal reveal-delay-3">
           <div class="offer-card__inner">
             <div class="offer-card__index">03</div>
             <h3 class="offer-card__title">VK-бот</h3>
-            <p class="offer-card__text">Создаю VK-ботов, которые отвечают за вас, помогают выбрать и собирают заявки</p>
+            <p class="offer-card__text">Боты, которые помогают отвечать, консультировать и не терять клиентов</p>
           </div>
         </article>
         <article class="offer-card reveal reveal-delay-4">
           <div class="offer-card__inner">
             <div class="offer-card__index">04</div>
             <h3 class="offer-card__title">Упаковка проекта</h3>
-            <p class="offer-card__text">Помогаю превратить идею в понятный digital-продукт, который можно показать и продать</p>
+            <p class="offer-card__text">Помогаю превратить идею в понятный и визуально сильный продукт</p>
           </div>
         </article>
       </div>
       <div class="offers-cta reveal reveal-delay-5">
         <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+        <p class="offers-cta__reassurance">Можно просто написать идею — помогу разобраться</p>
         <p class="offers-cta__hint">Отвечаю в течение дня</p>
       </div>
     </section>
@@ -3002,7 +3247,7 @@
           <span>mini apps</span><span class="dot">•</span>
           <span>AI tools</span><span class="dot">•</span>
           <span>landing pages</span><span class="dot">•</span>
-          <span>digital vibe</span><span class="dot">•</span>
+          <span>удержание и сценарий</span><span class="dot">•</span>
         </div>
         <div class="marquee__content" aria-hidden="true">
           <span>interactive</span><span class="dot">•</span>
@@ -3010,7 +3255,7 @@
           <span>mini apps</span><span class="dot">•</span>
           <span>AI tools</span><span class="dot">•</span>
           <span>landing pages</span><span class="dot">•</span>
-          <span>digital vibe</span><span class="dot">•</span>
+          <span>удержание и сценарий</span><span class="dot">•</span>
         </div>
       </div>
     </div>
@@ -3020,14 +3265,14 @@
       <div class="section-head">
         <p class="label">Работы</p>
         <h2 id="projects-title">Избранные проекты</h2>
-        <p>Продуктовая подача — не просто скриншоты, а ощущение сервиса</p>
+        <p>Живые превью: сразу видно, как продукт помогает понять суть и удерживает до следующего экрана</p>
       </div>
       <div class="projects-grid">
         <div class="projects-sites-cluster reveal">
           <header class="projects-sites-cluster__head">
             <h3 class="projects-sites-cluster__title">Сайты / лендинги</h3>
             <p class="projects-sites-cluster__lead">
-              Создаю сайты под задачи: от образовательных до бизнеса. Каждый кейс — с фокусом на понятность, доверие и заявки
+              Три разных истории — образование, услуги и заказы. В каждой: ясная подача, доверие и хочется нажать дальше
             </p>
           </header>
           <div class="sites-cases-grid">
@@ -3050,11 +3295,11 @@
               </div>
               <div class="project-card__body">
                 <h3>Учитель и нейросети</h3>
-                <p>Сайт для педагогов, который показывает, как нейросети помогают экономить время и готовить материалы быстрее</p>
+                <p>Сайт для педагогов, который показывает, как нейросети упрощают работу и экономят время</p>
                 <div class="tags">
                   <span class="tag">AI</span>
                   <span class="tag">EDUCATION</span>
-                  <span class="tag">LANDING</span>
+                  <span class="tag">САЙТ</span>
                 </div>
                 <div class="project-card__actions">
                   <button
@@ -3092,10 +3337,10 @@
               </div>
               <div class="project-card__body">
                 <h3>Грузоперевозки</h3>
-                <p>Лендинг для частного водителя: показывает услуги, преимущества и ведёт клиента к заявке</p>
+                <p>Лендинг, который показывает услуги, вызывает доверие и мягко подводит к следующему шагу</p>
                 <div class="tags">
                   <span class="tag">BUSINESS</span>
-                  <span class="tag">LANDING</span>
+                  <span class="tag">САЙТ</span>
                   <span class="tag">SERVICE</span>
                 </div>
                 <div class="project-card__actions">
@@ -3134,7 +3379,7 @@
               </div>
               <div class="project-card__body">
                 <h3>Домашний кондитер</h3>
-                <p>Сайт для заказов десертов: помогает показать работы, вызвать доверие и привести клиента к заказу</p>
+                <p>Сайт, который показывает работы и помогает клиенту захотеть заказать</p>
                 <div class="tags">
                   <span class="tag">FOOD</span>
                   <span class="tag">PORTFOLIO</span>
@@ -3161,53 +3406,14 @@
           <a href="#contact" class="btn btn--primary sites-mini-cta">Обсудить проект</a>
         </div>
 
-        <article class="project-card project-card--pair reveal reveal-delay-1">
-          <div class="project-card__preview" aria-hidden="true">
-            <div class="preview-fox">
-              <div class="preview-fox__dialog">
-                <div class="preview-fox__character" aria-hidden="true">
-                  <img
-                    class="preview-fox__img"
-                    src="assets/lisichka.png?v=3"
-                    alt=""
-                    width="200"
-                    height="200"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <p class="preview-fox__bubble">Привет! Я рядом — расскажи, как прошёл день ✨</p>
-              </div>
-            </div>
-          </div>
-          <div class="project-card__body">
-            <h3>Лисичка рядом</h3>
-            <p>Мини-приложение для детей, которым сложно сказать о проблеме: поддерживает в диалоге и помогает вовремя обратиться за помощью</p>
-            <div class="tags">
-              <span class="tag">app</span>
-              <span class="tag">interface</span>
-              <span class="tag">experience</span>
-            </div>
-            <div class="project-card__actions">
-              <button
-                type="button"
-                class="btn btn--ghost"
-                id="lisichka-detail-open"
-                aria-haspopup="dialog"
-                aria-controls="modal-lisichka"
-              >Подробнее</button>
-              <button
-                type="button"
-                class="btn btn--primary"
-                id="lisichka-demo-open"
-                aria-haspopup="dialog"
-                aria-controls="modal-lisichka-demo"
-              >Открыть демо</button>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card project-card--pair project-card--fcalc reveal reveal-delay-2">
+        <div class="projects-sites-cluster reveal">
+          <header class="projects-sites-cluster__head">
+            <h3 class="projects-sites-cluster__title">Мини-сервисы</h3>
+            <p class="projects-sites-cluster__lead">
+              Когда важно, чтобы с первого экрана было ясно «зачем это» и захотелось разобраться глубже
+            </p>
+          </header>
+        <article class="project-card project-card--pair project-card--fcalc reveal reveal-delay-1">
           <div class="project-card__preview project-card__preview--fcalc" aria-hidden="true">
             <div class="preview-fcalc">
               <div class="preview-fcalc__hero">
@@ -3265,11 +3471,11 @@
           </div>
           <div class="project-card__body">
             <h3>Семейный калькулятор</h3>
-            <p>Мини-сервис, который помогает семье видеть расходы, планировать бюджет и быстрее понимать, куда уходят деньги</p>
+            <p>Мини-сервис, который помогает быстро увидеть, куда уходят деньги</p>
             <div class="tags">
               <span class="tag">FINANCE</span>
               <span class="tag">FAMILY</span>
-              <span class="tag">WEB APP</span>
+              <span class="tag">ВЕБ-СЕРВИС</span>
             </div>
             <div class="project-card__actions">
               <button
@@ -3288,17 +3494,86 @@
             </div>
           </div>
         </article>
+        </div>
+
+        <div class="projects-sites-cluster reveal">
+          <header class="projects-sites-cluster__head">
+            <h3 class="projects-sites-cluster__title">Социальные проекты</h3>
+            <p class="projects-sites-cluster__lead">
+              Тёплый тон и бережный сценарий — чтобы человек не остался один с тревогой
+            </p>
+          </header>
+        <article class="project-card project-card--pair reveal reveal-delay-2">
+          <div class="project-card__preview" aria-hidden="true">
+            <div class="preview-fox">
+              <div class="preview-fox__dialog">
+                <div class="preview-fox__character" aria-hidden="true">
+                  <img
+                    class="preview-fox__img"
+                    src="assets/lisichka.png?v=3"
+                    alt=""
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p class="preview-fox__bubble">Привет! Я рядом — расскажи, как прошёл день ✨</p>
+              </div>
+            </div>
+          </div>
+          <div class="project-card__body">
+            <h3>Лисичка рядом</h3>
+            <p>Мини-приложение, которое помогает ребёнку начать разговор и не остаться один на один с проблемой</p>
+            <div class="tags">
+              <span class="tag">app</span>
+              <span class="tag">interface</span>
+              <span class="tag">experience</span>
+            </div>
+            <div class="project-card__actions">
+              <button
+                type="button"
+                class="btn btn--ghost"
+                id="lisichka-detail-open"
+                aria-haspopup="dialog"
+                aria-controls="modal-lisichka"
+              >Подробнее</button>
+              <button
+                type="button"
+                class="btn btn--primary"
+                id="lisichka-demo-open"
+                aria-haspopup="dialog"
+                aria-controls="modal-lisichka-demo"
+              >Открыть демо</button>
+            </div>
+          </div>
+        </article>
+        </div>
+
+        <div class="projects-sites-cluster reveal">
+          <header class="projects-sites-cluster__head">
+            <h3 class="projects-sites-cluster__title">Интерактивы и игры</h3>
+            <p class="projects-sites-cluster__lead">
+              <strong>Игра по дробям</strong> — интерактив, в котором обучение превращается в процесс, в который хочется вернуться. <a href="#playable-demo">Живое демо ниже</a>.
+            </p>
+          </header>
+        </div>
+        <p class="projects-after reveal">
+          Каждый проект — это не просто визуал, а понятная логика, которую можно применить под вашу задачу
+        </p>
       </div>
     </section>
 
     <!-- ========== ИНТЕРАКТИВНАЯ ИГРА (ДРОБИ) ========== -->
     <section class="section section--playable reveal" id="playable-demo" aria-labelledby="playable-demo-title">
       <div class="section-head">
-        <h2 id="playable-demo-title">Интерактивная игра</h2>
-        <p>Учебная игра по дробям, которую можно попробовать прямо на сайте</p>
+        <h2 id="playable-demo-title">Интерактивные проекты</h2>
+        <p>
+          Игры и мини-сервисы, которые вовлекают и удерживают внимание. Ниже — <strong>игра по дробям</strong>: обучение, в процесс которого хочется вернуться.
+        </p>
       </div>
       <div class="playable-demo">
-        <span class="playable-demo__badge">PLAYABLE DEMO</span>
+        <span class="playable-demo__badge">ДЕМО</span>
         <div class="playable-demo__frame">
           <iframe
             title="Игра: дроби"
@@ -3323,14 +3598,11 @@
     <!-- ========== ИНТЕРАКТИВНАЯ ИГРА (ЗМЕЙКА) ========== -->
     <section class="section section--playable reveal" id="playable-demo-snake" aria-labelledby="playable-demo-snake-title">
       <div class="section-head">
-        <h2 id="playable-demo-snake-title">Интерактивная игра</h2>
-        <p>
-          Мини-игра «Змейка: быстрый вызов», которую можно попробовать прямо на сайте — классическая змейка в современной
-          упаковке, управление стрелками или WASD, лучший результат сохраняется в браузере
-        </p>
+        <h2 id="playable-demo-snake-title">Демо: змейка</h2>
+        <p>Быстрый ритм, понятные правила и хочется сыграть ещё раунд — прямо здесь, без установки</p>
       </div>
       <div class="playable-demo">
-        <span class="playable-demo__badge">PLAYABLE DEMO</span>
+        <span class="playable-demo__badge">ДЕМО</span>
         <div class="playable-demo__frame">
           <iframe
             title="Игра: змейка"
@@ -3352,38 +3624,12 @@
       </div>
     </section>
 
-    <!-- ========== ПОЧЕМУ УДОБНО РАБОТАТЬ ========== -->
-    <section class="section section--trust reveal" id="why-collaborate" aria-labelledby="trust-title">
-      <div class="section-head">
-        <h2 id="trust-title">Почему со мной удобно работать</h2>
-        <p>Я не просто делаю сайты — я помогаю превратить идею в понятный и работающий продукт</p>
-      </div>
-      <div class="trust-grid">
-        <article class="trust-card reveal reveal-delay-1">
-          <h3>Понятно и без сложностей</h3>
-          <p>Объясняю простым языком, без перегрузки техническими деталями</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-2">
-          <h3>Быстрый результат</h3>
-          <p>Можно увидеть рабочий прототип уже на первых этапах</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-3">
-          <h3>Фокус на задаче</h3>
-          <p>Делаю не просто красиво, а так, чтобы это решало вашу задачу</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-4">
-          <h3>Сопровождение</h3>
-          <p>Помогаю на всех этапах — от идеи до запуска</p>
-        </article>
-      </div>
-    </section>
-
     <!-- ========== ПОДХОД ========== -->
     <section class="section section--process reveal" id="process" aria-labelledby="process-title">
       <div class="section-head">
         <p class="label">Процесс</p>
         <h2 id="process-title">Как я работаю</h2>
-        <p>От смысла до готового продукта — без лишней суеты</p>
+        <p>Четыре опоры — от эмоции до рабочего продукта, без канцелярского сценария</p>
       </div>
       <div class="process-wrap">
         <div class="process">
@@ -3392,23 +3638,56 @@
               <span class="process-num__big">01</span>
               <span class="process-num__label">Смысл</span>
             </div>
-            <p>Сначала определяю, что именно должен чувствовать и делать пользователь</p>
+            <p>Определяю, что человек должен почувствовать и сделать</p>
           </div>
           <div class="process-step reveal reveal-delay-1">
             <div class="process-num">
               <span class="process-num__big">02</span>
-              <span class="process-num__label">Визуал и логика</span>
+              <span class="process-num__label">Вовлечение</span>
             </div>
-            <p>Собираю интерфейс, который выглядит современно и ведёт человека по сценарию</p>
+            <p>Собираю интерфейс, который удерживает внимание</p>
           </div>
           <div class="process-step reveal reveal-delay-2">
             <div class="process-num">
               <span class="process-num__big">03</span>
-              <span class="process-num__label">Готовый продукт</span>
+              <span class="process-num__label">Логика</span>
             </div>
-            <p>Превращаю идею в работающий сайт или интерактив, который можно показать и использовать</p>
+            <p>Продумываю путь пользователя без лишних действий</p>
+          </div>
+          <div class="process-step reveal reveal-delay-3">
+            <div class="process-num">
+              <span class="process-num__big">04</span>
+              <span class="process-num__label">Результат</span>
+            </div>
+            <p>Собираю рабочий продукт, который можно использовать сразу</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ========== ПОЧЕМУ УДОБНО РАБОТАТЬ ========== -->
+    <section class="section section--trust reveal" id="why-collaborate" aria-labelledby="trust-title">
+      <div class="section-head">
+        <h2 id="trust-title">Почему проекты со мной доходят до результата</h2>
+        <p>Не про «правильный UX», а про ощущение, что всё движется и хочется дойти до конца</p>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card reveal reveal-delay-1">
+          <h3>Без перегруза</h3>
+          <p>Объясняю просто, без сложных терминов</p>
+        </article>
+        <article class="trust-card reveal reveal-delay-2">
+          <h3>Быстро в реальность</h3>
+          <p>Показываю рабочую версию уже на ранних этапах</p>
+        </article>
+        <article class="trust-card reveal reveal-delay-3">
+          <h3>Фокус на ощущении</h3>
+          <p>Важно не только как выглядит, но и как воспринимается</p>
+        </article>
+        <article class="trust-card reveal reveal-delay-4">
+          <h3>От идеи до продукта</h3>
+          <p>Помогаю собрать всё: от смысла до готового решения</p>
+        </article>
       </div>
     </section>
 
@@ -3420,12 +3699,13 @@
       </div>
       <div class="about-block reveal reveal-delay-1">
         <p class="about-text">
-          Я Мария Алдошина — создаю digital-проекты, в которых соединяются идея, визуал и интерактив. Мне важно делать не просто красиво, а так, чтобы сайт или сервис вызывал интерес, удерживал внимание и работал на задачу.
+          Я Мария Алдошина — создаю digital-проекты, в которых соединяются идея, визуал и интерактив.
+          Мне важно, чтобы продукт не просто выглядел красиво, а удерживал внимание и работал.
         </p>
         <div class="about-status">
           <div class="about-status__hero">
-            <strong>Digital creator</strong>
-            <p>Mini apps · interactive · landing — собираю цифровые продукты с характером и ясным сценарием.</p>
+            <strong>Digital creator / vibe coder</strong>
+            <p>Собираю сайты, интерактивы и мини-сервисы с продуманной логикой и ощущением продукта</p>
           </div>
           <div class="about-badges">
             <span class="about-badge-pill">Vibe coder</span>
@@ -3440,24 +3720,51 @@
       </div>
     </section>
 
+    <!-- ========== Как начать ========== -->
+    <section class="section section--how-start reveal" id="how-start" aria-labelledby="how-start-title">
+      <div class="section-head">
+        <h2 id="how-start-title">Как начать</h2>
+      </div>
+      <ol class="how-start__steps">
+        <li class="how-start__step">
+          <span class="how-start__step-num">Шаг 1</span>
+          <strong>Напишите мне</strong>
+          <p>Коротко — в Telegram или на почту</p>
+        </li>
+        <li class="how-start__step">
+          <span class="how-start__step-num">Шаг 2</span>
+          <strong>Опишите задачу</strong>
+          <p>Что за продукт, для кого, что хотите на выходе</p>
+        </li>
+        <li class="how-start__step">
+          <span class="how-start__step-num">Шаг 3</span>
+          <strong>Я предложу решение и формат</strong>
+          <p>Варианты и следующий шаг — без давления</p>
+        </li>
+      </ol>
+      <p class="how-start__insight">
+        90% проектов можно собрать проще, чем кажется — главное правильно выстроить структуру
+      </p>
+    </section>
+
     <!-- ========== CTA ========== -->
     <section class="cta-final reveal" id="contact" aria-labelledby="cta-title">
       <div class="cta-final__inner">
-        <p class="cta-eyebrow">Открыта к новым проектам</p>
-        <p class="label" style="color:var(--accent-3);margin-bottom:var(--space-sm);">Связь</p>
-        <h2 id="cta-title">Нужен сайт, интерактив или мини-сервис, который запомнят?</h2>
-        <p>Могу помочь придумать, упаковать и собрать проект с характером</p>
+        <h2 id="cta-title">Хотите такой проект для себя?</h2>
+        <p>Сайт, интерактив или мини-сервис — соберём под вашу задачу и сделаем понятным для пользователя</p>
         <div class="btn-row">
           <!-- Замените YOUR_TELEGRAM на ваш юзернейм без @ -->
           <a href="https://t.me/YOUR_TELEGRAM" class="btn btn--primary">Обсудить проект</a>
           <a href="https://t.me/YOUR_TELEGRAM" class="btn btn--ghost">Написать в Telegram</a>
         </div>
+        <p class="cta-final__hint">Отвечаю в течение дня</p>
+        <p class="cta-final__hint cta-final__hint--soft">Можно просто написать идею — помогу разобраться</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>© Мария Алдошина · Digital portfolio · <span id="year"></span></p>
+    <p>© Мария Алдошина · Портфолио digital-проектов · <span id="year"></span></p>
   </footer>
 
   <!-- Modal: Лисичка рядом — подробнее -->
@@ -3525,7 +3832,7 @@
 
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
-          <p class="modal__cta-text">Я могу адаптировать идею под вашу задачу и собрать решение под ваш формат</p>
+          <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
           <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
         </div>
       </div>
@@ -3587,8 +3894,8 @@
         </section>
 
         <div class="modal__cta">
-          <h3 class="modal__cta-title">Нужен похожий мини-сервис?</h3>
-          <p class="modal__cta-text">Я могу адаптировать идею под вашу задачу и собрать удобный digital-инструмент</p>
+          <h3 class="modal__cta-title">Нужен похожий проект?</h3>
+          <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
           <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
         </div>
       </div>
@@ -3619,7 +3926,7 @@
         </section>
         <section class="modal__section" aria-labelledby="modal-site-uchitel-solution">
           <h3 class="modal__section-label" id="modal-site-uchitel-solution">Решение</h3>
-          <p>Лендинг с ясной структурой: суть сервиса, выгоды для учителя, примеры сценариев и аккуратный призыв к действию</p>
+          <p>Лендинг с ясной структурой: суть сервиса, выгоды для учителя, примеры сценариев и понятное предложение углубиться дальше</p>
         </section>
         <section class="modal__benefits" aria-labelledby="modal-site-uchitel-benefits">
           <h3 class="modal__section-label" id="modal-site-uchitel-benefits">Как это помогает клиенту</h3>
@@ -3644,8 +3951,8 @@
           <p>Готовый сайт, демо на GitHub Pages</p>
         </section>
         <div class="modal__cta">
-          <h3 class="modal__cta-title">Нужен похожий сайт?</h3>
-          <p class="modal__cta-text">Соберу лендинг или многостраничный сайт под ваш продукт, аудиторию и цели</p>
+          <h3 class="modal__cta-title">Нужен похожий проект?</h3>
+          <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
           <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
         </div>
       </div>
@@ -3669,10 +3976,10 @@
       <div class="modal__content">
         <p class="label">Проект</p>
         <h2 class="modal__title" id="modal-site-gruz-title">Грузоперевозки</h2>
-        <p class="modal__lead">Лендинг частного водителя под заявки и доверие</p>
+        <p class="modal__lead">Лендинг частного водителя: доверие и понятный следующий шаг</p>
         <section class="modal__section" aria-labelledby="modal-site-gruz-task">
           <h3 class="modal__section-label" id="modal-site-gruz-task">Задача</h3>
-          <p>Усилить доверие к частному перевозчику и довести клиента до заявки: услуги, преимущества и понятный контакт</p>
+          <p>Усилить доверие к частному перевозчику и мягко подвести к контакту: услуги, преимущества и ясный способ связи</p>
         </section>
         <section class="modal__section" aria-labelledby="modal-site-gruz-solution">
           <h3 class="modal__section-label" id="modal-site-gruz-solution">Решение</h3>
@@ -3683,7 +3990,7 @@
           <ul class="modal__benefits-list">
             <li>клиент за секунды понимает формат работы и географию</li>
             <li>меньше «левых» звонков — отсеиваются нецелевые обращения</li>
-            <li>выше конверсия в заявку за счёт ясного следующего шага</li>
+            <li>выше отклик за счёт ясного следующего шага</li>
             <li>профессиональное первое впечатление вместо голого мессенджера</li>
           </ul>
         </section>
@@ -3701,8 +4008,8 @@
           <p>Готовый сайт, демо на GitHub Pages</p>
         </section>
         <div class="modal__cta">
-          <h3 class="modal__cta-title">Нужен похожий сайт?</h3>
-          <p class="modal__cta-text">Соберу лендинг или многостраничный сайт под ваш продукт, аудиторию и цели</p>
+          <h3 class="modal__cta-title">Нужен похожий проект?</h3>
+          <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
           <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
         </div>
       </div>
@@ -3729,7 +4036,7 @@
         <p class="modal__lead">Сайт для заказов десертов с акцентом на доверие и визуал</p>
         <section class="modal__section" aria-labelledby="modal-site-konditer-task">
           <h3 class="modal__section-label" id="modal-site-konditer-task">Задача</h3>
-          <p>Показать качество работ, снять страх заказа у домашнего мастера и привести клиента к оформлению заявки</p>
+          <p>Показать качество работ, снять страх заказа у домашнего мастера и помочь клиенту спокойно оформить заказ</p>
         </section>
         <section class="modal__section" aria-labelledby="modal-site-konditer-solution">
           <h3 class="modal__section-label" id="modal-site-konditer-solution">Решение</h3>
@@ -3758,8 +4065,8 @@
           <p>Готовый сайт, демо на GitHub Pages</p>
         </section>
         <div class="modal__cta">
-          <h3 class="modal__cta-title">Нужен похожий сайт?</h3>
-          <p class="modal__cta-text">Соберу лендинг или многостраничный сайт под ваш продукт, аудиторию и цели</p>
+          <h3 class="modal__cta-title">Нужен похожий проект?</h3>
+          <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
           <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
         </div>
       </div>
@@ -3903,7 +4210,7 @@
         if (i < fullTitle.length) {
           typedEl.textContent += fullTitle.charAt(i);
           i++;
-          setTimeout(typeChar, i < 12 ? 42 : 28);
+          setTimeout(typeChar, i < 12 ? 72 : 50);
         } else {
           applyHeroAccentAndHideCursor();
         }
@@ -3912,7 +4219,7 @@
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         applyHeroAccentAndHideCursor();
       } else {
-        setTimeout(typeChar, 400);
+        setTimeout(typeChar, 520);
       }
 
       /* ----- Лёгкий parallax всей композиции (не ломает float-анимации карточек) ----- */
