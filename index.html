@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" id="meta-theme-color" content="#0B0B0F" />
-  <meta name="description" content="Мария Алдошина — digital-проекты, которые хочется нажимать: сайты, интерактивы и мини-сервисы" />
+  <meta name="description" content="Мария Алдошина: сайты, боты, интерактивы — от идеи до работающего продукта. Кейсы, ориентиры по бюджету, бриф в мессенджере" />
   <title>Мария Алдошина — сайты, мини-сервисы и интерактивы</title>
   <script>
     (function () {
@@ -109,9 +109,9 @@
     html[data-theme="light"] .section--trust,
     html[data-theme="light"] .section--process,
     html[data-theme="light"] .section--about,
-    html[data-theme="light"] .section--how-start,
-    html[data-theme="light"] .section--proof,
-    html[data-theme="light"] .section--offers {
+    html[data-theme="light"] .section--offers,
+    html[data-theme="light"] .section--quickstart,
+    html[data-theme="light"] .section--pricing {
       background: transparent;
     }
 
@@ -849,12 +849,6 @@
       width: 100%;
     }
 
-    @media (min-width: 1100px) {
-      .section--offers .offers-section__lead {
-        white-space: nowrap;
-      }
-    }
-
     .offers-grid {
       display: grid;
       gap: var(--space-md);
@@ -872,6 +866,647 @@
         grid-template-columns: repeat(4, 1fr);
         gap: var(--space-md);
       }
+    }
+
+    .section-head__narrow {
+      max-width: min(100%, 42rem);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0.5rem;
+    }
+
+    /* ========== Блок: стоимость (премиум-тарифы) ========== */
+    .section--pricing {
+      position: relative;
+    }
+
+    .section--pricing .pricing-intro {
+      max-width: min(100%, 40rem);
+      margin: 0.5rem auto 0;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .pricing-tiers {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: var(--space-xl);
+      align-items: stretch;
+      padding: 0.5rem 0 0.5rem;
+    }
+
+    @media (min-width: 640px) and (max-width: 899px) {
+      .pricing-tiers {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+
+      .pricing-tiers .pricing-card--featured {
+        grid-column: 1 / -1;
+        max-width: 28rem;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .pricing-tiers {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        align-items: center;
+        padding: 1.25rem 0;
+      }
+    }
+
+    .pricing-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .pricing-card__inner {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.65rem 1.4rem 1.5rem;
+      border-radius: 22px;
+      min-height: 100%;
+      background:
+        linear-gradient(145deg, rgba(56, 42, 88, 0.22) 0%, transparent 45%),
+        linear-gradient(168deg, rgba(22, 20, 34, 0.92) 0%, rgba(12, 11, 20, 0.96) 100%);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 20px 48px rgba(0, 0, 0, 0.35),
+        0 0 0 0 rgba(139, 92, 246, 0);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      transition:
+        transform 0.3s var(--ease-out),
+        box-shadow 0.3s var(--ease-out),
+        border-color 0.3s var(--ease-out),
+        background 0.3s var(--ease-out);
+    }
+
+    .pricing-card:hover .pricing-card__inner {
+      transform: translateY(-6px);
+      border-color: rgba(186, 168, 255, 0.35);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 28px 56px rgba(0, 0, 0, 0.42),
+        0 0 48px rgba(99, 102, 241, 0.14);
+    }
+
+    @media (min-width: 900px) {
+      .pricing-card--featured .pricing-card__inner {
+        transform: scale(1.05);
+        background:
+          linear-gradient(155deg, rgba(76, 58, 130, 0.35) 0%, rgba(30, 24, 52, 0.55) 40%, transparent 70%),
+          linear-gradient(168deg, rgba(32, 28, 52, 0.96) 0%, rgba(16, 14, 28, 0.99) 100%);
+        border-color: rgba(192, 168, 255, 0.45);
+        box-shadow:
+          0 0 0 1px rgba(167, 139, 250, 0.12) inset,
+          0 24px 56px rgba(0, 0, 0, 0.45),
+          0 0 64px rgba(124, 58, 237, 0.18);
+      }
+
+      .pricing-card--featured:hover .pricing-card__inner {
+        transform: scale(1.05) translateY(-8px);
+        box-shadow:
+          0 0 0 1px rgba(196, 181, 253, 0.15) inset,
+          0 32px 64px rgba(0, 0, 0, 0.48),
+          0 0 72px rgba(124, 58, 237, 0.28);
+      }
+    }
+
+    @media (max-width: 899px) {
+      .pricing-card--featured .pricing-card__inner {
+        transform: none;
+        border-color: rgba(192, 168, 255, 0.4);
+        box-shadow:
+          0 0 0 1px rgba(167, 139, 250, 0.1) inset,
+          0 22px 48px rgba(0, 0, 0, 0.4),
+          0 0 40px rgba(124, 58, 237, 0.15);
+      }
+
+      .pricing-card--featured:hover .pricing-card__inner {
+        transform: translateY(-5px);
+      }
+    }
+
+    .pricing-card__badge {
+      position: absolute;
+      top: 0.35rem;
+      left: 50%;
+      z-index: 2;
+      transform: translateX(-50%) translateY(-50%);
+      padding: 0.38rem 0.95rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f4f0ff;
+      background: linear-gradient(120deg, #6d28d9 0%, #4f46e5 50%, #6366f1 100%);
+      border-radius: 999px;
+      box-shadow: 0 4px 18px rgba(79, 70, 229, 0.45);
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .pricing-card--featured {
+      padding-top: 0.5rem;
+    }
+
+    .pricing-card__name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0 0 0.35rem;
+      text-align: center;
+    }
+
+    .pricing-card__tagline {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin: 0 0 0.2rem;
+      text-align: center;
+    }
+
+    .pricing-card__list {
+      list-style: none;
+      margin: 1rem 0 0.75rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .pricing-card__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      color: rgba(200, 200, 215, 0.92);
+    }
+
+    .pricing-card__check {
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      color: var(--accent-2);
+      opacity: 0.9;
+    }
+
+    .pricing-card__price {
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0.25rem 0 0.25rem;
+      text-align: center;
+      background: linear-gradient(100deg, var(--accent-2) 0%, var(--accent-3) 55%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pricing-card__price-note {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      text-align: center;
+    }
+
+    .pricing-card__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: auto;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.87rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s, filter 0.25s, background 0.25s;
+    }
+
+    .pricing-card__cta--ghost {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(167, 139, 250, 0.28);
+      box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3);
+    }
+
+    .pricing-card__cta--ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(196, 181, 253, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .pricing-card__cta--primary {
+      color: #fff;
+      background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #8b5cf6 100%);
+      box-shadow: 0 0.4rem 1.35rem rgba(99, 102, 241, 0.35);
+    }
+
+    .pricing-card__cta--primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-2px);
+      box-shadow: 0 0.55rem 1.5rem rgba(99, 102, 241, 0.48);
+    }
+
+    .pricing-card__cta--solid {
+      color: #fff;
+      background: linear-gradient(135deg, #5b21b6, #4f46e5 55%, #6d28d9);
+      box-shadow: 0 0.35rem 1.1rem rgba(79, 70, 229, 0.35);
+    }
+
+    .pricing-card__cta--solid:hover {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+      box-shadow: 0 0.5rem 1.4rem rgba(79, 70, 229, 0.45);
+    }
+
+    .section--pricing .pricing-tiers .pricing-card.reveal {
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+
+    .section--pricing .pricing-tiers .pricing-card.reveal.visible {
+      opacity: 1;
+    }
+
+    .pricing-policy {
+      text-align: center;
+      max-width: min(100%, 36rem);
+      margin: var(--space-xl) auto 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Светлая тема: тарифы */
+    html[data-theme="light"] .pricing-card__inner {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.5) 0%, transparent 50%),
+        linear-gradient(168deg, rgba(245, 242, 252, 0.98) 0%, rgba(228, 222, 238, 0.96) 100%);
+      border-color: rgba(100, 70, 160, 0.18);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+        0 16px 40px rgba(50, 35, 90, 0.1);
+    }
+
+    html[data-theme="light"] .pricing-card:hover .pricing-card__inner {
+      border-color: rgba(100, 70, 160, 0.3);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+        0 24px 48px rgba(50, 35, 90, 0.14);
+    }
+
+    @media (min-width: 900px) {
+      html[data-theme="light"] .pricing-card--featured .pricing-card__inner {
+        background:
+          linear-gradient(160deg, rgba(237, 233, 255, 0.9) 0%, rgba(220, 214, 240, 0.95) 100%);
+        border-color: rgba(100, 70, 160, 0.28);
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.75) inset,
+          0 22px 50px rgba(50, 35, 90, 0.14),
+          0 0 48px rgba(100, 60, 180, 0.12);
+      }
+    }
+
+    html[data-theme="light"] .pricing-card__list li {
+      color: var(--text-muted);
+    }
+
+    html[data-theme="light"] .pricing-card__price {
+      background: linear-gradient(100deg, #5b21b6 0%, #6d28d9 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    /* ========== Блок: быстрый старт 48h (entry-продукт) ========== */
+    .section--quickstart {
+      position: relative;
+    }
+
+    .quickstart {
+      max-width: min(100%, 68rem);
+      margin: 0 auto;
+      padding-left: max(0.75rem, env(safe-area-inset-left));
+      padding-right: max(0.75rem, env(safe-area-inset-right));
+    }
+
+    .quickstart__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .quickstart__grid {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: var(--space-xl);
+        align-items: stretch;
+      }
+    }
+
+    .quickstart__intro {
+      max-width: 32rem;
+    }
+
+    @media (min-width: 900px) {
+      .quickstart__intro {
+        padding-top: 0.35rem;
+      }
+    }
+
+    .quickstart__title {
+      font-size: clamp(1.5rem, 3.2vw, 2.05rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text);
+      margin: 0 0 0.85rem;
+    }
+
+    .quickstart__lead {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin: 0 0 1rem;
+    }
+
+    .quickstart__value {
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: rgba(200, 200, 215, 0.92);
+      margin: 0;
+    }
+
+    .quickstart__card-outer {
+      position: relative;
+      height: 100%;
+    }
+
+    .quickstart__card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 1.5rem 1.4rem 1.35rem;
+      border-radius: 24px;
+      background:
+        linear-gradient(140deg, rgba(59, 130, 246, 0.1) 0%, transparent 42%),
+        linear-gradient(168deg, rgba(26, 32, 48, 0.88) 0%, rgba(14, 14, 24, 0.97) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.22);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 18px 44px rgba(0, 0, 0, 0.36),
+        0 0 40px rgba(99, 102, 241, 0.06);
+      backdrop-filter: blur(18px) saturate(1.15);
+      -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      transition:
+        transform 0.3s var(--ease-out),
+        box-shadow 0.3s var(--ease-out),
+        border-color 0.3s var(--ease-out);
+    }
+
+    .quickstart__card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(129, 140, 248, 0.45) 0%, rgba(168, 85, 247, 0.2) 50%, rgba(59, 130, 246, 0.15) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .quickstart__card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(129, 140, 248, 0.38);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 24px 52px rgba(0, 0, 0, 0.42),
+        0 0 56px rgba(99, 102, 241, 0.14);
+    }
+
+    .quickstart__card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .quickstart__card-name {
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+
+    .quickstart__card-desc {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: 0 0 0.2rem;
+    }
+
+    .quickstart__label {
+      display: block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(167, 139, 250, 0.75);
+      margin: 0.9rem 0 0.45rem;
+    }
+
+    .quickstart__label:first-of-type {
+      margin-top: 0.75rem;
+    }
+
+    .quickstart__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .quickstart__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      color: rgba(200, 200, 215, 0.94);
+    }
+
+    .quickstart__list--muted li {
+      color: rgba(160, 160, 178, 0.88);
+      font-size: 0.78rem;
+    }
+
+    .quickstart__icon {
+      flex-shrink: 0;
+      margin-top: 0.12rem;
+      color: #818cf8;
+      opacity: 0.95;
+    }
+
+    .quickstart__icon--muted {
+      color: var(--text-muted);
+      opacity: 0.75;
+    }
+
+    .quickstart__row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem 1rem;
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(99, 102, 241, 0.18);
+    }
+
+    .quickstart__k {
+      display: block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(167, 139, 250, 0.65);
+      margin-bottom: 0.2rem;
+    }
+
+    .quickstart__term {
+      font-size: 0.875rem;
+      color: var(--text);
+    }
+
+    .quickstart__term .quickstart__k {
+      margin-bottom: 0.25rem;
+    }
+
+    .quickstart__price-block {
+      text-align: right;
+    }
+
+    .quickstart__price {
+      font-size: clamp(1.6rem, 4vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin: 0;
+      background: linear-gradient(100deg, #93c5fd 0%, var(--accent-2) 45%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .quickstart__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1.05rem;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(130deg, #4f46e5 0%, #7c3aed 55%, #6366f1 100%);
+      box-shadow: 0 0.4rem 1.2rem rgba(79, 70, 229, 0.32);
+      transition: transform 0.25s var(--ease-out), box-shadow 0.25s, filter 0.25s;
+    }
+
+    .quickstart__cta:hover {
+      filter: brightness(1.05);
+      transform: translateY(-2px);
+      box-shadow: 0 0.5rem 1.4rem rgba(99, 102, 241, 0.42);
+    }
+
+    .quickstart__note {
+      font-size: 0.75rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+      text-align: center;
+      margin: 0.75rem 0 0;
+    }
+
+    html[data-theme="light"] .quickstart__value {
+      color: var(--text-muted);
+    }
+
+    html[data-theme="light"] .quickstart__list li {
+      color: #3d3d4d;
+    }
+
+    html[data-theme="light"] .quickstart__list--muted li {
+      color: #5c5c6e;
+    }
+
+    html[data-theme="light"] .quickstart__card {
+      background:
+        linear-gradient(145deg, rgba(230, 236, 255, 0.5) 0%, transparent 48%),
+        linear-gradient(168deg, rgba(248, 246, 252, 0.98) 0%, rgba(230, 228, 240, 0.97) 100%);
+      border-color: rgba(100, 90, 180, 0.2);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+        0 14px 36px rgba(50, 40, 90, 0.1);
+    }
+
+    html[data-theme="light"] .quickstart__card:hover {
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+        0 20px 44px rgba(50, 40, 90, 0.12),
+        0 0 40px rgba(100, 80, 200, 0.1);
+    }
+
+    html[data-theme="light"] .quickstart__row {
+      border-top-color: rgba(100, 90, 180, 0.15);
+    }
+
+    html[data-theme="light"] .quickstart__price {
+      background: linear-gradient(100deg, #4f46e5 0%, #6d28d9 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
     }
 
     .offer-card {
@@ -4079,8 +4714,9 @@
       </a>
       <div class="header__end">
         <nav class="nav-links" aria-label="Основная навигация">
-          <a href="#projects">Проекты</a>
-          <a href="#offers">Услуги</a>
+          <a href="#offers">Форматы</a>
+          <a href="#projects">Кейсы</a>
+          <a href="#pricing">Стоимость</a>
           <a href="#process">Как работаю</a>
           <a href="#about">Обо мне</a>
           <a href="#contact" class="nav-links__cta">Заказать</a>
@@ -4109,21 +4745,18 @@
     <!-- ========== HERO ========== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__copy">
-        <p class="label">Портфолио digital-проектов</p>
+        <p class="label">Мария Алдошина · MA. digital</p>
         <h1 id="hero-title" class="hero__title">
           <span id="typed-text" class="hero__typed" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
-          Сайты, интерактивы и мини-сервисы, которые удерживают внимание и превращают идею в рабочий продукт
-        </p>
-        <p class="hero__micro">
-          Подходит для: экспертов, педагогов, малого бизнеса и проектов, которым важно внимание и вовлечение
+          Делаю сайты, ботов и интерактивы: пользователь дольше остаётся, быстрее понимает ценность, чаще совершает целевое действие
         </p>
         <div class="btn-row">
-          <a href="#projects" class="btn btn--muted-hero">Смотреть проекты</a>
-          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить идею</a>
+          <a href="#offers" class="btn btn--muted-hero">Что можно заказать</a>
         </div>
-        <p class="hero__cta-hint">Можно просто написать идею — помогу разобраться</p>
+        <p class="hero__cta-hint">Коротко опишите задачу в мессенджере — отвечаю в течение дня</p>
       </div>
       <div class="hero-visual" id="hero-visual" aria-hidden="true">
         <div class="float-card float-card--layer-back">
@@ -4155,10 +4788,56 @@
       </div>
     </section>
 
-    <!-- ========== ПРОЕКТЫ ========== -->
-    <section class="section section--projects reveal" id="projects" aria-labelledby="projects-label">
+    <!-- ========== Что можно заказать ========== -->
+    <section class="section section--offers" id="offers" aria-labelledby="offers-title">
+      <div class="section-head reveal">
+        <p class="label">Форматы</p>
+        <h2 id="offers-title">Что можно заказать</h2>
+        <p class="offers-section__lead">Четыре формата — от страницы до полной упаковки. Дальше внизу — живые кейсы</p>
+      </div>
+      <div class="offers-grid">
+        <article class="offer-card reveal reveal-delay-1">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">01</div>
+            <h3 class="offer-card__title">Лендинг / сайт</h3>
+            <p class="offer-card__text">Собираю структуру и визуал так, чтобы человек сразу понял суть и сделал шаг: заявка, оплата, консультация</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-2">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">02</div>
+            <h3 class="offer-card__title">Интерактив / игра</h3>
+            <p class="offer-card__text">Механика, в которую хочется играть: обучение, вовлечение, мини-сервисы под задачу</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-3">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">03</div>
+            <h3 class="offer-card__title">VK-бот / автоматизация</h3>
+            <p class="offer-card__text">Сценарий ответов, воронка в сообщениях, подсказки — чтобы не терять заявки и снимать рутину</p>
+          </div>
+        </article>
+        <article class="offer-card reveal reveal-delay-4">
+          <div class="offer-card__inner">
+            <div class="offer-card__index">04</div>
+            <h3 class="offer-card__title">Упаковка проекта</h3>
+            <p class="offer-card__text">Смысл, структура, подача и визуал: из разрозненной идеи — понятный продукт, который не стыдно показать</p>
+          </div>
+        </article>
+      </div>
+      <div class="offers-cta reveal reveal-delay-5">
+        <a href="#projects" class="btn btn--ghost">Смотреть кейсы</a>
+        <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить идею</a>
+        <p class="offers-cta__hint">Смета — после брифа, без сюрпризов в договоре</p>
+      </div>
+    </section>
+
+    <!-- ========== Кейсы: доказательство результата ========== -->
+    <section class="section section--projects reveal" id="projects" aria-labelledby="projects-title">
       <div class="section-head">
-        <p class="label" id="projects-label">Работы</p>
+        <p class="label" id="projects-label">Кейсы</p>
+        <h2 id="projects-title">Результат, который можно проверить</h2>
+        <p class="offers-section__lead section-head__narrow">Ссылки, демо и сценарии — не «картинка в Фигме». 17+ проектов: сайты, боты, мини-сервисы, образование и бизнес</p>
       </div>
       <div class="projects-grid">
         <div class="projects-sites-cluster reveal">
@@ -4446,223 +5125,17 @@
         </div>
 
         <p class="projects-after reveal">
-          Каждый проект — это не просто визуал, а понятная логика, которую можно применить под вашу задачу
+          Один сценарий — одна идея: так проще сравнить с вашим запросом и оценить тон
         </p>
       </div>
     </section>
 
-    <!-- ========== Что я могу сделать для вас ========== -->
-    <section class="section section--offers" id="offers" aria-labelledby="offers-title">
-      <div class="section-head reveal">
-        <h2 id="offers-title">Что я могу сделать для вас</h2>
-        <p class="offers-section__lead">От лендинга до бота и упаковки идеи — в форматах, которые хочется потыкать и показать кому-нибудь ещё</p>
-      </div>
-      <div class="offers-grid">
-        <article class="offer-card reveal reveal-delay-1">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">01</div>
-            <h3 class="offer-card__title">Сайт / лендинг</h3>
-            <p class="offer-card__text">Сайт, который понятно показывает идею и помогает клиенту сделать следующий шаг</p>
-          </div>
-        </article>
-        <article class="offer-card reveal reveal-delay-2">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">02</div>
-            <h3 class="offer-card__title">Мини-приложение / интерактив</h3>
-            <p class="offer-card__text">Интерактивы и мини-сервисы, которые вовлекают и удерживают внимание</p>
-          </div>
-        </article>
-        <article class="offer-card reveal reveal-delay-3">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">03</div>
-            <h3 class="offer-card__title">VK-бот</h3>
-            <p class="offer-card__text">Боты, которые помогают отвечать, консультировать и не терять клиентов</p>
-          </div>
-        </article>
-        <article class="offer-card reveal reveal-delay-4">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">04</div>
-            <h3 class="offer-card__title">Упаковка проекта</h3>
-            <p class="offer-card__text">Помогаю превратить идею в понятный и визуально сильный продукт</p>
-          </div>
-        </article>
-      </div>
-      <div class="offers-cta reveal reveal-delay-5">
-        <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
-        <p class="offers-cta__reassurance">Можно просто написать идею — помогу разобраться</p>
-        <p class="offers-cta__hint">Отвечаю в течение дня</p>
-      </div>
-    </section>
-
-    <!-- ========== ПОДХОД ========== -->
-    <section class="section section--process reveal" id="process" aria-labelledby="process-title">
-      <div class="section-head">
-        <h2 id="process-title">Как я работаю</h2>
-        <p>Четыре опоры — от эмоции до рабочего продукта, без канцелярского сценария</p>
-      </div>
-      <div class="process-wrap">
-        <div class="process">
-          <div class="process-step reveal">
-            <div class="process-num">
-              <span class="process-num__big">01</span>
-              <span class="process-num__label">Смысл</span>
-            </div>
-            <p>Определяю, что человек должен почувствовать и сделать</p>
-          </div>
-          <div class="process-step reveal reveal-delay-1">
-            <div class="process-num">
-              <span class="process-num__big">02</span>
-              <span class="process-num__label">Вовлечение</span>
-            </div>
-            <p>Собираю интерфейс, который удерживает внимание</p>
-          </div>
-          <div class="process-step reveal reveal-delay-2">
-            <div class="process-num">
-              <span class="process-num__big">03</span>
-              <span class="process-num__label">Логика</span>
-            </div>
-            <p>Продумываю путь пользователя без лишних действий</p>
-          </div>
-          <div class="process-step reveal reveal-delay-3">
-            <div class="process-num">
-              <span class="process-num__big">04</span>
-              <span class="process-num__label">Результат</span>
-            </div>
-            <p>Собираю рабочий продукт, который можно использовать сразу</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== ОБО МНЕ ========== -->
-    <section class="section section--about reveal" id="about" aria-labelledby="about-title">
-      <div class="section-head">
-        <h2 id="about-title">Обо мне</h2>
-      </div>
-      <div class="about-block reveal reveal-delay-1">
-        <figure class="about-photo">
-          <div class="about-photo__wrap">
-            <img
-              src="images/about-photo.jpg"
-              alt="Мария Алдошина в рабочем пространстве за ноутбуком"
-              width="480"
-              height="600"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </figure>
-        <div class="about-copy">
-          <p class="about-text">
-            Я Мария Алдошина — создаю сайты, мини-сервисы и интерактивы, которые не просто выглядят красиво, а помогают
-            пользователю понять идею и сделать следующий шаг.
-          </p>
-          <p class="about-text">
-            Мне важно, чтобы продукт был живым: удерживал внимание, вовлекал и работал на задачу — будь то обучение, продажи или
-            взаимодействие с аудиторией.
-          </p>
-          <p class="about-micro">Работаю с образовательными и коммерческими проектами</p>
-          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
-        </div>
-        <div class="about-status">
-          <div class="about-status__hero">
-            <strong>Digital creator / vibe coder</strong>
-            <p>
-              Собираю сайты и интерактивы с понятной логикой, аккуратным визуалом и продуманным пользовательским сценарием
-            </p>
-          </div>
-          <div class="about-badges">
-            <span class="about-badge-pill">Vibe coder</span>
-            <span class="about-badge-pill about-badge-pill--ux">UX-ЛОГИКА</span>
-            <span class="about-badge-pill about-badge-pill--accent">UI &amp; flow</span>
-          </div>
-          <div class="about-availability">
-            <span class="pulse" aria-hidden="true"></span>
-            <span>Открыта к новым проектам</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== Как начать ========== -->
-    <section class="section section--how-start reveal" id="how-start" aria-labelledby="how-start-title">
-      <div class="section-head">
-        <h2 id="how-start-title">Как начать</h2>
-      </div>
-      <ol class="how-start__steps">
-        <li class="how-start__step">
-          <span class="how-start__step-num">Шаг 1</span>
-          <strong>Напишите мне</strong>
-          <p>Коротко — в Telegram или на почту</p>
-        </li>
-        <li class="how-start__step">
-          <span class="how-start__step-num">Шаг 2</span>
-          <strong>Опишите задачу</strong>
-          <p>Что за продукт, для кого, что хотите на выходе</p>
-        </li>
-        <li class="how-start__step">
-          <span class="how-start__step-num">Шаг 3</span>
-          <strong>Я предложу решение и формат</strong>
-          <p>Варианты и следующий шаг — без давления</p>
-        </li>
-      </ol>
-      <p class="how-start__insight">
-        90% проектов можно собрать проще, чем кажется — главное правильно выстроить структуру
-      </p>
-    </section>
-
-    <!-- ========== Marquee ========== -->
-    <div class="marquee-wrap" aria-hidden="true">
-      <div class="marquee">
-        <div class="marquee__content">
-          <span>interactive</span><span class="dot">•</span>
-          <span>portfolio</span><span class="dot">•</span>
-          <span>mini apps</span><span class="dot">•</span>
-          <span>AI tools</span><span class="dot">•</span>
-          <span>landing pages</span><span class="dot">•</span>
-          <span>удержание и сценарий</span><span class="dot">•</span>
-        </div>
-        <div class="marquee__content" aria-hidden="true">
-          <span>interactive</span><span class="dot">•</span>
-          <span>portfolio</span><span class="dot">•</span>
-          <span>mini apps</span><span class="dot">•</span>
-          <span>AI tools</span><span class="dot">•</span>
-          <span>landing pages</span><span class="dot">•</span>
-          <span>удержание и сценарий</span><span class="dot">•</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========== Социальное доказательство ========== -->
-    <section class="section section--proof reveal" id="proof" aria-labelledby="proof-title">
-      <div class="proof-strip">
-        <h2 id="proof-title" class="proof-strip__title">Что уже сделано</h2>
-        <p class="proof-strip__lead">Живые кейсы — от образования до бизнеса, всё можно открыть и «потрогать»</p>
-        <ul class="proof-strip__grid">
-          <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">17+</span>
-            <p class="proof-strip__text">проектов в портфолио — и список растёт</p>
-          </li>
-          <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">•</span>
-            <p class="proof-strip__text">сайты, игры, боты и мини-сервисы</p>
-          </li>
-          <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">•</span>
-            <p class="proof-strip__text">проекты для образования и бизнеса</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ========== ИНТЕРАКТИВНЫЕ ПРОЕКТЫ (две игры в ряд) ========== -->
+    <!-- ========== Демо: интерактив (кейс-формат) ========== -->
     <section class="section section--playable reveal" id="playable-demo" aria-labelledby="playable-demo-title">
       <div class="section-head">
-        <h2 id="playable-demo-title">Интерактивные проекты</h2>
-        <p>
-          Игры и мини-сервисы, которые вовлекают и удерживают внимание: <strong>дроби</strong> — обучение, в которое хочется
-          вернуться, и <strong>змейка</strong> — быстрый ритм и ещё раунд, без установки.
-        </p>
+        <p class="label">Кейсы-формата</p>
+        <h2 id="playable-demo-title">Интерактив в действии</h2>
+        <p>Две готовые игры в браузере: вовлечение и мотив «ещё уровень»</p>
       </div>
       <div class="playable-launch-list">
         <article class="playable-launch" id="playable-drobi-block">
@@ -4747,37 +5220,328 @@
       </div>
     </section>
 
-    <!-- ========== ПОЧЕМУ УДОБНО РАБОТАТЬ ========== -->
-    <section class="section section--trust reveal" id="why-collaborate" aria-labelledby="trust-title">
-      <div class="section-head">
-        <h2 id="trust-title">Почему проекты со мной доходят до результата</h2>
-        <p class="trust-section__lead">Не про «правильный UX», а про ощущение, что всё движется и хочется дойти до конца</p>
-      </div>
-      <div class="trust-grid">
-        <article class="trust-card reveal reveal-delay-1">
-          <h3>Без перегруза</h3>
-          <p>Объясняю просто, без сложных терминов</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-2">
-          <h3>Быстро в реальность</h3>
-          <p>Показываю рабочую версию уже на ранних этапах</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-3">
-          <h3>Фокус на ощущении</h3>
-          <p>Важно не только как выглядит, но и как воспринимается</p>
-        </article>
-        <article class="trust-card reveal reveal-delay-4">
-          <h3>От идеи до продукта</h3>
-          <p>Помогаю собрать всё: от смысла до готового решения</p>
-        </article>
+    <!-- ========== Быстрый старт 48h (entry) ========== -->
+    <section class="section section--quickstart reveal" id="quickstart" aria-labelledby="quickstart-title">
+      <div class="quickstart">
+        <div class="quickstart__grid">
+          <div class="quickstart__intro">
+            <h2 id="quickstart-title" class="quickstart__title">Нужно быстро запуститься?</h2>
+            <p class="quickstart__lead">Соберу сайт или мини-проект за 48 часов — без сложного процесса и лишних затрат.</p>
+            <p class="quickstart__value">Быстрый запуск без лишней сложности: фиксированный срок и объём, чтобы выйти в онлайн, проверить идею или оформить продукт — без ощущения длинной разработки.</p>
+          </div>
+          <div class="quickstart__card-outer">
+            <div class="quickstart__card">
+              <div class="quickstart__card-inner">
+                <h3 class="quickstart__card-name">Быстрый старт за 48 часов</h3>
+                <p class="quickstart__card-desc">Формат для тех, кому нужно быстро выйти в онлайн, протестировать идею или оформить продукт без долгой разработки.</p>
+                <span class="quickstart__label">Что входит</span>
+                <ul class="quickstart__list">
+                  <li>
+                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Сайт или мини-сервис
+                  </li>
+                  <li>
+                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Готовая структура под задачу
+                  </li>
+                  <li>
+                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Современный визуал
+                  </li>
+                  <li>
+                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Адаптация под мобильные устройства
+                  </li>
+                  <li>
+                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    1 раунд правок
+                  </li>
+                </ul>
+                <span class="quickstart__label">Ограничения</span>
+                <ul class="quickstart__list quickstart__list--muted">
+                  <li>
+                    <svg class="quickstart__icon quickstart__icon--muted" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+                      <path d="M6 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                    Без сложных интеграций
+                  </li>
+                  <li>
+                    <svg class="quickstart__icon quickstart__icon--muted" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+                      <path d="M6 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                    Без длинных сценариев
+                  </li>
+                  <li>
+                    <svg class="quickstart__icon quickstart__icon--muted" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+                      <path d="M6 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                    Работа по согласованному формату
+                  </li>
+                </ul>
+                <div class="quickstart__row">
+                  <p class="quickstart__term">
+                    <span class="quickstart__k">Срок</span>
+                    до 2 дней
+                  </p>
+                  <div class="quickstart__price-block">
+                    <span class="quickstart__k">Стоимость</span>
+                    <p class="quickstart__price">9 900&nbsp;₽</p>
+                  </div>
+                </div>
+                <a href="#" class="quickstart__cta" data-open-contact-messengers>Запустить проект</a>
+                <p class="quickstart__note">Точная задача и формат фиксируются после короткого обсуждения.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ========== Стоимость: тарифы ========== -->
+    <section class="section section--pricing" id="pricing" aria-labelledby="pricing-title">
+      <div class="section-head reveal">
+        <p class="label">Бюджет</p>
+        <h2 id="pricing-title">Стоимость и формат работы</h2>
+        <p class="pricing-intro">Ориентиры по бюджету. Итог — после короткого разговора о задаче, без давления и скрытых пунктов.</p>
+      </div>
+      <div class="pricing-tiers">
+        <article class="pricing-card reveal reveal-delay-1">
+          <div class="pricing-card__inner">
+            <h3 class="pricing-card__name">Старт</h3>
+            <p class="pricing-card__tagline">Первый шаг в онлайн — с ясной подачей</p>
+            <ul class="pricing-card__list">
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Быстрый запуск
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Аккуратная упаковка идеи
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Понятная структура
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Сроки и границы — прозрачно
+              </li>
+            </ul>
+            <p class="pricing-card__price-note">Вилка</p>
+            <p class="pricing-card__price">от 7 000&nbsp;₽ до 15 000&nbsp;₽</p>
+            <a href="#" class="pricing-card__cta pricing-card__cta--ghost" data-open-contact-messengers>Хочу простой проект</a>
+          </div>
+        </article>
+        <article class="pricing-card pricing-card--featured reveal reveal-delay-2">
+          <div class="pricing-card__badge" aria-hidden="true">Популярный выбор</div>
+          <div class="pricing-card__inner">
+            <h3 class="pricing-card__name">Стандарт</h3>
+            <p class="pricing-card__tagline">Удобный выбор, когда важны и смысл, и ощущение от продукта</p>
+            <ul class="pricing-card__list">
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Продуманный пользовательский путь
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Вовлечение и удержание
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Подготовка к продаже
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Единая линия: от идеи до уверенного запуска
+              </li>
+            </ul>
+            <p class="pricing-card__price-note">Вилка</p>
+            <p class="pricing-card__price">25 000 – 60 000&nbsp;₽</p>
+            <a href="#" class="pricing-card__cta pricing-card__cta--primary" data-open-contact-messengers>Подобрать формат</a>
+          </div>
+        </article>
+        <article class="pricing-card reveal reveal-delay-3">
+          <div class="pricing-card__inner">
+            <h3 class="pricing-card__name">Под ключ</h3>
+            <p class="pricing-card__tagline">Когда важен цельный продукт и спокойствие на всём пути</p>
+            <ul class="pricing-card__list">
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Полноценный digital-продукт
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Логика, которая ведёт к действию
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Комплексное решение задачи
+              </li>
+              <li>
+                <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
+                  <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Сопровождение до уверенного запуска
+              </li>
+            </ul>
+            <p class="pricing-card__price-note">Ориентир</p>
+            <p class="pricing-card__price">от 70 000&nbsp;₽</p>
+            <a href="#" class="pricing-card__cta pricing-card__cta--solid" data-open-contact-messengers>Обсудить проект</a>
+          </div>
+        </article>
+      </div>
+      <p class="pricing-policy reveal">Точная стоимость зависит от задачи — после обсуждения предложу оптимальный формат и зафиксирую этапы работы.</p>
+    </section>
+
+    <!-- ========== ПОДХОД ========== -->
+    <section class="section section--process reveal" id="process" aria-labelledby="process-title">
+      <div class="section-head">
+        <h2 id="process-title">Как я работаю</h2>
+        <p>Четыре опоры — от эмоции до рабочего продукта, без канцелярского сценария</p>
+      </div>
+      <div class="process-wrap">
+        <div class="process">
+          <div class="process-step reveal">
+            <div class="process-num">
+              <span class="process-num__big">01</span>
+              <span class="process-num__label">Смысл</span>
+            </div>
+            <p>Определяю, что человек должен почувствовать и сделать</p>
+          </div>
+          <div class="process-step reveal reveal-delay-1">
+            <div class="process-num">
+              <span class="process-num__big">02</span>
+              <span class="process-num__label">Вовлечение</span>
+            </div>
+            <p>Собираю интерфейс, который удерживает внимание</p>
+          </div>
+          <div class="process-step reveal reveal-delay-2">
+            <div class="process-num">
+              <span class="process-num__big">03</span>
+              <span class="process-num__label">Логика</span>
+            </div>
+            <p>Продумываю путь пользователя без лишних действий</p>
+          </div>
+          <div class="process-step reveal reveal-delay-3">
+            <div class="process-num">
+              <span class="process-num__big">04</span>
+              <span class="process-num__label">Результат</span>
+            </div>
+            <p>Собираю рабочий продукт, который можно использовать сразу</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ОБО МНЕ ========== -->
+    <section class="section section--about reveal" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 id="about-title">Обо мне</h2>
+      </div>
+      <div class="about-block reveal reveal-delay-1">
+        <figure class="about-photo">
+          <div class="about-photo__wrap">
+            <img
+              src="images/about-photo.jpg"
+              alt="Мария Алдошина в рабочем пространстве за ноутбуком"
+              width="480"
+              height="600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+        <div class="about-copy">
+          <p class="about-text">
+            Я Мария Алдошина — создаю сайты, мини-сервисы и интерактивы, которые не просто выглядят красиво, а помогают
+            пользователю понять идею и сделать следующий шаг.
+          </p>
+          <p class="about-text">
+            Мне важно, чтобы продукт был живым: удерживал внимание, вовлекал и работал на задачу — будь то обучение, продажи или
+            взаимодействие с аудиторией.
+          </p>
+          <p class="about-micro">Работаю с образовательными и коммерческими проектами</p>
+          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить идею</a>
+        </div>
+        <div class="about-status">
+          <div class="about-status__hero">
+            <strong>Digital creator / vibe coder</strong>
+            <p>
+              Собираю сайты и интерактивы с понятной логикой, аккуратным визуалом и продуманным пользовательским сценарием
+            </p>
+          </div>
+          <div class="about-badges">
+            <span class="about-badge-pill">Vibe coder</span>
+            <span class="about-badge-pill about-badge-pill--ux">UX-ЛОГИКА</span>
+            <span class="about-badge-pill about-badge-pill--accent">UI &amp; flow</span>
+          </div>
+          <div class="about-availability">
+            <span class="pulse" aria-hidden="true"></span>
+            <span>Открыта к новым проектам</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Marquee ========== -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee__content">
+          <span>interactive</span><span class="dot">•</span>
+          <span>portfolio</span><span class="dot">•</span>
+          <span>mini apps</span><span class="dot">•</span>
+          <span>AI tools</span><span class="dot">•</span>
+          <span>landing pages</span><span class="dot">•</span>
+          <span>удержание и сценарий</span><span class="dot">•</span>
+        </div>
+        <div class="marquee__content" aria-hidden="true">
+          <span>interactive</span><span class="dot">•</span>
+          <span>portfolio</span><span class="dot">•</span>
+          <span>mini apps</span><span class="dot">•</span>
+          <span>AI tools</span><span class="dot">•</span>
+          <span>landing pages</span><span class="dot">•</span>
+          <span>удержание и сценарий</span><span class="dot">•</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ========== CTA ========== -->
     <section class="cta-final reveal" id="contact" aria-labelledby="cta-title">
       <div class="cta-final__inner">
-        <h2 id="cta-title">Хотите такой проект для себя?</h2>
-        <p>Сайт, интерактив или мини-сервис — соберём под вашу задачу и сделаем понятным для пользователя</p>
+        <h2 id="cta-title">Обсудим вашу идею?</h2>
+        <p>Напишите в удобный мессенджер — предложу формат и следующий шаг без обязаловки</p>
         <div class="cta-final__messengers" role="group" aria-label="Связь в мессенджерах">
           <a
             class="cta-messenger-btn cta-messenger-btn--tg"
@@ -5311,7 +6075,7 @@
       }
 
       /* ----- Печатающийся заголовок HERO: градиент на всём тексте с первой буквы (см. .hero__typed) ----- */
-      var fullTitle = 'Создаю digital-проекты, которые хочется нажимать';
+      var fullTitle = 'Сайты, боты и интерактивы — от идеи до работающего продукта';
       var typedEl = document.getElementById('typed-text');
       var cursorEl = document.getElementById('typed-cursor');
 
