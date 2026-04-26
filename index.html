@@ -228,6 +228,46 @@
       margin-top: var(--space-sm);
     }
 
+    /* Игра «Дроби» — больше высоты фрейма, чтобы стартовый экран влезал без внутренней прокрутки */
+    #playable-demo.section--playable {
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+
+    #playable-demo .playable-demo__frame--drobi {
+      height: min(94dvh, 1100px);
+      min-height: 680px;
+      max-height: 1100px;
+    }
+
+    @media (max-width: 767px) {
+      #playable-demo .playable-demo__frame--drobi {
+        min-height: 560px;
+        height: min(88dvh, 920px);
+        max-height: 920px;
+      }
+    }
+
+    /* Игра «Змейка» — та же логика: высокий фрейм, стартовый экран без внутренней прокрутки */
+    #playable-demo-snake.section--playable {
+      padding-top: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
+
+    #playable-demo-snake .playable-demo__frame--snake {
+      height: min(94dvh, 1100px);
+      min-height: 680px;
+      max-height: 1100px;
+    }
+
+    @media (max-width: 767px) {
+      #playable-demo-snake .playable-demo__frame--snake {
+        min-height: 560px;
+        height: min(88dvh, 920px);
+        max-height: 920px;
+      }
+    }
+
     .section--trust {
       background: linear-gradient(
         180deg,
@@ -621,8 +661,9 @@
       margin-bottom: var(--space-md);
     }
 
-    /* Деликатный градиент на акцентных словах (после окончания печати) */
-    .hero__accent {
+    /* Градиент на заголовке HERO: виден с первого символа при печати */
+    .hero__accent,
+    .hero__typed {
       background: linear-gradient(120deg, var(--text) 0%, var(--accent-2) 42%, var(--accent-3) 78%, rgba(245, 245, 247, 0.92) 100%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -1912,6 +1953,27 @@
       gap: var(--space-lg);
     }
 
+    /* Мини-сервисы + Соцпроекты — в один ряд на широких экранах */
+    .projects-pair-clusters {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+
+    @media (min-width: 900px) {
+      .projects-pair-clusters {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+      }
+    }
+
+    .projects-pair-clusters .projects-sites-cluster {
+      grid-column: auto;
+      min-width: 0;
+    }
+
     .projects-sites-cluster__head {
       max-width: 40rem;
     }
@@ -2241,10 +2303,39 @@
       align-items: start;
     }
 
+    .about-photo {
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .about-photo img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      margin: 0 auto;
+      background: none;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      object-fit: contain;
+      object-position: center center;
+      filter: brightness(1.04) contrast(1.03) saturate(0.99) drop-shadow(0 4px 18px rgba(167, 139, 250, 0.22)) drop-shadow(0 8px 28px rgba(255, 185, 160, 0.12));
+    }
+
     @media (min-width: 768px) {
       .about-block {
-        grid-template-columns: 1fr minmax(260px, 34%);
+        grid-template-columns: minmax(180px, 240px) 1fr minmax(220px, 32%);
         align-items: start;
+        gap: var(--space-lg);
+      }
+
+      .about-photo img {
+        margin: 0;
+        max-width: none;
+        width: 100%;
       }
     }
 
@@ -2466,6 +2557,26 @@
 
     .modal--lisichka-help {
       z-index: 260;
+    }
+
+    .modal--contact-choices {
+      z-index: 270;
+    }
+
+    .modal--contact-choices .modal__dialog {
+      max-width: 420px;
+    }
+
+    .contact-messengers {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .contact-messengers .btn {
+      width: 100%;
+      justify-content: center;
     }
 
     .modal__backdrop {
@@ -3128,7 +3239,7 @@
       <div class="hero__copy">
         <p class="label">Портфолио digital-проектов</p>
         <h1 id="hero-title" class="hero__title">
-          <span id="typed-text" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
+          <span id="typed-text" class="hero__typed" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
           Сайты, интерактивы и мини-сервисы, которые удерживают внимание и превращают идею в рабочий продукт
@@ -3138,7 +3249,7 @@
         </p>
         <div class="btn-row">
           <a href="#projects" class="btn btn--muted-hero">Смотреть проекты</a>
-          <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
         </div>
         <p class="hero__cta-hint">Можно просто написать идею — помогу разобраться</p>
       </div>
@@ -3179,7 +3290,7 @@
         <p class="proof-strip__lead">Живые кейсы — от образования до бизнеса, всё можно открыть и «потрогать»</p>
         <ul class="proof-strip__grid">
           <li class="proof-strip__item">
-            <span class="proof-strip__num" aria-hidden="true">5+</span>
+            <span class="proof-strip__num" aria-hidden="true">17+</span>
             <p class="proof-strip__text">проектов в портфолио — и список растёт</p>
           </li>
           <li class="proof-strip__item">
@@ -3232,7 +3343,7 @@
         </article>
       </div>
       <div class="offers-cta reveal reveal-delay-5">
-        <a href="#contact" class="btn btn--primary">Обсудить проект</a>
+        <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
         <p class="offers-cta__reassurance">Можно просто написать идею — помогу разобраться</p>
         <p class="offers-cta__hint">Отвечаю в течение дня</p>
       </div>
@@ -3265,7 +3376,6 @@
       <div class="section-head">
         <p class="label">Работы</p>
         <h2 id="projects-title">Избранные проекты</h2>
-        <p>Живые превью: сразу видно, как продукт помогает понять суть и удерживает до следующего экрана</p>
       </div>
       <div class="projects-grid">
         <div class="projects-sites-cluster reveal">
@@ -3403,9 +3513,10 @@
               </div>
             </article>
           </div>
-          <a href="#contact" class="btn btn--primary sites-mini-cta">Обсудить проект</a>
+          <a href="#" class="btn btn--primary sites-mini-cta" data-open-contact-messengers>Обсудить проект</a>
         </div>
 
+        <div class="projects-pair-clusters">
         <div class="projects-sites-cluster reveal">
           <header class="projects-sites-cluster__head">
             <h3 class="projects-sites-cluster__title">Мини-сервисы</h3>
@@ -3549,15 +3660,8 @@
           </div>
         </article>
         </div>
-
-        <div class="projects-sites-cluster reveal">
-          <header class="projects-sites-cluster__head">
-            <h3 class="projects-sites-cluster__title">Интерактивы и игры</h3>
-            <p class="projects-sites-cluster__lead">
-              <strong>Игра по дробям</strong> — интерактив, в котором обучение превращается в процесс, в который хочется вернуться. <a href="#playable-demo">Живое демо ниже</a>.
-            </p>
-          </header>
         </div>
+
         <p class="projects-after reveal">
           Каждый проект — это не просто визуал, а понятная логика, которую можно применить под вашу задачу
         </p>
@@ -3574,7 +3678,7 @@
       </div>
       <div class="playable-demo">
         <span class="playable-demo__badge">ДЕМО</span>
-        <div class="playable-demo__frame">
+        <div class="playable-demo__frame playable-demo__frame--drobi">
           <iframe
             title="Игра: дроби"
             src="https://aldoshinamaria.github.io/IGRA_DROBI/"
@@ -3598,15 +3702,15 @@
     <!-- ========== ИНТЕРАКТИВНАЯ ИГРА (ЗМЕЙКА) ========== -->
     <section class="section section--playable reveal" id="playable-demo-snake" aria-labelledby="playable-demo-snake-title">
       <div class="section-head">
-        <h2 id="playable-demo-snake-title">Демо: змейка</h2>
+        <h2 id="playable-demo-snake-title">Игра «Змейка»</h2>
         <p>Быстрый ритм, понятные правила и хочется сыграть ещё раунд — прямо здесь, без установки</p>
       </div>
       <div class="playable-demo">
         <span class="playable-demo__badge">ДЕМО</span>
-        <div class="playable-demo__frame">
+        <div class="playable-demo__frame playable-demo__frame--snake">
           <iframe
-            title="Игра: змейка"
-            src="https://aldoshinamaria.github.io/IGRA_ZMEIKA/"
+            title="Игра «Змейка»"
+            src="https://aldoshinamaria.github.io/IGRA_ZMEIKA/?embed=1"
             loading="eager"
             tabindex="0"
             referrerpolicy="no-referrer-when-downgrade"
@@ -3616,7 +3720,7 @@
         <div class="playable-demo__cta">
           <a
             class="btn btn--ghost"
-            href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/"
+            href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/?embed=1"
             target="_blank"
             rel="noopener noreferrer"
           >Открыть игру в новой вкладке</a>
@@ -3698,6 +3802,16 @@
         <h2 id="about-title">Обо мне</h2>
       </div>
       <div class="about-block reveal reveal-delay-1">
+        <figure class="about-photo">
+          <img
+            src="Мария.png"
+            alt="Мария Алдошина — портрет в техно-окружении с неоновой вывеской и кодом на фоне"
+            width="480"
+            height="600"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
         <p class="about-text">
           Я Мария Алдошина — создаю digital-проекты, в которых соединяются идея, визуал и интерактив.
           Мне важно, чтобы продукт не просто выглядел красиво, а удерживал внимание и работал.
@@ -3753,9 +3867,8 @@
         <h2 id="cta-title">Хотите такой проект для себя?</h2>
         <p>Сайт, интерактив или мини-сервис — соберём под вашу задачу и сделаем понятным для пользователя</p>
         <div class="btn-row">
-          <!-- Замените YOUR_TELEGRAM на ваш юзернейм без @ -->
-          <a href="https://t.me/YOUR_TELEGRAM" class="btn btn--primary">Обсудить проект</a>
-          <a href="https://t.me/YOUR_TELEGRAM" class="btn btn--ghost">Написать в Telegram</a>
+          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить проект</a>
+          <a href="https://t.me/AldoshinaMaria" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
         </div>
         <p class="cta-final__hint">Отвечаю в течение дня</p>
         <p class="cta-final__hint cta-final__hint--soft">Можно просто написать идею — помогу разобраться</p>
@@ -3766,6 +3879,47 @@
   <footer class="footer">
     <p>© Мария Алдошина · Портфолио digital-проектов · <span id="year"></span></p>
   </footer>
+
+  <!-- Modal: выбор мессенджера (Макс / Telegram / ВК) -->
+  <div
+    class="modal modal--contact-choices"
+    id="modal-contact-messengers"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-contact-messengers-title"
+  >
+    <div class="modal__backdrop" data-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content">
+        <p class="label">Связь</p>
+        <h2 class="modal__title" id="modal-contact-messengers-title">Куда написать</h2>
+        <p class="modal__lead">Откроется мессенджер: Макс, Telegram или ВКонтакте</p>
+        <div class="contact-messengers">
+          <a
+            href="tel:+79533135350"
+            class="btn btn--primary"
+            title="Связь в Макс по номеру +7 953 313-53-50"
+            >Написать в Макс</a>
+          <a
+            href="https://t.me/AldoshinaMaria"
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Написать в Telegram</a>
+          <a
+            href="https://vk.com/ma_digital_ai"
+            class="btn btn--ghost"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Написать в ВКонтакте</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal: Лисичка рядом — подробнее -->
   <div
@@ -3833,7 +3987,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
         </div>
       </div>
     </div>
@@ -3896,7 +4050,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
         </div>
       </div>
     </div>
@@ -3953,7 +4107,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
         </div>
       </div>
     </div>
@@ -4010,7 +4164,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
         </div>
       </div>
     </div>
@@ -4067,7 +4221,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#contact" class="btn btn--primary modal__cta-btn">Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
         </div>
       </div>
     </div>
@@ -4191,15 +4345,13 @@
       /* ----- Год в подвале ----- */
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      /* ----- Печатающийся заголовок HERO + градиентные акценты после набора ----- */
+      /* ----- Печатающийся заголовок HERO: градиент на всём тексте с первой буквы (см. .hero__typed) ----- */
       var fullTitle = 'Создаю digital-проекты, которые хочется нажимать';
       var typedEl = document.getElementById('typed-text');
       var cursorEl = document.getElementById('typed-cursor');
-      var heroAccentHtml =
-        'Создаю <span class="hero__accent">digital-проекты</span>, которые хочется <span class="hero__accent">нажимать</span>';
 
-      function applyHeroAccentAndHideCursor() {
-        typedEl.innerHTML = heroAccentHtml;
+      function finishTypedTitle() {
+        typedEl.textContent = fullTitle;
         cursorEl.style.animation = 'none';
         cursorEl.style.opacity = '0';
         cursorEl.style.visibility = 'hidden';
@@ -4212,12 +4364,12 @@
           i++;
           setTimeout(typeChar, i < 12 ? 72 : 50);
         } else {
-          applyHeroAccentAndHideCursor();
+          finishTypedTitle();
         }
       }
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        applyHeroAccentAndHideCursor();
+        finishTypedTitle();
       } else {
         setTimeout(typeChar, 520);
       }
@@ -4398,22 +4550,6 @@
             closeSiteCaseModals();
           });
         });
-        var siteCta = smEl.querySelector('.modal__cta-btn');
-        if (siteCta) {
-          siteCta.addEventListener('click', function (e) {
-            e.preventDefault();
-            closeSiteCaseModals();
-            var cEl = document.getElementById('contact');
-            var goC = function () {
-              if (cEl) cEl.scrollIntoView({ behavior: 'smooth' });
-            };
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              goC();
-            } else {
-              window.setTimeout(goC, 320);
-            }
-          });
-        }
       });
 
       var siteUchitelOpen = document.getElementById('site-uchitel-detail-open');
@@ -4485,23 +4621,6 @@
             closeLisichkaModal();
           });
         });
-
-        var modalCtaBtn = modalLisichka.querySelector('.modal__cta-btn');
-        if (modalCtaBtn) {
-          modalCtaBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            closeLisichkaModal();
-            var contactEl = document.getElementById('contact');
-            var go = function () {
-              if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
-            };
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              go();
-            } else {
-              window.setTimeout(go, 320);
-            }
-          });
-        }
       }
 
       /* ----- Modal: Лисичка рядом — демо-чат ----- */
@@ -4807,27 +4926,81 @@
             closeFcalcModal();
           });
         });
+      }
 
-        var fcalcCtaBtn = modalFcalc.querySelector('.modal__cta-btn');
-        if (fcalcCtaBtn) {
-          fcalcCtaBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            closeFcalcModal();
-            var contactElF = document.getElementById('contact');
-            var goF = function () {
-              if (contactElF) contactElF.scrollIntoView({ behavior: 'smooth' });
-            };
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              goF();
-            } else {
-              window.setTimeout(goF, 320);
-            }
-          });
+      /* ----- Modal: выбор мессенджера (Макс, Telegram, ВК) ----- */
+      var modalContactMessengers = document.getElementById('modal-contact-messengers');
+      var contactMessengersLastFocus = null;
+
+      function openContactMessengersModal() {
+        if (!modalContactMessengers) return;
+        contactMessengersLastFocus = document.activeElement;
+        if (modalLisichkaHelp && modalLisichkaHelp.classList.contains('modal--open')) {
+          closeLisichkaHelpModal();
         }
+        if (modalLisichkaDemo && modalLisichkaDemo.classList.contains('modal--open')) {
+          closeLisichkaDemoModal();
+        }
+        if (getOpenSiteCaseModal()) {
+          closeSiteCaseModals();
+        }
+        if (modalFcalc && modalFcalc.classList.contains('modal--open')) {
+          closeFcalcModal();
+        }
+        if (modalLisichka && modalLisichka.classList.contains('modal--open')) {
+          closeLisichkaModal();
+        }
+        modalContactMessengers.classList.add('modal--open');
+        modalContactMessengers.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var firstM = modalContactMessengers.querySelector('.contact-messengers a');
+        if (firstM) {
+          window.setTimeout(function () {
+            firstM.focus();
+          }, 0);
+        } else {
+          var cClose = modalContactMessengers.querySelector('.modal__close');
+          if (cClose) cClose.focus();
+        }
+      }
+
+      function closeContactMessengersModal() {
+        if (!modalContactMessengers) return;
+        modalContactMessengers.classList.remove('modal--open');
+        modalContactMessengers.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (contactMessengersLastFocus && typeof contactMessengersLastFocus.focus === 'function') {
+          contactMessengersLastFocus.focus();
+        }
+      }
+
+      if (modalContactMessengers) {
+        modalContactMessengers.querySelectorAll('[data-modal-close]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeContactMessengersModal();
+          });
+        });
+        modalContactMessengers.querySelectorAll('.contact-messengers a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            window.setTimeout(closeContactMessengersModal, 0);
+          });
+        });
+        document.addEventListener('click', function (e) {
+          var openBtn = e.target.closest && e.target.closest('[data-open-contact-messengers]');
+          if (!openBtn) return;
+          e.preventDefault();
+          openContactMessengersModal();
+        });
       }
 
       document.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') return;
+        if (modalContactMessengers && modalContactMessengers.classList.contains('modal--open')) {
+          e.preventDefault();
+          closeContactMessengersModal();
+          return;
+        }
         if (modalLisichkaHelp && modalLisichkaHelp.classList.contains('modal--open')) {
           e.preventDefault();
           closeLisichkaHelpModal();
