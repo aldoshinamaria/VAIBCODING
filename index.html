@@ -2181,6 +2181,267 @@
       margin-right: auto;
     }
 
+    /* ========== Портфолио решений (направления-аккордеон) ========== */
+    .solutions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .solution {
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+      transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+    }
+
+    .solution.is-open {
+      border-color: rgba(167, 139, 250, 0.32);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.32);
+    }
+
+    .solution__heading {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    .solution__head {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      text-align: left;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .solution__head:focus-visible {
+      outline: 2px solid rgba(167, 139, 250, 0.6);
+      outline-offset: -3px;
+      border-radius: var(--radius-lg);
+    }
+
+    .solution__index {
+      flex-shrink: 0;
+      min-width: 2.1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      color: var(--accent-2);
+      opacity: 0.55;
+    }
+
+    .solution__head-text {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .solution__title {
+      font-size: clamp(1.02rem, 2.1vw, 1.25rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.28;
+    }
+
+    .solution__desc {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .solution__chevron {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      color: var(--accent-2);
+      transition: transform 0.35s var(--ease-out), background 0.25s, border-color 0.25s;
+    }
+
+    .solution__chevron svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .solution__head:hover .solution__chevron {
+      background: rgba(167, 139, 250, 0.12);
+      border-color: rgba(167, 139, 250, 0.32);
+    }
+
+    .solution.is-open .solution__chevron {
+      transform: rotate(180deg);
+    }
+
+    .solution__panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.42s var(--ease-out);
+    }
+
+    .solution__panel-inner {
+      padding: 0 var(--space-md) var(--space-md);
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 0.3s var(--ease-out) 0.05s, transform 0.3s var(--ease-out) 0.05s;
+    }
+
+    .solution.is-open .solution__panel-inner {
+      opacity: 1;
+      transform: none;
+    }
+
+    .sol-projects {
+      list-style: none;
+      margin: 0;
+      padding: var(--space-sm) 0 0;
+      border-top: 1px solid var(--glass-border);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .sol-projects {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem 1.1rem;
+      }
+    }
+
+    .sol-proj {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 0.7rem 0.85rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(167, 139, 250, 0.08);
+      transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+    }
+
+    .sol-proj:hover {
+      background: rgba(167, 139, 250, 0.07);
+      border-color: rgba(167, 139, 250, 0.18);
+    }
+
+    .sol-proj__text {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .sol-proj__name {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .sol-proj__use {
+      font-size: 0.8125rem;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    .sol-proj__open {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 40%),
+        linear-gradient(145deg, #7c4ce8 0%, var(--accent-1) 40%, var(--accent-3) 100%);
+      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.28);
+      transition: transform 0.2s var(--ease-out), box-shadow 0.25s, filter 0.2s;
+    }
+
+    .sol-proj__open svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .sol-proj__open:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+      box-shadow: 0 10px 24px rgba(139, 92, 246, 0.36);
+    }
+
+    .sol-proj__open:focus-visible {
+      outline: 2px solid rgba(196, 181, 253, 0.85);
+      outline-offset: 2px;
+    }
+
+    .sol-proj__open--soon {
+      color: var(--text-muted);
+      background: rgba(167, 139, 250, 0.08);
+      border: 1px solid var(--glass-border);
+      box-shadow: none;
+      cursor: default;
+    }
+
+    .sol-proj__open--soon:hover {
+      transform: none;
+      filter: none;
+      box-shadow: none;
+    }
+
+    html[data-theme="light"] .solution {
+      background: rgba(234, 228, 240, 0.9);
+      border-color: rgba(100, 70, 160, 0.16);
+    }
+
+    html[data-theme="light"] .solution__index {
+      color: #6d28d9;
+    }
+
+    html[data-theme="light"] .sol-proj {
+      background: rgba(255, 255, 255, 0.5);
+      border-color: rgba(100, 70, 160, 0.12);
+    }
+
+    html[data-theme="light"] .sol-proj:hover {
+      background: rgba(124, 58, 237, 0.07);
+      border-color: rgba(100, 70, 160, 0.2);
+    }
+
+    html[data-theme="light"] .sol-proj__open--soon {
+      background: rgba(124, 58, 237, 0.08);
+      border-color: rgba(100, 70, 160, 0.18);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .solution__panel,
+      .solution__panel-inner,
+      .solution__chevron {
+        transition: none;
+      }
+    }
+
     .section--how-start .section-head {
       margin-bottom: var(--space-md);
     }
@@ -5336,12 +5597,214 @@
     </section>
 
     <!-- ========== Кейсы: доказательство результата ========== -->
-    <section class="section section--projects reveal" id="projects" aria-labelledby="projects-title">
-      <div class="section-head">
-        <p class="label" id="projects-label">Кейсы</p>
-        <h2 id="projects-title">Результат, который можно проверить</h2>
-        <p class="offers-section__lead section-head__narrow">Ссылки, демо и сценарии — не «картинка в Фигме». 17+ проектов: сайты, боты, мини-сервисы, образование и бизнес</p>
+    <section class="section section--solutions reveal" id="projects" aria-labelledby="solutions-title">
+      <div class="section-head reveal">
+        <p class="label">Портфолио решений</p>
+        <h2 id="solutions-title">Портфолио решений</h2>
+        <p class="offers-section__lead section-head__narrow">Каждый проект начинается с задачи. Ниже — примеры того, какие задачи я помогаю решать и какие решения для этого создаю.</p>
       </div>
+      <div class="solutions">
+
+        <article class="solution reveal reveal-delay-1">
+          <h3 class="solution__heading">
+            <button class="solution__head" type="button" aria-expanded="false" aria-controls="solution-panel-1" id="solution-head-1">
+              <span class="solution__index" aria-hidden="true">01</span>
+              <span class="solution__head-text">
+                <span class="solution__title">Помогаю рассказывать о продукте и получать обращения</span>
+                <span class="solution__desc">Когда важно понятно показать ценность услуги, продукта или проекта и помочь человеку сделать следующий шаг.</span>
+              </span>
+              <span class="solution__chevron" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </button>
+          </h3>
+          <div class="solution__panel" id="solution-panel-1" role="region" aria-labelledby="solution-head-1">
+            <div class="solution__panel-inner">
+              <ul class="sol-projects">
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Грузоперевозки</span>
+                    <span class="sol-proj__use">Лендинг перевозчика: показывает услуги, вызывает доверие и мягко ведёт к заявке.</span>
+                  </span>
+                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Колбаски</span>
+                    <span class="sol-proj__use">Витрина домашних колбас: аппетитная подача и понятный путь к заказу.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Колбаски — скоро">Скоро</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Учитель и нейросети</span>
+                    <span class="sol-proj__use">Сайт для педагогов: простым языком объясняет пользу нейросетей в работе.</span>
+                  </span>
+                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">MA.digital</span>
+                    <span class="sol-proj__use">Сайт-портфолио, который вы сейчас просматриваете.</span>
+                  </span>
+                  <a class="sol-proj__open" href="#top">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Сайт Елены Гурьяновой</span>
+                    <span class="sol-proj__use">Персональный сайт эксперта: понятная подача и доверие с первого экрана.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Сайт Елены Гурьяновой — скоро">Скоро</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="solution reveal reveal-delay-2">
+          <h3 class="solution__heading">
+            <button class="solution__head" type="button" aria-expanded="false" aria-controls="solution-panel-2" id="solution-head-2">
+              <span class="solution__index" aria-hidden="true">02</span>
+              <span class="solution__head-text">
+                <span class="solution__title">Помогаю автоматизировать процессы</span>
+                <span class="solution__desc">Когда рутинные действия занимают слишком много времени и их можно упростить с помощью цифрового инструмента.</span>
+              </span>
+              <span class="solution__chevron" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </button>
+          </h3>
+          <div class="solution__panel" id="solution-panel-2" role="region" aria-labelledby="solution-head-2">
+            <div class="solution__panel-inner">
+              <ul class="sol-projects">
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Лисичка рядом</span>
+                    <span class="sol-proj__use">Помощник бережного общения: ребёнку проще начать разговор и получить поддержку.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Лисичка рядом — скоро">Скоро</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Семейный калькулятор</span>
+                    <span class="sol-proj__use">Учёт доходов и расходов: видно, куда уходят деньги.</span>
+                  </span>
+                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/family-calculator/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Учёт грамот</span>
+                    <span class="sol-proj__use">Учёт наград и достижений без бумажной рутины.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Учёт грамот — скоро">Скоро</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Приложение для заместителя директора</span>
+                    <span class="sol-proj__use">Помогает планировать и держать процессы школы под контролем.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Приложение для заместителя директора — скоро">Скоро</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="solution reveal reveal-delay-3">
+          <h3 class="solution__heading">
+            <button class="solution__head" type="button" aria-expanded="false" aria-controls="solution-panel-3" id="solution-head-3">
+              <span class="solution__index" aria-hidden="true">03</span>
+              <span class="solution__head-text">
+                <span class="solution__title">Помогаю вовлекать пользователей</span>
+                <span class="solution__desc">Когда важно удерживать внимание, вызывать интерес и превращать обучение или взаимодействие в живой процесс.</span>
+              </span>
+              <span class="solution__chevron" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </button>
+          </h3>
+          <div class="solution__panel" id="solution-panel-3" role="region" aria-labelledby="solution-head-3">
+            <div class="solution__panel-inner">
+              <ul class="sol-projects">
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Игра по дробям</span>
+                    <span class="sol-proj__use">Учебная игра: дроби осваиваются через интерес и желание пройти дальше.</span>
+                  </span>
+                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/IGRA_DROBI/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Музейный интерактивный проект</span>
+                    <span class="sol-proj__use">Интерактив для музея: вовлекает в живое знакомство с экспозицией.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Музейный интерактивный проект — скоро">Скоро</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Другие игровые механики</span>
+                    <span class="sol-proj__use">Небольшие игры под конкретную задачу вовлечения.</span>
+                  </span>
+                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="solution reveal reveal-delay-4">
+          <h3 class="solution__heading">
+            <button class="solution__head" type="button" aria-expanded="false" aria-controls="solution-panel-4" id="solution-head-4">
+              <span class="solution__index" aria-hidden="true">04</span>
+              <span class="solution__head-text">
+                <span class="solution__title">Помогаю обучать проще и эффективнее</span>
+                <span class="solution__desc">Когда нужны современные образовательные материалы, которые помогают учиться быстрее и понятнее.</span>
+              </span>
+              <span class="solution__chevron" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+            </button>
+          </h3>
+          <div class="solution__panel" id="solution-panel-4" role="region" aria-labelledby="solution-head-4">
+            <div class="solution__panel-inner">
+              <ul class="sol-projects">
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Летняя тетрадь по математике</span>
+                    <span class="sol-proj__use">Набор заданий, чтобы не растерять навыки за лето.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Летняя тетрадь по математике — скоро">Подробнее</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Конспекты уроков</span>
+                    <span class="sol-proj__use">Структурированные конспекты — экономят время на подготовке.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Конспекты уроков — скоро">Подробнее</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Рабочие программы</span>
+                    <span class="sol-proj__use">Готовые программы по требованиям, без долгой бумажной работы.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Рабочие программы — скоро">Подробнее</button>
+                </li>
+                <li class="sol-proj">
+                  <span class="sol-proj__text">
+                    <span class="sol-proj__name">Методические материалы</span>
+                    <span class="sol-proj__use">Практичные материалы, которые легко применять на занятиях.</span>
+                  </span>
+                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Методические материалы — скоро">Подробнее</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="legacy-projects-removed" hidden aria-hidden="true">
       <div class="projects-grid">
         <div class="projects-sites-cluster reveal">
           <header class="projects-sites-cluster__head">
@@ -5631,7 +6094,7 @@
           Один сценарий — одна идея: так проще сравнить с вашим запросом и оценить тон
         </p>
       </div>
-    </section>
+    </div>
 
     <!-- ========== Демо: интерактив (кейс-формат) ========== -->
     <section class="section section--playable reveal" id="playable-demo" aria-labelledby="playable-demo-title">
@@ -6651,6 +7114,43 @@
           setTimeout(function () {
             btn.textContent = 'Открыть';
           }, 1600);
+        });
+      });
+
+      /* ----- Портфолио решений: плавное раскрытие направлений ----- */
+      var solutionHeads = document.querySelectorAll('.solution__head');
+      solutionHeads.forEach(function (head) {
+        var solution = head.closest('.solution');
+        var panel = document.getElementById(head.getAttribute('aria-controls'));
+        if (!solution || !panel) return;
+
+        head.addEventListener('click', function () {
+          var isOpen = solution.classList.contains('is-open');
+          if (isOpen) {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            requestAnimationFrame(function () {
+              panel.style.maxHeight = '0px';
+            });
+            solution.classList.remove('is-open');
+            head.setAttribute('aria-expanded', 'false');
+          } else {
+            solution.classList.add('is-open');
+            head.setAttribute('aria-expanded', 'true');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        });
+
+        panel.addEventListener('transitionend', function (e) {
+          if (e.propertyName !== 'max-height') return;
+          if (solution.classList.contains('is-open')) {
+            panel.style.maxHeight = 'none';
+          }
+        });
+      });
+
+      window.addEventListener('resize', function () {
+        document.querySelectorAll('.solution.is-open .solution__panel').forEach(function (panel) {
+          panel.style.maxHeight = 'none';
         });
       });
 
