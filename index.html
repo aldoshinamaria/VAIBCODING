@@ -166,7 +166,7 @@
       border-color: rgba(100, 70, 160, 0.32);
     }
 
-    html[data-theme="light"] .flow-graph,
+    html[data-theme="light"] .flow-ask,
     html[data-theme="light"] .flow-build,
     html[data-theme="light"] .flow-live {
       background: rgba(234, 228, 240, 0.94);
@@ -175,10 +175,6 @@
 
     html[data-theme="light"] .flow-stage__step {
       color: #6d28d9;
-    }
-
-    html[data-theme="light"] .flow-build__bar {
-      background: rgba(120, 90, 170, 0.16);
     }
 
     html[data-theme="light"] .flow-live__item + .flow-live__item {
@@ -2549,9 +2545,9 @@
       color: rgba(167, 139, 250, 0.5);
     }
 
-    /* Зона 2 — структура и связи */
-    .flow-graph {
-      padding: 0.65rem 0.75rem 0.6rem;
+    /* Зона 2 — реальные вопросы клиента */
+    .flow-ask {
+      padding: 0.72rem 0.85rem;
       border-radius: 14px;
       background: rgba(22, 22, 32, 0.66);
       border: 1px solid rgba(167, 139, 250, 0.16);
@@ -2560,27 +2556,36 @@
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
     }
 
-    .flow-graph__svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      color: var(--accent-2);
+    .flow-ask__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.42rem;
     }
 
-    .flow-graph__svg circle {
-      fill: var(--accent-2);
+    .flow-ask__list li {
+      position: relative;
+      padding-left: 0.95rem;
+      font-size: 0.71rem;
+      line-height: 1.3;
+      color: var(--text);
     }
 
-    .flow-graph__cap {
-      margin: 0.45rem 0 0;
-      font-size: 0.625rem;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
+    .flow-ask__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-2);
     }
 
-    /* Зона 3 — собранный реальный интерфейс */
+    /* Зона 3 — работа над решением */
     .flow-build {
-      padding: 0.7rem 0.85rem 0.8rem;
+      padding: 0.72rem 0.85rem;
       border-radius: 14px;
       background: rgba(18, 18, 26, 0.74);
       border: 1px solid rgba(167, 139, 250, 0.18);
@@ -2589,43 +2594,29 @@
       box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
     }
 
-    .flow-build__name {
-      margin: 0 0 0.5rem;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text);
+    .flow-build__steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.42rem 0.6rem;
     }
 
-    .flow-build__row {
+    .flow-build__steps li {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-size: 0.6875rem;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .flow-build__row strong {
+      gap: 0.4rem;
+      font-size: 0.71rem;
+      font-weight: 500;
       color: var(--text);
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
     }
 
-    .flow-build__bar {
-      height: 5px;
-      border-radius: 3px;
-      background: rgba(11, 11, 15, 0.6);
-      overflow: hidden;
-      margin-top: 0.3rem;
-    }
-
-    .flow-build__bar span {
-      display: block;
-      height: 100%;
-      width: 64%;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    .flow-build__steps svg {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      color: var(--accent-2);
     }
 
     /* Зона 4 — живые проекты */
@@ -2653,6 +2644,15 @@
 
     .flow-live__item + .flow-live__item {
       border-top: 1px solid rgba(167, 139, 250, 0.1);
+    }
+
+    .flow-live__cap {
+      margin: 0.5rem 0 0;
+      font-size: 0.5625rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     .flow-live__dot {
@@ -5134,7 +5134,7 @@
                   <circle cx="12" cy="12" r="3" fill="currentColor" />
                 </svg>
               </span>
-              <p class="flow-note__text">«Есть идея, но непонятно, с чего начать»</p>
+              <p class="flow-note__text">«Хочу сайт, но не понимаю, каким он должен быть»</p>
               <svg class="flow-note__scribble" viewBox="0 0 120 12" fill="none" aria-hidden="true">
                 <path d="M2 7C18 1 26 11 42 6s28-5 44 1 26 4 32-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
@@ -5143,26 +5143,36 @@
 
           <figure class="flow-stage flow-stage--understand">
             <figcaption class="flow-stage__step">02 · Разбираемся</figcaption>
-            <div class="flow-graph">
-              <svg class="flow-graph__svg" viewBox="0 0 124 64" fill="none" aria-hidden="true">
-                <path d="M18 20C44 10 62 40 104 18" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.55" />
-                <path d="M18 20C28 42 50 52 60 52" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.4" />
-                <path d="M104 18C100 44 80 50 60 52" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.4" />
-                <circle cx="18" cy="20" r="4.2" />
-                <circle cx="104" cy="18" r="4.2" />
-                <circle cx="60" cy="52" r="4.2" />
-              </svg>
-              <p class="flow-graph__cap">Кто · зачем · какой следующий шаг</p>
+            <div class="flow-ask">
+              <ul class="flow-ask__list">
+                <li>Кто будет пользоваться?</li>
+                <li>Какую задачу решаем?</li>
+                <li>Какой результат нужен?</li>
+              </ul>
             </div>
           </figure>
 
           <figure class="flow-stage flow-stage--build">
             <figcaption class="flow-stage__step">03 · Собираем решение</figcaption>
             <div class="flow-build">
-              <p class="flow-build__name">Семейный калькулятор</p>
-              <div class="flow-build__row"><span>Доходы</span><strong>58 000 ₽</strong></div>
-              <div class="flow-build__row"><span>Расходы · по категориям</span><span>64%</span></div>
-              <div class="flow-build__bar"><span></span></div>
+              <ul class="flow-build__steps">
+                <li>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Структура
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Сценарии
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Тексты
+                </li>
+                <li>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  Дизайн
+                </li>
+              </ul>
             </div>
           </figure>
 
@@ -5173,6 +5183,7 @@
               <li class="flow-live__item"><span class="flow-live__dot"></span>Грузоперевозки</li>
               <li class="flow-live__item"><span class="flow-live__dot"></span>Учитель и нейросети</li>
             </ul>
+            <p class="flow-live__cap">Готовые проекты — можно открыть</p>
           </figure>
         </div>
       </div>
