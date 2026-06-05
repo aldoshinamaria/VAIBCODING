@@ -161,6 +161,34 @@
       border-top-color: rgba(100, 60, 180, 0.12);
     }
 
+    html[data-theme="light"] .flow-note {
+      background: linear-gradient(158deg, rgba(236, 230, 244, 0.95), rgba(228, 222, 236, 0.92));
+      border-color: rgba(100, 70, 160, 0.32);
+    }
+
+    html[data-theme="light"] .flow-graph,
+    html[data-theme="light"] .flow-build,
+    html[data-theme="light"] .flow-live {
+      background: rgba(234, 228, 240, 0.94);
+      border-color: rgba(100, 70, 160, 0.16);
+    }
+
+    html[data-theme="light"] .flow-stage__step {
+      color: #6d28d9;
+    }
+
+    html[data-theme="light"] .flow-build__bar {
+      background: rgba(120, 90, 170, 0.16);
+    }
+
+    html[data-theme="light"] .flow-live__item + .flow-live__item {
+      border-top-color: rgba(100, 70, 160, 0.14);
+    }
+
+    html[data-theme="light"] .hero-flow__path--base {
+      stroke: rgba(100, 70, 160, 0.22);
+    }
+
     html[data-theme="light"] .hero__micro,
     html[data-theme="light"] .hero__cta-hint {
       color: rgba(15, 15, 25, 0.55);
@@ -2414,6 +2442,245 @@
       background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
       opacity: 0.55;
       margin-top: 6px;
+    }
+
+    /* ========== HERO: живой процесс «идея → запуск» (правая часть) ========== */
+    .hero-flow {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-flow__links {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-flow__path--base {
+      stroke: rgba(167, 139, 250, 0.16);
+      stroke-width: 1.4;
+    }
+
+    .hero-flow__path--glow {
+      stroke: url(#heroFlowGrad);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-dasharray: 26 334;
+      filter: drop-shadow(0 0 5px rgba(167, 139, 250, 0.55));
+      animation: heroFlowDash 5.5s linear infinite;
+    }
+
+    @keyframes heroFlowDash {
+      from { stroke-dashoffset: 360; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    .flow-stage {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .flow-stage__step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.45rem;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+    }
+
+    .flow-stage--idea { top: 0; left: 0; width: 62%; animation: heroFloatA 8s ease-in-out infinite; }
+    .flow-stage--understand { top: 26%; right: 0; width: 52%; animation: heroFloatB 9s ease-in-out infinite 0.4s; }
+    .flow-stage--build { top: 51%; left: 0; width: 62%; animation: heroFloatC 8.5s ease-in-out infinite 0.2s; }
+    .flow-stage--launch { bottom: 0; right: 0; width: 58%; animation: heroFloatD 7.5s ease-in-out infinite 0.6s; }
+
+    /* Зона 1 — набросок идеи */
+    .flow-note {
+      position: relative;
+      padding: 0.7rem 0.85rem 0.8rem;
+      border-radius: 14px;
+      background: linear-gradient(158deg, rgba(42, 35, 62, 0.72), rgba(22, 20, 32, 0.6));
+      border: 1px dashed rgba(167, 139, 250, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+      transform: rotate(-1.6deg);
+    }
+
+    .flow-note__spark {
+      position: absolute;
+      top: -11px;
+      left: -10px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: radial-gradient(circle at 35% 30%, #c4b5fd, var(--accent-1));
+      box-shadow: 0 0 14px rgba(167, 139, 250, 0.6);
+    }
+
+    .flow-note__spark svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .flow-note__text {
+      margin: 0;
+      font-size: 0.78rem;
+      line-height: 1.34;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .flow-note__scribble {
+      display: block;
+      width: 64%;
+      height: 9px;
+      margin-top: 0.5rem;
+      color: rgba(167, 139, 250, 0.5);
+    }
+
+    /* Зона 2 — структура и связи */
+    .flow-graph {
+      padding: 0.65rem 0.75rem 0.6rem;
+      border-radius: 14px;
+      background: rgba(22, 22, 32, 0.66);
+      border: 1px solid rgba(167, 139, 250, 0.16);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+    }
+
+    .flow-graph__svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      color: var(--accent-2);
+    }
+
+    .flow-graph__svg circle {
+      fill: var(--accent-2);
+    }
+
+    .flow-graph__cap {
+      margin: 0.45rem 0 0;
+      font-size: 0.625rem;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+
+    /* Зона 3 — собранный реальный интерфейс */
+    .flow-build {
+      padding: 0.7rem 0.85rem 0.8rem;
+      border-radius: 14px;
+      background: rgba(18, 18, 26, 0.74);
+      border: 1px solid rgba(167, 139, 250, 0.18);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.4);
+    }
+
+    .flow-build__name {
+      margin: 0 0 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .flow-build__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .flow-build__row strong {
+      color: var(--text);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .flow-build__bar {
+      height: 5px;
+      border-radius: 3px;
+      background: rgba(11, 11, 15, 0.6);
+      overflow: hidden;
+      margin-top: 0.3rem;
+    }
+
+    .flow-build__bar span {
+      display: block;
+      height: 100%;
+      width: 64%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    }
+
+    /* Зона 4 — живые проекты */
+    .flow-live {
+      list-style: none;
+      margin: 0;
+      padding: 0.65rem 0.8rem;
+      border-radius: 14px;
+      background: rgba(26, 26, 36, 0.78);
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.36);
+    }
+
+    .flow-live__item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+      padding: 0.2rem 0;
+    }
+
+    .flow-live__item + .flow-live__item {
+      border-top: 1px solid rgba(167, 139, 250, 0.1);
+    }
+
+    .flow-live__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: #34d399;
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
+      animation: heroLivePulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes heroLivePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    @keyframes heroFloatA { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(0, -7px); } }
+    @keyframes heroFloatB { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-6px, 7px); } }
+    @keyframes heroFloatC { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(5px, -6px); } }
+    @keyframes heroFloatD { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-5px, -8px); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-flow__path--glow,
+      .flow-stage,
+      .flow-live__dot {
+        animation: none;
+      }
     }
 
     @keyframes floatHeroBack {
@@ -4836,31 +5103,77 @@
         <p class="hero__cta-hint">Можно прийти даже с неоформленной идеей. Вместе найдём лучшее решение.</p>
       </div>
       <div class="hero-visual" id="hero-visual" aria-hidden="true">
-        <div class="float-card float-card--layer-back">
-          <div class="float-card__tag">Family OS</div>
-          <div class="float-card__title">Семейный бюджет · синхронизация</div>
-          <div class="float-card__meta"><span class="status-dot"></span> Live · 2 устройства</div>
-          <div class="hero-product">
-            <div class="hero-product__row"><span>Сегодня</span><strong>−2 840 ₽</strong></div>
-            <div class="hero-product__row"><span>Продукты · транспорт</span><span>64%</span></div>
-            <div class="hero-product__bar"><span></span></div>
-          </div>
-        </div>
-        <div class="float-card float-card--layer-mid float-card--mid-a">
-          <div class="float-card__tag">Product</div>
-          <div class="float-card__title">Лисичка рядом</div>
-          <div class="float-card__meta">Retention · 4.9</div>
-        </div>
-        <div class="float-card float-card--layer-mid float-card--mid-b">
-          <div class="float-card__tag">AI</div>
-          <div class="float-card__title">Учитель × нейросеть</div>
-          <div class="float-card__meta">Экономия · 12 ч/нед</div>
-        </div>
-        <div class="float-card float-card--layer-front">
-          <div class="mini-ui"><span></span><span></span><span></span></div>
-          <div style="font-size:0.6875rem;font-weight:600;color:var(--text);">Reply Gen</div>
-          <div style="font-size:0.625rem;color:var(--text-muted);margin-top:2px;">draft · 3 тона</div>
-          <div class="mini-bar"></div>
+        <div class="hero-flow">
+          <svg class="hero-flow__links" viewBox="0 0 320 460" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="heroFlowGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#8B5CF6" stop-opacity="0" />
+                <stop offset="0.5" stop-color="#A78BFA" stop-opacity="0.95" />
+                <stop offset="1" stop-color="#C084FC" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              class="hero-flow__path hero-flow__path--base"
+              d="M96 46 C 210 80 250 130 214 168 C 178 206 92 214 96 270 C 100 326 232 322 224 392"
+              fill="none"
+            />
+            <path
+              class="hero-flow__path hero-flow__path--glow"
+              pathLength="360"
+              d="M96 46 C 210 80 250 130 214 168 C 178 206 92 214 96 270 C 100 326 232 322 224 392"
+              fill="none"
+            />
+          </svg>
+
+          <figure class="flow-stage flow-stage--idea">
+            <figcaption class="flow-stage__step">01 · Идея</figcaption>
+            <div class="flow-note">
+              <span class="flow-note__spark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3.2v2.4M12 18.4v2.4M4.6 12H7M17 12h2.4M6.5 6.5l1.7 1.7M15.8 15.8l1.7 1.7M6.5 17.5l1.7-1.7M15.8 8.2l1.7-1.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                  <circle cx="12" cy="12" r="3" fill="currentColor" />
+                </svg>
+              </span>
+              <p class="flow-note__text">«Есть идея, но непонятно, с чего начать»</p>
+              <svg class="flow-note__scribble" viewBox="0 0 120 12" fill="none" aria-hidden="true">
+                <path d="M2 7C18 1 26 11 42 6s28-5 44 1 26 4 32-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+          </figure>
+
+          <figure class="flow-stage flow-stage--understand">
+            <figcaption class="flow-stage__step">02 · Разбираемся</figcaption>
+            <div class="flow-graph">
+              <svg class="flow-graph__svg" viewBox="0 0 124 64" fill="none" aria-hidden="true">
+                <path d="M18 20C44 10 62 40 104 18" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.55" />
+                <path d="M18 20C28 42 50 52 60 52" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.4" />
+                <path d="M104 18C100 44 80 50 60 52" stroke="currentColor" stroke-width="1.3" stroke-opacity="0.4" />
+                <circle cx="18" cy="20" r="4.2" />
+                <circle cx="104" cy="18" r="4.2" />
+                <circle cx="60" cy="52" r="4.2" />
+              </svg>
+              <p class="flow-graph__cap">Кто · зачем · какой следующий шаг</p>
+            </div>
+          </figure>
+
+          <figure class="flow-stage flow-stage--build">
+            <figcaption class="flow-stage__step">03 · Собираем решение</figcaption>
+            <div class="flow-build">
+              <p class="flow-build__name">Семейный калькулятор</p>
+              <div class="flow-build__row"><span>Доходы</span><strong>58 000 ₽</strong></div>
+              <div class="flow-build__row"><span>Расходы · по категориям</span><span>64%</span></div>
+              <div class="flow-build__bar"><span></span></div>
+            </div>
+          </figure>
+
+          <figure class="flow-stage flow-stage--launch">
+            <figcaption class="flow-stage__step">04 · Запуск</figcaption>
+            <ul class="flow-live">
+              <li class="flow-live__item"><span class="flow-live__dot"></span>Лисичка рядом</li>
+              <li class="flow-live__item"><span class="flow-live__dot"></span>Грузоперевозки</li>
+              <li class="flow-live__item"><span class="flow-live__dot"></span>Учитель и нейросети</li>
+            </ul>
+          </figure>
         </div>
       </div>
     </section>
