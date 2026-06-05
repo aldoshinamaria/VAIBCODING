@@ -1998,6 +1998,41 @@
       max-width: 100%;
     }
 
+    .hero__markers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.625rem 0.75rem;
+      list-style: none;
+      margin: var(--space-md) 0 0;
+      padding: 0;
+    }
+
+    .hero__marker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--text);
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .hero__marker svg {
+      flex-shrink: 0;
+      color: var(--accent-2);
+    }
+
+    html[data-theme="light"] .hero__marker svg {
+      color: #6d28d9;
+    }
+
     .hero__micro {
       font-size: 0.75rem;
       line-height: 1.5;
@@ -4745,18 +4780,38 @@
     <!-- ========== HERO ========== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__copy">
-        <p class="label">Мария Алдошина · MA. digital</p>
+        <p class="label">Мария Алдошина · 13 лет в образовании и управлении проектами</p>
         <h1 id="hero-title" class="hero__title">
           <span id="typed-text" class="hero__typed" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
-          Делаю сайты, ботов и интерактивы: пользователь дольше остаётся, быстрее понимает ценность, чаще совершает целевое действие
+          Создаю сайты, сервисы, помощников и интерактивные решения для бизнеса и образования. Беру на себя путь от первой идеи до готового продукта и объясняю каждый шаг понятным языком.
         </p>
+        <ul class="hero__markers">
+          <li class="hero__marker">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+              <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Более 15 реализованных проектов
+          </li>
+          <li class="hero__marker">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+              <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Все работы можно открыть и проверить
+          </li>
+          <li class="hero__marker">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
+              <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            От идеи до запуска — в одних руках
+          </li>
+        </ul>
         <div class="btn-row">
-          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить идею</a>
-          <a href="#offers" class="btn btn--muted-hero">Что можно заказать</a>
+          <a href="#projects" class="btn btn--primary">Посмотреть работы</a>
+          <a href="#" class="btn btn--muted-hero" data-open-contact-messengers>Обсудить задачу</a>
         </div>
-        <p class="hero__cta-hint">Коротко опишите задачу в мессенджере — отвечаю в течение дня</p>
+        <p class="hero__cta-hint">Можно прийти даже с неоформленной идеей. Вместе разберёмся, какой формат подойдёт именно вам.</p>
       </div>
       <div class="hero-visual" id="hero-visual" aria-hidden="true">
         <div class="float-card float-card--layer-back">
@@ -6075,7 +6130,7 @@
       }
 
       /* ----- Печатающийся заголовок HERO: градиент на всём тексте с первой буквы (см. .hero__typed) ----- */
-      var fullTitle = 'Сайты, боты и интерактивы — от идеи до работающего продукта';
+      var fullTitle = 'Помогаю превращать идеи и задачи в работающие цифровые продукты';
       var typedEl = document.getElementById('typed-text');
       var cursorEl = document.getElementById('typed-cursor');
 
@@ -6091,7 +6146,7 @@
         if (i < fullTitle.length) {
           typedEl.textContent += fullTitle.charAt(i);
           i++;
-          setTimeout(typeChar, i < 12 ? 72 : 50);
+          setTimeout(typeChar, i < 12 ? 56 : 34);
         } else {
           finishTypedTitle();
         }
