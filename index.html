@@ -1903,6 +1903,23 @@
       justify-content: center;
     }
 
+    .hero .btn-row .btn {
+      padding: 1rem 1.85rem;
+      font-size: 0.9375rem;
+    }
+
+    @media (max-width: 480px) {
+      .hero .btn-row {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .hero .btn-row .btn {
+        width: 100%;
+      }
+    }
+
     /* Вторичная CTA в hero — без яркого градиента */
     .hero .btn-row .btn--muted-hero {
       color: rgba(245, 245, 247, 0.7);
@@ -1949,11 +1966,13 @@
     }
 
     .hero__title {
-      font-size: clamp(1.85rem, 5vw, 3.25rem);
-      font-weight: 700;
-      line-height: 1.12;
+      font-size: clamp(1.5rem, 6.2vw, 2.95rem);
+      font-weight: 800;
+      line-height: 1.14;
       letter-spacing: -0.02em;
       margin-bottom: var(--space-md);
+      text-wrap: balance;
+      overflow-wrap: break-word;
     }
 
     /* Градиент на заголовке HERO: виден с первого символа при печати */
@@ -1993,9 +2012,12 @@
     }
 
     .hero__subtitle {
-      font-size: clamp(0.95rem, 2vw, 1.125rem);
+      font-size: clamp(1rem, 2vw, 1.1875rem);
+      line-height: 1.55;
       color: var(--text-muted);
-      max-width: 100%;
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero__markers {
@@ -4785,7 +4807,7 @@
           <span id="typed-text" class="hero__typed" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
-          Создаю сайты, сервисы, помощников и интерактивные решения для бизнеса и образования. Беру на себя путь от первой идеи до готового продукта и объясняю каждый шаг понятным языком.
+          У вас есть задача, которую можно решить с помощью сайта, сервиса, помощника или интерактивного проекта? Помогу разобраться в идее, собрать понятное решение и довести его до запуска.
         </p>
         <ul class="hero__markers">
           <li class="hero__marker">
@@ -4811,7 +4833,7 @@
           <a href="#projects" class="btn btn--primary">Посмотреть работы</a>
           <a href="#" class="btn btn--muted-hero" data-open-contact-messengers>Обсудить задачу</a>
         </div>
-        <p class="hero__cta-hint">Можно прийти даже с неоформленной идеей. Вместе разберёмся, какой формат подойдёт именно вам.</p>
+        <p class="hero__cta-hint">Можно прийти даже с неоформленной идеей. Вместе найдём лучшее решение.</p>
       </div>
       <div class="hero-visual" id="hero-visual" aria-hidden="true">
         <div class="float-card float-card--layer-back">
