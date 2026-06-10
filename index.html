@@ -6210,7 +6210,7 @@
     <!-- ========== HERO ========== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__copy">
-        <p class="label">Мария Алдошина · 13 лет в образовании и управлении проектами</p>
+        <p class="label">Мария Алдошина · 13 лет в образовании<br>и управлении проектами</p>
         <h1 id="hero-title" class="hero__title">
           <span id="typed-text" class="hero__typed" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
@@ -8262,6 +8262,49 @@
       var fullTitle = 'Помогаю превращать идеи и задачи в работающие цифровые продукты';
       var typedEl = document.getElementById('typed-text');
       var cursorEl = document.getElementById('typed-cursor');
+      var typewriterCtx = null;
+
+      function getTypewriterCtx() {
+        if (!typewriterCtx) {
+          try {
+            typewriterCtx = new (window.AudioContext || window.webkitAudioContext)();
+          } catch (e) { /* без звука, если API недоступен */ }
+        }
+        return typewriterCtx;
+      }
+
+      function playTypewriterClick() {
+        var ctx = getTypewriterCtx();
+        if (!ctx) return;
+        if (ctx.state === 'suspended') ctx.resume();
+        var t = ctx.currentTime;
+        var len = Math.floor(ctx.sampleRate * 0.028);
+        var buffer = ctx.createBuffer(1, len, ctx.sampleRate);
+        var data = buffer.getChannelData(0);
+        var i;
+        for (i = 0; i < len; i++) {
+          data[i] = (Math.random() * 2 - 1) * (1 - i / len);
+        }
+        var noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        var filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = 1400 + Math.random() * 600;
+        filter.Q.value = 0.9;
+        var gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.11, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.028);
+        noise.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        noise.start(t);
+        noise.stop(t + 0.03);
+      }
+
+      document.addEventListener('pointerdown', function unlockTypewriterAudio() {
+        var ctx = getTypewriterCtx();
+        if (ctx && ctx.state === 'suspended') ctx.resume();
+      }, { once: true, passive: true });
 
       function finishTypedTitle() {
         typedEl.textContent = fullTitle;
@@ -8273,9 +8316,11 @@
       var i = 0;
       function typeChar() {
         if (i < fullTitle.length) {
-          typedEl.textContent += fullTitle.charAt(i);
+          var ch = fullTitle.charAt(i);
+          typedEl.textContent += ch;
+          if (ch !== ' ') playTypewriterClick();
           i++;
-          setTimeout(typeChar, i < 12 ? 56 : 34);
+          setTimeout(typeChar, i <= 12 ? 112 : 68);
         } else {
           finishTypedTitle();
         }
@@ -8284,7 +8329,7 @@
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         finishTypedTitle();
       } else {
-        setTimeout(typeChar, 520);
+        setTimeout(typeChar, 1040);
       }
 
       /* ----- Лёгкий parallax всей композиции (не ломает float-анимации карточек) ----- */
