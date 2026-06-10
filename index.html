@@ -5498,6 +5498,64 @@
       justify-content: center;
     }
 
+    .modal--pdf .modal__dialog {
+      max-width: min(920px, 96vw);
+      max-height: min(92vh, 900px);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding-bottom: var(--space-md);
+    }
+
+    .modal--pdf .modal__content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .pdf-viewer {
+      flex: 1;
+      min-height: min(68vh, 620px);
+      margin-top: var(--space-md);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(167, 139, 250, 0.2);
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .pdf-viewer iframe {
+      display: block;
+      width: 100%;
+      height: min(68vh, 620px);
+      border: none;
+      background: #fff;
+    }
+
+    .pdf-viewer__toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: var(--space-md);
+    }
+
+    html[data-theme="light"] .pdf-viewer {
+      background: rgba(240, 236, 246, 0.6);
+      border-color: rgba(100, 70, 160, 0.16);
+    }
+
+    @media (max-width: 640px) {
+      .modal--pdf .modal__dialog {
+        max-height: 94vh;
+        padding: var(--space-md);
+        padding-top: calc(var(--space-md) + 8px);
+      }
+
+      .pdf-viewer iframe {
+        height: min(58vh, 520px);
+      }
+    }
+
     .modal__backdrop {
       position: absolute;
       inset: 0;
@@ -6390,6 +6448,25 @@
           <span class="portfolio-cat__label">Категория 01</span>
           <h3 class="portfolio-cat__title">Флагманский продукт</h3>
           <article class="portfolio-flagship reveal">
+            <figure class="portfolio-flagship__preview">
+              <a
+                class="portfolio-flagship__preview-link"
+                href="https://vospitanie-pro.vercel.app/activity-plans"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="images/vospitanie-pro-preview.png"
+                  alt="Интерфейс платформы Воспитание.PRO — планы деятельности, направления и контроль мероприятий"
+                  width="1440"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="portfolio-flagship__preview-badge">Live SaaS</span>
+              </a>
+            </figure>
+            <div class="portfolio-flagship__main">
             <span class="portfolio-flagship__badge">SaaS · образование</span>
             <h4 class="portfolio-flagship__name">Воспитание.PRO</h4>
             <p class="portfolio-flagship__tagline">Цифровая система управления воспитательной работой школы — от плана до отчёта и контроля исполнения.</p>
@@ -6413,6 +6490,7 @@
             <div class="portfolio-flagship__actions">
               <a class="btn btn--primary" href="https://vospitanie-pro.vercel.app/activity-plans" target="_blank" rel="noopener noreferrer">Открыть продукт</a>
               <a class="btn btn--ghost" href="#quiz-mvp">Обсудить внедрение</a>
+            </div>
             </div>
           </article>
         </div>
@@ -6567,7 +6645,8 @@
                   </dl>
                   <p class="prod-card__value">Ценность: навыки сохраняются через лето — без зубрёжки и хаотичных задач.</p>
                   <div class="prod-card__actions">
-                    <a class="btn btn--primary" href="#quiz-mvp">Запросить доступ</a>
+                    <button type="button" class="btn btn--primary" id="tetrad-demo-open" aria-haspopup="dialog" aria-controls="modal-tetrad-demo">Посмотреть</button>
+                    <a class="btn btn--ghost" href="#quiz-mvp">Запросить полную версию</a>
                   </div>
                 </div>
               </div>
@@ -7289,6 +7368,49 @@
   <footer class="footer">
     <p>© Мария Алдошина · Разработка цифровых продуктов · <span id="year"></span></p>
   </footer>
+
+  <!-- Modal: демо летней математической тетради -->
+  <div
+    class="modal modal--pdf"
+    id="modal-tetrad-demo"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-tetrad-demo-title"
+  >
+    <div class="modal__backdrop" data-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content">
+        <p class="label">Демо-фрагмент</p>
+        <h2 class="modal__title" id="modal-tetrad-demo-title">Летняя математическая тетрадь</h2>
+        <p class="modal__lead">Фрагмент для ознакомления — задания по темам с постепенным усложнением</p>
+        <div class="pdf-viewer">
+          <iframe
+            id="tetrad-demo-frame"
+            title="Демо-фрагмент летней математической тетради"
+            src="about:blank"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="pdf-viewer__toolbar">
+          <a
+            class="btn btn--ghost"
+            href="assets/docs/letnyaya-tetrad-demo.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Открыть в новой вкладке</a>
+          <a
+            class="btn btn--ghost"
+            href="assets/docs/letnyaya-tetrad-demo.pdf"
+            download="letnyaya-tetrad-demo.pdf"
+          >Скачать PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal: выбор мессенджера (Макс / Telegram / ВК) -->
   <div
@@ -8458,8 +8580,61 @@
         });
       }
 
+      /* ----- Modal: демо летней тетради (PDF) ----- */
+      var modalTetradDemo = document.getElementById('modal-tetrad-demo');
+      var tetradDemoOpenBtn = document.getElementById('tetrad-demo-open');
+      var tetradDemoFrame = document.getElementById('tetrad-demo-frame');
+      var tetradDemoPdfSrc = 'assets/docs/letnyaya-tetrad-demo.pdf';
+      var tetradDemoLastFocus = null;
+
+      function openTetradDemoModal() {
+        if (!modalTetradDemo) return;
+        tetradDemoLastFocus = document.activeElement;
+        if (tetradDemoFrame) {
+          tetradDemoFrame.src = tetradDemoPdfSrc + '#view=FitH';
+        }
+        modalTetradDemo.classList.add('modal--open');
+        modalTetradDemo.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = modalTetradDemo.querySelector('.modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeTetradDemoModal() {
+        if (!modalTetradDemo) return;
+        modalTetradDemo.classList.remove('modal--open');
+        modalTetradDemo.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (tetradDemoFrame) {
+          tetradDemoFrame.src = 'about:blank';
+        }
+        if (tetradDemoLastFocus && typeof tetradDemoLastFocus.focus === 'function') {
+          tetradDemoLastFocus.focus();
+        }
+      }
+
+      if (modalTetradDemo) {
+        modalTetradDemo.querySelectorAll('[data-modal-close]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeTetradDemoModal();
+          });
+        });
+      }
+
+      if (tetradDemoOpenBtn) {
+        tetradDemoOpenBtn.addEventListener('click', function () {
+          openTetradDemoModal();
+        });
+      }
+
       document.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') return;
+        if (modalTetradDemo && modalTetradDemo.classList.contains('modal--open')) {
+          e.preventDefault();
+          closeTetradDemoModal();
+          return;
+        }
         if (modalContactMessengers && modalContactMessengers.classList.contains('modal--open')) {
           e.preventDefault();
           closeContactMessengersModal();
