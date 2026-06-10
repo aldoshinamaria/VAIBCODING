@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Кейс: цифровой помощник «Лисичка рядом» — бережный канал поддержки для школьников." />
+  <title>Лисичка рядом — кейс · MA.digital</title>
+  <script>
+    (function () {
+      var k = 'ma-digital-theme';
+      var t = localStorage.getItem(k);
+      if (t !== 'light' && t !== 'dark') t = 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/css/case-study.css" />
+</head>
+<body class="case-page">
+  <header class="case-header">
+    <div class="case-header__inner">
+      <a class="case-header__back" href="../index.html#projects">← К решениям</a>
+      <img class="case-header__logo" src="../логотип.png" alt="MA.digital" width="120" height="36" decoding="async" />
+      <button type="button" class="case-header__theme" id="case-theme-toggle" aria-label="Включить светлую тему">☾</button>
+    </div>
+  </header>
+
+  <main class="case-main">
+    <section class="case-hero" aria-labelledby="case-title">
+      <span class="label">Кейс · цифровой помощник</span>
+      <h1 id="case-title">Лисичка рядом</h1>
+      <p class="case-hero__lead">Помощник в образе персонажа: ребёнок может обратиться за поддержкой спокойно и без давления — в привычной форме диалога.</p>
+    </section>
+
+    <section class="case-block" aria-labelledby="case-problem">
+      <h2 id="case-problem">С какой задачей пришли</h2>
+      <p>Школьникам бывает сложно попросить помощь вслух — стыдно, страшно или непонятно, с чего начать. Взрослым важно дать безопасный канал, где ребёнок не чувствует себя под допросом.</p>
+      <p>Нужен был формат, который снижает тревогу и помогает дойти до сути обращения.</p>
+    </section>
+
+    <section class="case-block" aria-labelledby="case-solution">
+      <h2 id="case-solution">Какое решение было реализовано</h2>
+      <p>Создали цифрового помощника с персонажем «Лисичка» — спокойным собеседником, который ведёт по шагам.</p>
+      <ul>
+        <li>Диалог вместо сухой анкеты — ребёнку проще начать разговор.</li>
+        <li>Подсказки и мягкие формулировки без давления.</li>
+        <li>Понятные шаги: что случилось, что беспокоит, нужна ли помощь взрослых.</li>
+        <li>Визуальный образ, который запоминается и не пугает.</li>
+      </ul>
+    </section>
+
+    <section class="case-block case-block--result" aria-labelledby="case-result">
+      <h2 id="case-result">Что получил пользователь</h2>
+      <ul>
+        <li>Ребёнок может попросить помощь в комфортной для себя форме.</li>
+        <li>Школа получает инструмент бережного общения, а не очередную «форму ради формы».</li>
+        <li>Обращение проще довести до сути — без смущения и лишних барьеров.</li>
+        <li>Взрослые видят, что поддержка доступна не только «на словах».</li>
+      </ul>
+    </section>
+
+    <section class="case-gallery" aria-labelledby="case-gallery-title">
+      <h2 id="case-gallery-title">Галерея экранов</h2>
+      <div class="case-gallery__grid">
+        <figure class="case-shot">
+          <div class="case-shot__chrome" aria-hidden="true">
+            <span class="case-shot__dot"></span><span class="case-shot__dot"></span><span class="case-shot__dot"></span>
+            <span class="case-shot__caption">Приветствие</span>
+          </div>
+          <figcaption class="case-shot__body">
+            <img src="../assets/lisichka.png" alt="Персонаж Лисичка — цифровой помощник" width="320" height="320" loading="lazy" decoding="async" />
+          </figcaption>
+        </figure>
+        <figure class="case-shot">
+          <div class="case-shot__chrome" aria-hidden="true">
+            <span class="case-shot__dot"></span><span class="case-shot__dot"></span><span class="case-shot__dot"></span>
+            <span class="case-shot__caption">Диалог</span>
+          </div>
+          <figcaption class="case-shot__body">
+            <div class="case-shot__mock-chat">
+              <div class="case-shot__bubble case-shot__bubble--fox">Привет. Я рядом. Расскажи, что тебя беспокоит — можно коротко.</div>
+              <div class="case-shot__bubble case-shot__bubble--user">Сложно было сказать учителю…</div>
+              <div class="case-shot__bubble case-shot__bubble--fox">Спасибо, что написал. Давай разберёмся по шагам.</div>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="case-shot">
+          <div class="case-shot__chrome" aria-hidden="true">
+            <span class="case-shot__dot"></span><span class="case-shot__dot"></span><span class="case-shot__dot"></span>
+            <span class="case-shot__caption">Поддержка</span>
+          </div>
+          <figcaption class="case-shot__body">
+            <div class="case-shot__mock">
+              <div class="case-shot__mock-title">Что тебе сейчас важнее?</div>
+              <div class="case-shot__mock-line case-shot__mock-line--mid"></div>
+              <span class="case-shot__mock-btn">Поговорить</span>
+              <span class="case-shot__mock-btn case-shot__mock-btn--muted">Попросить помощь</span>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-cta" aria-labelledby="case-cta-title">
+      <h2 id="case-cta-title">Похожая задача?</h2>
+      <p>Если вам нужен помощник для общения с аудиторией — в школе, сервисе или проекте — расскажите о задаче в коротком подборе.</p>
+      <a class="btn btn--primary" href="../index.html#quiz-mvp">Хочу похожее решение</a>
+    </section>
+  </main>
+
+  <footer class="case-footer">
+    <p>© Мария Алдошина · Цифровая мастерская решений · <span id="case-year"></span></p>
+  </footer>
+  <script src="../assets/js/case-study.js"></script>
+</body>
+</html>
