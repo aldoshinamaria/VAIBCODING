@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" id="meta-theme-color" content="#0B0B0F" />
-  <meta name="description" content="Мария Алдошина: сайты, боты, интерактивы — от идеи до работающего продукта. Кейсы, ориентиры по бюджету, бриф в мессенджере" />
+  <meta name="description" content="Мария Алдошина: цифровая мастерская решений — сайты, сервисы, игры и интерактивы. Помогу разобраться в задаче и подобрать формат проекта." />
   <title>Мария Алдошина — сайты, мини-сервисы и интерактивы</title>
   <script>
     (function () {
@@ -108,6 +108,7 @@
 
     html[data-theme="light"] .section--trust,
     html[data-theme="light"] .section--process,
+    html[data-theme="light"] .section--popular,
     html[data-theme="light"] .section--about,
     html[data-theme="light"] .section--offers,
     html[data-theme="light"] .section--quickstart,
@@ -282,25 +283,15 @@
       color: var(--text-muted);
     }
 
-    html[data-theme="light"] .process-step {
-      background: rgba(218, 210, 232, 0.42);
-      border-color: rgba(100, 70, 160, 0.12);
+    html[data-theme="light"] .work-route__step,
+    html[data-theme="light"] .popular-card {
+      background: rgba(234, 228, 240, 0.9);
+      border-color: rgba(100, 70, 160, 0.14);
     }
 
-    html[data-theme="light"] .process-step:hover {
+    html[data-theme="light"] .work-route__step:hover,
+    html[data-theme="light"] .popular-card:hover {
       box-shadow: 0 12px 32px rgba(50, 35, 90, 0.1);
-    }
-
-    html[data-theme="light"] .process-num__big {
-      color: rgba(90, 50, 140, 0.14);
-      -webkit-text-stroke: 1px rgba(100, 60, 160, 0.38);
-    }
-
-    @supports not (-webkit-text-stroke: 1px red) {
-      html[data-theme="light"] .process-num__big {
-        color: rgba(100, 60, 160, 0.32);
-        -webkit-text-stroke: 0;
-      }
     }
 
     html[data-theme="light"] .offers-cta__hint,
@@ -2898,21 +2889,18 @@
       padding: var(--space-sm) 0 0;
       border-top: 1px solid var(--glass-border);
       display: grid;
-      gap: 0.5rem;
+      gap: var(--space-md);
     }
 
-    @media (min-width: 720px) {
+    @media (min-width: 1100px) {
       .sol-projects {
         grid-template-columns: 1fr 1fr;
-        gap: 0.6rem 1.1rem;
+        gap: var(--space-md);
       }
     }
 
     .sol-proj {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: 0.7rem 0.85rem;
+      padding: 1.1rem 1.15rem;
       border-radius: var(--radius-md);
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(167, 139, 250, 0.08);
@@ -2920,79 +2908,89 @@
     }
 
     .sol-proj:hover {
-      background: rgba(167, 139, 250, 0.07);
-      border-color: rgba(167, 139, 250, 0.18);
-    }
-
-    .sol-proj__text {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+      background: rgba(167, 139, 250, 0.06);
+      border-color: rgba(167, 139, 250, 0.2);
     }
 
     .sol-proj__name {
-      font-size: 0.9375rem;
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 700;
       letter-spacing: -0.01em;
+      color: var(--text);
+      margin: 0 0 0.85rem;
+    }
+
+    .sol-proj__meta {
+      margin: 0 0 0.85rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .sol-proj__meta-row {
+      display: grid;
+      grid-template-columns: 7.75rem 1fr;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+    }
+
+    .sol-proj__meta-row dt {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .sol-proj__meta-row dd {
+      margin: 0;
       color: var(--text);
     }
 
-    .sol-proj__use {
+    .sol-proj__result {
+      margin: 0 0 1rem;
+      padding: 0.65rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background: rgba(167, 139, 250, 0.07);
+      border: 1px solid rgba(167, 139, 250, 0.12);
       font-size: 0.8125rem;
-      line-height: 1.4;
+      line-height: 1.5;
       color: var(--text-muted);
     }
 
-    .sol-proj__open {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.5rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.8125rem;
+    .sol-proj__result strong {
+      color: var(--accent-2);
       font-weight: 600;
-      text-decoration: none;
-      color: #fff;
-      border: 0;
-      cursor: pointer;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 40%),
-        linear-gradient(145deg, #7c4ce8 0%, var(--accent-1) 40%, var(--accent-3) 100%);
-      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.28);
-      transition: transform 0.2s var(--ease-out), box-shadow 0.25s, filter 0.2s;
     }
 
-    .sol-proj__open svg {
-      width: 14px;
-      height: 14px;
+    .sol-proj__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .sol-proj__open:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.06);
-      box-shadow: 0 10px 24px rgba(139, 92, 246, 0.36);
+    .sol-proj__actions .btn {
+      font-size: 0.8125rem;
+      padding: 0.55rem 1rem;
     }
 
-    .sol-proj__open:focus-visible {
-      outline: 2px solid rgba(196, 181, 253, 0.85);
-      outline-offset: 2px;
-    }
-
-    .sol-proj__open--soon {
+    .sol-proj__actions .btn--disabled {
       color: var(--text-muted);
       background: rgba(167, 139, 250, 0.08);
       border: 1px solid var(--glass-border);
-      box-shadow: none;
       cursor: default;
+      pointer-events: none;
     }
 
-    .sol-proj__open--soon:hover {
-      transform: none;
-      filter: none;
-      box-shadow: none;
+    @media (max-width: 480px) {
+      .sol-proj__meta-row {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+      }
+      .sol-proj__actions {
+        flex-direction: column;
+      }
+      .sol-proj__actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     html[data-theme="light"] .solution {
@@ -3014,9 +3012,9 @@
       border-color: rgba(100, 70, 160, 0.2);
     }
 
-    html[data-theme="light"] .sol-proj__open--soon {
-      background: rgba(124, 58, 237, 0.08);
-      border-color: rgba(100, 70, 160, 0.18);
+    html[data-theme="light"] .sol-proj__result {
+      background: rgba(124, 58, 237, 0.06);
+      border-color: rgba(100, 70, 160, 0.14);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -4908,88 +4906,185 @@
       }
     }
 
-    /* ========== Подход — сетка карточек ========== */
-    .process-wrap {
-      position: relative;
-      max-width: 100%;
-    }
-
-    .process {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-md);
-    }
-
-    @media (min-width: 600px) {
-      .process {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-md);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .process {
-        grid-template-columns: repeat(4, 1fr);
-        gap: var(--space-md);
-        align-items: stretch;
-      }
-    }
-
-    .process-step {
+    /* ========== Маршрут клиента — что будет после обращения ========== */
+    .work-route {
       position: relative;
       display: flex;
       flex-direction: column;
-      height: 100%;
-      min-height: 0;
-      padding: var(--space-md) var(--space-lg);
-      background: rgba(22, 22, 32, 0.65);
+      gap: var(--space-md);
+      max-width: 42rem;
+      margin: var(--space-xl) auto 0;
+      padding-left: 2.35rem;
+    }
+
+    .work-route::before {
+      content: "";
+      position: absolute;
+      left: 0.72rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, rgba(167, 139, 250, 0.05), rgba(167, 139, 250, 0.45) 20%, rgba(167, 139, 250, 0.45) 80%, rgba(167, 139, 250, 0.05));
+    }
+
+    .work-route__step {
+      position: relative;
+      padding: 1.15rem 1.2rem;
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(167, 139, 250, 0.1);
-      transition: border-color 0.35s, transform 0.35s var(--ease-out), box-shadow 0.35s;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: border-color 0.25s var(--ease-out);
     }
 
-    .process-step:hover {
+    .work-route__step:hover {
       border-color: rgba(167, 139, 250, 0.28);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
     }
 
-    .process-num {
+    .work-route__marker {
+      position: absolute;
+      left: -2.35rem;
+      top: 1.25rem;
+    }
+
+    .work-route__num {
+      width: 1.45rem;
+      height: 1.45rem;
+      border-radius: 50%;
       display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      margin-bottom: var(--space-md);
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      background: var(--bg);
+      border: 2px solid var(--accent-2);
+      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.1);
     }
 
-    .process-num__big {
-      font-size: clamp(2.25rem, 5vw, 3.25rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: rgba(245, 245, 247, 0.12);
-      -webkit-text-stroke: 1px rgba(167, 139, 250, 0.35);
+    .work-route__title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.45rem;
     }
 
-    @supports not (-webkit-text-stroke: 1px red) {
-      .process-num__big {
-        color: rgba(167, 139, 250, 0.2);
-        -webkit-text-stroke: 0;
+    .work-route__text {
+      margin: 0;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    /* ========== Какое решение может подойти именно вам ========== */
+    .section--popular {
+      background: linear-gradient(180deg, transparent 0%, rgba(18, 14, 28, 0.2) 50%, transparent 100%);
+    }
+
+    .popular-grid {
+      display: grid;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    @media (min-width: 900px) {
+      .popular-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-lg);
       }
     }
 
-    .process-num__label {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--accent-2);
+    .popular-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.35rem 1.25rem;
+      border-radius: var(--radius-lg);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: border-color 0.25s var(--ease-out), transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
     }
 
-    .process-step p {
-      flex: 1 1 auto;
-      margin: 0;
-      font-size: 0.9375rem;
+    .popular-card:hover {
+      border-color: rgba(167, 139, 250, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+    }
+
+    .popular-card__index {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 0.5rem;
+    }
+
+    .popular-card__title {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.45rem;
+    }
+
+    .popular-card__desc {
       color: var(--text-muted);
-      line-height: 1.6;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      margin: 0 0 1rem;
+    }
+
+    .popular-card__fits-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .popular-card__fits {
+      list-style: none;
+      margin: 0 0 1.25rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+
+    .popular-card__fits li {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: var(--text);
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .popular-card__fits li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-2);
+    }
+
+    .popular-card__btn {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      .popular-card__btn {
+        width: 100%;
+      }
     }
 
     /* ========== Обо мне — статус-композиция ========== */
@@ -6085,11 +6180,11 @@
       <div class="header__end">
         <nav class="nav-links" aria-label="Основная навигация">
           <a href="#offers">Форматы</a>
-          <a href="#projects">Кейсы</a>
+          <a href="#projects">Решения</a>
           <a href="#pricing">Стоимость</a>
           <a href="#process">Как работаю</a>
           <a href="#about">Обо мне</a>
-          <a href="#contact" class="nav-links__cta">Заказать</a>
+          <a href="#" class="nav-links__cta" data-open-contact-messengers>Обсудить задачу</a>
         </nav>
         <button
           type="button"
@@ -6120,7 +6215,7 @@
           <span id="typed-text" class="hero__typed" aria-live="polite"></span><span class="cursor" id="typed-cursor" aria-hidden="true"></span>
         </h1>
         <p class="hero__subtitle">
-          У вас есть задача, которую можно решить с помощью сайта, сервиса, помощника или интерактивного проекта? Помогу разобраться в идее, собрать понятное решение и довести его до запуска.
+          У вас есть задача, которую можно решить с помощью сайта, сервиса, помощника или интерактивного проекта? Помогу разобраться в идее, собрать понятное решение<br>и довести его до запуска.
         </p>
         <ul class="hero__markers">
           <li class="hero__marker">
@@ -6526,7 +6621,7 @@
       <div class="section-head reveal">
         <p class="label">Портфолио решений</p>
         <h2 id="solutions-title">Портфолио решений</h2>
-        <p class="offers-section__lead section-head__narrow">Каждый проект начинается с задачи. Ниже — примеры того, какие задачи я помогаю решать и какие решения для этого создаю.</p>
+        <p class="offers-section__lead section-head__narrow">Не просто работы — примеры задач, которые уже решены. Для каждого решения видно, кому оно подходит и что получил заказчик.</p>
       </div>
       <div class="solutions">
 
@@ -6547,39 +6642,74 @@
             <div class="solution__panel-inner">
               <ul class="sol-projects">
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Грузоперевозки</span>
-                    <span class="sol-proj__use">Лендинг перевозчика: показывает услуги, вызывает доверие и мягко ведёт к заявке.</span>
-                  </span>
-                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                  <h4 class="sol-proj__name">Грузоперевозки</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Сайт услуг</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Перевозчик и его клиенты</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Упростить получение обращений и показать условия перевозки</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Одностраничный сайт с понятной структурой и быстрыми способами связи</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> удобный инструмент для приёма обращений.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Колбаски</span>
-                    <span class="sol-proj__use">Витрина домашних колбас: аппетитная подача и понятный путь к заказу.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Колбаски — скоро">Скоро</button>
+                  <h4 class="sol-proj__name">Колбаски</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Сайт услуг</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Мастер домашнего производства и её клиенты</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Показать продукт и упростить путь к заказу</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Витрина с понятной подачей и способом оформить заказ</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> понятную витрину продукта и удобный путь к заказу.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="https://aldoshinamaria.github.io/irina-sweet-creations/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Учитель и нейросети</span>
-                    <span class="sol-proj__use">Сайт для педагогов: простым языком объясняет пользу нейросетей в работе.</span>
-                  </span>
-                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                  <h4 class="sol-proj__name">Учитель и нейросети</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Страница проекта</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Педагоги</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Объяснить пользу нейросетей в работе учителя</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Сайт с простыми материалами и понятной структурой</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> понятную страницу экспертного проекта.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">MA.digital</span>
-                    <span class="sol-proj__use">Сайт-портфолио, который вы сейчас просматриваете.</span>
-                  </span>
-                  <a class="sol-proj__open" href="#top">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                  <h4 class="sol-proj__name">MA.digital</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Сайт услуг</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Клиенты, которым нужно цифровое решение</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Помочь выбрать подходящий формат и показать примеры работ</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Сайт-навигатор с задачами, примерами и помощником по выбору</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> понятную презентацию услуг и готовых решений.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="#top">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Сайт Елены Гурьяновой</span>
-                    <span class="sol-proj__use">Персональный сайт эксперта: понятная подача и доверие с первого экрана.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Сайт Елены Гурьяновой — скоро">Скоро</button>
+                  <h4 class="sol-proj__name">Сайт Елены Гурьяновой</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Сайт эксперта</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Эксперт и её клиенты</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Выстроить доверие и ясно представить услуги</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Персональный сайт с понятной структурой и подачей</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> персональный сайт с доверием с первого экрана.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -6603,32 +6733,60 @@
             <div class="solution__panel-inner">
               <ul class="sol-projects">
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Лисичка рядом</span>
-                    <span class="sol-proj__use">Помощник бережного общения: ребёнку проще начать разговор и получить поддержку.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Лисичка рядом — скоро">Скоро</button>
+                  <h4 class="sol-proj__name">Лисичка рядом</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Веб-сервис</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Школа и школьники</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Дать детям безопасный канал поддержки и общения</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Цифровой помощник бережного общения в школьной среде</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> безопасный канал поддержки для школьников.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Семейный калькулятор</span>
-                    <span class="sol-proj__use">Учёт доходов и расходов: видно, куда уходят деньги.</span>
-                  </span>
-                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/family-calculator/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                  <h4 class="sol-proj__name">Семейный калькулятор</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Веб-сервис</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Семья</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Упростить контроль доходов, расходов и платежей</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Небольшой сервис с наглядным учётом семейного бюджета</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> инструмент для контроля доходов, расходов и платежей.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="https://aldoshinamaria.github.io/family-calculator/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Учёт грамот</span>
-                    <span class="sol-proj__use">Учёт наград и достижений без бумажной рутины.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Учёт грамот — скоро">Скоро</button>
+                  <h4 class="sol-proj__name">Учёт грамот</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Веб-сервис</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Школа</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Убрать бумажную рутину при учёте наград учеников</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Цифровой учёт грамот и достижений в одном месте</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> учёт наград без бумажной рутины.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Приложение для заместителя директора</span>
-                    <span class="sol-proj__use">Помогает планировать и держать процессы школы под контролем.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Приложение для заместителя директора — скоро">Скоро</button>
+                  <h4 class="sol-proj__name">Приложение для заместителя директора</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Веб-сервис</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Школа и администрация</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Упростить ежедневную организацию школьных процессов</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Рабочий инструмент для планирования и контроля задач</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> помощь в организации ежедневных школьных задач.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -6652,25 +6810,46 @@
             <div class="solution__panel-inner">
               <ul class="sol-projects">
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Игра по дробям</span>
-                    <span class="sol-proj__use">Учебная игра: дроби осваиваются через интерес и желание пройти дальше.</span>
-                  </span>
-                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/IGRA_DROBI/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                  <h4 class="sol-proj__name">Игра по дробям</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Игра</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Педагоги и школьники</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Закрепить тему дробей без скуки и зубрёжки</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Учебная игра с уровнями и понятными заданиями</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> игровой способ закрепить тему.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="https://aldoshinamaria.github.io/IGRA_DROBI/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Музейный интерактивный проект</span>
-                    <span class="sol-proj__use">Интерактив для музея: вовлекает в живое знакомство с экспозицией.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Музейный интерактивный проект — скоро">Скоро</button>
+                  <h4 class="sol-proj__name">Музейный интерактивный проект</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Интерактив</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Посетители и организации</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Сделать знакомство с экспозицией живым и запоминающимся</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Интерактивный формат взаимодействия с материалом</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> запоминающийся формат знакомства с экспозицией.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Другие игровые механики</span>
-                    <span class="sol-proj__use">Небольшие игры под конкретную задачу вовлечения.</span>
-                  </span>
-                  <a class="sol-proj__open" href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/" target="_blank" rel="noopener noreferrer">Открыть<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+                  <h4 class="sol-proj__name">Другие игровые механики</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Игра</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Обучение и вовлечение</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Удержать внимание через небольшой игровой сценарий</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Небольшие игры под конкретную тему или задачу</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> игровой формат под конкретную задачу.</p>
+                  <div class="sol-proj__actions">
+                    <a class="btn btn--primary" href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/" target="_blank" rel="noopener noreferrer">Открыть проект</a>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -6694,32 +6873,60 @@
             <div class="solution__panel-inner">
               <ul class="sol-projects">
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Летняя тетрадь по математике</span>
-                    <span class="sol-proj__use">Набор заданий, чтобы не растерять навыки за лето.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Летняя тетрадь по математике — скоро">Подробнее</button>
+                  <h4 class="sol-proj__name">Летняя тетрадь по математике</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Образовательный продукт</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Педагоги и школьники</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Поддержать навыки в течение каникул</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Рабочая тетрадь с заданиями по темам</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> готовые задания для летней практики.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Конспекты уроков</span>
-                    <span class="sol-proj__use">Структурированные конспекты — экономят время на подготовке.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Конспекты уроков — скоро">Подробнее</button>
+                  <h4 class="sol-proj__name">Конспекты уроков</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Образовательный продукт</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Педагоги</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Сократить время на подготовку к занятиям</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Структурированные конспекты по темам</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> структурированные материалы для уроков.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Рабочие программы</span>
-                    <span class="sol-proj__use">Готовые программы по требованиям, без долгой бумажной работы.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Рабочие программы — скоро">Подробнее</button>
+                  <h4 class="sol-proj__name">Рабочие программы</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Образовательный продукт</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Школа</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Упростить подготовку документации по требованиям</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Готовые рабочие программы в нужном формате</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> готовые программы без долгой бумажной работы.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
                 <li class="sol-proj">
-                  <span class="sol-proj__text">
-                    <span class="sol-proj__name">Методические материалы</span>
-                    <span class="sol-proj__use">Практичные материалы, которые легко применять на занятиях.</span>
-                  </span>
-                  <button class="sol-proj__open sol-proj__open--soon" type="button" disabled aria-label="Методические материалы — скоро">Подробнее</button>
+                  <h4 class="sol-proj__name">Методические материалы</h4>
+                  <dl class="sol-proj__meta">
+                    <div class="sol-proj__meta-row"><dt>Тип проекта</dt><dd>Образовательный продукт</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Для кого</dt><dd>Педагоги</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Задача</dt><dd>Дать практичные материалы для занятий</dd></div>
+                    <div class="sol-proj__meta-row"><dt>Решение</dt><dd>Методические материалы, готовые к применению</dd></div>
+                  </dl>
+                  <p class="sol-proj__result"><strong>Что получил пользователь:</strong> материалы, которые легко использовать в работе.</p>
+                  <div class="sol-proj__actions">
+                    <span class="btn btn--disabled" aria-disabled="true">Скоро</span>
+                    <a class="btn btn--ghost" href="#contact" data-open-contact-messengers>Хочу похожее решение</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -6819,7 +7026,7 @@
                     href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/"
                     target="_blank"
                     rel="noopener noreferrer"
-                  >Открыть демо</a>
+                  >Открыть проект</a>
                 </div>
               </div>
             </article>
@@ -6861,7 +7068,7 @@
                     href="https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/"
                     target="_blank"
                     rel="noopener noreferrer"
-                  >Открыть демо</a>
+                  >Открыть проект</a>
                 </div>
               </div>
             </article>
@@ -6903,12 +7110,12 @@
                     href="https://aldoshinamaria.github.io/irina-sweet-creations/"
                     target="_blank"
                     rel="noopener noreferrer"
-                  >Открыть демо</a>
+                  >Открыть проект</a>
                 </div>
               </div>
             </article>
           </div>
-          <a href="#" class="btn btn--primary sites-mini-cta" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary sites-mini-cta" data-open-contact-messengers>Обсудить задачу</a>
         </div>
 
         <div class="projects-pair-clusters">
@@ -6996,7 +7203,7 @@
                 href="https://aldoshinamaria.github.io/family-calculator/"
                 target="_blank"
                 rel="noopener noreferrer"
-              >Открыть демо</a>
+              >Открыть проект</a>
             </div>
           </div>
         </article>
@@ -7050,7 +7257,7 @@
                 id="lisichka-demo-open"
                 aria-haspopup="dialog"
                 aria-controls="modal-lisichka-demo"
-              >Открыть демо</button>
+              >Открыть проект</button>
             </div>
           </div>
         </article>
@@ -7066,9 +7273,9 @@
     <!-- ========== Демо: интерактив (кейс-формат) ========== -->
     <section class="section section--playable reveal" id="playable-demo" aria-labelledby="playable-demo-title">
       <div class="section-head">
-        <p class="label">Кейсы-формата</p>
+        <p class="label">Примеры в работе</p>
         <h2 id="playable-demo-title">Интерактив в действии</h2>
-        <p>Две готовые игры в браузере: вовлечение и мотив «ещё уровень»</p>
+        <p>Две готовые игры в браузере — можно открыть и посмотреть, как работает формат</p>
       </div>
       <div class="playable-launch-list">
         <article class="playable-launch" id="playable-drobi-block">
@@ -7092,8 +7299,8 @@
                 href="https://aldoshinamaria.github.io/IGRA_DROBI/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Открыть игру</a>
-              <a href="#" class="btn btn--ghost" data-open-contact-messengers>Заказать игру для себя</a>
+                >Открыть проект</a>
+              <a href="#" class="btn btn--ghost" data-open-contact-messengers>Хочу похожее решение</a>
             </div>
           </div>
           <figure class="playable-launch__figure">
@@ -7132,8 +7339,8 @@
                 href="https://aldoshinamaria.github.io/IGRA_ZMEIKA/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Открыть игру</a>
-              <a href="#" class="btn btn--ghost" data-open-contact-messengers>Заказать игру для себя</a>
+                >Открыть проект</a>
+              <a href="#" class="btn btn--ghost" data-open-contact-messengers>Хочу похожее решение</a>
             </div>
           </div>
           <figure class="playable-launch__figure">
@@ -7231,12 +7438,60 @@
                     <p class="quickstart__price">9 900&nbsp;₽</p>
                   </div>
                 </div>
-                <a href="#" class="quickstart__cta" data-open-contact-messengers>Запустить проект</a>
+                <a href="#" class="quickstart__cta" data-open-contact-messengers>Обсудить быстрый запуск</a>
                 <p class="quickstart__note">Точная задача и формат фиксируются после короткого обсуждения.</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ========== Какое решение может подойти именно вам ========== -->
+    <section class="section section--popular reveal" id="popular" aria-labelledby="popular-title">
+      <div class="section-head reveal">
+        <p class="label">Выбор формата</p>
+        <h2 id="popular-title">Какое решение может подойти именно вам</h2>
+        <p>Не прайс-лист — ориентир по формату. Поможет понять, с чего логично начать разговор о проекте.</p>
+      </div>
+      <div class="popular-grid">
+        <article class="popular-card reveal reveal-delay-1">
+          <span class="popular-card__index">01</span>
+          <h3 class="popular-card__title">Запуск идеи</h3>
+          <p class="popular-card__desc">Для тех, кто хочет быстро проверить гипотезу, представить услугу или запустить первый цифровой продукт.</p>
+          <span class="popular-card__fits-label">Подходят</span>
+          <ul class="popular-card__fits">
+            <li>лендинги</li>
+            <li>небольшие сайты</li>
+            <li>простые интерактивы</li>
+          </ul>
+          <a class="btn btn--primary popular-card__btn" href="#contact" data-open-contact-messengers>Обсудить задачу</a>
+        </article>
+        <article class="popular-card reveal reveal-delay-2">
+          <span class="popular-card__index">02</span>
+          <h3 class="popular-card__title">Развитие проекта</h3>
+          <p class="popular-card__desc">Для тех, кому нужно автоматизировать процессы, обучать пользователей или создавать полезные сервисы.</p>
+          <span class="popular-card__fits-label">Подходят</span>
+          <ul class="popular-card__fits">
+            <li>сервисы</li>
+            <li>калькуляторы</li>
+            <li>цифровые помощники</li>
+            <li>образовательные решения</li>
+          </ul>
+          <a class="btn btn--primary popular-card__btn" href="#contact" data-open-contact-messengers>Обсудить задачу</a>
+        </article>
+        <article class="popular-card reveal reveal-delay-3">
+          <span class="popular-card__index">03</span>
+          <h3 class="popular-card__title">Комплексное решение</h3>
+          <p class="popular-card__desc">Для проектов со сложной логикой, несколькими сценариями использования и масштабируемой структурой.</p>
+          <span class="popular-card__fits-label">Подходят</span>
+          <ul class="popular-card__fits">
+            <li>многофункциональные сервисы</li>
+            <li>цифровые платформы</li>
+            <li>крупные образовательные проекты</li>
+          </ul>
+          <a class="btn btn--primary popular-card__btn" href="#contact" data-open-contact-messengers>Обсудить задачу</a>
+        </article>
       </div>
     </section>
 
@@ -7280,7 +7535,7 @@
             </ul>
             <p class="pricing-card__price-note">Вилка</p>
             <p class="pricing-card__price">от 7 000&nbsp;₽ до 15 000&nbsp;₽</p>
-            <a href="#" class="pricing-card__cta pricing-card__cta--ghost" data-open-contact-messengers>Хочу простой проект</a>
+            <a href="#" class="pricing-card__cta pricing-card__cta--ghost" data-open-contact-messengers>Показать подходящий вариант</a>
           </div>
         </article>
         <article class="pricing-card pricing-card--featured reveal reveal-delay-2">
@@ -7293,7 +7548,7 @@
                 <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
                   <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                Продуманный пользовательский путь
+                Продуманный путь для человека
               </li>
               <li>
                 <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
@@ -7316,7 +7571,7 @@
             </ul>
             <p class="pricing-card__price-note">Вилка</p>
             <p class="pricing-card__price">25 000 – 60 000&nbsp;₽</p>
-            <a href="#" class="pricing-card__cta pricing-card__cta--primary" data-open-contact-messengers>Подобрать формат</a>
+            <a href="#" class="pricing-card__cta pricing-card__cta--primary" data-open-contact-messengers>Показать подходящий вариант</a>
           </div>
         </article>
         <article class="pricing-card reveal reveal-delay-3">
@@ -7328,7 +7583,7 @@
                 <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
                   <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                Полноценный digital-продукт
+                Полноценный цифровой продукт
               </li>
               <li>
                 <svg class="pricing-card__check" viewBox="0 0 20 20" width="20" height="20" fill="none" aria-hidden="true">
@@ -7351,50 +7606,46 @@
             </ul>
             <p class="pricing-card__price-note">Ориентир</p>
             <p class="pricing-card__price">от 70 000&nbsp;₽</p>
-            <a href="#" class="pricing-card__cta pricing-card__cta--solid" data-open-contact-messengers>Обсудить проект</a>
+            <a href="#" class="pricing-card__cta pricing-card__cta--solid" data-open-contact-messengers>Обсудить задачу</a>
           </div>
         </article>
       </div>
       <p class="pricing-policy reveal">Точная стоимость зависит от задачи — после обсуждения предложу оптимальный формат и зафиксирую этапы работы.</p>
     </section>
 
-    <!-- ========== ПОДХОД ========== -->
+    <!-- ========== Что будет после обращения ========== -->
     <section class="section section--process reveal" id="process" aria-labelledby="process-title">
       <div class="section-head">
-        <h2 id="process-title">Как я работаю</h2>
-        <p>Четыре опоры — от эмоции до рабочего продукта, без канцелярского сценария</p>
+        <p class="label">После обращения</p>
+        <h2 id="process-title">Что произойдёт, когда вы напишете</h2>
+        <p>Понятный маршрут — без сюрпризов и непонятных этапов. Вы всегда знаете, что происходит дальше.</p>
       </div>
-      <div class="process-wrap">
-        <div class="process">
-          <div class="process-step reveal">
-            <div class="process-num">
-              <span class="process-num__big">01</span>
-              <span class="process-num__label">Смысл</span>
-            </div>
-            <p>Определяю, что человек должен почувствовать и сделать</p>
-          </div>
-          <div class="process-step reveal reveal-delay-1">
-            <div class="process-num">
-              <span class="process-num__big">02</span>
-              <span class="process-num__label">Вовлечение</span>
-            </div>
-            <p>Собираю интерфейс, который удерживает внимание</p>
-          </div>
-          <div class="process-step reveal reveal-delay-2">
-            <div class="process-num">
-              <span class="process-num__big">03</span>
-              <span class="process-num__label">Логика</span>
-            </div>
-            <p>Продумываю путь пользователя без лишних действий</p>
-          </div>
-          <div class="process-step reveal reveal-delay-3">
-            <div class="process-num">
-              <span class="process-num__big">04</span>
-              <span class="process-num__label">Результат</span>
-            </div>
-            <p>Собираю рабочий продукт, который можно использовать сразу</p>
-          </div>
-        </div>
+      <div class="work-route">
+        <article class="work-route__step reveal">
+          <div class="work-route__marker"><span class="work-route__num" aria-hidden="true">1</span></div>
+          <h3 class="work-route__title">Рассказываете о задаче</h3>
+          <p class="work-route__text">Можно без технических терминов и готового технического задания.</p>
+        </article>
+        <article class="work-route__step reveal reveal-delay-1">
+          <div class="work-route__marker"><span class="work-route__num" aria-hidden="true">2</span></div>
+          <h3 class="work-route__title">Определяем подходящее решение</h3>
+          <p class="work-route__text">Выбираем формат проекта и продумываем структуру.</p>
+        </article>
+        <article class="work-route__step reveal reveal-delay-2">
+          <div class="work-route__marker"><span class="work-route__num" aria-hidden="true">3</span></div>
+          <h3 class="work-route__title">Создаю и показываю рабочую версию</h3>
+          <p class="work-route__text">Проект постепенно превращается в готовый продукт.</p>
+        </article>
+        <article class="work-route__step reveal reveal-delay-3">
+          <div class="work-route__marker"><span class="work-route__num" aria-hidden="true">4</span></div>
+          <h3 class="work-route__title">Проверяем и запускаем</h3>
+          <p class="work-route__text">Дорабатываем детали и готовим решение к использованию.</p>
+        </article>
+        <article class="work-route__step reveal reveal-delay-4">
+          <div class="work-route__marker"><span class="work-route__num" aria-hidden="true">5</span></div>
+          <h3 class="work-route__title">Поддержка и развитие</h3>
+          <p class="work-route__text">При необходимости проект можно развивать дальше.</p>
+        </article>
       </div>
     </section>
 
@@ -7418,27 +7669,27 @@
         </figure>
         <div class="about-copy">
           <p class="about-text">
-            Я Мария Алдошина — создаю сайты, мини-сервисы и интерактивы, которые не просто выглядят красиво, а помогают
-            пользователю понять идею и сделать следующий шаг.
+            Я Мария Алдошина — помогаю разобраться в задаче, подобрать формат и довести проект до результата. Создаю сайты,
+            сервисы, игры и интерактивы, которые решают конкретную задачу, а не просто «красиво выглядят».
           </p>
           <p class="about-text">
-            Мне важно, чтобы продукт был живым: удерживал внимание, вовлекал и работал на задачу — будь то обучение, продажи или
-            взаимодействие с аудиторией.
+            13 лет в образовании и управлении проектами научили объяснять сложное простым языком и держать весь путь в одних
+            руках — от первой идеи до готового решения.
           </p>
-          <p class="about-micro">Работаю с образовательными и коммерческими проектами</p>
-          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить идею</a>
+          <p class="about-micro">Образовательные и коммерческие проекты</p>
+          <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить задачу</a>
         </div>
         <div class="about-status">
           <div class="about-status__hero">
-            <strong>Digital creator / vibe coder</strong>
+            <strong>Создатель цифровых решений</strong>
             <p>
-              Собираю сайты и интерактивы с понятной логикой, аккуратным визуалом и продуманным пользовательским сценарием
+              Собираю сайты и интерактивы с понятной логикой, аккуратным визуалом и продуманным путём пользователя
             </p>
           </div>
           <div class="about-badges">
-            <span class="about-badge-pill">Vibe coder</span>
-            <span class="about-badge-pill about-badge-pill--ux">UX-ЛОГИКА</span>
-            <span class="about-badge-pill about-badge-pill--accent">UI &amp; flow</span>
+            <span class="about-badge-pill">13 лет в образовании</span>
+            <span class="about-badge-pill about-badge-pill--ux">Понятная логика</span>
+            <span class="about-badge-pill about-badge-pill--accent">От идеи до запуска</span>
           </div>
           <div class="about-availability">
             <span class="pulse" aria-hidden="true"></span>
@@ -7452,20 +7703,20 @@
     <div class="marquee-wrap" aria-hidden="true">
       <div class="marquee">
         <div class="marquee__content">
-          <span>interactive</span><span class="dot">•</span>
-          <span>portfolio</span><span class="dot">•</span>
-          <span>mini apps</span><span class="dot">•</span>
-          <span>AI tools</span><span class="dot">•</span>
-          <span>landing pages</span><span class="dot">•</span>
-          <span>удержание и сценарий</span><span class="dot">•</span>
+          <span>сайты</span><span class="dot">•</span>
+          <span>сервисы</span><span class="dot">•</span>
+          <span>игры</span><span class="dot">•</span>
+          <span>интерактивы</span><span class="dot">•</span>
+          <span>лендинги</span><span class="dot">•</span>
+          <span>от идеи до запуска</span><span class="dot">•</span>
         </div>
         <div class="marquee__content" aria-hidden="true">
-          <span>interactive</span><span class="dot">•</span>
-          <span>portfolio</span><span class="dot">•</span>
-          <span>mini apps</span><span class="dot">•</span>
-          <span>AI tools</span><span class="dot">•</span>
-          <span>landing pages</span><span class="dot">•</span>
-          <span>удержание и сценарий</span><span class="dot">•</span>
+          <span>сайты</span><span class="dot">•</span>
+          <span>сервисы</span><span class="dot">•</span>
+          <span>игры</span><span class="dot">•</span>
+          <span>интерактивы</span><span class="dot">•</span>
+          <span>лендинги</span><span class="dot">•</span>
+          <span>от идеи до запуска</span><span class="dot">•</span>
         </div>
       </div>
     </div>
@@ -7473,9 +7724,9 @@
     <!-- ========== CTA ========== -->
     <section class="cta-final reveal" id="contact" aria-labelledby="cta-title">
       <div class="cta-final__inner">
-        <h2 id="cta-title">Обсудим вашу идею?</h2>
-        <p>Напишите в удобный мессенджер — предложу формат и следующий шаг без обязаловки</p>
-        <div class="cta-final__messengers" role="group" aria-label="Связь в мессенджерах">
+        <h2 id="cta-title">Готовы обсудить задачу?</h2>
+        <p>Выберите удобный мессенджер — разберём ситуацию и подскажу, с какого формата лучше начать</p>
+        <div class="cta-final__messengers" role="group" aria-label="Обсудить задачу в мессенджерах">
           <a
             class="cta-messenger-btn cta-messenger-btn--tg"
             href="https://t.me/AldoshinaMaria"
@@ -7515,7 +7766,7 @@
           </a>
         </div>
         <p class="cta-final__hint">Отвечаю в течение дня</p>
-        <p class="cta-final__hint cta-final__hint--soft">Можно просто написать идею — помогу разобраться</p>
+        <p class="cta-final__hint cta-final__hint--soft">Можно прийти с неоформленной идеей — вместе разберёмся, что подойдёт</p>
       </div>
     </section>
 
@@ -7523,7 +7774,7 @@
 </main>
 
   <footer class="footer">
-    <p>© Мария Алдошина · Портфолио digital-проектов · <span id="year"></span></p>
+    <p>© Мария Алдошина · Цифровая мастерская решений · <span id="year"></span></p>
   </footer>
 
   <!-- Modal: выбор мессенджера (Макс / Telegram / ВК) -->
@@ -7541,9 +7792,9 @@
         <span aria-hidden="true">×</span>
       </button>
       <div class="modal__content">
-        <p class="label">Связь</p>
-        <h2 class="modal__title" id="modal-contact-messengers-title">Куда написать</h2>
-        <p class="modal__lead">Откроется мессенджер: Макс, Telegram или ВКонтакте</p>
+        <p class="label">Обсудить задачу</p>
+        <h2 class="modal__title" id="modal-contact-messengers-title">Выберите мессенджер</h2>
+        <p class="modal__lead">Расскажите о задаче — подскажу подходящий формат и следующий шаг</p>
         <div class="contact-messengers">
           <a
             href="https://max.ru/u/f9LHodD0cOKpddYxojSuBUNzUpbBKh6ZGo0KobQ563KsNhLQScdoM0odQ4Y"
@@ -7551,19 +7802,19 @@
             target="_blank"
             rel="noopener noreferrer"
             title="Я пользуюсь мессенджером MAX. Присоединяйся!"
-            >Написать в Макс</a>
+            >Обсудить в Макс</a>
           <a
             href="https://t.me/AldoshinaMaria"
             class="btn btn--primary"
             target="_blank"
             rel="noopener noreferrer"
-            >Написать в Telegram</a>
+            >Обсудить в Telegram</a>
           <a
             href="https://vk.com/ma_digital_ai"
             class="btn btn--ghost"
             target="_blank"
             rel="noopener noreferrer"
-            >Написать в ВКонтакте</a>
+            >Обсудить во ВКонтакте</a>
         </div>
       </div>
     </div>
@@ -7635,7 +7886,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить задачу</a>
         </div>
       </div>
     </div>
@@ -7698,7 +7949,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить задачу</a>
         </div>
       </div>
     </div>
@@ -7755,7 +8006,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить задачу</a>
         </div>
       </div>
     </div>
@@ -7812,7 +8063,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить задачу</a>
         </div>
       </div>
     </div>
@@ -7869,7 +8120,7 @@
         <div class="modal__cta">
           <h3 class="modal__cta-title">Нужен похожий проект?</h3>
           <p class="modal__cta-text">Соберу решение под вашу задачу — от идеи до готового продукта</p>
-          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить проект</a>
+          <a href="#" class="btn btn--primary modal__cta-btn" data-open-contact-messengers>Обсудить задачу</a>
         </div>
       </div>
     </div>
