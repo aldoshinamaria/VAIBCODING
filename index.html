@@ -2181,6 +2181,267 @@
       margin-right: auto;
     }
 
+    /* ========== Навигатор задач — «Что вы хотите решить?» ========== */
+    .section--needs {
+      background: linear-gradient(180deg, rgba(18, 14, 28, 0.32) 0%, transparent 60%);
+    }
+
+    .needs {
+      display: grid;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    @media (min-width: 768px) {
+      .needs {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: var(--space-lg);
+      }
+    }
+
+    .need {
+      position: relative;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+      transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out);
+    }
+
+    .need::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent-1), var(--accent-3));
+      opacity: 0;
+      transition: opacity 0.25s var(--ease-out);
+    }
+
+    .need:hover {
+      transform: translateY(-3px);
+      border-color: rgba(167, 139, 250, 0.30);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.32);
+    }
+
+    .need:hover::before,
+    .need.is-open::before {
+      opacity: 0.9;
+    }
+
+    .need.is-open {
+      border-color: rgba(167, 139, 250, 0.34);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.32);
+    }
+
+    .need__heading {
+      margin: 0;
+    }
+
+    .need__head {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      text-align: left;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      color: inherit;
+      font: inherit;
+      padding: clamp(1.25rem, 2.2vw, 1.75rem);
+    }
+
+    .need__head:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: -4px;
+      border-radius: var(--radius-lg);
+    }
+
+    .need__badge {
+      flex: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent-2);
+      background: rgba(167, 139, 250, 0.12);
+      border: 1px solid rgba(167, 139, 250, 0.22);
+    }
+
+    .need__head-text {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .need__title {
+      font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .need__desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .need__cue {
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      color: var(--accent-2);
+    }
+
+    .need__cue-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .need__chevron {
+      width: 22px;
+      height: 22px;
+      display: flex;
+    }
+
+    .need__chevron svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .need.is-open .need__chevron svg {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 520px) {
+      .need__cue-label {
+        display: none;
+      }
+    }
+
+    .need__panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-out);
+    }
+
+    .need__panel-inner {
+      padding: var(--space-md) clamp(1.25rem, 2.2vw, 1.75rem) clamp(1.25rem, 2.2vw, 1.75rem);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .need__group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .need__group-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .need__tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .need__tags li {
+      font-size: 0.9rem;
+      line-height: 1;
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--text);
+    }
+
+    .need__tags--examples li {
+      background: rgba(167, 139, 250, 0.10);
+      border-color: rgba(167, 139, 250, 0.22);
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    .need__btn {
+      align-self: flex-start;
+      margin-top: 0.25rem;
+    }
+
+    html[data-theme="light"] .need__tags li {
+      background: rgba(0, 0, 0, 0.045);
+    }
+
+    /* акцентный элемент-приглашение под карточками */
+    .needs-prompt {
+      margin-top: var(--space-xl);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(120deg, rgba(139, 92, 246, 0.16), rgba(192, 132, 252, 0.10));
+      border: 1px solid rgba(167, 139, 250, 0.26);
+    }
+
+    .needs-prompt__title {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem;
+    }
+
+    .needs-prompt__desc {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .needs-prompt__btn {
+      flex: none;
+    }
+
+    @media (max-width: 600px) {
+      .needs-prompt {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .needs-prompt__btn {
+        width: 100%;
+      }
+    }
+
     /* ========== Портфолио решений (направления-аккордеон) ========== */
     .solutions {
       display: flex;
@@ -5690,47 +5951,174 @@
       </div>
     </section>
 
-    <!-- ========== Что можно заказать ========== -->
-    <section class="section section--offers" id="offers" aria-labelledby="offers-title">
+    <!-- ========== Навигатор задач: «Что вы хотите решить?» ========== -->
+    <section class="section section--needs" id="offers" aria-labelledby="needs-title">
       <div class="section-head reveal">
-        <p class="label">Форматы</p>
-        <h2 id="offers-title">Что можно заказать</h2>
-        <p class="offers-section__lead">Четыре формата — от страницы до полной упаковки. Дальше внизу — живые кейсы</p>
+        <p class="label">Навигатор решений</p>
+        <h2 id="needs-title">Что вы хотите решить?</h2>
+        <p>Разные задачи требуют разных решений. Выберите направление и посмотрите, какие варианты подойдут именно вам.</p>
       </div>
-      <div class="offers-grid">
-        <article class="offer-card reveal reveal-delay-1">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">01</div>
-            <h3 class="offer-card__title">Лендинг / сайт</h3>
-            <p class="offer-card__text">Собираю структуру и визуал так, чтобы человек сразу понял суть и сделал шаг: заявка, оплата, консультация</p>
+
+      <div class="needs">
+        <article class="need reveal reveal-delay-1">
+          <h3 class="need__heading">
+            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-1" id="need-head-1">
+              <span class="need__badge" aria-hidden="true">01</span>
+              <span class="need__head-text">
+                <span class="need__title">Получать обращения и клиентов</span>
+                <span class="need__desc">Когда нужно рассказать о продукте, услуге или проекте и помочь человеку сделать следующий шаг.</span>
+              </span>
+              <span class="need__cue" aria-hidden="true">
+                <span class="need__cue-label">Выбрать</span>
+                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="need__panel" id="need-panel-1" role="region" aria-labelledby="need-head-1">
+            <div class="need__panel-inner">
+              <div class="need__group">
+                <span class="need__group-label">Подходящие решения</span>
+                <ul class="need__tags">
+                  <li>сайт услуг</li>
+                  <li>лендинг</li>
+                  <li>страница проекта</li>
+                  <li>форма заявки</li>
+                </ul>
+              </div>
+              <div class="need__group">
+                <span class="need__group-label">Примеры проектов</span>
+                <ul class="need__tags need__tags--examples">
+                  <li>Грузоперевозки</li>
+                  <li>Колбаски</li>
+                  <li>Учитель и нейросети</li>
+                </ul>
+              </div>
+              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
+            </div>
           </div>
         </article>
-        <article class="offer-card reveal reveal-delay-2">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">02</div>
-            <h3 class="offer-card__title">Интерактив / игра</h3>
-            <p class="offer-card__text">Механика, в которую хочется играть: обучение, вовлечение, мини-сервисы под задачу</p>
+
+        <article class="need reveal reveal-delay-2">
+          <h3 class="need__heading">
+            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-2" id="need-head-2">
+              <span class="need__badge" aria-hidden="true">02</span>
+              <span class="need__head-text">
+                <span class="need__title">Упростить и автоматизировать работу</span>
+                <span class="need__desc">Когда рутинные действия занимают слишком много времени и их можно передать цифровому инструменту.</span>
+              </span>
+              <span class="need__cue" aria-hidden="true">
+                <span class="need__cue-label">Выбрать</span>
+                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="need__panel" id="need-panel-2" role="region" aria-labelledby="need-head-2">
+            <div class="need__panel-inner">
+              <div class="need__group">
+                <span class="need__group-label">Подходящие решения</span>
+                <ul class="need__tags">
+                  <li>сервис</li>
+                  <li>помощник</li>
+                  <li>калькулятор</li>
+                  <li>автоматизация</li>
+                </ul>
+              </div>
+              <div class="need__group">
+                <span class="need__group-label">Примеры проектов</span>
+                <ul class="need__tags need__tags--examples">
+                  <li>Лисичка рядом</li>
+                  <li>Семейный калькулятор</li>
+                  <li>Учёт грамот</li>
+                  <li>Приложение заместителя директора</li>
+                </ul>
+              </div>
+              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
+            </div>
           </div>
         </article>
-        <article class="offer-card reveal reveal-delay-3">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">03</div>
-            <h3 class="offer-card__title">VK-бот / автоматизация</h3>
-            <p class="offer-card__text">Сценарий ответов, воронка в сообщениях, подсказки — чтобы не терять заявки и снимать рутину</p>
+
+        <article class="need reveal reveal-delay-3">
+          <h3 class="need__heading">
+            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-3" id="need-head-3">
+              <span class="need__badge" aria-hidden="true">03</span>
+              <span class="need__head-text">
+                <span class="need__title">Обучать и объяснять проще</span>
+                <span class="need__desc">Когда нужно помочь людям быстрее разобраться в теме и легче освоить материал.</span>
+              </span>
+              <span class="need__cue" aria-hidden="true">
+                <span class="need__cue-label">Выбрать</span>
+                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="need__panel" id="need-panel-3" role="region" aria-labelledby="need-head-3">
+            <div class="need__panel-inner">
+              <div class="need__group">
+                <span class="need__group-label">Подходящие решения</span>
+                <ul class="need__tags">
+                  <li>рабочая тетрадь</li>
+                  <li>тренажёр</li>
+                  <li>методические материалы</li>
+                  <li>образовательный продукт</li>
+                </ul>
+              </div>
+              <div class="need__group">
+                <span class="need__group-label">Примеры проектов</span>
+                <ul class="need__tags need__tags--examples">
+                  <li>Летняя тетрадь</li>
+                  <li>Конспекты уроков</li>
+                  <li>Рабочие программы</li>
+                </ul>
+              </div>
+              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
+            </div>
           </div>
         </article>
-        <article class="offer-card reveal reveal-delay-4">
-          <div class="offer-card__inner">
-            <div class="offer-card__index">04</div>
-            <h3 class="offer-card__title">Упаковка проекта</h3>
-            <p class="offer-card__text">Смысл, структура, подача и визуал: из разрозненной идеи — понятный продукт, который не стыдно показать</p>
+
+        <article class="need reveal reveal-delay-4">
+          <h3 class="need__heading">
+            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-4" id="need-head-4">
+              <span class="need__badge" aria-hidden="true">04</span>
+              <span class="need__head-text">
+                <span class="need__title">Вовлекать и удерживать внимание</span>
+                <span class="need__desc">Когда важно заинтересовать пользователя и сделать взаимодействие живым и запоминающимся.</span>
+              </span>
+              <span class="need__cue" aria-hidden="true">
+                <span class="need__cue-label">Выбрать</span>
+                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="need__panel" id="need-panel-4" role="region" aria-labelledby="need-head-4">
+            <div class="need__panel-inner">
+              <div class="need__group">
+                <span class="need__group-label">Подходящие решения</span>
+                <ul class="need__tags">
+                  <li>игра</li>
+                  <li>интерактив</li>
+                  <li>обучающая механика</li>
+                  <li>вовлекающий проект</li>
+                </ul>
+              </div>
+              <div class="need__group">
+                <span class="need__group-label">Примеры проектов</span>
+                <ul class="need__tags need__tags--examples">
+                  <li>Игра по дробям</li>
+                  <li>Музейный интерактивный проект</li>
+                </ul>
+              </div>
+              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
+            </div>
           </div>
         </article>
       </div>
-      <div class="offers-cta reveal reveal-delay-5">
-        <a href="#projects" class="btn btn--ghost">Смотреть кейсы</a>
-        <a href="#" class="btn btn--primary" data-open-contact-messengers>Обсудить идею</a>
-        <p class="offers-cta__hint">Смета — после брифа, без сюрпризов в договоре</p>
+
+      <div class="needs-prompt reveal">
+        <div class="needs-prompt__text">
+          <h3 class="needs-prompt__title">Есть идея, но не знаете, какой формат подойдёт?</h3>
+          <p class="needs-prompt__desc">Помогу разобраться в задаче и подобрать решение под ваши цели.</p>
+        </div>
+        <a class="btn btn--primary needs-prompt__btn" href="#" data-open-contact-messengers>Обсудить задачу</a>
       </div>
     </section>
 
@@ -7297,39 +7685,42 @@
         });
       });
 
-      /* ----- Портфолио решений: плавное раскрытие направлений ----- */
-      var solutionHeads = document.querySelectorAll('.solution__head');
-      solutionHeads.forEach(function (head) {
-        var solution = head.closest('.solution');
-        var panel = document.getElementById(head.getAttribute('aria-controls'));
-        if (!solution || !panel) return;
+      /* ----- Аккордеоны: навигатор задач и портфолио решений ----- */
+      function initAccordion(headSelector, itemSelector) {
+        document.querySelectorAll(headSelector).forEach(function (head) {
+          var item = head.closest(itemSelector);
+          var panel = document.getElementById(head.getAttribute('aria-controls'));
+          if (!item || !panel) return;
 
-        head.addEventListener('click', function () {
-          var isOpen = solution.classList.contains('is-open');
-          if (isOpen) {
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-            requestAnimationFrame(function () {
-              panel.style.maxHeight = '0px';
-            });
-            solution.classList.remove('is-open');
-            head.setAttribute('aria-expanded', 'false');
-          } else {
-            solution.classList.add('is-open');
-            head.setAttribute('aria-expanded', 'true');
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-          }
-        });
+          head.addEventListener('click', function () {
+            if (item.classList.contains('is-open')) {
+              panel.style.maxHeight = panel.scrollHeight + 'px';
+              requestAnimationFrame(function () {
+                panel.style.maxHeight = '0px';
+              });
+              item.classList.remove('is-open');
+              head.setAttribute('aria-expanded', 'false');
+            } else {
+              item.classList.add('is-open');
+              head.setAttribute('aria-expanded', 'true');
+              panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+          });
 
-        panel.addEventListener('transitionend', function (e) {
-          if (e.propertyName !== 'max-height') return;
-          if (solution.classList.contains('is-open')) {
-            panel.style.maxHeight = 'none';
-          }
+          panel.addEventListener('transitionend', function (e) {
+            if (e.propertyName !== 'max-height') return;
+            if (item.classList.contains('is-open')) {
+              panel.style.maxHeight = 'none';
+            }
+          });
         });
-      });
+      }
+
+      initAccordion('.solution__head', '.solution');
+      initAccordion('.need__head', '.need');
 
       window.addEventListener('resize', function () {
-        document.querySelectorAll('.solution.is-open .solution__panel').forEach(function (panel) {
+        document.querySelectorAll('.solution.is-open .solution__panel, .need.is-open .need__panel').forEach(function (panel) {
           panel.style.maxHeight = 'none';
         });
       });
