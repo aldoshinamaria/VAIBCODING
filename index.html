@@ -2442,6 +2442,330 @@
       }
     }
 
+    /* ========== Цифровой помощник — подбор решения ========== */
+    .section--advisor {
+      background: linear-gradient(180deg, transparent 0%, rgba(18, 14, 28, 0.22) 50%, transparent 100%);
+    }
+
+    .advisor {
+      max-width: 720px;
+      margin: var(--space-xl) auto 0;
+    }
+
+    .advisor__shell {
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      border-radius: var(--radius-lg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.26);
+      overflow: hidden;
+    }
+
+    .advisor__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding: 1rem 1.35rem;
+      border-bottom: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    .advisor__status {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .advisor__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 10px rgba(167, 139, 250, 0.55);
+      animation: advisor-pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes advisor-pulse {
+      0%, 100% { opacity: 0.55; transform: scale(0.92); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .advisor__dot { animation: none; opacity: 0.85; }
+      .advisor__step,
+      .advisor__result { transition: none; }
+    }
+
+    .advisor__back {
+      background: transparent;
+      border: 0;
+      color: var(--text-muted);
+      font: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-sm);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s var(--ease-out), color 0.2s var(--ease-out);
+    }
+
+    .advisor__back.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .advisor__back:hover {
+      color: var(--text);
+    }
+
+    .advisor__back:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+
+    .advisor__viewport {
+      position: relative;
+      min-height: 320px;
+    }
+
+    .advisor__step {
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out), visibility 0.35s;
+      position: absolute;
+      inset: 0;
+    }
+
+    .advisor__step.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    .advisor__step.is-leaving {
+      opacity: 0;
+      transform: translateY(-10px);
+      position: absolute;
+    }
+
+    .advisor__question {
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin: 0 0 1.35rem;
+      text-wrap: balance;
+    }
+
+    .advisor__options {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .advisor__option {
+      width: 100%;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font: inherit;
+      font-size: 1rem;
+      line-height: 1.45;
+      padding: 0.95rem 1.15rem;
+      cursor: pointer;
+      transition: border-color 0.22s var(--ease-out), background 0.22s var(--ease-out), transform 0.22s var(--ease-out), box-shadow 0.22s var(--ease-out);
+    }
+
+    .advisor__option:hover {
+      border-color: rgba(167, 139, 250, 0.38);
+      background: rgba(167, 139, 250, 0.08);
+      transform: translateX(4px);
+    }
+
+    .advisor__option:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+
+    .advisor__result {
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), visibility 0.4s;
+    }
+
+    .advisor__result.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .advisor__result-lead {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0 0 1.5rem;
+    }
+
+    .advisor__rec-label,
+    .advisor__proj-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .advisor__rec-list {
+      list-style: none;
+      margin: 0 0 1.75rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .advisor__rec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .advisor__rec-list li::before {
+      content: "";
+      flex: none;
+      width: 7px;
+      height: 7px;
+      margin-top: 0.55rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+    }
+
+    .advisor__projects {
+      margin-bottom: 1.5rem;
+    }
+
+    .advisor__proj-tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .advisor__proj-tags a,
+    .advisor__proj-tags span {
+      display: inline-block;
+      font-size: 0.9rem;
+      line-height: 1;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--accent-2);
+      font-weight: 600;
+      background: rgba(167, 139, 250, 0.10);
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+    }
+
+    .advisor__proj-tags a:hover {
+      background: rgba(167, 139, 250, 0.18);
+      border-color: rgba(167, 139, 250, 0.36);
+    }
+
+    .advisor__restart {
+      background: transparent;
+      border: 0;
+      color: var(--text-muted);
+      font: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.25rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .advisor__restart:hover {
+      color: var(--text);
+    }
+
+    .advisor__restart:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 3px;
+    }
+
+    .advisor-cta {
+      margin-top: var(--space-xl);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(120deg, rgba(139, 92, 246, 0.16), rgba(192, 132, 252, 0.10));
+      border: 1px solid rgba(167, 139, 250, 0.26);
+    }
+
+    .advisor-cta[hidden] {
+      display: none;
+    }
+
+    .advisor-cta__title {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem;
+    }
+
+    .advisor-cta__desc {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .advisor-cta__btn {
+      flex: none;
+    }
+
+    @media (max-width: 600px) {
+      .advisor__viewport {
+        min-height: 360px;
+      }
+      .advisor-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .advisor-cta__btn {
+        width: 100%;
+      }
+    }
+
+    html[data-theme="light"] .advisor__option {
+      background: rgba(0, 0, 0, 0.035);
+    }
+
     /* ========== Портфолио решений (направления-аккордеон) ========== */
     .solutions {
       display: flex;
@@ -6122,6 +6446,81 @@
       </div>
     </section>
 
+    <!-- ========== Цифровой помощник: подбор решения ========== -->
+    <section class="section section--advisor reveal" id="advisor" aria-labelledby="advisor-title">
+      <div class="section-head reveal">
+        <p class="label">Цифровой помощник</p>
+        <h2 id="advisor-title">Подобрать решение</h2>
+        <p>Ответьте на несколько вопросов и получите рекомендацию по формату решения под вашу задачу.</p>
+      </div>
+
+      <div class="advisor reveal" id="advisor-app">
+        <div class="advisor__shell">
+          <div class="advisor__top">
+            <span class="advisor__status">
+              <span class="advisor__dot" aria-hidden="true"></span>
+              <span id="advisor-status-text">Помощник готов к диалогу</span>
+            </span>
+            <button class="advisor__back" type="button" id="advisor-back" aria-label="Вернуться к предыдущему вопросу">Назад</button>
+          </div>
+
+          <div class="advisor__viewport" id="advisor-viewport">
+            <div class="advisor__step is-active" data-step="1" role="group" aria-labelledby="advisor-q1">
+              <h3 class="advisor__question" id="advisor-q1">Кто вы?</h3>
+              <ul class="advisor__options" role="list">
+                <li><button class="advisor__option" type="button" data-field="role" data-value="entrepreneur">Предприниматель</button></li>
+                <li><button class="advisor__option" type="button" data-field="role" data-value="expert">Эксперт</button></li>
+                <li><button class="advisor__option" type="button" data-field="role" data-value="teacher">Педагог</button></li>
+                <li><button class="advisor__option" type="button" data-field="role" data-value="edu_org">Образовательная организация</button></li>
+                <li><button class="advisor__option" type="button" data-field="role" data-value="other">Другое</button></li>
+              </ul>
+            </div>
+
+            <div class="advisor__step" data-step="2" role="group" aria-labelledby="advisor-q2" hidden>
+              <h3 class="advisor__question" id="advisor-q2">Что хотите получить?</h3>
+              <ul class="advisor__options" role="list">
+                <li><button class="advisor__option" type="button" data-field="goal" data-value="clients">Больше обращений и клиентов</button></li>
+                <li><button class="advisor__option" type="button" data-field="goal" data-value="automate">Автоматизировать работу</button></li>
+                <li><button class="advisor__option" type="button" data-field="goal" data-value="teach">Обучать и объяснять</button></li>
+                <li><button class="advisor__option" type="button" data-field="goal" data-value="engage">Вовлекать аудиторию</button></li>
+                <li><button class="advisor__option" type="button" data-field="goal" data-value="idea">Реализовать идею проекта</button></li>
+              </ul>
+            </div>
+
+            <div class="advisor__step" data-step="3" role="group" aria-labelledby="advisor-q3" hidden>
+              <h3 class="advisor__question" id="advisor-q3">Что уже есть?</h3>
+              <ul class="advisor__options" role="list">
+                <li><button class="advisor__option" type="button" data-field="assets" data-value="idea_only">Пока только идея</button></li>
+                <li><button class="advisor__option" type="button" data-field="assets" data-value="community">Есть группа или сообщество</button></li>
+                <li><button class="advisor__option" type="button" data-field="assets" data-value="site">Есть сайт</button></li>
+                <li><button class="advisor__option" type="button" data-field="assets" data-value="project">Есть действующий проект</button></li>
+              </ul>
+            </div>
+
+            <div class="advisor__result" id="advisor-result" role="region" aria-live="polite" aria-labelledby="advisor-result-title" hidden>
+              <h3 class="advisor__question" id="advisor-result-title">Рекомендуем</h3>
+              <p class="advisor__result-lead" id="advisor-result-lead"></p>
+              <span class="advisor__rec-label">Подходящие форматы</span>
+              <ul class="advisor__rec-list" id="advisor-rec-list"></ul>
+              <div class="advisor__projects">
+                <span class="advisor__proj-label">Похожие проекты</span>
+                <ul class="advisor__proj-tags" id="advisor-proj-list"></ul>
+              </div>
+              <button class="advisor__restart" type="button" id="advisor-restart">Начать заново</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="advisor-cta" id="advisor-cta" hidden>
+          <div class="advisor-cta__text">
+            <h3 class="advisor-cta__title">Хотите обсудить свою задачу?</h3>
+            <p class="advisor-cta__desc">Расскажите о своей ситуации, и я помогу подобрать решение под ваши цели.</p>
+          </div>
+          <a class="btn btn--primary advisor-cta__btn" href="#" data-open-contact-messengers>Обсудить задачу</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== Кейсы: доказательство результата ========== -->
     <section class="section section--solutions reveal" id="projects" aria-labelledby="solutions-title">
       <div class="section-head reveal">
@@ -7718,6 +8117,302 @@
 
       initAccordion('.solution__head', '.solution');
       initAccordion('.need__head', '.need');
+
+      /* ----- Цифровой помощник: подбор решения ----- */
+      (function () {
+        var app = document.getElementById('advisor-app');
+        if (!app) return;
+
+        var steps = app.querySelectorAll('.advisor__step');
+        var resultEl = document.getElementById('advisor-result');
+        var resultLead = document.getElementById('advisor-result-lead');
+        var recList = document.getElementById('advisor-rec-list');
+        var projList = document.getElementById('advisor-proj-list');
+        var statusText = document.getElementById('advisor-status-text');
+        var backBtn = document.getElementById('advisor-back');
+        var restartBtn = document.getElementById('advisor-restart');
+        var ctaEl = document.getElementById('advisor-cta');
+        var currentStep = 1;
+        var answers = { role: '', goal: '', assets: '' };
+        var transitioning = false;
+
+        var PROJECTS = {
+          clients: [
+            { name: 'Грузоперевозки', url: 'https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/' },
+            { name: 'Колбаски', url: 'https://aldoshinamaria.github.io/irina-sweet-creations/' },
+            { name: 'Учитель и нейросети', url: 'https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/' }
+          ],
+          automate: [
+            { name: 'Лисичка рядом', url: null },
+            { name: 'Семейный калькулятор', url: 'https://aldoshinamaria.github.io/family-calculator/' },
+            { name: 'Учёт грамот', url: null },
+            { name: 'Приложение заместителя директора', url: null }
+          ],
+          teach: [
+            { name: 'Летняя тетрадь', url: null },
+            { name: 'Конспекты уроков', url: null },
+            { name: 'Рабочие программы', url: null }
+          ],
+          engage: [
+            { name: 'Игра по дробям', url: 'https://aldoshinamaria.github.io/IGRA_DROBI/' },
+            { name: 'Музейный интерактивный проект', url: null }
+          ],
+          idea: [
+            { name: 'Грузоперевозки', url: 'https://aldoshinamaria.github.io/GRUZOPEVOZKI_DIMA/' },
+            { name: 'Лисичка рядом', url: null },
+            { name: 'Игра по дробям', url: 'https://aldoshinamaria.github.io/IGRA_DROBI/' }
+          ]
+        };
+
+        function getRecommendation(role, goal, assets) {
+          var intro = '';
+          var recs = [];
+          var projects = PROJECTS[goal] ? PROJECTS[goal].slice() : [];
+
+          if (goal === 'clients') {
+            if (role === 'teacher' || role === 'edu_org') {
+              recs = ['страница проекта', 'сайт услуг', 'форма заявки'];
+              intro = 'Для педагога или организации важно сразу вызвать доверие и дать понятный следующий шаг — заявку, запись или обращение.';
+            } else if (assets === 'idea_only') {
+              recs = ['лендинг', 'сайт услуг', 'форма заявки'];
+              intro = 'С нуля лучше начать с лендинга или сайта услуг: человек сразу поймёт ценность и сможет оставить заявку.';
+            } else if (assets === 'community') {
+              recs = ['лендинг', 'страница проекта', 'форма заявки'];
+              intro = 'У вас уже есть аудитория — нужна ясная точка входа, куда можно направить людей и получать обращения.';
+            } else if (assets === 'site') {
+              recs = ['доработка сайта', 'форма заявки', 'лендинг под ключевую услугу'];
+              intro = 'Сайт уже есть — усилим его так, чтобы посетители чаще превращались в обращения.';
+            } else {
+              recs = ['страница проекта', 'сайт услуг', 'форма заявки'];
+              intro = 'Действующий проект можно усилить отдельной посадочной страницей и удобным способом связи.';
+            }
+            if (role === 'expert') {
+              recs[0] = 'сайт эксперта';
+            }
+            if (role === 'entrepreneur' && assets === 'project') {
+              recs = ['сайт услуг', 'лендинг', 'помощник для обработки обращений'];
+            }
+          } else if (goal === 'automate') {
+            if (assets === 'idea_only') {
+              recs = ['цифровой помощник', 'сервис', 'калькулятор'];
+              intro = 'Когда есть только идея, лучше начать с небольшого помощника или сервиса, который снимет самую частую рутину.';
+            } else if (assets === 'community') {
+              recs = ['помощник для обработки обращений', 'автоматизация заявок', 'сервис'];
+              intro = 'Сообщество генерирует обращения — автоматизируем приём, учёт и ответы, чтобы ничего не терялось.';
+            } else if (assets === 'site') {
+              recs = ['автоматизация заявок', 'помощник на сайте', 'калькулятор'];
+              intro = 'Сайт уже работает — добавим инструменты, которые снимут ручную работу с заявками и расчётами.';
+            } else {
+              recs = ['доработка сервиса', 'автоматизация процессов', 'цифровой помощник'];
+              intro = 'Действующий проект можно усилить автоматизацией рутинных шагов и удобным цифровым помощником.';
+            }
+            if (role === 'teacher' || role === 'edu_org') {
+              recs = ['цифровой помощник', 'учёт и автоматизация', 'сервис для команды'];
+              intro = 'В образовании особенно ценно, когда рутина уходит в инструмент — остаётся время на людей и задачи.';
+            }
+          } else if (goal === 'teach') {
+            if (role === 'entrepreneur' || role === 'expert') {
+              recs = ['образовательный продукт', 'методические материалы', 'интерактивный тренажёр'];
+              intro = 'Если вы эксперт или предприниматель, формат обучения должен быть понятным и удобным для вашей аудитории.';
+            } else if (assets === 'idea_only') {
+              recs = ['рабочая тетрадь', 'методические материалы', 'образовательный сервис'];
+              intro = 'С идеи лучше начать с понятного формата — тетради, конспектов или небольшого образовательного сервиса.';
+            } else if (assets === 'community') {
+              recs = ['образовательный сервис', 'тренажёр', 'методические материалы'];
+              intro = 'У вас уже есть аудитория — можно дать ей структурированный формат обучения и практики.';
+            } else if (assets === 'site') {
+              recs = ['образовательный раздел', 'тренажёр', 'методические материалы'];
+              intro = 'Сайт можно дополнить обучающими материалами или интерактивным тренажёром.';
+            } else {
+              recs = ['образовательный сервис', 'интерактивный тренажёр', 'цифровой помощник'];
+              intro = 'Действующий проект усилится, если добавить формат, в котором материал легче усваивается.';
+            }
+            if (role === 'edu_org') {
+              recs = ['образовательный сервис', 'рабочие программы', 'методические материалы'];
+            }
+          } else if (goal === 'engage') {
+            if (assets === 'idea_only') {
+              recs = ['игра', 'интерактив', 'обучающая механика'];
+              intro = 'Чтобы заинтересовать с нуля, подойдёт игра или интерактив — человек сразу вовлекается в процесс.';
+            } else if (assets === 'community') {
+              recs = ['вовлекающий проект', 'игра', 'интерактив'];
+              intro = 'Для аудитории важно дать живой формат взаимодействия — не лекцию, а опыт.';
+            } else if (assets === 'site') {
+              recs = ['интерактив на сайте', 'игра', 'обучающая механика'];
+              intro = 'Сайт станет запоминающимся, если добавить интерактив или игровую механику.';
+            } else {
+              recs = ['вовлекающий проект', 'интерактив', 'обучающая механика'];
+              intro = 'Действующий проект можно усилить форматом, который удерживает внимание и вызывает интерес.';
+            }
+            if (role === 'teacher' || role === 'edu_org') {
+              recs = ['интерактивный тренажёр', 'игра', 'обучающая механика'];
+              intro = 'В обучении вовлечение — ключ: интерактив и игровые механики помогают удерживать внимание.';
+            }
+          } else if (goal === 'idea') {
+            if (role === 'entrepreneur') {
+              recs = ['сайт услуг', 'лендинг', 'сервис'];
+              intro = 'Для предпринимателя с идеей важно быстро проверить спрос — через понятный сайт или небольшой сервис.';
+            } else if (role === 'expert') {
+              recs = ['сайт эксперта', 'лендинг', 'страница проекта'];
+              intro = 'Эксперту нужна ясная подача и доверие с первого экрана — сайт или посадочная страница подойдут лучше всего.';
+            } else if (role === 'teacher') {
+              recs = ['образовательный продукт', 'тренажёр', 'рабочая тетрадь'];
+              intro = 'Педагогу поможет формат, в котором материал легко применять на занятиях — от тетради до тренажёра.';
+              projects = PROJECTS.teach.slice();
+            } else if (role === 'edu_org') {
+              recs = ['образовательный сервис', 'интерактив', 'методические материалы'];
+              intro = 'Организации нужен масштабируемый формат — сервис или интерактив, который работает для разных групп.';
+              projects = PROJECTS.teach.slice();
+            } else {
+              recs = ['лендинг', 'сервис', 'интерактив'];
+              intro = 'Когда идея ещё формируется, лучше начать с небольшого понятного формата и проверить, как она работает.';
+            }
+            if (assets === 'community') {
+              recs[2] = 'вовлекающий проект';
+              projects = PROJECTS.engage.slice(0, 2);
+            }
+            if (assets === 'site') {
+              recs = ['доработка сайта', 'новый раздел', 'сервис'];
+            }
+            if (assets === 'project') {
+              recs = ['развитие проекта', 'автоматизация', 'новый формат'];
+            }
+          }
+
+          return { intro: intro, recs: recs, projects: projects };
+        }
+
+        function setStatus(step) {
+          if (step <= 3) {
+            statusText.textContent = 'Вопрос ' + step + ' из 3';
+          } else {
+            statusText.textContent = 'Рекомендация готова';
+          }
+        }
+
+        function showStep(num) {
+          steps.forEach(function (step) {
+            var n = parseInt(step.getAttribute('data-step'), 10);
+            var active = n === num;
+            step.classList.toggle('is-active', active);
+            step.hidden = !active;
+          });
+          resultEl.classList.remove('is-visible');
+          resultEl.hidden = true;
+          ctaEl.hidden = true;
+          currentStep = num;
+          setStatus(num);
+          backBtn.classList.toggle('is-visible', num > 1);
+        }
+
+        function goToStep(num) {
+          if (transitioning || num < 1 || num > 3) return;
+          var from = app.querySelector('.advisor__step.is-active');
+          var to = app.querySelector('.advisor__step[data-step="' + num + '"]');
+          if (!from || !to || from === to) {
+            showStep(num);
+            return;
+          }
+          transitioning = true;
+          from.classList.remove('is-active');
+          from.classList.add('is-leaving');
+          setTimeout(function () {
+            from.classList.remove('is-leaving');
+            from.hidden = true;
+            to.hidden = false;
+            to.classList.add('is-active');
+            currentStep = num;
+            setStatus(num);
+            backBtn.classList.toggle('is-visible', num > 1);
+            transitioning = false;
+          }, 320);
+        }
+
+        function showResult() {
+          var data = getRecommendation(answers.role, answers.goal, answers.assets);
+          resultLead.textContent = data.intro;
+          recList.innerHTML = '';
+          data.recs.forEach(function (item) {
+            var li = document.createElement('li');
+            li.textContent = item;
+            recList.appendChild(li);
+          });
+          projList.innerHTML = '';
+          data.projects.forEach(function (proj) {
+            var li = document.createElement('li');
+            if (proj.url) {
+              var a = document.createElement('a');
+              a.href = proj.url;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              a.textContent = proj.name;
+              li.appendChild(a);
+            } else {
+              var span = document.createElement('span');
+              span.textContent = proj.name;
+              li.appendChild(span);
+            }
+            projList.appendChild(li);
+          });
+
+          steps.forEach(function (step) {
+            step.classList.remove('is-active', 'is-leaving');
+            step.hidden = true;
+          });
+
+          resultEl.hidden = false;
+          requestAnimationFrame(function () {
+            resultEl.classList.add('is-visible');
+          });
+          ctaEl.hidden = false;
+          setStatus(4);
+          backBtn.classList.remove('is-visible');
+        }
+
+        function reset() {
+          answers = { role: '', goal: '', assets: '' };
+          resultEl.classList.remove('is-visible');
+          resultEl.hidden = true;
+          ctaEl.hidden = true;
+          steps.forEach(function (step, i) {
+            step.classList.remove('is-leaving');
+            step.hidden = i !== 0;
+            step.classList.toggle('is-active', i === 0);
+          });
+          currentStep = 1;
+          setStatus(1);
+          backBtn.classList.remove('is-visible');
+        }
+
+        app.querySelectorAll('.advisor__option').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            if (transitioning) return;
+            var field = btn.getAttribute('data-field');
+            var value = btn.getAttribute('data-value');
+            answers[field] = value;
+            if (field === 'role') {
+              goToStep(2);
+            } else if (field === 'goal') {
+              goToStep(3);
+            } else if (field === 'assets') {
+              showResult();
+            }
+          });
+        });
+
+        backBtn.addEventListener('click', function () {
+          if (currentStep === 2) {
+            answers.role = '';
+            goToStep(1);
+          } else if (currentStep === 3) {
+            answers.goal = '';
+            goToStep(2);
+          }
+        });
+
+        restartBtn.addEventListener('click', reset);
+        setStatus(1);
+      })();
 
       window.addEventListener('resize', function () {
         document.querySelectorAll('.solution.is-open .solution__panel, .need.is-open .need__panel').forEach(function (panel) {
