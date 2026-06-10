@@ -6673,7 +6673,8 @@
                   </dl>
                   <p class="prod-card__value">Ценность: вместо абстрактного «надо внедрить AI» — конкретные направления, с которых можно начать.</p>
                   <div class="prod-card__actions">
-                    <a class="btn btn--primary" href="#quiz-mvp">Получить гайд</a>
+                    <button type="button" class="btn btn--primary" id="guide50-demo-open" aria-haspopup="dialog" aria-controls="modal-guide50-demo">Посмотреть</button>
+                    <a class="btn btn--ghost" href="#quiz-mvp">Запросить полную версию</a>
                   </div>
                 </div>
               </div>
@@ -7406,6 +7407,49 @@
             class="btn btn--ghost"
             href="assets/docs/letnyaya-tetrad-demo.pdf"
             download="letnyaya-tetrad-demo.pdf"
+          >Скачать PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: гайд «50 идей AI-сервисов» -->
+  <div
+    class="modal modal--pdf"
+    id="modal-guide50-demo"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="modal-guide50-demo-title"
+  >
+    <div class="modal__backdrop" data-modal-close tabindex="-1" aria-hidden="true"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" data-modal-close aria-label="Закрыть окно">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="modal__content">
+        <p class="label">Лёгкая версия</p>
+        <h2 class="modal__title" id="modal-guide50-demo-title">Гайд «50 идей AI-сервисов»</h2>
+        <p class="modal__lead">Практический каталог идей — от формулировки задачи до понятного формата сервиса</p>
+        <div class="pdf-viewer">
+          <iframe
+            id="guide50-demo-frame"
+            title="Гайд 50 идей AI-сервисов — лёгкая версия"
+            src="about:blank"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <div class="pdf-viewer__toolbar">
+          <a
+            class="btn btn--ghost"
+            href="assets/docs/50-idei-ai-servisov-lite.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Открыть в новой вкладке</a>
+          <a
+            class="btn btn--ghost"
+            href="assets/docs/50-idei-ai-servisov-lite.pdf"
+            download="50-idei-ai-servisov-lite.pdf"
           >Скачать PDF</a>
         </div>
       </div>
@@ -8628,8 +8672,61 @@
         });
       }
 
+      /* ----- Modal: гайд 50 идей AI-сервисов (PDF) ----- */
+      var modalGuide50Demo = document.getElementById('modal-guide50-demo');
+      var guide50DemoOpenBtn = document.getElementById('guide50-demo-open');
+      var guide50DemoFrame = document.getElementById('guide50-demo-frame');
+      var guide50DemoPdfSrc = 'assets/docs/50-idei-ai-servisov-lite.pdf';
+      var guide50DemoLastFocus = null;
+
+      function openGuide50DemoModal() {
+        if (!modalGuide50Demo) return;
+        guide50DemoLastFocus = document.activeElement;
+        if (guide50DemoFrame) {
+          guide50DemoFrame.src = guide50DemoPdfSrc + '#view=FitH';
+        }
+        modalGuide50Demo.classList.add('modal--open');
+        modalGuide50Demo.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        var closeBtn = modalGuide50Demo.querySelector('.modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeGuide50DemoModal() {
+        if (!modalGuide50Demo) return;
+        modalGuide50Demo.classList.remove('modal--open');
+        modalGuide50Demo.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (guide50DemoFrame) {
+          guide50DemoFrame.src = 'about:blank';
+        }
+        if (guide50DemoLastFocus && typeof guide50DemoLastFocus.focus === 'function') {
+          guide50DemoLastFocus.focus();
+        }
+      }
+
+      if (modalGuide50Demo) {
+        modalGuide50Demo.querySelectorAll('[data-modal-close]').forEach(function (el) {
+          el.addEventListener('click', function (e) {
+            e.preventDefault();
+            closeGuide50DemoModal();
+          });
+        });
+      }
+
+      if (guide50DemoOpenBtn) {
+        guide50DemoOpenBtn.addEventListener('click', function () {
+          openGuide50DemoModal();
+        });
+      }
+
       document.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') return;
+        if (modalGuide50Demo && modalGuide50Demo.classList.contains('modal--open')) {
+          e.preventDefault();
+          closeGuide50DemoModal();
+          return;
+        }
         if (modalTetradDemo && modalTetradDemo.classList.contains('modal--open')) {
           e.preventDefault();
           closeTetradDemoModal();
