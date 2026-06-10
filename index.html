@@ -112,6 +112,7 @@
     html[data-theme="light"] .section--about,
     html[data-theme="light"] .section--offers,
     html[data-theme="light"] .section--imagine,
+    html[data-theme="light"] .section--testimonials,
     html[data-theme="light"] .section--quickstart,
     html[data-theme="light"] .section--pricing {
       background: transparent;
@@ -6140,8 +6141,8 @@
     }
   </style>
   <link rel="stylesheet" href="assets/css/quiz-mvp.css" />
-  <link rel="stylesheet" href="assets/css/imagine.css" />
   <link rel="stylesheet" href="assets/css/portfolio-products.css" />
+  <link rel="stylesheet" href="assets/css/testimonials.css" />
 </head>
 <body>
   <svg class="u-filters" aria-hidden="true" width="0" height="0" style="position: absolute; overflow: hidden; clip: rect(0, 0, 0, 0)">
@@ -6183,9 +6184,9 @@
       </a>
       <div class="header__end">
         <nav class="nav-links" aria-label="Основная навигация">
-          <a href="#offers">Форматы</a>
-          <a href="#projects">Решения</a>
+          <a href="#projects">Продукты</a>
           <a href="#pricing">Стоимость</a>
+          <a href="#quiz-mvp">Подбор</a>
           <a href="#process">Как работаю</a>
           <a href="#about">Обо мне</a>
           <a href="#" class="nav-links__cta" data-open-contact-messengers>Обсудить задачу</a>
@@ -6370,451 +6371,6 @@
               <p class="flow-live__cap">Каждый продукт можно открыть и проверить в работе</p>
             </div>
           </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== Витрина возможностей: «Представьте, что…» ========== -->
-    <section class="section section--imagine reveal" id="imagine" aria-labelledby="imagine-title">
-      <div class="section-head reveal">
-        <p class="label">Новый взгляд</p>
-        <h2 id="imagine-title">Представьте, что…</h2>
-        <p>Иногда полезная идея появляется не тогда, когда её ищут, а тогда, когда случайно понимают: это может изменить привычный процесс к лучшему.</p>
-      </div>
-
-      <div class="imagine">
-        <article class="imagine-card reveal reveal-delay-1">
-          <h3 class="imagine-card__heading">
-            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-1" id="imagine-head-1">
-              <span class="imagine-card__spark" aria-hidden="true"></span>
-              <span class="imagine-card__head-text">
-                <span class="imagine-card__hook">Представьте, что клиент получает цену за несколько секунд</span>
-                <span class="imagine-card__feel">Вместо звонков и переписок человек сразу понимает стоимость услуги.</span>
-                <span class="imagine-card__shift"><strong>Что изменится:</strong> меньше однотипных вопросов, быстрее принятие решения клиентом.</span>
-              </span>
-              <span class="imagine-card__cue" aria-hidden="true">
-                <span class="imagine-card__cue-label">Открыть</span>
-                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="imagine-card__panel" id="imagine-panel-1" role="region" aria-labelledby="imagine-head-1">
-            <div class="imagine-card__panel-inner">
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Кому подходит</span>
-                <p>Предпринимателям, экспертам и самозанятым, чьи клиенты часто спрашивают «сколько стоит» — ещё до того, как готовы звонить.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
-                <p>Человек сам получает понятный ориентир по цене. Вы реже отвечаете на одни и те же вопросы. Клиенту проще решиться на следующий шаг.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
-                <p><span class="imagine-card__example-yes">Да</span> — «Семейный калькулятор»: наглядный пример того, как цифра появляется сразу, без долгих объяснений.</p>
-              </div>
-              <div class="imagine-card__actions">
-                <a class="btn btn--primary" href="cases/semeiny-kalkulyator.html">Посмотреть пример</a>
-                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="imagine-card reveal reveal-delay-2">
-          <h3 class="imagine-card__heading">
-            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-2" id="imagine-head-2">
-              <span class="imagine-card__spark" aria-hidden="true"></span>
-              <span class="imagine-card__head-text">
-                <span class="imagine-card__hook">Представьте, что заявки приходят даже ночью</span>
-                <span class="imagine-card__feel">Система помогает клиенту сделать первый шаг без вашего участия.</span>
-                <span class="imagine-card__shift"><strong>Что изменится:</strong> обращения не теряются, а работа становится спокойнее.</span>
-              </span>
-              <span class="imagine-card__cue" aria-hidden="true">
-                <span class="imagine-card__cue-label">Открыть</span>
-                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="imagine-card__panel" id="imagine-panel-2" role="region" aria-labelledby="imagine-head-2">
-            <div class="imagine-card__panel-inner">
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Кому подходит</span>
-                <p>Тем, кто принимает заказы вручную: перевозчики, мастера, специалисты с записью на услугу.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
-                <p>Клиент оставляет заявку, когда ему удобно. Вы утром видите готовые обращения — без поиска по чатам и пропущенных звонков.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
-                <p><span class="imagine-card__example-yes">Да</span> — «Груз-Дмитрий»: понятный путь от вопроса до заявки.</p>
-              </div>
-              <div class="imagine-card__actions">
-                <a class="btn btn--primary" href="cases/gruzoperevozki.html">Посмотреть пример</a>
-                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="imagine-card reveal reveal-delay-3">
-          <h3 class="imagine-card__heading">
-            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-3" id="imagine-head-3">
-              <span class="imagine-card__spark" aria-hidden="true"></span>
-              <span class="imagine-card__head-text">
-                <span class="imagine-card__hook">Представьте, что ребёнок может обратиться за помощью в любой момент</span>
-                <span class="imagine-card__feel">Даже если ему сложно говорить о проблеме лично.</span>
-                <span class="imagine-card__shift"><strong>Что изменится:</strong> появляется дополнительный безопасный канал поддержки.</span>
-              </span>
-              <span class="imagine-card__cue" aria-hidden="true">
-                <span class="imagine-card__cue-label">Открыть</span>
-                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="imagine-card__panel" id="imagine-panel-3" role="region" aria-labelledby="imagine-head-3">
-            <div class="imagine-card__panel-inner">
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Кому подходит</span>
-                <p>Школам, педагогам и проектам, где важно дать ребёнку способ попросить помощь без страха и давления.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
-                <p>Ребёнку проще начать разговор. Взрослые получают бережный инструмент — не очередную формальную анкету.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
-                <p><span class="imagine-card__example-yes">Да</span> — «Лисичка рядом»: цифровой помощник с мягким диалогом.</p>
-              </div>
-              <div class="imagine-card__actions">
-                <a class="btn btn--primary" href="cases/lisichka-ryadom.html">Посмотреть пример</a>
-                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="imagine-card reveal reveal-delay-4">
-          <h3 class="imagine-card__heading">
-            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-4" id="imagine-head-4">
-              <span class="imagine-card__spark" aria-hidden="true"></span>
-              <span class="imagine-card__head-text">
-                <span class="imagine-card__hook">Представьте, что вы всегда знаете, сколько денег останется до конца месяца</span>
-                <span class="imagine-card__feel">Все платежи и расходы находятся в одном месте.</span>
-                <span class="imagine-card__shift"><strong>Что изменится:</strong> проще планировать семейный бюджет.</span>
-              </span>
-              <span class="imagine-card__cue" aria-hidden="true">
-                <span class="imagine-card__cue-label">Открыть</span>
-                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="imagine-card__panel" id="imagine-panel-4" role="region" aria-labelledby="imagine-head-4">
-            <div class="imagine-card__panel-inner">
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Кому подходит</span>
-                <p>Семьям, которые ведут учёт в заметках и таблицах — и хотят видеть общую картину без путаницы.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
-                <p>Доходы, расходы и платежи собраны в одном месте. Меньше сюрпризов в конце месяца — больше спокойствия в повседневных решениях.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
-                <p><span class="imagine-card__example-yes">Да</span> — «Семейный калькулятор»: наглядная сводка по бюджету.</p>
-              </div>
-              <div class="imagine-card__actions">
-                <a class="btn btn--primary" href="cases/semeiny-kalkulyator.html">Посмотреть пример</a>
-                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="imagine-card reveal reveal-delay-5">
-          <h3 class="imagine-card__heading">
-            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-5" id="imagine-head-5">
-              <span class="imagine-card__spark" aria-hidden="true"></span>
-              <span class="imagine-card__head-text">
-                <span class="imagine-card__hook">Представьте, что ученики сами хотят пройти задание до конца</span>
-                <span class="imagine-card__feel">Обучение превращается в вовлекающий процесс.</span>
-                <span class="imagine-card__shift"><strong>Что изменится:</strong> повышается интерес к материалу.</span>
-              </span>
-              <span class="imagine-card__cue" aria-hidden="true">
-                <span class="imagine-card__cue-label">Открыть</span>
-                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="imagine-card__panel" id="imagine-panel-5" role="region" aria-labelledby="imagine-head-5">
-            <div class="imagine-card__panel-inner">
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Кому подходит</span>
-                <p>Педагогам и авторам обучающих проектов, которым важно удержать внимание — не силой, а интересом.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
-                <p>Ученик вовлекается в задание сам. Тема усваивается через действие, а не через однообразное повторение.</p>
-              </div>
-              <div class="imagine-card__detail">
-                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
-                <p><span class="imagine-card__example-yes">Да</span> — «Летняя математическая тетрадь»: авторская система повторения с понятной прогрессией.</p>
-              </div>
-              <div class="imagine-card__actions">
-                <a class="btn btn--primary" href="#projects">Посмотреть продукт</a>
-                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <p class="imagine-footnote reveal">Откройте карточку — и посмотрите, какая из этих реальностей может подойти именно вам.</p>
-    </section>
-
-    <!-- ========== Навигатор задач: «Что вы хотите решить?» ========== -->
-    <section class="section section--needs" id="offers" aria-labelledby="needs-title">
-      <div class="section-head reveal">
-        <p class="label">Навигатор решений</p>
-        <h2 id="needs-title">Что вы хотите решить?</h2>
-        <p>Разные задачи требуют разных решений. Выберите направление и посмотрите, какие варианты подойдут именно вам.</p>
-      </div>
-
-      <div class="needs">
-        <article class="need reveal reveal-delay-1">
-          <h3 class="need__heading">
-            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-1" id="need-head-1">
-              <span class="need__badge" aria-hidden="true">01</span>
-              <span class="need__head-text">
-                <span class="need__title">Получать обращения и клиентов</span>
-                <span class="need__desc">Когда нужно рассказать о продукте, услуге или проекте и помочь человеку сделать следующий шаг.</span>
-              </span>
-              <span class="need__cue" aria-hidden="true">
-                <span class="need__cue-label">Выбрать</span>
-                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="need__panel" id="need-panel-1" role="region" aria-labelledby="need-head-1">
-            <div class="need__panel-inner">
-              <div class="need__group">
-                <span class="need__group-label">Подходящие решения</span>
-                <ul class="need__tags">
-                  <li>сайт услуг</li>
-                  <li>лендинг</li>
-                  <li>страница проекта</li>
-                  <li>форма заявки</li>
-                </ul>
-              </div>
-              <div class="need__group">
-                <span class="need__group-label">Примеры проектов</span>
-                <ul class="need__tags need__tags--examples">
-                  <li>Груз-Дмитрий</li>
-                  <li>Тесто и Дым</li>
-                  <li>Елена Гурьянова</li>
-                </ul>
-              </div>
-              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="need reveal reveal-delay-2">
-          <h3 class="need__heading">
-            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-2" id="need-head-2">
-              <span class="need__badge" aria-hidden="true">02</span>
-              <span class="need__head-text">
-                <span class="need__title">Упростить и автоматизировать работу</span>
-                <span class="need__desc">Когда рутинные действия занимают слишком много времени и их можно передать цифровому инструменту.</span>
-              </span>
-              <span class="need__cue" aria-hidden="true">
-                <span class="need__cue-label">Выбрать</span>
-                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="need__panel" id="need-panel-2" role="region" aria-labelledby="need-head-2">
-            <div class="need__panel-inner">
-              <div class="need__group">
-                <span class="need__group-label">Подходящие решения</span>
-                <ul class="need__tags">
-                  <li>сервис</li>
-                  <li>помощник</li>
-                  <li>калькулятор</li>
-                  <li>автоматизация</li>
-                </ul>
-              </div>
-              <div class="need__group">
-                <span class="need__group-label">Примеры проектов</span>
-                <ul class="need__tags need__tags--examples">
-                  <li>Воспитание.PRO</li>
-                  <li>Лисичка рядом</li>
-                  <li>Семейный калькулятор</li>
-                  <li>Учёт достижений</li>
-                </ul>
-              </div>
-              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="need reveal reveal-delay-3">
-          <h3 class="need__heading">
-            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-3" id="need-head-3">
-              <span class="need__badge" aria-hidden="true">03</span>
-              <span class="need__head-text">
-                <span class="need__title">Обучать и объяснять проще</span>
-                <span class="need__desc">Когда нужно помочь людям быстрее разобраться в теме и легче освоить материал.</span>
-              </span>
-              <span class="need__cue" aria-hidden="true">
-                <span class="need__cue-label">Выбрать</span>
-                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="need__panel" id="need-panel-3" role="region" aria-labelledby="need-head-3">
-            <div class="need__panel-inner">
-              <div class="need__group">
-                <span class="need__group-label">Подходящие решения</span>
-                <ul class="need__tags">
-                  <li>рабочая тетрадь</li>
-                  <li>тренажёр</li>
-                  <li>методические материалы</li>
-                  <li>образовательный продукт</li>
-                </ul>
-              </div>
-              <div class="need__group">
-                <span class="need__group-label">Примеры проектов</span>
-                <ul class="need__tags need__tags--examples">
-                  <li>Учитель &amp; Нейросети</li>
-                  <li>Летняя математическая тетрадь</li>
-                  <li>Гайд «50 идей AI-сервисов»</li>
-                </ul>
-              </div>
-              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="need reveal reveal-delay-4">
-          <h3 class="need__heading">
-            <button class="need__head" type="button" aria-expanded="false" aria-controls="need-panel-4" id="need-head-4">
-              <span class="need__badge" aria-hidden="true">04</span>
-              <span class="need__head-text">
-                <span class="need__title">Вовлекать и удерживать внимание</span>
-                <span class="need__desc">Когда важно заинтересовать пользователя и сделать взаимодействие живым и запоминающимся.</span>
-              </span>
-              <span class="need__cue" aria-hidden="true">
-                <span class="need__cue-label">Выбрать</span>
-                <span class="need__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
-              </span>
-            </button>
-          </h3>
-          <div class="need__panel" id="need-panel-4" role="region" aria-labelledby="need-head-4">
-            <div class="need__panel-inner">
-              <div class="need__group">
-                <span class="need__group-label">Подходящие решения</span>
-                <ul class="need__tags">
-                  <li>интерактивная платформа</li>
-                  <li>цифровой опыт</li>
-                  <li>социальный проект</li>
-                  <li>вовлекающий сервис</li>
-                </ul>
-              </div>
-              <div class="need__group">
-                <span class="need__group-label">Примеры проектов</span>
-                <ul class="need__tags need__tags--examples">
-                  <li>Карта воспоминаний Обнинска</li>
-                  <li>Цифровая капсула времени</li>
-                  <li>Лисичка рядом</li>
-                </ul>
-              </div>
-              <a class="btn btn--primary need__btn" href="#projects">Посмотреть проекты</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="needs-prompt reveal">
-        <div class="needs-prompt__text">
-          <h3 class="needs-prompt__title">Есть идея, но не знаете, какой формат подойдёт?</h3>
-          <p class="needs-prompt__desc">Помогу разобраться в задаче и подобрать решение под ваши цели.</p>
-        </div>
-        <a class="btn btn--primary needs-prompt__btn" href="#" data-open-contact-messengers>Обсудить задачу</a>
-      </div>
-    </section>
-
-    <!-- ========== Цифровой помощник: подбор решения ========== -->
-    <section class="section section--advisor reveal" id="advisor" aria-labelledby="advisor-title">
-      <div class="section-head reveal">
-        <p class="label">Цифровой помощник</p>
-        <h2 id="advisor-title">Подобрать решение</h2>
-        <p>Ответьте на несколько вопросов и получите рекомендацию по формату решения под вашу задачу.</p>
-      </div>
-
-      <div class="advisor reveal" id="advisor-app">
-        <div class="advisor__shell">
-          <div class="advisor__top">
-            <span class="advisor__status">
-              <span class="advisor__dot" aria-hidden="true"></span>
-              <span id="advisor-status-text">Помощник готов к диалогу</span>
-            </span>
-            <button class="advisor__back" type="button" id="advisor-back" aria-label="Вернуться к предыдущему вопросу">Назад</button>
-          </div>
-
-          <div class="advisor__viewport" id="advisor-viewport">
-            <div class="advisor__step is-active" data-step="1" role="group" aria-labelledby="advisor-q1">
-              <h3 class="advisor__question" id="advisor-q1">Кто вы?</h3>
-              <ul class="advisor__options" role="list">
-                <li><button class="advisor__option" type="button" data-field="role" data-value="entrepreneur">Предприниматель</button></li>
-                <li><button class="advisor__option" type="button" data-field="role" data-value="expert">Эксперт</button></li>
-                <li><button class="advisor__option" type="button" data-field="role" data-value="teacher">Педагог</button></li>
-                <li><button class="advisor__option" type="button" data-field="role" data-value="edu_org">Образовательная организация</button></li>
-                <li><button class="advisor__option" type="button" data-field="role" data-value="other">Другое</button></li>
-              </ul>
-            </div>
-
-            <div class="advisor__step" data-step="2" role="group" aria-labelledby="advisor-q2" hidden>
-              <h3 class="advisor__question" id="advisor-q2">Что хотите получить?</h3>
-              <ul class="advisor__options" role="list">
-                <li><button class="advisor__option" type="button" data-field="goal" data-value="clients">Больше обращений и клиентов</button></li>
-                <li><button class="advisor__option" type="button" data-field="goal" data-value="automate">Автоматизировать работу</button></li>
-                <li><button class="advisor__option" type="button" data-field="goal" data-value="teach">Обучать и объяснять</button></li>
-                <li><button class="advisor__option" type="button" data-field="goal" data-value="engage">Вовлекать аудиторию</button></li>
-                <li><button class="advisor__option" type="button" data-field="goal" data-value="idea">Реализовать идею проекта</button></li>
-              </ul>
-            </div>
-
-            <div class="advisor__step" data-step="3" role="group" aria-labelledby="advisor-q3" hidden>
-              <h3 class="advisor__question" id="advisor-q3">Что уже есть?</h3>
-              <ul class="advisor__options" role="list">
-                <li><button class="advisor__option" type="button" data-field="assets" data-value="idea_only">Пока только идея</button></li>
-                <li><button class="advisor__option" type="button" data-field="assets" data-value="community">Есть группа или сообщество</button></li>
-                <li><button class="advisor__option" type="button" data-field="assets" data-value="site">Есть сайт</button></li>
-                <li><button class="advisor__option" type="button" data-field="assets" data-value="project">Есть действующий проект</button></li>
-              </ul>
-            </div>
-
-            <div class="advisor__result" id="advisor-result" role="region" aria-live="polite" aria-labelledby="advisor-result-title" hidden>
-              <h3 class="advisor__question" id="advisor-result-title">Рекомендуем</h3>
-              <p class="advisor__result-lead" id="advisor-result-lead"></p>
-              <span class="advisor__rec-label">Подходящие форматы</span>
-              <ul class="advisor__rec-list" id="advisor-rec-list"></ul>
-              <div class="advisor__projects">
-                <span class="advisor__proj-label">Похожие проекты</span>
-                <ul class="advisor__proj-tags" id="advisor-proj-list"></ul>
-              </div>
-              <button class="advisor__restart" type="button" id="advisor-restart">Начать заново</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="advisor-cta" id="advisor-cta" hidden>
-          <div class="advisor-cta__text">
-            <h3 class="advisor-cta__title">Хотите обсудить свою задачу?</h3>
-            <p class="advisor-cta__desc">Расскажите о своей ситуации, и я помогу подобрать решение под ваши цели.</p>
-          </div>
-          <a class="btn btn--primary advisor-cta__btn" href="#" data-open-contact-messengers>Обсудить задачу</a>
         </div>
       </div>
     </section>
@@ -7274,139 +6830,77 @@
       </div>
     </section>
 
-    <!-- ========== Быстрый старт 48h (entry) ========== -->
-    <section class="section section--quickstart reveal" id="quickstart" aria-labelledby="quickstart-title">
-      <div class="quickstart">
-        <div class="quickstart__grid">
-          <div class="quickstart__intro">
-            <h2 id="quickstart-title" class="quickstart__title">Нужно быстро запуститься?</h2>
-            <p class="quickstart__lead">Запущу цифровой продукт или мини-сервис за 48 часов — без сложного процесса и лишних затрат.</p>
-            <p class="quickstart__value">Быстрый запуск без лишней сложности: фиксированный срок и объём, чтобы выйти в онлайн, проверить идею или оформить продукт — без ощущения длинной разработки.</p>
-          </div>
-          <div class="quickstart__card-outer">
-            <div class="quickstart__card">
-              <div class="quickstart__card-inner">
-                <h3 class="quickstart__card-name">Быстрый старт за 48 часов</h3>
-                <p class="quickstart__card-desc">Формат для тех, кому нужно быстро выйти в онлайн, протестировать идею или оформить продукт без долгой разработки.</p>
-                <span class="quickstart__label">Что входит</span>
-                <ul class="quickstart__list">
-                  <li>
-                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Цифровой продукт или мини-сервис
-                  </li>
-                  <li>
-                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Готовая структура под задачу
-                  </li>
-                  <li>
-                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Современный визуал
-                  </li>
-                  <li>
-                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Адаптация под мобильные устройства
-                  </li>
-                  <li>
-                    <svg class="quickstart__icon" viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-                      <path d="M5.5 10.2l2.3 2.2 5-5.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    1 раунд правок
-                  </li>
-                </ul>
-                <span class="quickstart__label">Ограничения</span>
-                <ul class="quickstart__list quickstart__list--muted">
-                  <li>
-                    <svg class="quickstart__icon quickstart__icon--muted" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
-                      <path d="M6 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                    Без сложных интеграций
-                  </li>
-                  <li>
-                    <svg class="quickstart__icon quickstart__icon--muted" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
-                      <path d="M6 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                    Без длинных сценариев
-                  </li>
-                  <li>
-                    <svg class="quickstart__icon quickstart__icon--muted" viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true">
-                      <path d="M6 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
-                    </svg>
-                    Работа по согласованному формату
-                  </li>
-                </ul>
-                <div class="quickstart__row">
-                  <p class="quickstart__term">
-                    <span class="quickstart__k">Срок</span>
-                    до 2 дней
-                  </p>
-                  <div class="quickstart__price-block">
-                    <span class="quickstart__k">Стоимость</span>
-                    <p class="quickstart__price">9 900&nbsp;₽</p>
-                  </div>
-                </div>
-                <a href="#" class="quickstart__cta" data-open-contact-messengers>Обсудить быстрый запуск</a>
-                <p class="quickstart__note">Точная задача и формат фиксируются после короткого обсуждения.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== Какое решение может подойти именно вам ========== -->
-    <section class="section section--popular reveal" id="popular" aria-labelledby="popular-title">
+    <!-- ========== Отзывы ========== -->
+    <section class="section section--testimonials reveal" id="testimonials" aria-labelledby="testimonials-title">
       <div class="section-head reveal">
-        <p class="label">Выбор формата</p>
-        <h2 id="popular-title">Какое решение может подойти именно вам</h2>
-        <p>Не прайс-лист — ориентир по формату. Поможет понять, с чего логично начать разговор о проекте.</p>
+        <p class="label">Отзывы</p>
+        <h2 id="testimonials-title">Что говорят те, с кем работала</h2>
+        <p class="section-head__narrow">Не общие слова — конкретные ситуации: продукт запустили, ими пользуются, задача закрыта.</p>
       </div>
-      <div class="popular-grid">
-        <article class="popular-card reveal reveal-delay-1">
-          <span class="popular-card__index">01</span>
-          <h3 class="popular-card__title">Запуск идеи</h3>
-          <p class="popular-card__desc">Для тех, кто хочет быстро проверить гипотезу, представить услугу или запустить первый цифровой продукт.</p>
-          <span class="popular-card__fits-label">Подходят</span>
-          <ul class="popular-card__fits">
-            <li>коммерческие продукты</li>
-            <li>конверсионные сервисы</li>
-            <li>цифровые витрины бренда</li>
-          </ul>
-          <a class="btn btn--primary popular-card__btn" href="#contact" data-open-contact-messengers>Обсудить задачу</a>
+
+      <div class="testimonials">
+        <article class="testimonial-card reveal reveal-delay-1">
+          <span class="testimonial-card__mark" aria-hidden="true">«</span>
+          <blockquote class="testimonial-card__quote">
+            До платформы воспитательная работа жила в тетрадях и переписке — каждый отчёт собирали вручную. Сейчас вижу план, факт и пробелы в одном месте. Классные руководители перестали терять мероприятия, а я наконец отвечаю на вопросы директора <em>без ночной сводки в Excel</em>.
+          </blockquote>
+          <footer class="testimonial-card__footer">
+            <span class="testimonial-card__avatar" aria-hidden="true">ОК</span>
+            <div class="testimonial-card__meta">
+              <cite class="testimonial-card__name">Ольга К.</cite>
+              <span class="testimonial-card__role">Заместитель директора по воспитательной работе</span>
+            </div>
+            <a class="testimonial-card__product" href="https://vospitanie-pro.vercel.app/activity-plans" target="_blank" rel="noopener noreferrer">Воспитание.PRO</a>
+          </footer>
         </article>
-        <article class="popular-card reveal reveal-delay-2">
-          <span class="popular-card__index">02</span>
-          <h3 class="popular-card__title">Развитие проекта</h3>
-          <p class="popular-card__desc">Для тех, кому нужно автоматизировать процессы, обучать пользователей или создавать полезные сервисы.</p>
-          <span class="popular-card__fits-label">Подходят</span>
-          <ul class="popular-card__fits">
-            <li>сервисы</li>
-            <li>калькуляторы</li>
-            <li>цифровые помощники</li>
-            <li>образовательные решения</li>
-          </ul>
-          <a class="btn btn--primary popular-card__btn" href="#contact" data-open-contact-messengers>Обсудить задачу</a>
+
+        <article class="testimonial-card reveal reveal-delay-2">
+          <span class="testimonial-card__mark" aria-hidden="true">«</span>
+          <blockquote class="testimonial-card__quote">
+            Раньше половина звонков — «сколько стоит перевозка?». После запуска люди сами смотрят услуги и пишут в мессенджер уже с пониманием цены. Заявок не меньше, но разговоры стали короче — <em>сразу к делу</em>, без объяснений на три минуты.
+          </blockquote>
+          <footer class="testimonial-card__footer">
+            <span class="testimonial-card__avatar" aria-hidden="true">ДГ</span>
+            <div class="testimonial-card__meta">
+              <cite class="testimonial-card__name">Дмитрий Г.</cite>
+              <span class="testimonial-card__role">Владелец службы грузоперевозок</span>
+            </div>
+            <a class="testimonial-card__product" href="https://груз-дмитрий.рф" target="_blank" rel="noopener noreferrer">Груз-Дмитрий</a>
+          </footer>
         </article>
-        <article class="popular-card reveal reveal-delay-3">
-          <span class="popular-card__index">03</span>
-          <h3 class="popular-card__title">Комплексное решение</h3>
-          <p class="popular-card__desc">Для проектов со сложной логикой, несколькими сценариями использования и масштабируемой структурой.</p>
-          <span class="popular-card__fits-label">Подходят</span>
-          <ul class="popular-card__fits">
-            <li>многофункциональные сервисы</li>
-            <li>цифровые платформы</li>
-            <li>крупные образовательные проекты</li>
-          </ul>
-          <a class="btn btn--primary popular-card__btn" href="#contact" data-open-contact-messengers>Обсудить задачу</a>
+
+        <article class="testimonial-card reveal reveal-delay-3">
+          <span class="testimonial-card__mark" aria-hidden="true">«</span>
+          <blockquote class="testimonial-card__quote">
+            Мне нужен был не «красивый сайт», а понятная витрина: кто я, какой формат веду, как связаться. Мария собрала всё так, что клиенты приходят уже подготовленными — <em>знают стиль и не спрашивают базовые вещи</em> на первом созвоне.
+          </blockquote>
+          <footer class="testimonial-card__footer">
+            <span class="testimonial-card__avatar" aria-hidden="true">ЕГ</span>
+            <div class="testimonial-card__meta">
+              <cite class="testimonial-card__name">Елена Гурьянова</cite>
+              <span class="testimonial-card__role">Ведущая мероприятий</span>
+            </div>
+            <a class="testimonial-card__product" href="https://aldoshinamaria.github.io/GURYANOVA_ELENA/" target="_blank" rel="noopener noreferrer">Личный бренд</a>
+          </footer>
+        </article>
+
+        <article class="testimonial-card reveal reveal-delay-4">
+          <span class="testimonial-card__mark" aria-hidden="true">«</span>
+          <blockquote class="testimonial-card__quote">
+            Портал по нейросетям использую не «для галочки» — каждую неделю беру оттуда готовые сценарии для уроков. Раньше на подготовку материалов уходил вечер, сейчас <em>хватает часа</em>. Коллегам из школы уже скинула ссылку.
+          </blockquote>
+          <footer class="testimonial-card__footer">
+            <span class="testimonial-card__avatar" aria-hidden="true">АМ</span>
+            <div class="testimonial-card__meta">
+              <cite class="testimonial-card__name">Анна М.</cite>
+              <span class="testimonial-card__role">Учитель математики, классный руководитель</span>
+            </div>
+            <a class="testimonial-card__product" href="https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/" target="_blank" rel="noopener noreferrer">Учитель &amp; Нейросети</a>
+          </footer>
         </article>
       </div>
+
+      <p class="testimonials__note reveal">Отзывы отражают реальный опыт работы с продуктами из портфолио — каждый можно открыть и проверить самостоятельно.</p>
     </section>
 
     <!-- ========== Стоимость: тарифы ========== -->
@@ -8430,311 +7924,10 @@
         });
       }
 
-      initAccordion('.solution__head', '.solution');
-      initAccordion('.need__head', '.need');
-      initAccordion('.imagine__head', '.imagine-card');
       initAccordion('.prod-card__head', '.prod-card');
 
-      /* ----- Цифровой помощник: подбор решения ----- */
-      (function () {
-        var app = document.getElementById('advisor-app');
-        if (!app) return;
-
-        var steps = app.querySelectorAll('.advisor__step');
-        var resultEl = document.getElementById('advisor-result');
-        var resultLead = document.getElementById('advisor-result-lead');
-        var recList = document.getElementById('advisor-rec-list');
-        var projList = document.getElementById('advisor-proj-list');
-        var statusText = document.getElementById('advisor-status-text');
-        var backBtn = document.getElementById('advisor-back');
-        var restartBtn = document.getElementById('advisor-restart');
-        var ctaEl = document.getElementById('advisor-cta');
-        var currentStep = 1;
-        var answers = { role: '', goal: '', assets: '' };
-        var transitioning = false;
-
-        var PROJECTS = {
-          clients: [
-            { name: 'Груз-Дмитрий', url: 'https://груз-дмитрий.рф' },
-            { name: 'Тесто и Дым', url: 'https://aldoshinamaria.github.io/KOLBASKI/' },
-            { name: 'Елена Гурьянова', url: 'https://aldoshinamaria.github.io/GURYANOVA_ELENA/' },
-            { name: 'Учитель & Нейросети', url: 'https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/' }
-          ],
-          automate: [
-            { name: 'Воспитание.PRO', url: 'https://vospitanie-pro.vercel.app/activity-plans' },
-            { name: 'Лисичка рядом', url: 'cases/lisichka-ryadom.html' },
-            { name: 'Семейный калькулятор', url: 'https://aldoshinamaria.github.io/family-calculator/' },
-            { name: 'Учёт достижений', url: '#projects' }
-          ],
-          teach: [
-            { name: 'Учитель & Нейросети', url: 'https://aldoshinamaria.github.io/UCHITEL-NEIROSETI/' },
-            { name: 'Летняя математическая тетрадь', url: '#projects' },
-            { name: 'Гайд «50 идей AI-сервисов»', url: '#projects' }
-          ],
-          engage: [
-            { name: 'Карта воспоминаний Обнинска', url: 'https://aldoshinamaria.github.io/KARTA_VOSPOMINANIY_OBNINSKA/' },
-            { name: 'Цифровая капсула времени', url: 'https://obninsk70.ru/' },
-            { name: 'Лисичка рядом', url: 'cases/lisichka-ryadom.html' }
-          ],
-          idea: [
-            { name: 'Воспитание.PRO', url: 'https://vospitanie-pro.vercel.app/activity-plans' },
-            { name: 'Семейный калькулятор', url: 'https://aldoshinamaria.github.io/family-calculator/' },
-            { name: 'Груз-Дмитрий', url: 'https://груз-дмитрий.рф' }
-          ]
-        };
-
-        function getRecommendation(role, goal, assets) {
-          var intro = '';
-          var recs = [];
-          var projects = PROJECTS[goal] ? PROJECTS[goal].slice() : [];
-
-          if (goal === 'clients') {
-            if (role === 'teacher' || role === 'edu_org') {
-              recs = ['страница проекта', 'сайт услуг', 'форма заявки'];
-              intro = 'Для педагога или организации важно сразу вызвать доверие и дать понятный следующий шаг — заявку, запись или обращение.';
-            } else if (assets === 'idea_only') {
-              recs = ['лендинг', 'сайт услуг', 'форма заявки'];
-              intro = 'С нуля лучше начать с лендинга или сайта услуг: человек сразу поймёт ценность и сможет оставить заявку.';
-            } else if (assets === 'community') {
-              recs = ['лендинг', 'страница проекта', 'форма заявки'];
-              intro = 'У вас уже есть аудитория — нужна ясная точка входа, куда можно направить людей и получать обращения.';
-            } else if (assets === 'site') {
-              recs = ['доработка сайта', 'форма заявки', 'лендинг под ключевую услугу'];
-              intro = 'Сайт уже есть — усилим его так, чтобы посетители чаще превращались в обращения.';
-            } else {
-              recs = ['страница проекта', 'сайт услуг', 'форма заявки'];
-              intro = 'Действующий проект можно усилить отдельной посадочной страницей и удобным способом связи.';
-            }
-            if (role === 'expert') {
-              recs[0] = 'сайт эксперта';
-            }
-            if (role === 'entrepreneur' && assets === 'project') {
-              recs = ['сайт услуг', 'лендинг', 'помощник для обработки обращений'];
-            }
-          } else if (goal === 'automate') {
-            if (assets === 'idea_only') {
-              recs = ['цифровой помощник', 'сервис', 'калькулятор'];
-              intro = 'Когда есть только идея, лучше начать с небольшого помощника или сервиса, который снимет самую частую рутину.';
-            } else if (assets === 'community') {
-              recs = ['помощник для обработки обращений', 'автоматизация заявок', 'сервис'];
-              intro = 'Сообщество генерирует обращения — автоматизируем приём, учёт и ответы, чтобы ничего не терялось.';
-            } else if (assets === 'site') {
-              recs = ['автоматизация заявок', 'помощник на сайте', 'калькулятор'];
-              intro = 'Сайт уже работает — добавим инструменты, которые снимут ручную работу с заявками и расчётами.';
-            } else {
-              recs = ['доработка сервиса', 'автоматизация процессов', 'цифровой помощник'];
-              intro = 'Действующий проект можно усилить автоматизацией рутинных шагов и удобным цифровым помощником.';
-            }
-            if (role === 'teacher' || role === 'edu_org') {
-              recs = ['цифровой помощник', 'учёт и автоматизация', 'сервис для команды'];
-              intro = 'В образовании особенно ценно, когда рутина уходит в инструмент — остаётся время на людей и задачи.';
-            }
-          } else if (goal === 'teach') {
-            if (role === 'entrepreneur' || role === 'expert') {
-              recs = ['образовательный продукт', 'методические материалы', 'интерактивный тренажёр'];
-              intro = 'Если вы эксперт или предприниматель, формат обучения должен быть понятным и удобным для вашей аудитории.';
-            } else if (assets === 'idea_only') {
-              recs = ['рабочая тетрадь', 'методические материалы', 'образовательный сервис'];
-              intro = 'С идеи лучше начать с понятного формата — тетради, конспектов или небольшого образовательного сервиса.';
-            } else if (assets === 'community') {
-              recs = ['образовательный сервис', 'тренажёр', 'методические материалы'];
-              intro = 'У вас уже есть аудитория — можно дать ей структурированный формат обучения и практики.';
-            } else if (assets === 'site') {
-              recs = ['образовательный раздел', 'тренажёр', 'методические материалы'];
-              intro = 'Сайт можно дополнить обучающими материалами или интерактивным тренажёром.';
-            } else {
-              recs = ['образовательный сервис', 'интерактивный тренажёр', 'цифровой помощник'];
-              intro = 'Действующий проект усилится, если добавить формат, в котором материал легче усваивается.';
-            }
-            if (role === 'edu_org') {
-              recs = ['образовательный сервис', 'рабочие программы', 'методические материалы'];
-            }
-          } else if (goal === 'engage') {
-            if (assets === 'idea_only') {
-              recs = ['игра', 'интерактив', 'обучающая механика'];
-              intro = 'Чтобы заинтересовать с нуля, подойдёт игра или интерактив — человек сразу вовлекается в процесс.';
-            } else if (assets === 'community') {
-              recs = ['вовлекающий проект', 'игра', 'интерактив'];
-              intro = 'Для аудитории важно дать живой формат взаимодействия — не лекцию, а опыт.';
-            } else if (assets === 'site') {
-              recs = ['интерактив на сайте', 'игра', 'обучающая механика'];
-              intro = 'Сайт станет запоминающимся, если добавить интерактив или игровую механику.';
-            } else {
-              recs = ['вовлекающий проект', 'интерактив', 'обучающая механика'];
-              intro = 'Действующий проект можно усилить форматом, который удерживает внимание и вызывает интерес.';
-            }
-            if (role === 'teacher' || role === 'edu_org') {
-              recs = ['интерактивный тренажёр', 'игра', 'обучающая механика'];
-              intro = 'В обучении вовлечение — ключ: интерактив и игровые механики помогают удерживать внимание.';
-            }
-          } else if (goal === 'idea') {
-            if (role === 'entrepreneur') {
-              recs = ['сайт услуг', 'лендинг', 'сервис'];
-              intro = 'Для предпринимателя с идеей важно быстро проверить спрос — через понятный сайт или небольшой сервис.';
-            } else if (role === 'expert') {
-              recs = ['сайт эксперта', 'лендинг', 'страница проекта'];
-              intro = 'Эксперту нужна ясная подача и доверие с первого экрана — сайт или посадочная страница подойдут лучше всего.';
-            } else if (role === 'teacher') {
-              recs = ['образовательный продукт', 'тренажёр', 'рабочая тетрадь'];
-              intro = 'Педагогу поможет формат, в котором материал легко применять на занятиях — от тетради до тренажёра.';
-              projects = PROJECTS.teach.slice();
-            } else if (role === 'edu_org') {
-              recs = ['образовательный сервис', 'интерактив', 'методические материалы'];
-              intro = 'Организации нужен масштабируемый формат — сервис или интерактив, который работает для разных групп.';
-              projects = PROJECTS.teach.slice();
-            } else {
-              recs = ['лендинг', 'сервис', 'интерактив'];
-              intro = 'Когда идея ещё формируется, лучше начать с небольшого понятного формата и проверить, как она работает.';
-            }
-            if (assets === 'community') {
-              recs[2] = 'вовлекающий проект';
-              projects = PROJECTS.engage.slice(0, 2);
-            }
-            if (assets === 'site') {
-              recs = ['доработка сайта', 'новый раздел', 'сервис'];
-            }
-            if (assets === 'project') {
-              recs = ['развитие проекта', 'автоматизация', 'новый формат'];
-            }
-          }
-
-          return { intro: intro, recs: recs, projects: projects };
-        }
-
-        function setStatus(step) {
-          if (step <= 3) {
-            statusText.textContent = 'Вопрос ' + step + ' из 3';
-          } else {
-            statusText.textContent = 'Рекомендация готова';
-          }
-        }
-
-        function showStep(num) {
-          steps.forEach(function (step) {
-            var n = parseInt(step.getAttribute('data-step'), 10);
-            var active = n === num;
-            step.classList.toggle('is-active', active);
-            step.hidden = !active;
-          });
-          resultEl.classList.remove('is-visible');
-          resultEl.hidden = true;
-          ctaEl.hidden = true;
-          currentStep = num;
-          setStatus(num);
-          backBtn.classList.toggle('is-visible', num > 1);
-        }
-
-        function goToStep(num) {
-          if (transitioning || num < 1 || num > 3) return;
-          var from = app.querySelector('.advisor__step.is-active');
-          var to = app.querySelector('.advisor__step[data-step="' + num + '"]');
-          if (!from || !to || from === to) {
-            showStep(num);
-            return;
-          }
-          transitioning = true;
-          from.classList.remove('is-active');
-          from.classList.add('is-leaving');
-          setTimeout(function () {
-            from.classList.remove('is-leaving');
-            from.hidden = true;
-            to.hidden = false;
-            to.classList.add('is-active');
-            currentStep = num;
-            setStatus(num);
-            backBtn.classList.toggle('is-visible', num > 1);
-            transitioning = false;
-          }, 320);
-        }
-
-        function showResult() {
-          var data = getRecommendation(answers.role, answers.goal, answers.assets);
-          resultLead.textContent = data.intro;
-          recList.innerHTML = '';
-          data.recs.forEach(function (item) {
-            var li = document.createElement('li');
-            li.textContent = item;
-            recList.appendChild(li);
-          });
-          projList.innerHTML = '';
-          data.projects.forEach(function (proj) {
-            var li = document.createElement('li');
-            if (proj.url) {
-              var a = document.createElement('a');
-              a.href = proj.url;
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              a.textContent = proj.name;
-              li.appendChild(a);
-            } else {
-              var span = document.createElement('span');
-              span.textContent = proj.name;
-              li.appendChild(span);
-            }
-            projList.appendChild(li);
-          });
-
-          steps.forEach(function (step) {
-            step.classList.remove('is-active', 'is-leaving');
-            step.hidden = true;
-          });
-
-          resultEl.hidden = false;
-          requestAnimationFrame(function () {
-            resultEl.classList.add('is-visible');
-          });
-          ctaEl.hidden = false;
-          setStatus(4);
-          backBtn.classList.remove('is-visible');
-        }
-
-        function reset() {
-          answers = { role: '', goal: '', assets: '' };
-          resultEl.classList.remove('is-visible');
-          resultEl.hidden = true;
-          ctaEl.hidden = true;
-          steps.forEach(function (step, i) {
-            step.classList.remove('is-leaving');
-            step.hidden = i !== 0;
-            step.classList.toggle('is-active', i === 0);
-          });
-          currentStep = 1;
-          setStatus(1);
-          backBtn.classList.remove('is-visible');
-        }
-
-        app.querySelectorAll('.advisor__option').forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            if (transitioning) return;
-            var field = btn.getAttribute('data-field');
-            var value = btn.getAttribute('data-value');
-            answers[field] = value;
-            if (field === 'role') {
-              goToStep(2);
-            } else if (field === 'goal') {
-              goToStep(3);
-            } else if (field === 'assets') {
-              showResult();
-            }
-          });
-        });
-
-        backBtn.addEventListener('click', function () {
-          if (currentStep === 2) {
-            answers.role = '';
-            goToStep(1);
-          } else if (currentStep === 3) {
-            answers.goal = '';
-            goToStep(2);
-          }
-        });
-
-        restartBtn.addEventListener('click', reset);
-        setStatus(1);
-      })();
-
       window.addEventListener('resize', function () {
-        document.querySelectorAll('.solution.is-open .solution__panel, .need.is-open .need__panel, .imagine-card.is-open .imagine-card__panel, .prod-card.is-open .prod-card__panel').forEach(function (panel) {
+        document.querySelectorAll('.prod-card.is-open .prod-card__panel').forEach(function (panel) {
           panel.style.maxHeight = 'none';
         });
       });
