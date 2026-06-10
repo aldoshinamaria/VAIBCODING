@@ -111,6 +111,7 @@
     html[data-theme="light"] .section--popular,
     html[data-theme="light"] .section--about,
     html[data-theme="light"] .section--offers,
+    html[data-theme="light"] .section--imagine,
     html[data-theme="light"] .section--quickstart,
     html[data-theme="light"] .section--pricing {
       background: transparent;
@@ -6139,6 +6140,7 @@
     }
   </style>
   <link rel="stylesheet" href="assets/css/quiz-mvp.css" />
+  <link rel="stylesheet" href="assets/css/imagine.css" />
 </head>
 <body>
   <svg class="u-filters" aria-hidden="true" width="0" height="0" style="position: absolute; overflow: hidden; clip: rect(0, 0, 0, 0)">
@@ -6369,6 +6371,204 @@
           </figure>
         </div>
       </div>
+    </section>
+
+    <!-- ========== Витрина возможностей: «Представьте, что…» ========== -->
+    <section class="section section--imagine reveal" id="imagine" aria-labelledby="imagine-title">
+      <div class="section-head reveal">
+        <p class="label">Новый взгляд</p>
+        <h2 id="imagine-title">Представьте, что…</h2>
+        <p>Иногда полезная идея появляется не тогда, когда её ищут, а тогда, когда случайно понимают: это может изменить привычный процесс к лучшему.</p>
+      </div>
+
+      <div class="imagine">
+        <article class="imagine-card reveal reveal-delay-1">
+          <h3 class="imagine-card__heading">
+            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-1" id="imagine-head-1">
+              <span class="imagine-card__spark" aria-hidden="true"></span>
+              <span class="imagine-card__head-text">
+                <span class="imagine-card__hook">Представьте, что клиент получает цену за несколько секунд</span>
+                <span class="imagine-card__feel">Вместо звонков и переписок человек сразу понимает стоимость услуги.</span>
+                <span class="imagine-card__shift"><strong>Что изменится:</strong> меньше однотипных вопросов, быстрее принятие решения клиентом.</span>
+              </span>
+              <span class="imagine-card__cue" aria-hidden="true">
+                <span class="imagine-card__cue-label">Открыть</span>
+                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="imagine-card__panel" id="imagine-panel-1" role="region" aria-labelledby="imagine-head-1">
+            <div class="imagine-card__panel-inner">
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Кому подходит</span>
+                <p>Предпринимателям, экспертам и самозанятым, чьи клиенты часто спрашивают «сколько стоит» — ещё до того, как готовы звонить.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
+                <p>Человек сам получает понятный ориентир по цене. Вы реже отвечаете на одни и те же вопросы. Клиенту проще решиться на следующий шаг.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
+                <p><span class="imagine-card__example-yes">Да</span> — «Семейный калькулятор»: наглядный пример того, как цифра появляется сразу, без долгих объяснений.</p>
+              </div>
+              <div class="imagine-card__actions">
+                <a class="btn btn--primary" href="cases/semeiny-kalkulyator.html">Посмотреть пример</a>
+                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="imagine-card reveal reveal-delay-2">
+          <h3 class="imagine-card__heading">
+            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-2" id="imagine-head-2">
+              <span class="imagine-card__spark" aria-hidden="true"></span>
+              <span class="imagine-card__head-text">
+                <span class="imagine-card__hook">Представьте, что заявки приходят даже ночью</span>
+                <span class="imagine-card__feel">Система помогает клиенту сделать первый шаг без вашего участия.</span>
+                <span class="imagine-card__shift"><strong>Что изменится:</strong> обращения не теряются, а работа становится спокойнее.</span>
+              </span>
+              <span class="imagine-card__cue" aria-hidden="true">
+                <span class="imagine-card__cue-label">Открыть</span>
+                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="imagine-card__panel" id="imagine-panel-2" role="region" aria-labelledby="imagine-head-2">
+            <div class="imagine-card__panel-inner">
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Кому подходит</span>
+                <p>Тем, кто принимает заказы вручную: перевозчики, мастера, специалисты с записью на услугу.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
+                <p>Клиент оставляет заявку, когда ему удобно. Вы утром видите готовые обращения — без поиска по чатам и пропущенных звонков.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
+                <p><span class="imagine-card__example-yes">Да</span> — сайт «Грузоперевозки»: понятный путь от вопроса до заявки.</p>
+              </div>
+              <div class="imagine-card__actions">
+                <a class="btn btn--primary" href="cases/gruzoperevozki.html">Посмотреть пример</a>
+                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="imagine-card reveal reveal-delay-3">
+          <h3 class="imagine-card__heading">
+            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-3" id="imagine-head-3">
+              <span class="imagine-card__spark" aria-hidden="true"></span>
+              <span class="imagine-card__head-text">
+                <span class="imagine-card__hook">Представьте, что ребёнок может обратиться за помощью в любой момент</span>
+                <span class="imagine-card__feel">Даже если ему сложно говорить о проблеме лично.</span>
+                <span class="imagine-card__shift"><strong>Что изменится:</strong> появляется дополнительный безопасный канал поддержки.</span>
+              </span>
+              <span class="imagine-card__cue" aria-hidden="true">
+                <span class="imagine-card__cue-label">Открыть</span>
+                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="imagine-card__panel" id="imagine-panel-3" role="region" aria-labelledby="imagine-head-3">
+            <div class="imagine-card__panel-inner">
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Кому подходит</span>
+                <p>Школам, педагогам и проектам, где важно дать ребёнку способ попросить помощь без страха и давления.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
+                <p>Ребёнку проще начать разговор. Взрослые получают бережный инструмент — не очередную формальную анкету.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
+                <p><span class="imagine-card__example-yes">Да</span> — «Лисичка рядом»: цифровой помощник с мягким диалогом.</p>
+              </div>
+              <div class="imagine-card__actions">
+                <a class="btn btn--primary" href="cases/lisichka-ryadom.html">Посмотреть пример</a>
+                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="imagine-card reveal reveal-delay-4">
+          <h3 class="imagine-card__heading">
+            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-4" id="imagine-head-4">
+              <span class="imagine-card__spark" aria-hidden="true"></span>
+              <span class="imagine-card__head-text">
+                <span class="imagine-card__hook">Представьте, что вы всегда знаете, сколько денег останется до конца месяца</span>
+                <span class="imagine-card__feel">Все платежи и расходы находятся в одном месте.</span>
+                <span class="imagine-card__shift"><strong>Что изменится:</strong> проще планировать семейный бюджет.</span>
+              </span>
+              <span class="imagine-card__cue" aria-hidden="true">
+                <span class="imagine-card__cue-label">Открыть</span>
+                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="imagine-card__panel" id="imagine-panel-4" role="region" aria-labelledby="imagine-head-4">
+            <div class="imagine-card__panel-inner">
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Кому подходит</span>
+                <p>Семьям, которые ведут учёт в заметках и таблицах — и хотят видеть общую картину без путаницы.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
+                <p>Доходы, расходы и платежи собраны в одном месте. Меньше сюрпризов в конце месяца — больше спокойствия в повседневных решениях.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
+                <p><span class="imagine-card__example-yes">Да</span> — «Семейный калькулятор»: наглядная сводка по бюджету.</p>
+              </div>
+              <div class="imagine-card__actions">
+                <a class="btn btn--primary" href="cases/semeiny-kalkulyator.html">Посмотреть пример</a>
+                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="imagine-card reveal reveal-delay-5">
+          <h3 class="imagine-card__heading">
+            <button class="imagine__head" type="button" aria-expanded="false" aria-controls="imagine-panel-5" id="imagine-head-5">
+              <span class="imagine-card__spark" aria-hidden="true"></span>
+              <span class="imagine-card__head-text">
+                <span class="imagine-card__hook">Представьте, что ученики сами хотят пройти задание до конца</span>
+                <span class="imagine-card__feel">Обучение превращается в вовлекающий процесс.</span>
+                <span class="imagine-card__shift"><strong>Что изменится:</strong> повышается интерес к материалу.</span>
+              </span>
+              <span class="imagine-card__cue" aria-hidden="true">
+                <span class="imagine-card__cue-label">Открыть</span>
+                <span class="imagine-card__chevron"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              </span>
+            </button>
+          </h3>
+          <div class="imagine-card__panel" id="imagine-panel-5" role="region" aria-labelledby="imagine-head-5">
+            <div class="imagine-card__panel-inner">
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Кому подходит</span>
+                <p>Педагогам и авторам обучающих проектов, которым важно удержать внимание — не силой, а интересом.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Что меняется после внедрения</span>
+                <p>Ученик вовлекается в задание сам. Тема усваивается через действие, а не через однообразное повторение.</p>
+              </div>
+              <div class="imagine-card__detail">
+                <span class="imagine-card__detail-label">Есть ли готовый пример</span>
+                <p><span class="imagine-card__example-yes">Да</span> — игра по дробям: учебная механика с уровнями и понятными шагами.</p>
+              </div>
+              <div class="imagine-card__actions">
+                <a class="btn btn--primary" href="#playable-demo">Посмотреть пример</a>
+                <a class="btn btn--ghost" href="#quiz-mvp">Хочу такое решение</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="imagine-footnote reveal">Откройте карточку — и посмотрите, какая из этих реальностей может подойти именно вам.</p>
     </section>
 
     <!-- ========== Навигатор задач: «Что вы хотите решить?» ========== -->
@@ -8522,6 +8722,7 @@
 
       initAccordion('.solution__head', '.solution');
       initAccordion('.need__head', '.need');
+      initAccordion('.imagine__head', '.imagine-card');
 
       /* ----- Цифровой помощник: подбор решения ----- */
       (function () {
@@ -8820,7 +9021,7 @@
       })();
 
       window.addEventListener('resize', function () {
-        document.querySelectorAll('.solution.is-open .solution__panel, .need.is-open .need__panel').forEach(function (panel) {
+        document.querySelectorAll('.solution.is-open .solution__panel, .need.is-open .need__panel, .imagine-card.is-open .imagine-card__panel').forEach(function (panel) {
           panel.style.maxHeight = 'none';
         });
       });

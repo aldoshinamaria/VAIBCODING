@@ -1,0 +1,312 @@
+/* ========== «Представьте, что…» — витрина возможностей ========== */
+
+.section--imagine {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(139, 92, 246, 0.06) 0%,
+    transparent 28%,
+    transparent 72%,
+    rgba(18, 14, 28, 0.18) 100%
+  );
+}
+
+.section--imagine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 45% at 15% 20%, rgba(192, 132, 252, 0.08), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 90% 60%, rgba(139, 92, 246, 0.06), transparent 50%);
+}
+
+.section--imagine .section-head {
+  position: relative;
+  z-index: 1;
+}
+
+.imagine {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.imagine-card {
+  position: relative;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease-out), box-shadow 0.35s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.imagine-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.22), transparent 42%, rgba(192, 132, 252, 0.12));
+  transition: opacity 0.35s var(--ease-out);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1px;
+}
+
+.imagine-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(167, 139, 250, 0.32);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(167, 139, 250, 0.08);
+}
+
+.imagine-card:hover::after,
+.imagine-card.is-open::after {
+  opacity: 1;
+}
+
+.imagine-card.is-open {
+  border-color: rgba(167, 139, 250, 0.38);
+  box-shadow: 0 28px 64px rgba(139, 92, 246, 0.14), 0 20px 48px rgba(0, 0, 0, 0.28);
+}
+
+.imagine-card__heading {
+  margin: 0;
+}
+
+.imagine__head {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  padding: clamp(1.35rem, 2.5vw, 1.85rem);
+}
+
+.imagine__head:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: -4px;
+  border-radius: var(--radius-lg);
+}
+
+.imagine-card__spark {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  margin-top: 0.55rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.65);
+  animation: imagine-spark 3.2s ease-in-out infinite;
+}
+
+@keyframes imagine-spark {
+  0%, 100% { opacity: 0.55; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.imagine-card__head-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.imagine-card__hook {
+  font-size: clamp(1.12rem, 2.1vw, 1.38rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+.imagine-card__feel {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.imagine-card__shift {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(167, 139, 250, 0.07);
+  border: 1px solid rgba(167, 139, 250, 0.14);
+}
+
+.imagine-card__shift strong {
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.imagine-card__cue {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+}
+
+.imagine-card__cue-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.imagine-card__chevron {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.1);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  transition: transform 0.35s var(--ease-out), background 0.25s;
+}
+
+.imagine-card__chevron svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.imagine-card.is-open .imagine-card__chevron svg {
+  transform: rotate(180deg);
+}
+
+.imagine-card.is-open .imagine-card__chevron {
+  background: rgba(167, 139, 250, 0.18);
+}
+
+.imagine-card__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s var(--ease-out);
+}
+
+.imagine-card__panel-inner {
+  padding: 0 clamp(1.35rem, 2.5vw, 1.85rem) clamp(1.35rem, 2.5vw, 1.85rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 1.15rem;
+}
+
+.imagine-card__detail-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.imagine-card__detail p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.imagine-card__example-yes {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.imagine-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.imagine-card__actions .btn {
+  font-size: 0.8125rem;
+  padding: 0.6rem 1.1rem;
+}
+
+.imagine-footnote {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--space-lg);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html[data-theme="light"] .section--imagine {
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.05) 0%, transparent 40%);
+}
+
+html[data-theme="light"] .imagine-card {
+  background: rgba(234, 228, 240, 0.92);
+  border-color: rgba(100, 70, 160, 0.14);
+}
+
+html[data-theme="light"] .imagine-card__shift {
+  background: rgba(124, 58, 237, 0.06);
+  border-color: rgba(100, 70, 160, 0.12);
+}
+
+@media (max-width: 600px) {
+  .imagine__head {
+    flex-wrap: wrap;
+  }
+
+  .imagine-card__cue {
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 0.15rem;
+  }
+
+  .imagine-card__actions {
+    flex-direction: column;
+  }
+
+  .imagine-card__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imagine-card__spark {
+    animation: none;
+    opacity: 0.85;
+  }
+
+  .imagine-card,
+  .imagine-card__panel,
+  .imagine-card__chevron svg {
+    transition: none;
+  }
+}
