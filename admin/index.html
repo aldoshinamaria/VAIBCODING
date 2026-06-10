@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0B0B0F" />
+  <title>Заявки — MA.digital Admin</title>
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+</head>
+<body>
+  <div class="admin">
+    <header class="admin__header">
+      <div class="admin__brand">
+        <small>MA.digital</small>
+        <h1>Заявки с квиза</h1>
+      </div>
+      <div class="admin__actions" id="admin-dashboard-actions" hidden>
+        <button type="button" class="admin__btn admin__btn--ghost" id="admin-refresh">Обновить</button>
+        <button type="button" class="admin__btn admin__btn--ghost" id="admin-logout">Выйти</button>
+        <a class="admin__btn admin__btn--ghost" href="../index.html">На сайт</a>
+      </div>
+    </header>
+
+    <section class="admin__panel" id="admin-login">
+      <h2 class="admin__login-title">Вход в админ-панель</h2>
+      <p class="admin__login-desc">Только просмотр заявок. Используйте аккаунт, созданный в Supabase Authentication.</p>
+      <form class="admin__form" id="admin-login-form">
+        <div class="admin__field">
+          <label for="admin-email">Email</label>
+          <input type="email" id="admin-email" name="email" autocomplete="username" required />
+        </div>
+        <div class="admin__field">
+          <label for="admin-password">Пароль</label>
+          <input type="password" id="admin-password" name="password" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="admin__btn admin__btn--primary">Войти</button>
+        <p class="admin__message" id="admin-login-error" hidden></p>
+      </form>
+    </section>
+
+    <section class="admin__panel" id="admin-dashboard" hidden>
+      <div class="admin__loading" id="admin-loading" hidden>Загрузка заявок…</div>
+      <div class="admin__table-wrap">
+        <table class="admin__table" aria-label="Список заявок">
+          <thead>
+            <tr>
+              <th scope="col">Имя</th>
+              <th scope="col">Telegram</th>
+              <th scope="col">Рекомендация</th>
+              <th scope="col">Дата</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body"></tbody>
+        </table>
+        <p class="admin__empty" id="admin-empty" hidden>Заявок пока нет.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="admin__modal" id="admin-modal" hidden role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+    <div class="admin__modal-card">
+      <div class="admin__modal-head">
+        <h2 id="admin-modal-title">Заявка</h2>
+        <button type="button" class="admin__close" id="admin-modal-close" aria-label="Закрыть">×</button>
+      </div>
+      <div id="admin-modal-body"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="../assets/js/config/supabase.config.js"></script>
+  <script src="../assets/js/leads/leads-service.js"></script>
+  <script src="../assets/js/admin/admin-app.js"></script>
+</body>
+</html>

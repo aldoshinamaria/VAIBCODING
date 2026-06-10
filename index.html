@@ -6138,6 +6138,7 @@
       top: var(--space-sm);
     }
   </style>
+  <link rel="stylesheet" href="assets/css/quiz-mvp.css" />
 </head>
 <body>
   <svg class="u-filters" aria-hidden="true" width="0" height="0" style="position: absolute; overflow: hidden; clip: rect(0, 0, 0, 0)">
@@ -7646,6 +7647,111 @@
           <h3 class="work-route__title">Поддержка и развитие</h3>
           <p class="work-route__text">При необходимости проект можно развивать дальше.</p>
         </article>
+      </div>
+    </section>
+
+    <!-- ========== Квиз: подбор решения + заявка ========== -->
+    <section class="section section--quiz-mvp reveal" id="quiz-mvp" aria-labelledby="quiz-mvp-title">
+      <div class="section-head reveal">
+        <p class="label">За 2 минуты</p>
+        <h2 id="quiz-mvp-title">Подобрать решение за 2 минуты</h2>
+        <p>Ответьте на четыре вопроса — получите персональную рекомендацию и предложение под вашу задачу.</p>
+      </div>
+
+      <div class="quiz-mvp reveal" id="quiz-mvp-app">
+        <div class="quiz-mvp__shell">
+          <div class="quiz-mvp__top">
+            <span class="quiz-mvp__status">
+              <span class="quiz-mvp__dot" aria-hidden="true"></span>
+              <span id="quiz-mvp-status-text">Помощник готов к диалогу</span>
+            </span>
+            <button class="quiz-mvp__back" type="button" id="quiz-mvp-back" aria-label="Вернуться к предыдущему вопросу">Назад</button>
+          </div>
+
+          <div class="quiz-mvp__progress" aria-hidden="true">
+            <div class="quiz-mvp__progress-meta">
+              <span id="quiz-mvp-progress-text">Шаг 1 из 4</span>
+            </div>
+            <div class="quiz-mvp__progress-track">
+              <span class="quiz-mvp__progress-bar" id="quiz-mvp-progress-bar"></span>
+            </div>
+          </div>
+
+          <div class="quiz-mvp__viewport" id="quiz-mvp-viewport">
+            <div class="quiz-mvp__step is-active" data-step="1" role="group" aria-labelledby="quiz-mvp-q1">
+              <h3 class="quiz-mvp__question" id="quiz-mvp-q1">Кто вы?</h3>
+              <ul class="quiz-mvp__options" role="list">
+                <li><button class="quiz-mvp__option" type="button" data-field="client_type" data-value="entrepreneur">Предприниматель</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="client_type" data-value="expert">Эксперт</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="client_type" data-value="teacher">Учитель</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="client_type" data-value="school">Школа</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="client_type" data-value="self_employed">Самозанятый</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="client_type" data-value="other">Другое</button></li>
+              </ul>
+            </div>
+
+            <div class="quiz-mvp__step" data-step="2" role="group" aria-labelledby="quiz-mvp-q2" hidden>
+              <h3 class="quiz-mvp__question" id="quiz-mvp-q2">Что хотите получить?</h3>
+              <ul class="quiz-mvp__options" role="list">
+                <li><button class="quiz-mvp__option" type="button" data-field="goal" data-value="clients">Клиентов</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="goal" data-value="automate">Автоматизировать работу</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="goal" data-value="teach">Обучать людей</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="goal" data-value="idea">Протестировать идею</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="goal" data-value="engage">Вовлечь аудиторию</button></li>
+              </ul>
+            </div>
+
+            <div class="quiz-mvp__step" data-step="3" role="group" aria-labelledby="quiz-mvp-q3" hidden>
+              <h3 class="quiz-mvp__question" id="quiz-mvp-q3">Что уже есть?</h3>
+              <ul class="quiz-mvp__options" role="list">
+                <li><button class="quiz-mvp__option" type="button" data-field="current_state" data-value="idea_only">Только идея</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="current_state" data-value="has_site">Есть сайт</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="current_state" data-value="has_vk">Есть группа ВК</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="current_state" data-value="has_product">Есть продукт</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="current_state" data-value="has_clients">Есть клиенты</button></li>
+              </ul>
+            </div>
+
+            <div class="quiz-mvp__step" data-step="4" role="group" aria-labelledby="quiz-mvp-q4" hidden>
+              <h3 class="quiz-mvp__question" id="quiz-mvp-q4">Когда нужен результат?</h3>
+              <ul class="quiz-mvp__options" role="list">
+                <li><button class="quiz-mvp__option" type="button" data-field="urgency" data-value="urgent">Срочно</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="urgency" data-value="month">В течение месяца</button></li>
+                <li><button class="quiz-mvp__option" type="button" data-field="urgency" data-value="exploring">Пока изучаю варианты</button></li>
+              </ul>
+            </div>
+
+            <div class="quiz-mvp__result" id="quiz-mvp-result" role="region" aria-live="polite" aria-labelledby="quiz-mvp-result-title" hidden>
+              <h3 class="quiz-mvp__question" id="quiz-mvp-result-title">Ваша рекомендация</h3>
+              <p class="quiz-mvp__result-lead" id="quiz-mvp-result-lead"></p>
+              <span class="quiz-mvp__rec-label">Подходящие форматы</span>
+              <ul class="quiz-mvp__rec-list" id="quiz-mvp-result-formats"></ul>
+              <button class="quiz-mvp__restart" type="button" id="quiz-mvp-restart">Пройти заново</button>
+            </div>
+          </div>
+
+          <div class="quiz-mvp__form-wrap" id="quiz-mvp-form-wrap" hidden>
+            <h3 class="quiz-mvp__form-title">Получить персональное предложение</h3>
+            <p class="quiz-mvp__form-desc">Оставьте контакты — пришлю рекомендацию с учётом ваших ответов и предложу следующий шаг.</p>
+            <form class="quiz-mvp__form" id="quiz-mvp-form" hidden novalidate>
+              <div class="quiz-mvp__field">
+                <label for="quiz-mvp-name">Имя</label>
+                <input type="text" id="quiz-mvp-name" name="name" autocomplete="name" required minlength="2" placeholder="Как к вам обращаться" />
+              </div>
+              <div class="quiz-mvp__field">
+                <label for="quiz-mvp-telegram">Telegram</label>
+                <input type="text" id="quiz-mvp-telegram" name="telegram" autocomplete="username" required placeholder="@username" />
+              </div>
+              <div class="quiz-mvp__field">
+                <label for="quiz-mvp-description">Описание задачи</label>
+                <textarea id="quiz-mvp-description" name="description" placeholder="Кратко опишите, что хотите получить"></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary quiz-mvp__submit" id="quiz-mvp-submit">Получить персональное предложение</button>
+              <p class="quiz-mvp__message quiz-mvp__message--error" id="quiz-mvp-form-error" hidden></p>
+            </form>
+            <p class="quiz-mvp__message quiz-mvp__message--success" id="quiz-mvp-form-success" hidden></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -9311,5 +9417,11 @@
       }
     })();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="assets/js/config/supabase.config.js"></script>
+  <script src="assets/js/quiz-mvp/constants.js"></script>
+  <script src="assets/js/quiz-mvp/recommendations.js"></script>
+  <script src="assets/js/leads/leads-service.js"></script>
+  <script src="assets/js/quiz-mvp/quiz-app.js"></script>
 </body>
 </html>
