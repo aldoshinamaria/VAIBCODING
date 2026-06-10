@@ -2701,6 +2701,144 @@
       margin-top: 6px;
     }
 
+    /* ========== Блок доверия — «почему со мной спокойно» ========== */
+    .section--trust {
+      background: linear-gradient(180deg, transparent 0%, rgba(18, 14, 28, 0.30) 50%, transparent 100%);
+    }
+
+    .trust {
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    .trust__intro {
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 6vw, 4.75rem);
+    }
+
+    .trust__statement {
+      font-size: clamp(1.55rem, 4.4vw, 2.85rem);
+      font-weight: 700;
+      line-height: 1.24;
+      letter-spacing: -0.02em;
+      max-width: 22ch;
+      margin: 0.7rem auto 0;
+      text-wrap: balance;
+    }
+
+    .trust__accent {
+      background: linear-gradient(120deg, var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent-2);
+    }
+
+    .trust__flow {
+      position: relative;
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 4.5vw, 3.25rem);
+    }
+
+    /* мягкая вертикальная направляющая — «нить» рассуждения */
+    .trust__flow::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      border-radius: 2px;
+      background: linear-gradient(
+        180deg,
+        rgba(167, 139, 250, 0.04),
+        rgba(167, 139, 250, 0.45) 16%,
+        rgba(167, 139, 250, 0.45) 84%,
+        rgba(167, 139, 250, 0.04)
+      );
+    }
+
+    .trust__point {
+      position: relative;
+    }
+
+    .trust__marker {
+      position: absolute;
+      left: -2.5rem;
+      top: 0.4rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent-2);
+      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.12);
+      transition: box-shadow 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+
+    .trust__marker::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+    }
+
+    .trust__point:hover .trust__marker {
+      box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.18);
+      transform: scale(1.08);
+    }
+
+    .trust__lead {
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.32;
+      letter-spacing: -0.01em;
+      text-align: left;
+      margin: 0 0 0.65rem;
+      max-width: 30ch;
+    }
+
+    .trust__text {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      text-align: left;
+      max-width: 54ch;
+      margin: 0;
+    }
+
+    .trust__close {
+      margin: clamp(2.75rem, 6vw, 4.25rem) auto 0;
+      max-width: 42rem;
+      text-align: center;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.5;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .trust__close strong {
+      font-weight: 700;
+      background: linear-gradient(120deg, var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--accent-2);
+    }
+
+    @media (max-width: 600px) {
+      .trust__flow {
+        padding-left: 2.1rem;
+      }
+      .trust__marker {
+        left: -2.1rem;
+      }
+    }
+
     /* ========== HERO: живой процесс «идея → запуск» (правая часть) ========== */
     .hero-flow {
       position: absolute;
@@ -5801,6 +5939,48 @@
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <!-- ========== Блок доверия ========== -->
+    <section class="section section--trust reveal" id="trust" aria-labelledby="trust-title">
+      <div class="trust">
+        <div class="trust__intro">
+          <p class="label">Почему со мной спокойно</p>
+          <h2 id="trust-title" class="trust__statement">
+            Хороший цифровой продукт начинается <span class="trust__accent">не с технологий</span>. Он начинается с понимания <span class="trust__accent">людей и задач</span>.
+          </h2>
+        </div>
+
+        <ul class="trust__flow">
+          <li class="trust__point reveal reveal-delay-1">
+            <span class="trust__marker" aria-hidden="true"></span>
+            <h3 class="trust__lead">Тринадцать лет в образовании научили объяснять сложное простыми словами</h3>
+            <p class="trust__text">Поэтому на проекте вы всегда понимаете, что и зачем мы делаем. Без непонятных терминов и ощущения, что от вас что-то скрывают, — каждый шаг проговариваем человеческим языком.</p>
+          </li>
+
+          <li class="trust__point reveal reveal-delay-2">
+            <span class="trust__marker" aria-hidden="true"></span>
+            <h3 class="trust__lead">Я вела проекты и людей — и умею держать всю картину целиком</h3>
+            <p class="trust__text">Вам не нужно помнить о сроках, этапах и мелочах. Организацию беру на себя и довожу начатое до результата, а не до середины пути.</p>
+          </li>
+
+          <li class="trust__point reveal reveal-delay-3">
+            <span class="trust__marker" aria-hidden="true"></span>
+            <h3 class="trust__lead">Начинаю не с технологий, а с простого вопроса: кому и зачем это нужно</h3>
+            <p class="trust__text">Сначала разбираюсь в людях и задаче и только потом выбираю формат решения. Так получается то, что действительно работает, а не то, что просто выглядит современно.</p>
+          </li>
+
+          <li class="trust__point reveal reveal-delay-4">
+            <span class="trust__marker" aria-hidden="true"></span>
+            <h3 class="trust__lead">Любое решение можно открыть и проверить прямо сейчас</h3>
+            <p class="trust__text">Моя работа — это не обещания на словах, а готовые проекты, которые уже живут и приносят пользу. Вы видите результат ещё до того, как мы начнём.</p>
+          </li>
+        </ul>
+
+        <p class="trust__close">
+          С первого разговора становится спокойно: <strong>задачу здесь понимают</strong> — и <strong>доведут до результата</strong>.
+        </p>
       </div>
     </section>
 
